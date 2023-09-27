@@ -447,7 +447,9 @@
     }
 
     &_Slider{
-        
+        .MuiSlider-vertical{
+            orientation: 'vertical ';
+        }
     }
 }
 
@@ -582,3 +584,4 @@
         }
     }
 }
+
