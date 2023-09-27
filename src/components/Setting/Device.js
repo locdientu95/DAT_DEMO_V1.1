@@ -8,7 +8,7 @@ import BarChart from "../Lib/BarChart";
 import { EnvContext } from "../Context/EnvContext";
 import Gauge from "../Lib/Gauge";
 import GaugeSetting from "../Lib/GaugeSetting";
-import Slider from "../Lib/Slider";
+import SliderBar from "../Lib/SliderBar";
 
 
 export default function Device() {
@@ -56,7 +56,7 @@ export default function Device() {
             <option value={"Button"}>Button</option>
             <option value={"Bar"}>Bar</option>
             <option value={"Gauge"}>Gauge</option>
-            <option value={"Slider"}>Slider</option>
+            <option value={"SliderBar"}>Slider</option>
         </select>
       </div>
       <div className="DATGroup_Content-Container">
@@ -79,7 +79,7 @@ export default function Device() {
                           case "Gauge":
                               return <Gauge setting={gauge}></Gauge>; 
                           case "Slider":
-                            return <Slider></Slider> 
+                            return <SliderBar></SliderBar> 
                           default:
                             return <></>
                         }
@@ -111,7 +111,7 @@ export default function Device() {
                           case "Gauge":
                               return <GaugeSetting setting={gauge}></GaugeSetting>;  
                           case "Slider":
-                              return <Slider></Slider>
+                              return <SliderBar></SliderBar>
                           default:
                             return <></>
                         }
