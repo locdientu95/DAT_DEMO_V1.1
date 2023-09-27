@@ -1,0 +1,677 @@
+.DAT_Header {
+    background-color: white;
+    width: 100%;
+    height: 58px;
+    position: fixed;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 10px 10px rgb(136, 136, 136, 0.2);
+
+    &-Menu {
+        width: 52px;
+
+        &-Toggle {
+            background-color: white;
+            height: 44px;
+            width: 44px;
+            margin-left: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgb(179, 179, 179);
+                opacity: 40%;
+            }
+
+            &:focus-within {
+                border: solid 4px rgba(113, 111, 116, 0.5);
+            }
+        }
+
+    }
+
+    &-Left {
+        width: 192px;
+        height: 34px;
+        margin: 5px 16px 5px 8px;
+        display: flex;
+        align-items: center;
+        width: 200px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    &-Center {
+        flex: 4;
+        display: flex;
+        height: 44px;
+
+        &-Form {
+            background-color: whitesmoke;
+            display: flex;
+            width: 240px;
+            align-items: center;
+            border-radius: 7px;
+            border: solid 4px whitesmoke;
+
+            & input {
+                background-color: whitesmoke;
+                width: 188px;
+                height: 35px;
+                display: flex;
+                align-items: center;
+                border: solid 0px whitesmoke;
+                padding-left: 20px;
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+                outline: none;
+            }
+
+            &-Icon {
+                width: 52px;
+                height: 44px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+
+            &:focus-within {
+                border: solid 4px rgb(66, 100, 255, 0.5);
+            }
+        }
+    }
+
+    &-Right {
+        flex: 6;
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 20px;
+
+        &-Item1 {
+            display: flex;
+            align-items: center;
+            width: 150px;
+            cursor: pointer;
+
+            &-Profile {
+                display: flex;
+                width: 125px;
+                align-items: center;
+
+                &-Documentation {
+                    display: flex;
+                    align-items: center;
+                    padding-right: 5px;
+                }
+            }
+        }
+
+        &-Item2 {
+            width: 52px;
+
+            &-AlertIcon {
+                height: 44px;
+                width: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: white;
+                border-radius: 50%;
+                cursor: pointer;
+                border: none;
+
+                &:hover {
+                    background-color: rgb(179, 179, 179);
+                    opacity: 40%;
+                }
+
+                &:focus-within {
+                    border: solid 4px rgba(113, 111, 116, 0.5);
+                }
+            }
+        }
+
+        &-Item3 {
+            width: 52px;
+
+            &-MessageIcon {
+                height: 44px;
+                width: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: white;
+                border-radius: 50%;
+                cursor: pointer;
+                border: none;
+
+                &:hover {
+                    background-color: rgb(179, 179, 179);
+                    opacity: 40%;
+                }
+
+                &:focus-within {
+                    border: solid 4px rgba(113, 111, 116, 0.5);
+                }
+            }
+        }
+
+        &-Item4 {
+            width: 52px;
+
+            &-Account {
+                height: 44px;
+                width: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                background-color: white;
+                border-radius: 50%;
+                cursor: pointer;
+                border: none;
+
+                &:focus-within {
+                    border: solid 4px rgba(113, 111, 116, 0.5);
+                }
+            }
+        }
+    }
+}
+
+.DAT_Header_Document {
+    position: fixed;
+    z-index: 10;
+    width: 325px;
+    background-color: white;
+    border-radius: 7px;
+    top: 65px;
+    right: 200px;
+    box-shadow: 5px 5px 10px rgb(136, 136, 136, 0.2), -5px -5px 10px rgb(136, 136, 136, 0.2);
+
+    &_Item1 {
+        display: flex;
+        padding: 16px;
+        align-items: center;
+        border-bottom: solid 1px grey;
+
+        &:hover {
+            background-color: rgb(179, 179, 179, 0.3);
+            cursor: pointer;
+        }
+
+        &-Icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            border-radius: 50%;
+            background-color: rgb(201, 227, 253);
+            color: blue;
+        }
+
+        &-Content {
+            padding-top: 2px;
+        }
+    }
+
+    &_Item2 {
+        display: flex;
+        padding: 16px;
+        align-items: center;
+        border-bottom: solid 1px grey;
+
+        &:hover {
+            background-color: rgb(179, 179, 179, 0.3);
+            cursor: pointer;
+        }
+
+        &-Icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            border-radius: 50%;
+            background-color: rgb(201, 227, 253);
+            color: blue;
+        }
+
+        &-Content {
+            padding-top: 2px;
+        }
+    }
+
+    &_Item3 {
+        display: flex;
+        padding: 16px;
+        align-items: center;
+
+        &:hover {
+            background-color: rgb(179, 179, 179, 0.3);
+            cursor: pointer;
+        }
+
+        &-Icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            border-radius: 50%;
+            background-color: rgb(201, 227, 253);
+            color: blue;
+        }
+
+        &-Content {
+            padding-top: 2px;
+        }
+    }
+}
+
+.DAT_Header_Alert {
+    position: fixed;
+    z-index: 10;
+    width: 300px;
+    height: 335px;
+    overflow: hidden;
+    background-color: white;
+    border-radius: 7px;
+    top: 65px;
+    right: 130px;
+    box-shadow: 5px 5px 10px rgb(136, 136, 136, 0.2), -5px -5px 10px rgb(136, 136, 136, 0.2);
+
+    &:hover {
+        overflow-y: scroll;
+    }
+
+    &_Item1 {
+        background-color: rgb(0, 127, 254);
+        color: white;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        border-top-right-radius: 7px;
+        border-top-left-radius: 7px;
+    }
+
+    &_Item2 {
+        display: flex;
+        padding: 16px;
+        align-items: center;
+        border-bottom: solid 1px grey;
+
+        &:hover {
+            background-color: rgb(179, 179, 179, 0.3);
+            cursor: pointer;
+        }
+
+        &-Icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            border-radius: 50%;
+            background-color: orange;
+            color: white;
+        }
+
+        &-Content {
+            padding-top: 2px;
+
+            &-bottom {
+                width: 150px;
+                white-space: nowrap; // ngan xuong dong
+                overflow: hidden; // an noi dung vuot ra ngoai
+                text-overflow: ellipsis; // hien thi 3 cham khi vuot ra ngoai                         
+            }
+        }
+    }
+
+    &_Item3 {
+        display: flex;
+        padding: 16px;
+        align-items: center;
+        border-bottom: solid 1px grey;
+
+        &:hover {
+            background-color: rgb(179, 179, 179, 0.3);
+            cursor: pointer;
+        }
+
+        &-Icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            border-radius: 50%;
+            background-color: rgb(80, 207, 232);
+            color: white;
+        }
+
+        &-Content {
+            padding-top: 2px;
+
+            &-bottom {
+                width: 150px;
+                white-space: nowrap; // ngan xuong dong
+                overflow: hidden; // an noi dung vuot ra ngoai
+                text-overflow: ellipsis; // hien thi 3 cham khi vuot ra ngoai                          
+            }
+        }
+    }
+
+    &_Item4 {
+        display: flex;
+        padding: 16px;
+        align-items: center;
+        border-bottom: solid 1px grey;
+
+        &:hover {
+            background-color: rgb(179, 179, 179, 0.3);
+            cursor: pointer;
+        }
+
+        &-Icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            border-radius: 50%;
+            background-color: rgb(226, 40, 40);
+            color: white;
+        }
+
+        &-Content {
+            padding-top: 2px;
+
+            &-bottom {
+                width: 150px;
+                white-space: nowrap; // ngan xuong dong
+                overflow: hidden; // an noi dung vuot ra ngoai
+                text-overflow: ellipsis; // hien thi 3 cham khi vuot ra ngoai                            
+            }
+        }
+    }
+
+    &_Item5 {
+        display: flex;
+        padding: 16px;
+        align-items: center;
+        border-bottom: solid 1px grey;
+
+        &:hover {
+            background-color: rgb(179, 179, 179, 0.3);
+            cursor: pointer;
+        }
+
+        &-Icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            border-radius: 50%;
+            background-color: rgb(36, 157, 54);
+            color: white;
+        }
+
+        &-Content {
+            padding-top: 2px;
+
+            &-bottom {
+                width: 150px;
+                white-space: nowrap; // ngan xuong dong
+                overflow: hidden; // an noi dung vuot ra ngoai
+                text-overflow: ellipsis; // hien thi 3 cham khi vuot ra ngoai                         
+            }
+        }
+    }
+
+    &_Item6 {
+        padding: 16px;
+        display: flex;
+        justify-content: center;
+        color: grey;
+
+        &:hover {
+            background-color: rgb(179, 179, 179, 0.3);
+            cursor: pointer;
+        }
+    }
+}
+
+.DAT_Header_Message {
+    position: fixed;
+    z-index: 10;
+    width: 300px;
+    height: 335px;
+    overflow: hidden;
+    background-color: white;
+    border-radius: 7px;
+    top: 65px;
+    right: 80px;
+    box-shadow: 5px 5px 10px rgb(136, 136, 136, 0.2), -5px -5px 10px rgb(136, 136, 136, 0.2);
+
+    &:hover {
+        overflow-y: scroll;
+    }
+
+    &_Item1 {
+        background-color: rgb(0, 127, 254);
+        color: white;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        border-top-right-radius: 7px;
+        border-top-left-radius: 7px;
+
+        &_Icon {
+            margin-right: 10px;
+            margin-top: 4px;
+        }
+    }
+
+    &_Item2 {
+        display: flex;
+        padding: 16px;
+        align-items: center;
+        border-bottom: solid 1px grey;
+
+        &:hover {
+            background-color: rgb(179, 179, 179, 0.3);
+            cursor: pointer;
+        }
+
+        &-Icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        &-Content {
+            padding-top: 2px;
+
+            &-bottom {
+                width: 200px;
+                white-space: nowrap; // ngan xuong dong
+                overflow: hidden; // an noi dung vuot ra ngoai
+                text-overflow: ellipsis; // hien thi 3 cham khi vuot ra ngoai                            
+            }
+        }
+    }
+
+    &_Item3 {
+        display: flex;
+        padding: 16px;
+        align-items: center;
+        border-bottom: solid 1px grey;
+
+        &:hover {
+            background-color: rgb(179, 179, 179, 0.3);
+            cursor: pointer;
+        }
+
+        &-Icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        &-Content {
+            padding-top: 2px;
+
+            &-bottom {
+                width: 200px;
+                white-space: nowrap; // ngan xuong dong
+                overflow: hidden; // an noi dung vuot ra ngoai
+                text-overflow: ellipsis; // hien thi 3 cham khi vuot ra ngoai                            
+            }
+        }
+    }
+
+    &_Item4 {
+        display: flex;
+        padding: 16px;
+        align-items: center;
+        border-bottom: solid 1px grey;
+
+        &:hover {
+            background-color: rgb(179, 179, 179, 0.3);
+            cursor: pointer;
+        }
+
+        &-Icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        &-Content {
+            padding-top: 2px;
+
+            &-bottom {
+                width: 200px;
+                white-space: nowrap; // ngan xuong dong
+                overflow: hidden; // an noi dung vuot ra ngoai
+                text-overflow: ellipsis; // hien thi 3 cham khi vuot ra ngoai                            
+            }
+        }
+    }
+
+    &_Item5 {
+        display: flex;
+        padding: 16px;
+        align-items: center;
+        border-bottom: solid 1px grey;
+
+        &:hover {
+            background-color: rgb(179, 179, 179, 0.3);
+            cursor: pointer;
+        }
+
+        &-Icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        &-Content {
+            padding-top: 2px;
+
+            &-bottom {
+                width: 200px;
+                white-space: nowrap; // ngan xuong dong
+                overflow: hidden; // an noi dung vuot ra ngoai
+                text-overflow: ellipsis; // hien thi 3 cham khi vuot ra ngoai                            
+            }
+        }
+    }
+
+    &_Item6 {
+        padding: 16px;
+        display: flex;
+        justify-content: center;
+        color: grey;
+
+        &:hover {
+            background-color: rgb(179, 179, 179, 0.3);
+            cursor: pointer;
+        }
+    }
+}
+
+.DAT_Header_Account {
+    position: fixed;
+    z-index: 10;
+    width: 200px;
+    background-color: white;
+    border-radius: 7px;
+    top: 65px;
+    right: 30px;
+    box-shadow: 5px 5px 10px rgb(136, 136, 136, 0.2), -5px -5px 10px rgb(136, 136, 136, 0.2);
+
+    &_Header {
+        padding: 8px 0px;
+
+        &_Profile {
+            display: flex;
+            padding: 8px 16px;
+            border-bottom: solid 1px rgb(217, 217, 217);
+
+            &-Details {
+                padding-left: 10px;
+            }
+        }
+
+        &_Setting {
+            padding: 4px 16px;
+            display: flex;
+
+            &:hover {
+                background-color: rgb(179, 179, 179, 0.3);
+                cursor: pointer;
+            }
+
+            &-Icon {
+                margin-right: 10px;
+            }
+        }
+
+        &_Logout {
+            padding: 4px 16px;
+            display: flex;
+
+            &:hover {
+                background-color: rgb(179, 179, 179, 0.3);
+                cursor: pointer;
+            }
+
+            &-Icon {
+                margin-right: 10px;
+            }
+        }
+    }
+}

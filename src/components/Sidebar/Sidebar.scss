@@ -1,0 +1,82 @@
+.DAT_Sidebar {
+    background-color: white;
+    height: 100vh;
+    width: 240px;
+    position: relative;
+    z-index: 9;
+
+    &:hover {
+        overflow-y: scroll;
+    }
+
+    box-shadow: 0px 0px 16px 4px rgb(136, 136, 136, 0.2);
+
+    &_Content {
+        padding-top: 80px;
+        height: 100vh;
+        padding-bottom: 60px;
+
+        &_Menu {
+
+            &_Item {
+                position: relative;
+                display: flex;
+                padding: 12px 16px;
+                align-items: center;
+                cursor: pointer;
+
+                &:hover {
+                    color: rgb(57, 81, 218);
+                }
+
+                &_Icon {
+                    flex: 2;
+                    color: rgb(144, 143, 143);
+                }
+
+                & span {
+                    flex: 6;
+                }
+
+                &_Arrow {
+                    flex: 2;
+                    display: flex;
+                    justify-content: flex-end;
+                    color: rgb(144, 143, 143);
+                }
+            }
+
+            &_Dropdown {
+
+                &_List {
+                    border-left: solid 1px rgb(199, 199, 199);
+                    margin-left: 24px;
+                    padding-left: 16px;
+
+                    &_Item {
+                        display: flex;
+                        padding: 12px 16px;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: rgb(57, 81, 218);
+                        }
+                    }
+                }
+            }
+        }
+
+        &_Footer {
+            height: 80px;
+            background-color: rgb(245, 245, 245);
+            position: fixed;
+            bottom: 0;
+            width: 240px;
+
+            &_Content {
+                padding-top: 16px;
+                padding-left: 16px;
+            }
+        }
+    }
+}

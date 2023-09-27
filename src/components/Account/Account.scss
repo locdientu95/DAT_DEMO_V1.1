@@ -1,0 +1,335 @@
+.DAT_Account {
+    background-color: rgb(182, 195, 219, 0.2);
+    flex: 1;
+    width: 100%;
+    overflow-y: scroll;
+
+    &_Header {
+        padding-top: 80px;
+        background-color: whitesmoke;
+        border-bottom: solid 1px rgba(155, 156, 156, 0.2);
+
+        &_Content {
+            padding-bottom: 16px;
+            padding-left: 24px;
+            display: flex;
+
+            &_Icon {
+                padding-top: 2px;
+                padding-right: 8px;
+                color: rgb(144, 143, 143);
+            }
+
+            &_Text {
+                font-weight: 600;
+            }
+        }
+    }
+
+    &_Main {
+        &_Nav {
+            margin-top: 32px;
+            margin-left: 24px;
+            margin-right: 24px;
+            border-bottom: solid 1px rgb(199, 199, 199);
+            display: flex;
+            gap: 24px;
+
+            &_Item {
+                padding-bottom: 10px;
+                cursor: pointer;
+            }
+        }
+
+        &_Content {
+            margin: 24px;
+        }
+    }
+}
+
+.DAT_Info {
+    flex: 1;
+    width: 100%;
+
+    &_Main {
+        &_Content {
+            display: flex;
+
+            &_Picture {
+                margin-right: 24px;
+                border-radius: 5px;
+                flex: 4;
+                box-shadow: 0px 0px 16px 4px rgb(136, 136, 136, 0.2);
+                height: 344px;
+
+                &_Title {
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 24px;
+                    color: blue;
+                    background-color: whitesmoke;
+                    border-top-right-radius: 5px;
+                    border-top-left-radius: 5px;
+                    border-bottom: solid 1px rgb(156, 155, 155, 0.2);
+                    font-weight: 500;
+                }
+
+                &_Content {
+                    background-color: white;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                    padding: 24px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+
+                    & img {
+                        margin-bottom: 8px;
+                    }
+
+                    &_Text {
+                        font-size: 14px;
+                        color: rgb(144, 143, 143);
+                        margin-bottom: 24px;
+                    }
+
+                    &_Button {
+                        height: 34px;
+                        border: none;
+                        color: white;
+                        background-color: blue;
+                        font-weight: 400;
+                        border-radius: 5px;
+                    }
+                }
+            }
+
+            &_Detail {
+                position: relative;
+                border-radius: 5px;
+                flex: 6;
+                box-shadow: 0px 0px 16px 4px rgb(136, 136, 136, 0.2);
+
+
+                &_Title {
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 24px;
+                    color: blue;
+                    background-color: whitesmoke;
+                    border-top-right-radius: 5px;
+                    border-top-left-radius: 5px;
+                    border-bottom: solid 1px rgb(156, 155, 155, 0.2);
+                    font-weight: 500;
+                }
+
+                &_Content {
+                    position: relative;
+                    background-color: white;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                    padding: 24px;
+
+                    &_Form {
+                        position: relative;
+
+                        &_Row {
+                            display: flex;
+                            gap: 10px;
+                            margin-bottom: 16px;
+
+                            &_Item {
+                                position: relative;
+                                width: 100%;
+
+                                &_Label {
+                                    display: flex;
+                                    margin-bottom: 8px;
+                                }
+
+                                & input {
+                                    height: 44px;
+                                    width: 100%;
+                                    border-radius: 5px;
+                                    border: solid 1px rgb(156, 155, 155, 0.3);
+                                    padding: 14px 18px;
+                                    box-sizing: border-box;
+                                    -webkit-box-sizing: border-box;
+                                    -moz-box-sizing: border-box;
+                                }
+                            }
+                        }
+
+                        &_Button {
+                            height: 34px;
+                            border: none;
+                            color: white;
+                            background-color: blue;
+                            font-weight: 400;
+                            border-radius: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.DAT_Language {
+    flex: 1;
+    width: 100%;
+
+    &_Main {
+
+        &_Content {
+            display: flex;
+
+            &_Detail {
+                position: relative;
+                border-radius: 5px;
+                flex: 6;
+                box-shadow: 0px 0px 16px 4px rgb(136, 136, 136, 0.2);
+
+                &_Title {
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 24px;
+                    color: blue;
+                    background-color: whitesmoke;
+                    border-top-right-radius: 5px;
+                    border-top-left-radius: 5px;
+                    border-bottom: solid 1px rgb(156, 155, 155, 0.2);
+                    font-weight: 500;
+                }
+
+                &_Content {
+                    position: relative;
+                    background-color: white;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                    padding: 24px;
+
+                    &_Form {
+                        position: relative;
+
+                        &_Row {
+                            display: flex;
+                            gap: 10px;
+                            margin-bottom: 16px;
+
+                            &_Item {
+                                position: relative;
+                                width: 100%;
+
+                                &_Label {
+                                    display: flex;
+                                    margin-bottom: 8px;
+                                }
+
+                                & select {
+                                    height: 44px;
+                                    border-radius: 5px;
+                                    border: solid 1px rgb(156, 155, 155, 0.3);
+                                    padding: 14px 18px;
+                                }
+                            }
+                        }
+
+                        &_Button {
+                            height: 34px;
+                            border: none;
+                            color: white;
+                            background-color: blue;
+                            font-weight: 400;
+                            border-radius: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.DAT_Security {
+    flex: 1;
+    width: 100%;
+
+    &_Main {
+
+        &_Content {
+            display: flex;
+
+            &_Detail {
+                position: relative;
+                border-radius: 5px;
+                flex: 6;
+                box-shadow: 0px 0px 16px 4px rgb(136, 136, 136, 0.2);
+
+                &_Title {
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 24px;
+                    color: blue;
+                    background-color: whitesmoke;
+                    border-top-right-radius: 5px;
+                    border-top-left-radius: 5px;
+                    border-bottom: solid 1px rgb(156, 155, 155, 0.2);
+                    font-weight: 500;
+                }
+
+                &_Content {
+                    position: relative;
+                    background-color: white;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                    padding: 24px;
+
+                    &_Form {
+                        position: relative;
+
+                        &_Row {
+                            display: flex;
+                            gap: 10px;
+                            margin-bottom: 16px;
+
+                            &_Item {
+                                position: relative;
+                                width: 100%;
+
+                                &_Label {
+                                    display: flex;
+                                    margin-bottom: 8px;
+                                }
+
+                                & input {
+                                    height: 44px;
+                                    width: 100%;
+                                    border-radius: 5px;
+                                    border: solid 1px rgb(156, 155, 155, 0.3);
+                                    padding: 14px 18px;
+                                    box-sizing: border-box;
+                                    -webkit-box-sizing: border-box;
+                                    -moz-box-sizing: border-box;
+                                }
+                            }
+                        }
+
+                        &_Button {
+                            height: 34px;
+                            border: none;
+                            color: white;
+                            background-color: blue;
+                            font-weight: 400;
+                            border-radius: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
