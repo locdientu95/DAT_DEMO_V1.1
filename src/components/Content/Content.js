@@ -59,7 +59,7 @@ export default function Content() {
                   To create informative visual elements on your pages
                 </div>
               </div>
-              <img src="/img/browser-stats.svg"></img>
+              <img src="/DAT_Pictures/browser-stats.svg"></img>
             </div>
           </div>
           <div className="DAT_Content-Container-Group-ListTag">
@@ -88,7 +88,7 @@ export default function Content() {
                   To keep you on track when working with our toolkit
                 </div>
               </div>
-              <img src="/img/processing.svg"></img>
+              <img src="/DAT_Pictures/processing.svg"></img>
             </div>
           </div>
           <div className="DAT_Content-Container-Group-ListTag">
@@ -118,7 +118,7 @@ export default function Content() {
                   To help get you started when building your new UI{" "}
                 </div>
               </div>
-              <img src="/img/windows.svg"></img>
+              <img src="/DAT_Pictures/windows.svg"></img>
             </div>
           </div>
         </div>
@@ -126,7 +126,7 @@ export default function Content() {
           <div className="DAT_Content-Container-Card-Body">
             <div className="DAT_Content-Container-Card-Body-Center">
               <div className="DAT_Content-Container-Card-Body-Center-Img">
-                <img src="/img/data-report.svg"></img>
+                <img src="/DAT_Pictures/data-report.svg"></img>
               </div>
               <div className="DAT_Content-Container-Card-Body-Center-Text">
                 <h5>New reports are here! Generate custom reports now!</h5>
