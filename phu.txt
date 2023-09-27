@@ -1,1 +1,1 @@
-Phu upload 27/09/2023 route, sửa tên, gộp source
+Phu upload 27/09/2023 route, sửa tên trong Setting.scss, gộp source, fix trang Content.js

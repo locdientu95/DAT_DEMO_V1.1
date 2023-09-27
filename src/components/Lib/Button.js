@@ -18,7 +18,7 @@ export default function Button(props) {
       setState(true);
     }
 
-    console.log(props.setting);
+    // console.log(props.setting);
   };
 
   return (

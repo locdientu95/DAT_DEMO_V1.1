@@ -138,21 +138,21 @@ export default function GaugeSetting() {
         <div className="DAT_Setting">           
 
             {/* Main */}
-            <div className="DAT_Setting_Main">
+            <div className="DAT_Setting_Gauge">
 
                 {/* Content */}
-                <div className="DAT_Setting_Main_Content">
+                <div className="DAT_Setting_Gauge_Content">
 
                     {/* Cài đặt */}
-                    <div className="DAT_Setting_Main_Content_Detail">
-                        <div className="DAT_Setting_Main_Content_Detail_Title">
+                    <div className="DAT_Setting_Gauge_Content_Detail">
+                        <div className="DAT_Setting_Gauge_Content_Detail_Title">
                             Cài đặt
                         </div>
                         
-                        <div className="DAT_Setting_Main_Content_Detail_Content">                           
-                            <div className="DAT_Setting_Main_Content_Detail_Content_Row1">
+                        <div className="DAT_Setting_Gauge_Content_Detail_Content">                           
+                            <div className="DAT_Setting_Gauge_Content_Detail_Content_Row1">
                                 <input 
-                                    className="DAT_Setting_Main_Content_Detail_Content_Row1_Item1" 
+                                    className="DAT_Setting_Gauge_Content_Detail_Content_Row1_Item1" 
                                     placeholder="Tên: TỐC ĐỘ" 
                                     ref={speed}/>
                                 <input type="number" defaultValue={20} min={6} max={100} step={2} style={{width:"200px"}} ref={fontsize}/>
@@ -160,40 +160,40 @@ export default function GaugeSetting() {
                                 <button onClick={(e) => handleTit(e)}>Chọn</button>
                             </div>
 
-                            <div className="DAT_Setting_Main_Content_Detail_Content_Row2">
-                                <input placeholder="Đơn vị: Hz" className="DAT_Setting_Main_Content_Detail_Content_Row2_Item1" ref={unit}/>
+                            <div className="DAT_Setting_Gauge_Content_Detail_Content_Row2">
+                                <input placeholder="Đơn vị: Hz" className="DAT_Setting_Gauge_Content_Detail_Content_Row2_Item1" ref={unit}/>
                                 <input type="number" defaultValue={20} min={6} max={100} step={2} style={{width:"200px"}} ref={unitsize}/>
                                 <input type="color" style={{width:"200px"}} ref={unitcolor}/>
                                 <button onClick={(e) => handleUnit(e)}>Chọn</button>
                             </div>
 
-                            <div className="DAT_Setting_Main_Content_Detail_Content_Row3">
-                                <input placeholder="Min: 0" className="DAT_Setting_Main_Content_Detail_Content_Row3_Item1" ref={min}></input>
-                                <input placeholder="Nhập thanh ghi" className="DAT_Setting_Main_Content_Detail_Content_Row3_Item2"></input>
+                            <div className="DAT_Setting_Gauge_Content_Detail_Content_Row3">
+                                <input placeholder="Min: 0" className="DAT_Setting_Gauge_Content_Detail_Content_Row3_Item1" ref={min}></input>
+                                <input placeholder="Nhập thanh ghi" className="DAT_Setting_Gauge_Content_Detail_Content_Row3_Item2"></input>
                                 <button onClick={(e) => handleMin(e)}>Chọn</button>
                             </div>
 
-                            <div className="DAT_Setting_Main_Content_Detail_Content_Row4">
-                                <input placeholder="Max: 50" className="DAT_Setting_Main_Content_Detail_Content_Row4_Item1" ref={max}></input>
-                                <input placeholder="Nhập thanh ghi" className="DAT_Setting_Main_Content_Detail_Content_Row4_Item2"></input>
+                            <div className="DAT_Setting_Gauge_Content_Detail_Content_Row4">
+                                <input placeholder="Max: 50" className="DAT_Setting_Gauge_Content_Detail_Content_Row4_Item1" ref={max}></input>
+                                <input placeholder="Nhập thanh ghi" className="DAT_Setting_Gauge_Content_Detail_Content_Row4_Item2"></input>
                                 <button onClick={(e) => handleMax(e)}>Chọn</button>
                             </div>
 
-                            <div className="DAT_Setting_Main_Content_Detail_Content_Row5">
-                                <input placeholder="Width: 500" className="DAT_Setting_Main_Content_Detail_Content_Row5_Item1" ref={width}/>
+                            <div className="DAT_Setting_Gauge_Content_Detail_Content_Row5">
+                                <input placeholder="Width: 500" className="DAT_Setting_Gauge_Content_Detail_Content_Row5_Item1" ref={width}/>
                                 <input placeholder="Height: 300" ref={height}/>
                                 <input type="number" placeholder="Scale: 10" ref={segment}/>
                                 <button onClick={(e) => handleCustom(e)}>Chọn</button>
                             </div>
 
-                            <div className="DAT_Setting_Main_Content_Detail_Content_Row6">
-                                <input type="color" className="DAT_Setting_Main_Content_Detail_Content_Row6_Item1" ref={needlecolor}/>
+                            <div className="DAT_Setting_Gauge_Content_Detail_Content_Row6">
+                                <input type="color" className="DAT_Setting_Gauge_Content_Detail_Content_Row6_Item1" ref={needlecolor}/>
                                 <input type="color" ref={startcolor}/>
                                 <input type="color" ref={endcolor}/>
                                 <button onClick={(e) => handleColor(e)}>Chọn</button>
                             </div>
 
-                            <div className="DAT_Setting_Main_Content_Detail_Content_Row7">
+                            <div className="DAT_Setting_Gauge_Content_Detail_Content_Row7">
                                 <select>
                                     <option value="0">Cơ số 10</option>
                                     <option value="1">Cơ số 16</option>
@@ -216,12 +216,12 @@ export default function GaugeSetting() {
                                 </select>
                             </div>
 
-                            <div className="DAT_Setting_Main_Content_Detail_Content_Row8">
+                            <div className="DAT_Setting_Gauge_Content_Detail_Content_Row8">
                                 <input placeholder="Nhập thanh ghi read"/>
                                 <button>Chọn</button>
                             </div>
 
-                            <div className="DAT_Setting_Main_Content_Detail_Content_Row9">
+                            <div className="DAT_Setting_Gauge_Content_Detail_Content_Row9">
                                 <input placeholder="0" ref={cal}></input>
                                 <button onClick={(e) => handleCal(e)}>Xác nhận</button>
                             </div>
