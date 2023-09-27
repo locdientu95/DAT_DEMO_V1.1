@@ -9,8 +9,7 @@ function Slider() {
         defaultValue={30}
         getAriaValueText={valuetext}
         valueLabelDisplay="on"
-        step={1}
-        marks
+        
         min={0}
         max={100}
       />
@@ -26,6 +25,7 @@ function Slider() {
       />
     </Box>
         </div>
+        
     );
 }
 
