@@ -3,10 +3,19 @@ import "./index.scss";
 import Header from "./components/Header/Header";
 import Content from "./components/Content/Content";
 import Sidebar from "./components/Sidebar/Sidebar";
+import Automation from "./components/Automation/Automation"
+import SolarEnergy from "./components/SolarEnergy/Solar";
+import Elevator from "./components/Elevator/Elevator";
+import UPS from "./components/UPS/UPS";
+import Location from "./components/Location/Location";
+import Notification from "./components/Notification/Notification";
+import SMS from "./components/SMS/SMS";
+import ErrorReport from "./components/ErrorReport/ErrorReport";
+import ExportReport from "./components/ExportReport/ExportReport";
 import Account from "./components/Account/Account";
-//import DeviceSetting from "./components/DeviceSetting/DeviceSetting";
-import  {BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Device from "./components/Setting/Device";
+import DATGroup from "./components/DATGroup/DATGroup";
+import  {BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 var data = [
   {
@@ -49,8 +58,18 @@ export default function App() {
           
             <Routes>
               <Route exact path="/" element={<Content></Content>} />
+              <Route path="/Automation" element={<Automation></Automation>} />
+              <Route path="/SolarEnergy" element={<SolarEnergy></SolarEnergy>} />
+              <Route path="/Elevator" element={<Elevator></Elevator>} />
+              <Route path="/UPS" element={<UPS></UPS>} />
+              <Route path="/Location" element={<Location></Location>} />
+              <Route path="/Notification" element={<Notification></Notification>} />
+              <Route path="/SMS" element={<SMS></SMS>} />
+              <Route path="/ErrorReport" element={<ErrorReport></ErrorReport>} />
+              <Route path="/ExportReport" element={<ExportReport></ExportReport>} />
               <Route path="/Account" element={<Account></Account>} />
               <Route path="/DeviceSetting" element={<Device></Device>} />
+              <Route path="/DATGroup" element={<DATGroup></DATGroup>} />
             </Routes>
         </div>
       </div>

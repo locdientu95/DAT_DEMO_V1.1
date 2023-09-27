@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Solar() {
+export default function UPS() {
   return (
     <div className="DAT_Content">
       <div className="DAT_Content-Header">
@@ -22,7 +22,7 @@ export default function Solar() {
             >
               <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
             </svg>
-            Năng Lượng Mặt Trời
+            UPS
           </div>
           <div className="DAT_Content-Header-Dashboard-SubHead">
             Example dashboard overview and content summary

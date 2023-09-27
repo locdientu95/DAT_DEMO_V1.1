@@ -78,18 +78,26 @@ export default function Sidebar(props) {
           {drop === "Home" ? (
             <div className="DAT_Sidebar_Content_Menu_Dropdown" id="Home_Drop">
               <div className="DAT_Sidebar_Content_Menu_Dropdown_List">
-                <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
-                  Tự động hóa
-                </div>
-                <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
-                  Năng lượng mặt trời
-                </div>
-                <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
-                  Thang máy
-                </div>
-                <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
-                  Ups
-                </div>
+                <Link to="/Automation" style={{textDecoration:"none", color:"black"}}>
+                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
+                    Tự động hóa
+                  </div>
+                </Link>
+                <Link to="/SolarEnergy" style={{textDecoration:"none", color:"black"}}>
+                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
+                    Năng lượng mặt trời
+                  </div>
+                </Link>
+                <Link to="/Elevator" style={{textDecoration:"none", color:"black"}}>
+                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
+                    Thang máy
+                  </div>
+                </Link>
+                <Link to="/UPS" style={{textDecoration:"none", color:"black"}}>
+                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
+                    Ups
+                  </div>
+                </Link>
               </div>
             </div>
           ) : (
@@ -97,47 +105,49 @@ export default function Sidebar(props) {
           )}
 
           {/* Vi tri */}
-          <div className="DAT_Sidebar_Content_Menu_Item" id="ViTri" onClick={(e) => {handleDropdown(e);}}>
-            <div className="DAT_Sidebar_Content_Menu_Item_Icon">
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                width="16" 
-                height="16" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                className="feather feather-filter"
-              >
-                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
-              </svg>
+          <Link to={"/Location"} style={{textDecoration:"none", color:"black"}}>
+            <div className="DAT_Sidebar_Content_Menu_Item" id="ViTri" onClick={(e) => {handleDropdown(e);}}>
+              <div className="DAT_Sidebar_Content_Menu_Item_Icon">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="16" 
+                  height="16" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  className="feather feather-filter"
+                >
+                  <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                </svg>
+              </div>
+              <span>Vị Trí</span>
+              <div className="DAT_Sidebar_Content_Menu_Item_Arrow">
+                {/* <svg
+                  id="NhatKy_Logo"
+                  width="16"
+                  height="16"
+                  className="svg-inline--fa fa-angle-down"
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="angle-down"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 384 512"
+                  data-fa-i2svg=""
+                  style={{ transform: (drop==="ViTri") ? "rotate(0deg)" : "rotate(-90deg)" }}
+                >
+                  <path
+                    fill="currentColor"
+                    d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+                  ></path>
+                </svg> */}
+              </div>
             </div>
-            <span>Vị Trí</span>
-            <div className="DAT_Sidebar_Content_Menu_Item_Arrow">
-              {/* <svg
-                id="NhatKy_Logo"
-                width="16"
-                height="16"
-                className="svg-inline--fa fa-angle-down"
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="angle-down"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 384 512"
-                data-fa-i2svg=""
-                style={{ transform: (drop==="ViTri") ? "rotate(0deg)" : "rotate(-90deg)" }}
-              >
-                <path
-                  fill="currentColor"
-                  d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
-                ></path>
-              </svg> */}
-            </div>
-          </div>
+          </Link>
 
           {/* Vi tri dropdown */}
           {/* {drop === "NhatKy" ? (
@@ -156,92 +166,96 @@ export default function Sidebar(props) {
           )} */}
 
           {/* Thong bao */}
-          <div className="DAT_Sidebar_Content_Menu_Item" id="ThongBao" onClick={(e) => {handleDropdown(e);}}>
-            <div className="DAT_Sidebar_Content_Menu_Item_Icon">             
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-bell"
-              >
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-              </svg>
+          <Link to="/Notification" style={{textDecoration:"none", color:"black"}}>
+            <div className="DAT_Sidebar_Content_Menu_Item" id="ThongBao" onClick={(e) => {handleDropdown(e);}}>
+              <div className="DAT_Sidebar_Content_Menu_Item_Icon">             
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="feather feather-bell"
+                >
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+              </div>
+              <span>Thông Báo</span>
+              <div className="DAT_Sidebar_Content_Menu_Item_Arrow">
+                {/* <svg
+                  id="ThongBao_Logo"
+                  width="16"
+                  height="16"
+                  className="svg-inline--fa fa-angle-down"
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="angle-down"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 384 512"
+                  data-fa-i2svg=""
+                  style={{ transform: (drop==="ThongBao") ? "rotate(0deg)" : "rotate(-90deg)" }}
+                >
+                  <path
+                    fill="currentColor"
+                    d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+                  ></path>
+                </svg> */}
+              </div>
             </div>
-            <span>Thông Báo</span>
-            <div className="DAT_Sidebar_Content_Menu_Item_Arrow">
-              {/* <svg
-                id="ThongBao_Logo"
-                width="16"
-                height="16"
-                className="svg-inline--fa fa-angle-down"
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="angle-down"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 384 512"
-                data-fa-i2svg=""
-                style={{ transform: (drop==="ThongBao") ? "rotate(0deg)" : "rotate(-90deg)" }}
-              >
-                <path
-                  fill="currentColor"
-                  d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
-                ></path>
-              </svg> */}
-            </div>
-          </div>
+          </Link>
 
           {/* SMS */}
-          <div className="DAT_Sidebar_Content_Menu_Item" id="SMS" onClick={(e) => {handleDropdown(e);}}>
-            <div className="DAT_Sidebar_Content_Menu_Item_Icon">             
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-mail"
-              >
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
+          <Link to="/SMS" style={{textDecoration:"none", color:"black"}}>
+            <div className="DAT_Sidebar_Content_Menu_Item" id="SMS" onClick={(e) => {handleDropdown(e);}}>
+              <div className="DAT_Sidebar_Content_Menu_Item_Icon">             
+              <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="feather feather-mail"
+                >
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <span>SMS</span>
+              <div className="DAT_Sidebar_Content_Menu_Item_Arrow">
+                {/* <svg
+                  id="ThongBao_Logo"
+                  width="16"
+                  height="16"
+                  className="svg-inline--fa fa-angle-down"
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="angle-down"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 384 512"
+                  data-fa-i2svg=""
+                  style={{ transform: (drop==="SMS") ? "rotate(0deg)" : "rotate(-90deg)" }}
+                >
+                  <path
+                    fill="currentColor"
+                    d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+                  ></path>
+                </svg> */}
+              </div>
             </div>
-            <span>SMS</span>
-            <div className="DAT_Sidebar_Content_Menu_Item_Arrow">
-              {/* <svg
-                id="ThongBao_Logo"
-                width="16"
-                height="16"
-                className="svg-inline--fa fa-angle-down"
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="angle-down"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 384 512"
-                data-fa-i2svg=""
-                style={{ transform: (drop==="SMS") ? "rotate(0deg)" : "rotate(-90deg)" }}
-              >
-                <path
-                  fill="currentColor"
-                  d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
-                ></path>
-              </svg> */}
-            </div>
-          </div>
+          </Link>
 
           {/* Bao cao */}
           <div className="DAT_Sidebar_Content_Menu_Item" id="BaoCao" onClick={(e) => {handleDropdown(e);}}>
@@ -293,12 +307,16 @@ export default function Sidebar(props) {
           {drop === "BaoCao" ? (
             <div className="DAT_Sidebar_Content_Menu_Dropdown" id="BaoCao_Drop">
               <div className="DAT_Sidebar_Content_Menu_Dropdown_List">
-                <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
-                  Báo cáo lỗi
-                </div>
-                <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
-                  Xuất báo cáo
-                </div>
+                <Link to="/ErrorReport" style={{textDecoration:"none", color:"black"}}>
+                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
+                    Báo cáo lỗi
+                  </div>
+                </Link>
+                <Link to="/ExportReport" style={{textDecoration:"none", color:"black"}}>
+                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
+                    Xuất báo cáo
+                  </div>
+                </Link>
               </div>
             </div>
           ) : (
@@ -369,50 +387,52 @@ export default function Sidebar(props) {
           )}
 
           {/* Thong tin DAT */}
-          <div className="DAT_Sidebar_Content_Menu_Item" id="DAT" onClick={(e) => {handleDropdown(e);}}>
-            <div className="DAT_Sidebar_Content_Menu_Item_Icon">
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                width="16" 
-                height="16" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                className="feather feather-grid"
-              >
-                <rect x="3" y="3" width="7" height="7"></rect>
-                <rect x="14" y="3" width="7" height="7"></rect>
-                <rect x="14" y="14" width="7" height="7"></rect>
-                <rect x="3" y="14" width="7" height="7"></rect>
-              </svg>
+          <Link to="/DATGroup" style={{textDecoration:"none", color:"black"}}>
+            <div className="DAT_Sidebar_Content_Menu_Item" id="DAT" onClick={(e) => {handleDropdown(e);}}>
+              <div className="DAT_Sidebar_Content_Menu_Item_Icon">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="16" 
+                  height="16" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  className="feather feather-grid"
+                >
+                  <rect x="3" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect>
+                  <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+              </div>
+              <span>DAT Group</span>
+              <div className="DAT_Sidebar_Content_Menu_Item_Arrow">
+                {/* <svg
+                  id="DAT_Logo"
+                  width="16"
+                  height="16"
+                  className="svg-inline--fa fa-angle-down"
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="angle-down"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 384 512"
+                  data-fa-i2svg=""
+                  style={{ transform: (drop==="DAT") ? "rotate(0deg)" : "rotate(-90deg)" }}
+                >
+                  <path
+                    fill="currentColor"
+                    d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+                  ></path>
+                </svg>               */}
+              </div>
             </div>
-            <span>DAT Group</span>
-            <div className="DAT_Sidebar_Content_Menu_Item_Arrow">
-              {/* <svg
-                id="DAT_Logo"
-                width="16"
-                height="16"
-                className="svg-inline--fa fa-angle-down"
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="angle-down"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 384 512"
-                data-fa-i2svg=""
-                style={{ transform: (drop==="DAT") ? "rotate(0deg)" : "rotate(-90deg)" }}
-              >
-                <path
-                  fill="currentColor"
-                  d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
-                ></path>
-              </svg>               */}
-            </div>
-          </div>
+          </Link>
         </div>
 
         {/* Footer */}
