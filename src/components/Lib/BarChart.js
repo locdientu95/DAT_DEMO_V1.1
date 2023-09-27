@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import "./Setting.scss";
 
 //import { Bar } from "react-chartjs-2";
