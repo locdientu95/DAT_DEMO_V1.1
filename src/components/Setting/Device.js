@@ -1,17 +1,18 @@
 import React, { useContext } from "react";
 import "./Device.scss";
+import { EnvContext } from "../Context/EnvContext";
 import Button from "../Lib/Button";
-import BarChartSetting from "../Lib/BarChartSetting";
 import ButtonSetting from "../Lib/ButtonSetting";
 import BarChart from "../Lib/BarChart";
-import { EnvContext } from "../Context/EnvContext";
+import BarChartSetting from "../Lib/BarChartSetting";
 import Gauge from "../Lib/Gauge";
 import GaugeSetting from "../Lib/GaugeSetting";
 import SliderBar from "../Lib/SliderBar";
+import SliderSetting from "../Lib/SliderSetting";
 
 
 export default function Device() {
-  const { button, type, gauge, bardata, envDispatch } = useContext(EnvContext);
+  const { button, type, gauge, bardata, slider, envDispatch } = useContext(EnvContext);
   
   const handleChangeLib = (e) => {
     var temp = e.currentTarget.value;
@@ -78,12 +79,13 @@ export default function Device() {
                           case "Gauge":
                               return <Gauge setting={gauge}></Gauge>; 
                           case "SliderBar":
-                            return <SliderBar></SliderBar> 
+                            return <SliderBar setting={slider}></SliderBar> 
                           default:
                             return <></>
                         }
                       })()}
                     </div>
+                    
                     <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Text">
                       {/* vxcx */}
                     </div>
@@ -99,6 +101,7 @@ export default function Device() {
                 <div className="Device_Content-Container-Group-ListTag-Tag-Info-Head">
                   Cài đặt
                 </div>
+
                 <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body">
                   <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview">
                     <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Content">
@@ -110,8 +113,8 @@ export default function Device() {
                             return <BarChartSetting setting={bardata}></BarChartSetting>;
                           case "Gauge":
                               return <GaugeSetting setting={gauge}></GaugeSetting>;  
-                          case "Slider":
-                              return <SliderBar></SliderBar>
+                          case "SliderBar":
+                              return <SliderSetting setting={slider}></SliderSetting>
                           default:
                             return <></>
                         }

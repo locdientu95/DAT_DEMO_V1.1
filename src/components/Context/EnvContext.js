@@ -9,10 +9,10 @@ export const EnvContextProvider = ({ children }) => {
     return (
         <EnvContext.Provider value={{
             status: state.status,
-            gauge: state.gauge,
-            slider: state.slider,
             button:state.button,
             bardata: state.bardata,
+            gauge: state.gauge,
+            slider: state.slider,
             type: state.type,
             envDispatch            
         }}>
