@@ -21,3 +21,107 @@ code {
     height: 100vh;
   }
 }
+.rdt_Table {
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-top: solid 1px rgb(213, 213, 213);
+  border-left: solid 1px rgb(213, 213, 213);
+  border-bottom: solid 1px rgb(213, 213, 213);
+
+
+  //Head
+  &Head {
+    padding: 0;
+
+    //1 Hàng ở bên trong Head 
+    &Row {
+      padding: 0;
+    }
+  }
+
+  //1 cột ở bên trong TableRow  thuộc Body
+  &Col {
+    color: rgb(68, 68, 68);
+    font-weight: 600;
+    font-size: 15px;
+    justify-content: center;
+    border-right: solid 1px rgb(213, 213, 213);
+
+    & div:first-child {
+      white-space: normal !important;
+      overflow: visible !important;
+    }
+
+  }
+
+
+  //Body
+  &Body {
+    padding: 0;
+  }
+
+  //1 Hàng Bọc của tất cả các TableCell thuộc Body
+  &Row {
+    padding: 0;
+  }
+  //1 cột ở bên trong TableRow  thuộc Body
+  &Cell {
+    font-size: 15px;
+    font-weight: 400;
+    border-right: solid 1px rgb(213, 213, 213);
+    justify-content: left;
+
+    .DAT_Table {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & img {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        border: solid 4px #adadad;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      & label {
+        cursor: pointer;
+        color: #326ba8;
+        margin-left: 20px;
+      }
+
+      &-status {
+
+        width: 100px;
+      }
+
+      &-edit {
+        cursor: pointer;
+        text-align: center;
+        width: 70px;
+      }
+    }
+
+
+
+    & div:first-child {
+      white-space: normal !important;
+      overflow: visible !important;
+    }
+  }
+
+//     // &Header{
+
+//     // }
+
+//     // &Footer{
+//     //     background-color: black;
+//     // }
+
+
+}

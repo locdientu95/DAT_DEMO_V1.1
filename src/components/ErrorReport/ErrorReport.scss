@@ -1,0 +1,54 @@
+.DAT_Content{
+
+    &-Container{
+        &-Group{
+            
+            &-Table{
+                width: 95%;
+                margin: auto;
+                &-head{
+                    width: 100%;
+                    margin-bottom: 20px;
+                }
+                &-Content{
+                    width: 100%;
+                    border-radius: 10px;
+                    overflow: hidden ;
+                    background-color: white;
+                   
+                    &-tit{
+                        height: 60px;
+                        background-color: rgb(226, 226, 226);
+                        border-bottom: solid 1px gray;
+                        padding-left: 10px;
+                        display: flex;
+                        align-items: center;
+                    }
+                    &-tb{
+                        padding: 20px;
+                    }
+                }
+            }
+        }
+    }
+//     margin: auto;
+//     position: relative;
+//     margin-top: 100px;
+//     &-head{
+//         display: flex;
+//         justify-content: space-between;
+//     }
+
+//     &-list{
+
+
+//         &-tit{
+//             font-size: 18px;
+//             color: #3072FF;
+//         }
+//         &-tb{
+            
+//         }
+//     }
+
+}
