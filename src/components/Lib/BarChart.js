@@ -1,5 +1,8 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
+<<<<<<< HEAD
 
+=======
+>>>>>>> d30b323363acc964b882a22d1f4d2b98b004c61b
 import "./Setting.scss";
 import { IgrLinearGaugeModule } from "igniteui-react-gauges";
 import { IgrLinearGauge } from "igniteui-react-gauges";
@@ -10,7 +13,9 @@ IgrLinearGaugeModule.register();
 
 export default function BarChart(props) {
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div
+      style={{ display: "flex", justifyContent: "center"   }}
+    >
       <IgrLinearGauge
         height={String(props.setting.h)}
         width={String(props.setting.w)}
@@ -23,15 +28,15 @@ export default function BarChart(props) {
           ", " +
           String(props.setting.realdatacolor)
         }
-        // "#a4bd29, #F86232"
-
+        // "#màu, #màu"
         // rangeOutlines="#a4bd29, #F86232"
+        orientation={String(props.setting.type)}
+        // horizontal or vertical
       >
         <IgrLinearGraphRange
           name="range1"
           startValue={String(props.setting.realdata)}
           endValue={String(props.setting.max)}
-          
           // innerStartExtent={0.075}
           // innerEndExtent={0.075}
           // outerStartExtent={0.25}
@@ -49,6 +54,7 @@ export default function BarChart(props) {
       </IgrLinearGauge>
     </div>
 
+    //Style theo CSS (Không có vạch kẻ cụ thể)
     // <div className="DAT_Bar">
     //   <div
     //     className="DAT_Bar-Tank"
