@@ -47,7 +47,7 @@ export const INITSTATE = {
     min: "0",
     max: "100",
     color: "blue",
-    scale: 25,
+    scale: 5,
     realdata: 30,
     type: "bar",
     w: "100px",

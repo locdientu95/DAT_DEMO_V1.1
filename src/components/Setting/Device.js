@@ -12,6 +12,7 @@ import SliderBar from "../Lib/SliderBar";
 
 export default function Device() {
   const { button, type, gauge, bardata, envDispatch } = useContext(EnvContext);
+  
   const handleChangeLib = (e) => {
     var temp = e.currentTarget.value;
     envDispatch({ type: "SET_TYPE", payload: temp });
@@ -76,7 +77,7 @@ export default function Device() {
                             return <BarChart setting={bardata}></BarChart>;
                           case "Gauge":
                               return <Gauge setting={gauge}></Gauge>; 
-                          case "Slider":
+                          case "SliderBar":
                             return <SliderBar></SliderBar> 
                           default:
                             return <></>

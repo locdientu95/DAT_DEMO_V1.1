@@ -462,7 +462,15 @@
         }
     }
 
-    &_Slider {}
+
+    &_Slider{
+        .MuiSlider-vertical{
+            orientation: 'vertical ';
+        }
+    }
+
+    
+
 }
 
 .DAT_Gauge {
@@ -585,3 +593,4 @@
         }
     }
 }
+
