@@ -197,19 +197,6 @@
                 border-radius: 5px;
                 box-shadow: 0px 0px 16px 4px rgb(136, 136, 136, 0.2);
 
-                &_Title {
-                    height: 50px;
-                    display: flex;
-                    align-items: center;
-                    padding-left: 24px;
-                    color: blue;
-                    background-color: whitesmoke;
-                    border-top-right-radius: 5px;
-                    border-top-left-radius: 5px;
-                    border-bottom: solid 1px rgb(156, 155, 155, 0.2);
-                    font-weight: 500;
-                }
-
                 &_Content {
                     position: relative;
                     background-color: white;
@@ -479,7 +466,6 @@
 }
 
 .DAT_Gauge {
-
     &_Content {
         position: relative;
         width: 100%;
@@ -487,19 +473,6 @@
         border-radius: 5px;
         box-shadow: 0px 0px 16px 4px rgb(136, 136, 136, 0.2);
         margin-bottom: 24px;
-
-        &_Title {
-            height: 50px;
-            display: flex;
-            align-items: center;
-            padding-left: 24px;
-            color: blue;
-            background-color: whitesmoke;
-            border-top-right-radius: 5px;
-            border-top-left-radius: 5px;
-            border-bottom: solid 1px rgb(156, 155, 155, 0.2);
-            font-weight: 500;
-        }
 
         &_Main {
             position: relative;

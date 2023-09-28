@@ -1,1 +1,2 @@
 Phu upload 27/09/2023 route, sửa tên trong Setting.scss, gộp source, fix trang Content.js
+Phu upload 28/09/2023 chỉnh trang Gauge, chỉnh trang Account, chỉnh trang Device

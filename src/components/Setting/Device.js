@@ -18,10 +18,10 @@ export default function Device() {
   };
 
   return (
-    <div className="DATGroup_Content">
-      <div className="DATGroup_Content-Header">
-        <div className="DATGroup_Content-Header-Avatars">
-          <div className="DATGroup_Content-Header-Avatars-Heading">
+    <div className="Device_Content">
+      <div className="Device_Content-Header">
+        <div className="Device_Content-Header-Avatars">
+          <div className="Device_Content-Header-Avatars-Heading">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="28"
@@ -34,18 +34,18 @@ export default function Device() {
               strokeLinejoin="round"
               className="feather feather-grid"
             >
-                              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
             </svg>
-            DAT Group
+            Cài Đặt Thiết Bị
           </div>
-          <div className="DATGroup_Content-Header-Avatars-SubHead">
+          <div className="Device_Content-Header-Avatars-SubHead">
             Create single and group avatars of different sizes with this custom
             component.
           </div>
         </div>
       </div>
-      <div className="DATGroup_Content-SelectLib">
+
+      <div className="Device_Content-SelectLib">
         <select
           style={{ margin: "auto !important" }}
           onChange={(e) => handleChangeLib(e)}
@@ -56,17 +56,18 @@ export default function Device() {
             <option value={"SliderBar"}>Slider</option>
         </select>
       </div>
-      <div className="DATGroup_Content-Container">
-        <div className="DATGroup_Content-Container-Group">
-          <div className="DATGroup_Content-Container-Group-ListTag">
-            <div className="DATGroup_Content-Container-Group-ListTag-Tag">
-              <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info">
-                <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Head">
+
+      <div className="Device_Content-Container">
+        <div className="Device_Content-Container-Group">
+          <div className="Device_Content-Container-Group-ListTag">
+            <div className="Device_Content-Container-Group-ListTag-Tag">
+              <div className="Device_Content-Container-Group-ListTag-Tag-Info">
+                <div className="Device_Content-Container-Group-ListTag-Tag-Info-Head">
                   Giao diện
                 </div>
-                <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body">
-                  <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview">
-                    <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Content">
+                <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body">
+                  <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview">
+                    <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Content">
                       {(() => {
                         switch (type) {
                           case "Button":
@@ -82,7 +83,7 @@ export default function Device() {
                         }
                       })()}
                     </div>
-                    <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Text">
+                    <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Text">
                       {/* vxcx */}
                     </div>
                   </div>
@@ -90,15 +91,16 @@ export default function Device() {
               </div>
             </div>
           </div>
-          <div className="DATGroup_Content-Container-Group-ListTag">
-            <div className="DATGroup_Content-Container-Group-ListTag-Tag">
-              <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info">
-                <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Head">
+
+          <div className="Device_Content-Container-Group-ListTag">
+            <div className="Device_Content-Container-Group-ListTag-Tag">
+              <div className="Device_Content-Container-Group-ListTag-Tag-Info">
+                <div className="Device_Content-Container-Group-ListTag-Tag-Info-Head">
                   Cài đặt
                 </div>
-                <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body">
-                  <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview">
-                    <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Content">
+                <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body">
+                  <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview">
+                    <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Content">
                     {(() => {
                         switch (type) {
                           case "Button":
@@ -114,7 +116,7 @@ export default function Device() {
                         }
                       })()}
                     </div>
-                    <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Text">
+                    <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Text">
                       {/* vxcx */}
                     </div>
                   </div>

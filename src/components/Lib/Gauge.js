@@ -20,9 +20,9 @@ export default function Gauge(props) {
     
     return (
         <div className="DAT_Gauge_Content">
-            <div className="DAT_Gauge_Content_Title">
+            {/* <div className="DAT_Gauge_Content_Title">
                 Giao Diện
-            </div>
+            </div> */}
                 
             {arr.map((data,index) => {
                 return (
