@@ -7,7 +7,11 @@
     "@emotion/styled": "^11.11.0",
     "@material/slider": "^14.0.0",
     "@mui/material": "^5.14.11",
+<<<<<<< HEAD
     "@syncfusion/ej2-react-spreadsheet": "^23.1.38",
+=======
+    "@mui/styled-engine-sc": "^5.14.11",
+>>>>>>> d30b323363acc964b882a22d1f4d2b98b004c61b
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -24,8 +28,13 @@
     "react-gauge-chart": "^0.4.1",
     "react-router-dom": "^6.14.1",
     "react-scripts": "5.0.1",
+<<<<<<< HEAD
     "rsuite": "^5.40.0",
+=======
+    "react-switch": "^7.0.0",
+>>>>>>> d30b323363acc964b882a22d1f4d2b98b004c61b
     "sass": "^1.66.1",
+    "styled-components": "^5.3.11",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
