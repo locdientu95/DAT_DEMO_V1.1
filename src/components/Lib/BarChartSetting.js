@@ -13,6 +13,8 @@ export default function BarChartSetting() {
   const he = useRef("400px");
   const [bgbar, setBgbar] = useState(bardata.bgcolor);
   const [vlbar, setVlbar] = useState(bardata.realdatacolor);
+  const [step,setStep] = useState(bardata.scale);
+  const [type, setType] = useState(bardata.type);
 
   //BAR FUNCTION
   const handlePushData = (e) => {
@@ -23,8 +25,11 @@ export default function BarChartSetting() {
     bardata.h = he.current.value + "px";
     bardata.bgcolor = bgbar;
     bardata.realdatacolor = vlbar;
+    bardata.scale = step;
+    bardata.type = type;
     envDispatch({ type: "SET_BARDATA", payload: bardata });
     console.log("minvalue", bardata);
+    console.log(type);
   };
 
   return (
@@ -67,9 +72,9 @@ export default function BarChartSetting() {
         <button onClick={(e) => handlePushData(e)}>Chọn</button>
       </div>
       <div className="DAT_Setting-Bar-Row" id="4">
-        <select>
-          <option>Chiều đứng</option>
-          <option>Chiều ngang</option>
+        <select onChange={(e)=>setType(e.currentTarget.value)}>
+          <option value={"vertical"}>Chiều đứng</option>
+          <option value={"horizontal"} >Chiều ngang</option>
         </select>
         <div className="DAT_Setting-Bar-Row-BackgroundColor">
           Màu nền
@@ -93,12 +98,14 @@ export default function BarChartSetting() {
         <input
           className="DAT_Setting-Bar-Row-Scale"
           placeholder="Scale: 25"
+          value={step}
+          onChange={(e)=> setStep(e.currentTarget.value)}
         ></input>
         <div className="DAT_Setting-Bar-Row-ValueColor">
           Thước đo
           <input type="color"></input>
         </div>
-        <button>Chọn</button>
+        <button onClick={(e)=>handlePushData(e)}>Chọn</button>
       </div>
       <div className="DAT_Setting-Bar-Row" id="6">
         <select>

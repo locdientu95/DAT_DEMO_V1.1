@@ -1,5 +1,4 @@
 .DAT_Setting {
-
     &-Button {
         margin-bottom: 10px;
         padding: 10px;
@@ -26,7 +25,6 @@
         }
 
         &-Row2 {
-
             display: flex;
             margin-bottom: 10px;
             gap: 5px;
@@ -191,7 +189,6 @@
 
     &_Gauge {
         &_Content {
-
             &_Detail {
                 position: relative;
                 border-radius: 5px;
@@ -475,11 +472,11 @@
         }
     }
 
-    &_Slider {}
+    &_Slider {
+    }
 }
 
 .DAT_Gauge {
-
     &_Content {
         position: relative;
         width: 100%;
@@ -609,6 +606,63 @@
             z-index: 2;
             position: absolute;
             color: white;
+        }
+    }
+}
+
+$accent: #04da97;
+$border-width: 6px;
+$border-radius: 55px;
+$font-size: 30px;
+
+:root {
+    --accent: #{$accent};
+    --border-width: #{$border-width};
+    --border-radius: #{$border-radius};
+    --font-size: #{$font-size};
+}
+
+.DAT_Switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    &-Toggle {
+        display: flex;
+        position: relative;
+        border: solid var(--border-width) var(--accent);
+        border-radius: var(--border-radius);
+        width: 300px;
+        height: 100px;
+        &-Labelchoice1 {
+            display: flex;
+            position: relative;
+            // flex: 5;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            border-radius: 55px 0px 0 55px;
+            font-size: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            & :focus-within{
+                transition: 0.5s ease-in-out;
+            }
+        }
+        &-Labelchoice2 {
+            display: flex;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: 500;
+            width: 50%;
+            //background-color: var(--accent);
+            border-radius: 0px 55px 55px 0px;
+            cursor: pointer;
+            & :focus-within{
+                transition: 0.5s ease-in-out;
+            }
         }
     }
 }

@@ -54,6 +54,7 @@ export const INITSTATE = {
     h: "400px",
     bgcolor: "#808080",
     realdatacolor: "#0000ff",
+    type:"vertical",
   },
 
   type: "Button",

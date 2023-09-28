@@ -8,7 +8,8 @@ import { EnvContext } from "../Context/EnvContext";
 import Gauge from "../Lib/Gauge";
 import GaugeSetting from "../Lib/GaugeSetting";
 import SliderBar from "../Lib/SliderBar";
-
+import SwitchToggle from "../Lib/SwitchToggle";
+import SwitchToggleSetting from "../Lib/SwitchToggleSetting";
 
 export default function Device() {
   const { button, type, gauge, bardata, envDispatch } = useContext(EnvContext);
@@ -34,8 +35,7 @@ export default function Device() {
               strokeLinejoin="round"
               className="feather feather-grid"
             >
-                              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
             </svg>
             DAT Group
           </div>
@@ -50,10 +50,11 @@ export default function Device() {
           style={{ margin: "auto !important" }}
           onChange={(e) => handleChangeLib(e)}
         >
-            <option value={"Button"}>Button</option>
-            <option value={"Bar"}>Bar</option>
-            <option value={"Gauge"}>Gauge</option>
-            <option value={"SliderBar"}>Slider</option>
+          <option value={"Button"}>Button</option>
+          <option value={"Bar"}>Bar</option>
+          <option value={"Gauge"}>Gauge</option>
+          <option value={"SliderBar"}>Slider</option>
+          <option value={"SwitchToggle"}>SwitchToggle</option>
         </select>
       </div>
       <div className="DATGroup_Content-Container">
@@ -74,11 +75,13 @@ export default function Device() {
                           case "Bar":
                             return <BarChart setting={bardata}></BarChart>;
                           case "Gauge":
-                              return <Gauge setting={gauge}></Gauge>; 
+                            return <Gauge setting={gauge}></Gauge>;
                           case "Slider":
-                            return <SliderBar></SliderBar> 
+                            return <SliderBar></SliderBar>;
+                          case "SwitchToggle":
+                            return <SwitchToggle></SwitchToggle>;
                           default:
-                            return <></>
+                            return <></>;
                         }
                       })()}
                     </div>
@@ -99,18 +102,26 @@ export default function Device() {
                 <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body">
                   <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview">
                     <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Content">
-                    {(() => {
+                      {(() => {
                         switch (type) {
                           case "Button":
                             return <ButtonSetting></ButtonSetting>;
                           case "Bar":
-                            return <BarChartSetting setting={bardata}></BarChartSetting>;
+                            return (
+                              <BarChartSetting
+                                setting={bardata}
+                              ></BarChartSetting>
+                            );
                           case "Gauge":
-                              return <GaugeSetting setting={gauge}></GaugeSetting>;  
+                            return (
+                              <GaugeSetting setting={gauge}></GaugeSetting>
+                            );
                           case "Slider":
-                              return <SliderBar></SliderBar>
+                            return <SliderBar></SliderBar>;
+                          case "SwitchToggleSetting":
+                            return <SwitchToggleSetting></SwitchToggleSetting>;
                           default:
-                            return <></>
+                            return <></>;
                         }
                       })()}
                     </div>
