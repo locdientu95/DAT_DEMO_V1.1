@@ -35,7 +35,7 @@ function SliderBar() {
               size='medium'
               
               // orientation set chieu ('horizontal' ngang | 'vertical' doc)
-              orientation='horizontal'
+              orientation='vertical'
               
               
               
