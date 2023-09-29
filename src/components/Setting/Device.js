@@ -8,13 +8,10 @@ import BarChartSetting from "../Lib/BarChartSetting";
 import Gauge from "../Lib/Gauge";
 import GaugeSetting from "../Lib/GaugeSetting";
 import SliderBar from "../Lib/SliderBar";
-<<<<<<< HEAD
 import SliderSetting from "../Lib/SliderSetting";
-
-=======
 import SwitchToggle from "../Lib/SwitchToggle";
 import SwitchToggleSetting from "../Lib/SwitchToggleSetting";
->>>>>>> d30b323363acc964b882a22d1f4d2b98b004c61b
+
 
 export default function Device() {
   const { button, type, gauge, bardata, slider, envDispatch } = useContext(EnvContext);
@@ -83,17 +80,13 @@ export default function Device() {
                           case "Bar":
                             return <BarChart setting={bardata}></BarChart>;
                           case "Gauge":
-<<<<<<< HEAD
                               return <Gauge setting={gauge}></Gauge>; 
                           case "SliderBar":
                             return <SliderBar setting={slider}></SliderBar> 
-=======
-                            return <Gauge setting={gauge}></Gauge>;
                           case "Slider":
                             return <SliderBar></SliderBar>;
                           case "SwitchToggle":
                             return <SwitchToggle></SwitchToggle>;
->>>>>>> d30b323363acc964b882a22d1f4d2b98b004c61b
                           default:
                             return <></>;
                         }
@@ -115,18 +108,14 @@ export default function Device() {
                 <div className="Device_Content-Container-Group-ListTag-Tag-Info-Head">
                   Cài đặt
                 </div>
-<<<<<<< HEAD
 
                 <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body">
                   <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview">
                     <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Content">
-                    {(() => {
-=======
                 <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body">
                   <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview">
                     <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Content">
                       {(() => {
->>>>>>> d30b323363acc964b882a22d1f4d2b98b004c61b
                         switch (type) {
                           case "Button":
                             return <ButtonSetting></ButtonSetting>;
@@ -137,19 +126,14 @@ export default function Device() {
                               ></BarChartSetting>
                             );
                           case "Gauge":
-<<<<<<< HEAD
+
                               return <GaugeSetting setting={gauge}></GaugeSetting>;  
                           case "SliderBar":
                               return <SliderSetting setting={slider}></SliderSetting>
-=======
-                            return (
-                              <GaugeSetting setting={gauge}></GaugeSetting>
-                            );
                           case "Slider":
                             return <SliderBar></SliderBar>;
                           case "SwitchToggleSetting":
                             return <SwitchToggleSetting></SwitchToggleSetting>;
->>>>>>> d30b323363acc964b882a22d1f4d2b98b004c61b
                           default:
                             return <></>;
                         }
@@ -165,6 +149,9 @@ export default function Device() {
           </div>
         </div>
       </div>
+    </div>
+    </div>
+    </div>
     </div>
   );
 }
