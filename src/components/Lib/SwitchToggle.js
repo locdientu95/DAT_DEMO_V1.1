@@ -2,36 +2,39 @@ import React, { useState } from "react";
 import Switch from "react-switch";
 import "./Setting.scss";
 
-export default function SwitchToggle() {
+export default function SwitchToggle(props) {
   const [check, setCheck] = useState("off");
   const handleChange = (e) => {
-    // console.log(e.currentTarget.id);
-    setCheck(e.currentTarget.id);
+    if(check === "on"){
+      setCheck("off");
+    } else {
+      setCheck("on")
+    }
+    console.log(e.currentTarget.id)
   };
 
   return (
-    <div className="DAT_Switch">
-      <form className="DAT_Switch-Toggle">
-        <label
-          className="DAT_Switch-Toggle-Labelchoice1"
-          id="on"
+    <div className="DAT_Switch"  id={check} onClick={(e)=>handleChange(e)}>
+      <form className="DAT_Switch-Toggle" style={{ width: props.setting.w +"px", height: props.setting.h +"px" , overflow:"hidden"}}>
+        <div
+          className="DAT_Switch-Toggle-Icon"
           style={{
-            backgroundColor: check === "on" ? "#04da97" : "white",
-            transition: "0.2s ease-in",
+            width: props.setting.h +"px",
+            height: props.setting.h +"px",
+            backgroundColor: props.setting.bgoff,
+            borderRadius: props.setting.borderradius,
+            transform: check === "on" ? "translateX(0px)" :"translateX("+String(parseInt(props.setting.w) - parseInt(props.setting.h))+"px)",
+            transition: "0.9s"
           }}
-          onClick={(e) => handleChange(e)}
+          
+          
         >
-          ON
-        </label>
-        <label
-          className="DAT_Switch-Toggle-Labelchoice2"
-          id="off"
-          style={{ backgroundColor: check === "off" ? "#04da97" : "white" }}
-          onClick={(e) => handleChange(e)}
-        >
-          OFF
-        </label>
+        </div>
+        {/* <label className="DAT_Switch-Toggle-Labelchoice1">ON</label> */}
+        {/* <label className="DAT_Switch-Toggle-Labelchoice2">OFF</label> */}
       </form>
+      {/* transform: translateY(-50%);
+        transition: 0.9s; */}
     </div>
   );
 }

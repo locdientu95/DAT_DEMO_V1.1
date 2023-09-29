@@ -75,11 +75,12 @@ export const INITSTATE = {
     bgoff: "#04da97",
     txtcoloron: "#000000",
     textsize: 20,
-    w: "300px",
-    h: "100px",
-    border: "1px",
+    w: "350",
+    h: "150",
+    border: "6px",
     borderradius: "10%",
     bordercolor: "#04da97",
+
   },
 
   tablepro: {

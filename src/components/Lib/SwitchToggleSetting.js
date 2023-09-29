@@ -11,16 +11,24 @@ export default function SwitchToggleSetting() {
   const [txton, setTxton] = useState(switchtoggle.texton);
   const [txtoff, setTxtoff] = useState(switchtoggle.textoff);
   const [txtsize, setTxtsize] = useState(switchtoggle.textsize);
+  const [borcolor, setBorcolor] = useState(switchtoggle.bordercolor);
   const wid = useRef(switchtoggle.w);
   const hei = useRef(switchtoggle.h);
+  const bor = useRef(switchtoggle.border)
+  const radius = useRef(switchtoggle.borderradius)
 
   const handleSaveChange = (e) => {
+    switchtoggle.bgoff = bgisoff;
     switchtoggle.bgon = bgison;
     switchtoggle.txtcoloron = txtcolor;
     switchtoggle.texton = txton;
     switchtoggle.textoff = txtoff;
     switchtoggle.textsize = txtsize;
-    switchtoggle.w = wid;
+    switchtoggle.w = wid.current.value;
+    switchtoggle.h = hei.current.value;
+    switchtoggle.border = bor.current.value;
+    switchtoggle.borderradius = radius.current.value;
+    switchtoggle.bordercolor = borcolor;
     envDispatch({ type: "SET_TOGGLE", payload: switchtoggle });
     console.log(switchtoggle);
   };
@@ -78,24 +86,25 @@ export default function SwitchToggleSetting() {
           <button onClick={(e)=>handleSaveChange(e)}>Chọn</button>
         </div>
         <div className="DAT_Setting-Switch-Row" id="3">
-          <input placeholder="Width: " ref={wid} onChange={(e) => handleSaveChange(e)}></input>
-          <input placeholder="Height: "ref={hei} onChange={(e) => handleSaveChange(e)}></input>
-          <button>Chọn</button>
+          <input placeholder="Width: " ref={wid} ></input>
+          <input placeholder="Height: "ref={hei} ></input>
+          <button onClick={(e)=>handleSaveChange(e)}>Chọn</button>
         </div>
         <div className="DAT_Setting-Switch-Row" id="4">
           <input
             className="DAT_Setting-Switch-Row-BorderRadius"
             type="number"
-            defaultValue={1}
+            defaultValue={6}
             step={1}
-            placeholder="Border: 1"
+            placeholder="Border: 6px"
+            ref={bor}
           ></input>
-          <input placeholder="Border radius: 10%"></input>
+          <input placeholder="Border radius: 55px" ref={radius}></input>
           <div className="DAT_Setting-Switch-Row-BorderColor">
             Màu border:
-            <input type="color"></input>
+            <input type="color" value={borcolor} onChange={(e) => setBorcolor(e.currentTarget.value)}></input>
           </div>
-          <button>Chọn</button>
+          <button onClick={(e)=>handleSaveChange(e)}>Chọn</button>
         </div>
         <div className="DAT_Setting-Switch-Row" id="5">
           <select>
