@@ -11,9 +11,13 @@ import SliderBar from "../Lib/SliderBar";
 import SliderSetting from "../Lib/SliderSetting";
 import SwitchToggle from "../Lib/SwitchToggle";
 import SwitchToggleSetting from "../Lib/SwitchToggleSetting";
+import TablePro from "../Lib/TablePro";
+import TableProSetting from "../Lib/TableProSetting";
+
+
 
 export default function Device() {
-  const { button, bardata, type, gauge, slider, switchtoggle, envDispatch } =
+  const { tablepro,button, bardata, type, gauge, slider, switchtoggle, envDispatch } =
     useContext(EnvContext);
   const handleChangeLib = (e) => {
     var temp = e.currentTarget.value;
@@ -26,6 +30,7 @@ export default function Device() {
     Gauge: <Gauge setting={gauge}></Gauge>,
     SliderBar: <SliderBar setting={slider}></SliderBar>,
     SwitchToggle: <SwitchToggle setting={switchtoggle}></SwitchToggle>,
+    TablePro: <TablePro setting={tablepro}></TablePro>
   };
 
   const setting = {
@@ -34,6 +39,7 @@ export default function Device() {
     Gauge: <GaugeSetting />,
     SliderBar: <SliderSetting />,
     SwitchToggle: <SwitchToggleSetting />,
+    TablePro : <TableProSetting/>,
   };
 
   return (
@@ -72,6 +78,7 @@ export default function Device() {
             <option value={"Gauge"}>Gauge</option>
             <option value={"SliderBar"}>Slider</option>
             <option value={"SwitchToggle"}>SwitchToggle</option>
+            <option value={"TablePro"}>TablePro</option>
           </select>
         </div>
         <div className="Device_Content-Container-Group">

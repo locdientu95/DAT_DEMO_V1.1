@@ -16,6 +16,7 @@ export const EnvContextProvider = ({ children }) => {
         slider: state.slider,
         type: state.type,
         switchtoggle: state.switchtoggle,
+        tablepro: state.tablepro,
         envDispatch,
       }}
     >

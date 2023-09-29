@@ -1,31 +1,40 @@
 import React, { useContext, useRef, useState } from "react";
 import { EnvContext } from "../Context/EnvContext";
 import "./Setting.scss";
+import { useEffect } from "react";
 
 export default function SwitchToggleSetting() {
   const { switchtoggle, envDispatch } = useContext(EnvContext);
   const [bgison, setBgison] = useState(switchtoggle.bgon);
   const [txtcolor, setTxtcolor] = useState(switchtoggle.txtcoloron);
+  const [txton, setTxton] = useState(switchtoggle.texton)
 
   const handleSaveChange = (e) => {
-    envDispatch({
-      type: "SET_TOGGLE",
-      payload: {
-        ...switchtoggle,
-        bgon: bgison,
-        txtcoloron: txtcolor,
-      },
-    });
-    console.log(txtcolor, bgison);
-    console.log(switchtoggle);
-  };
+    // switchtoggle.bgon = bgison;
+    // switchtoggle.txtcoloron = txtcolor;
+    // switchtoggle.texton = txton;
+    // envDispatch({ type: "SET_TOGGLE"})
+    // envDispatch({
+    //   type: "SET_TOGGLE",
+    //   payload: {
+    //     ...switchtoggle,
+    //     bgon: bgison,
+    //     txtcoloron: txtcolor,
+    //     texton: txton,
+    //   },
+    //  });
+     console.log(switchtoggle)
 
+  };
+  // useEffect(()=>{
+  //   console.log(switchtoggle)
+  // })
   return (
     <div>
       <div className="DAT_Setting-Switch">
         <div className="DAT_Setting-Switch-Row" id="1">
           <input placeholder="ON: 7"></input>
-          <input placeholder="TEXT:ON"></input>
+          <input placeholder="TEXT:ON" onChange={(e)=>setTxton(e.currentTarget.value)} ></input>
           <div className="DAT_Setting-Switch-Row-BackgroundColorOn">
             Màu button
             <input

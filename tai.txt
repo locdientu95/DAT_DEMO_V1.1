@@ -1,3 +1,5 @@
 Tai Upload  27/9/2023 bar, button, Home, Content, select lib, rowbar
 
 "igniteui-react-gauges" library rowbar
+
+29/9/2023: Can thiep Switch, Reducer

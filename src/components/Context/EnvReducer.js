@@ -72,14 +72,18 @@ export const INITSTATE = {
     texton: "Bật",
     textoff: "Tắt",
     bgon: "#04da97",
-    bgoff: "#fff",
-    txtcoloron: "#000",
+    bgoff: "#ffffff",
+    txtcoloron: "#000000",
     textsize: "20px",
     w: "300px",
     h: "100px",
     border: "1px",
     borderradius: "10%",
     bordercolor: "#04da97",
+  },
+
+  tablepro: {
+
   },
 
   type: "Button",
@@ -120,8 +124,13 @@ const EnvReducer = (state, action) => {
     case "SET_TOGGLE":
       return {
         ...state,
-        toggle: action.payload,
+        switchtoggle: action.payload,
       };
+    case "SET_TABLEPRO":
+      return {
+        ...state,
+        tablepro: action.payload,
+      }
     default:
       throw new Error("Unexpected action");
   }
