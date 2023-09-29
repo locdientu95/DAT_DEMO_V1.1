@@ -742,6 +742,187 @@
             }
         }
     }
+
+    &-Number {
+
+        &-Row1 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
+            &-Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
+
+            & input {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &-Row2 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
+            &-Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
+
+            & input {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &-Row3 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
+            &-Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
+
+            & input {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &-Row4 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
+            & select {
+                border-radius: 7px;
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+
+                & option {
+                    background-color: white;
+                }
+            }
+        }
+
+        &-Row5 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
+            & select {
+                border-radius: 7px;
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+
+                & option {
+                    background-color: white;
+                }
+            }
+        }
+
+        &-Row6 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
+            & input {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &-Row7 {
+            display: flex;
+            gap: 8px;
+
+            & input {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                height: 32px;
+                width: 100%;
+                padding: 8px;
+                border: solid 2px #d0f0ff;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                width: 80px;
+                background-color: #326ba8;
+                color: white;
+                border: none;
+                border-radius: 7px;
+            }
+        }
+    }
 }
 
 .DAT_Gauge {
@@ -892,20 +1073,26 @@ $font-size: 30px;
     margin: 20px;
 
     &-Toggle {
+        position: absolute;
         display: flex;
         position: relative;
         border: solid var(--border-width) var(--accent);
         border-radius: var(--border-radius);
-        width: 300px;
+        width: 250px;
         height: 100px;
+        // position: absolute;
+        &-Icon{
+            position: absolute;
+        }
 
         &-Labelchoice1 {
+            position: relative;
             display: flex;
             position: relative;
             justify-content: center;
             align-items: center;
             width: 50%;
-            border-radius: 55px 0px 0 55px;
+            border-radius: 50%;
             font-size: 30px;
             font-weight: 500;
             cursor: pointer;
@@ -916,14 +1103,16 @@ $font-size: 30px;
         }
 
         &-Labelchoice2 {
+            position: relative;
             display: flex;
+            right: 0px;
             position: relative;
             justify-content: center;
             align-items: center;
             font-size: 30px;
             font-weight: 500;
             width: 50%;
-            border-radius: 0px 55px 55px 0px;
+            border-radius: 50%;
             cursor: pointer;
 
             & :focus-within {
@@ -931,4 +1120,17 @@ $font-size: 30px;
             }
         }
     }
+}
+
+.DAT_Number {
+    gap: 8px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px #000000;
+    width: 100px;
+    height: 40px;
+    background-color: #04da97;
+    border-radius: 10px;
 }
