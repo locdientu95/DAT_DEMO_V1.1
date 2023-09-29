@@ -57,6 +57,20 @@ export const INITSTATE = {
     type:"vertical",
   },
 
+  toggle: {
+    texton: "Bật",
+    textoff: "Tắt",
+    bgon: "#04da97",
+    bgoff: "#fff",
+    txtcoloron: "#000",
+    textsize:"20px",
+    w: "300px",
+    h: "100px",
+    border: "1px",
+    borderradius: "10%",
+    bordercolor: "#04da97",
+  },
+
   type: "Button",
 };
 
@@ -92,6 +106,11 @@ const EnvReducer = (state, action) => {
         ...state,
         type: action.payload,
       };
+    case "SET_TOGGLE":
+      return {
+        ...state,
+        toggle: action.payload,
+      }
     default:
       throw new Error("Unexpected action");
   }

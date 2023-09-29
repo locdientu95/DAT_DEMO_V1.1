@@ -118,7 +118,7 @@ export default function Device() {
                             );
                           case "Slider":
                             return <SliderBar></SliderBar>;
-                          case "SwitchToggleSetting":
+                          case "SwitchToggle":
                             return <SwitchToggleSetting></SwitchToggleSetting>;
                           default:
                             return <></>;

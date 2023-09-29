@@ -14,6 +14,7 @@ export const EnvContextProvider = ({ children }) => {
             button:state.button,
             bardata: state.bardata,
             type: state.type,
+            toggle: state.toggle,
             envDispatch            
         }}>
             {children}

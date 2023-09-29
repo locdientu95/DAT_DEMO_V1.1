@@ -474,6 +474,85 @@
 
     &_Slider {
     }
+
+    &-Switch {
+        margin-bottom: 10px;
+        padding: 10px;
+
+        &-Row {
+            display: flex;
+            margin-bottom: 10px;
+            gap: 5px;
+            height: 27px;
+
+            & input {
+                width: 100%;
+            }
+
+            &-BackgroundColorOn {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                & input {
+                    width: 27px;
+                }
+            }
+
+            &-BorderColor {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                & input {
+                    width: 27px;
+                }
+            }
+
+            &-BackgroundColorOff {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                & input {
+                    width: 27px;
+                }
+            }
+
+            &-TextColor {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                & input {
+                    width: 27px;
+                }
+            }
+
+            &-ValueColor {
+                width: 100%;
+                align-items: center;
+                gap: 10px;
+                display: flex;
+
+                & input {
+                    width: 27px;
+                }
+            }
+
+            & select {
+                width: 100%;
+            }
+
+            &-Confirm {
+                width: 100px;
+            }
+        }
+    }
 }
 
 .DAT_Gauge {
@@ -637,7 +716,6 @@ $font-size: 30px;
         &-Labelchoice1 {
             display: flex;
             position: relative;
-            // flex: 5;
             justify-content: center;
             align-items: center;
             width: 50%;
@@ -645,7 +723,7 @@ $font-size: 30px;
             font-size: 30px;
             font-weight: 500;
             cursor: pointer;
-            & :focus-within{
+            & :focus-within {
                 transition: 0.5s ease-in-out;
             }
         }
@@ -657,10 +735,9 @@ $font-size: 30px;
             font-size: 30px;
             font-weight: 500;
             width: 50%;
-            //background-color: var(--accent);
             border-radius: 0px 55px 55px 0px;
             cursor: pointer;
-            & :focus-within{
+            & :focus-within {
                 transition: 0.5s ease-in-out;
             }
         }
