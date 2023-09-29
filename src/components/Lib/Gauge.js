@@ -17,7 +17,7 @@ export default function Gauge(props) {
   }, [props, arr]);
 
   return (
-    <div className="DAT_Gauge_Content">
+    <>
       {arr.map((data, index) => {
         return (
           <div className="DAT_Gauge_Content_Main" key={index}>
@@ -53,6 +53,6 @@ export default function Gauge(props) {
           </div>
         );
       })}
-    </div>
+    </>
   );
 }

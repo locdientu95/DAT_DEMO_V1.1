@@ -3,22 +3,21 @@ import { EnvContext } from "../Context/EnvContext";
 import "./Setting.scss";
 
 export default function SwitchToggleSetting() {
-  const { toggle, envDispatch } = useContext(EnvContext);
-  const [bgison, setBgison] = useState(toggle.bgon);
-  const [txtcolor, setTxtcolor] = useState(toggle.txtcoloron);
-  
+  const { switchtoggle, envDispatch } = useContext(EnvContext);
+  const [bgison, setBgison] = useState(switchtoggle.bgon);
+  const [txtcolor, setTxtcolor] = useState(switchtoggle.txtcoloron);
 
   const handleSaveChange = (e) => {
     envDispatch({
       type: "SET_TOGGLE",
       payload: {
-        ...toggle,
+        ...switchtoggle,
         bgon: bgison,
         txtcoloron: txtcolor,
       },
-     });
-    console.log(txtcolor, bgison)
-    console.log(toggle)
+    });
+    console.log(txtcolor, bgison);
+    console.log(switchtoggle);
   };
 
   return (
@@ -26,7 +25,7 @@ export default function SwitchToggleSetting() {
       <div className="DAT_Setting-Switch">
         <div className="DAT_Setting-Switch-Row" id="1">
           <input placeholder="ON: 7"></input>
-          <input placeholder="TEXT:ON" ></input>
+          <input placeholder="TEXT:ON"></input>
           <div className="DAT_Setting-Switch-Row-BackgroundColorOn">
             Màu button
             <input

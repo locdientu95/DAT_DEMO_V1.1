@@ -13,12 +13,27 @@ import SwitchToggle from "../Lib/SwitchToggle";
 import SwitchToggleSetting from "../Lib/SwitchToggleSetting";
 
 export default function Device() {
-  const { button, type, gauge, bardata, slider, envDispatch } =
+  const { button, bardata, type, gauge, slider, switchtoggle, envDispatch } =
     useContext(EnvContext);
-
   const handleChangeLib = (e) => {
     var temp = e.currentTarget.value;
     envDispatch({ type: "SET_TYPE", payload: temp });
+  };
+
+  const data = {
+    Button: <Button setting={button}></Button>,
+    Bar: <BarChart setting={bardata}></BarChart>,
+    Gauge: <Gauge setting={gauge}></Gauge>,
+    SliderBar: <SliderBar setting={slider}></SliderBar>,
+    SwitchToggle: <SwitchToggle setting={switchtoggle}></SwitchToggle>,
+  };
+
+  const setting = {
+    Button: <ButtonSetting />,
+    Bar: <BarChartSetting />,
+    Gauge: <GaugeSetting />,
+    SliderBar: <SliderSetting />,
+    SwitchToggle: <SwitchToggleSetting />,
   };
 
   return (
@@ -49,189 +64,26 @@ export default function Device() {
         </div>
       </div>
 
-      <div className="Device_Content-SelectLib">
-        <select
-          style={{ margin: "auto !important" }}
-          onChange={(e) => handleChangeLib(e)}
-        >
-          <option value={"Button"}>Button</option>
-          <option value={"Bar"}>Bar</option>
-          <option value={"Gauge"}>Gauge</option>
-          <option value={"SliderBar"}>Slider</option>
-          <option value={"SwitchToggle"}>SwitchToggle</option>
-        </select>
-      </div>
-
       <div className="Device_Content-Container">
+        <div className="Device_Content-Container-SelectLib">
+          <select onChange={(e) => handleChangeLib(e)}>
+            <option value={"Button"}>Button</option>
+            <option value={"Bar"}>Bar</option>
+            <option value={"Gauge"}>Gauge</option>
+            <option value={"SliderBar"}>Slider</option>
+            <option value={"SwitchToggle"}>SwitchToggle</option>
+          </select>
+        </div>
         <div className="Device_Content-Container-Group">
-          <div className="Device_Content-Container-Group-ListTag">
-            <div className="Device_Content-Container-Group-ListTag-Tag">
-              <div className="Device_Content-Container-Group-ListTag-Tag-Info">
-                <div className="Device_Content-Container-Group-ListTag-Tag-Info-Head">
-                  Giao diện
-                </div>
-                <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body">
-                  <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview">
-                    <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Content">
-                      {(() => {
-                        switch (type) {
-                          case "Button":
-                            return <Button setting={button}></Button>;
-                          case "Bar":
-                            return <BarChart setting={bardata}></BarChart>;
-                          case "Gauge":
-                            return <Gauge setting={gauge}></Gauge>;
-                          case "SliderBar":
-                            return <SliderBar setting={slider}></SliderBar>;
-                          case "SwitchToggle":
-                            return <SwitchToggle></SwitchToggle>;
-                          default:
-                            return <></>;
-                        }
-                      })()}
-                    </div>
-
-                    <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Text">
-                      {/* vxcx */}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="Device_Content-Container-Group-Head">Giao diện</div>
+          <div className="Device_Content-Container-Group-Body">
+            {data[type]}
           </div>
-
-          <div className="Device_Content-Container-Group-ListTag">
-            <div className="Device_Content-Container-Group-ListTag-Tag">
-              <div className="Device_Content-Container-Group-ListTag-Tag-Info">
-                <div className="Device_Content-Container-Group-ListTag-Tag-Info-Head">
-                  Cài đặt
-                </div>
-                <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body">
-                  <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview">
-                    <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Content">
-                      {(() => {
-                        switch (type) {
-                          case "Button":
-                            return <ButtonSetting></ButtonSetting>;
-                          case "Bar":
-                            return (
-                              <BarChartSetting
-                                setting={bardata}
-                              ></BarChartSetting>
-                            );
-                          case "Gauge":
-                            return (
-                              <GaugeSetting setting={gauge}></GaugeSetting>
-                            );
-                          case "Slider":
-                            return <SliderBar></SliderBar>;
-                          case "SwitchToggle":
-                            return <SwitchToggleSetting></SwitchToggleSetting>;
-                          default:
-                            return <></>;
-                        }
-                      })()}
-                    </div>
-                    <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Text">
-                      {/* vxcx */}
-                      <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body">
-                        <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview">
-                          <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Content">
-                            <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body">
-                              <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview">
-                                <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Content">
-                                  {(() => {
-                                    switch (type) {
-                                      case "Button":
-                                        return <ButtonSetting></ButtonSetting>;
-                                      case "Bar":
-                                        return (
-                                          <BarChartSetting
-                                            setting={bardata}
-                                          ></BarChartSetting>
-                                        );
-                                      case "Gauge":
-                                        return (
-                                          <GaugeSetting
-                                            setting={gauge}
-                                          ></GaugeSetting>
-                                        );
-                                      case "SliderBar":
-                                        return (
-                                          <SliderSetting
-                                            setting={slider}
-                                          ></SliderSetting>
-                                        );
-                                      case "SwitchToggleSetting":
-                                        return (
-                                          <SwitchToggleSetting></SwitchToggleSetting>
-                                        );
-                                      default:
-                                        return <></>;
-                                    }
-                                  })()}
-                                </div>
-                                <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Text">
-                                  {/* vxcx */}
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body">
-                              <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview">
-                                <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Content">
-                                  <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body">
-                                    <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview">
-                                      <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Content">
-                                        {(() => {
-                                          switch (type) {
-                                            case "Button":
-                                              return (
-                                                <ButtonSetting></ButtonSetting>
-                                              );
-                                            case "Bar":
-                                              return (
-                                                <BarChartSetting
-                                                  setting={bardata}
-                                                ></BarChartSetting>
-                                              );
-                                            case "Gauge":
-                                              return (
-                                                <GaugeSetting
-                                                  setting={gauge}
-                                                ></GaugeSetting>
-                                              );
-                                            case "SliderBar":
-                                              return (
-                                                <SliderSetting
-                                                  setting={slider}
-                                                ></SliderSetting>
-                                              );
-                                            case "SwitchToggleSetting":
-                                              return (
-                                                <SwitchToggleSetting></SwitchToggleSetting>
-                                              );
-                                            default:
-                                              return <></>;
-                                          }
-                                        })()}
-                                      </div>
-                                      <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Text">
-                                        {/* vxcx */}
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        </div>
+        <div className="Device_Content-Container-Group">
+          <div className="Device_Content-Container-Group-Head">Cài Đặt</div>
+          <div className="Device_Content-Container-Group-Body">
+            {setting[type]}
           </div>
         </div>
       </div>

@@ -188,275 +188,268 @@
     }
 
     &_Gauge {
-        &_Content {
-            &_Detail {
-                position: relative;
-                border-radius: 5px;
-                box-shadow: 0px 0px 16px 4px rgb(136, 136, 136, 0.2);
 
-                &_Content {
-                    position: relative;
+        position: relative;
+        background-color: white;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        padding: 10px;
+
+        &_Row1 {
+            display: flex;
+            margin-bottom: 10px;
+            gap: 4px;
+
+            &_Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
+
+            & input {
+                background-color: #d0f0ff;
+                padding: 8px;
+                border: none;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &_Row2 {
+            display: flex;
+            margin-bottom: 10px;
+            gap: 4px;
+
+            &_Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
+
+            & input {
+                background-color: #d0f0ff;
+                padding: 8px;
+                border: none;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &_Row3 {
+            display: flex;
+            margin-bottom: 10px;
+            gap: 4px;
+
+            &_Item1 {
+                border: solid 2px #d0f0ff;
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            &_Item2 {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &_Row4 {
+            display: flex;
+            margin-bottom: 10px;
+            gap: 4px;
+
+            &_Item1 {
+                border: solid 2px #d0f0ff;
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            &_Item2 {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &_Row5 {
+            display: flex;
+            margin-bottom: 10px;
+            gap: 4px;
+
+            &_Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
+
+            & input {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &_Row6 {
+            display: flex;
+            margin-bottom: 10px;
+            gap: 4px;
+
+            &_Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
+
+            & input {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &_Row7 {
+            display: flex;
+            margin-bottom: 10px;
+            gap: 4px;
+
+            & select {
+                border-radius: 7px;
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+
+                & option {
                     background-color: white;
-                    border-bottom-left-radius: 5px;
-                    border-bottom-right-radius: 5px;
-                    padding: 10px;
-
-                    &_Row1 {
-                        display: flex;
-                        margin-bottom: 10px;
-                        gap: 4px;
-
-                        &_Item1 {
-                            border-top-left-radius: 7px;
-                            border-bottom-left-radius: 7px;
-                        }
-
-                        & input {
-                            background-color: #d0f0ff;
-                            padding: 8px;
-                            border: none;
-                            height: 32px;
-                            width: 100%;
-                            box-sizing: border-box;
-                            -webkit-box-sizing: border-box;
-                            -moz-box-sizing: border-box;
-                        }
-
-                        & button {
-                            border: none;
-                            border-top-right-radius: 7px;
-                            border-bottom-right-radius: 7px;
-                        }
-                    }
-
-                    &_Row2 {
-                        display: flex;
-                        margin-bottom: 10px;
-                        gap: 4px;
-
-                        &_Item1 {
-                            border-top-left-radius: 7px;
-                            border-bottom-left-radius: 7px;
-                        }
-
-                        & input {
-                            background-color: #d0f0ff;
-                            padding: 8px;
-                            border: none;
-                            height: 32px;
-                            width: 100%;
-                            box-sizing: border-box;
-                            -webkit-box-sizing: border-box;
-                            -moz-box-sizing: border-box;
-                        }
-
-                        & button {
-                            border: none;
-                            border-top-right-radius: 7px;
-                            border-bottom-right-radius: 7px;
-                        }
-                    }
-
-                    &_Row3 {
-                        display: flex;
-                        margin-bottom: 10px;
-                        gap: 4px;
-
-                        &_Item1 {
-                            border: solid 2px #d0f0ff;
-                            border-top-left-radius: 7px;
-                            border-bottom-left-radius: 7px;
-                            padding: 8px;
-                            height: 32px;
-                            width: 100%;
-                            box-sizing: border-box;
-                            -webkit-box-sizing: border-box;
-                            -moz-box-sizing: border-box;
-                        }
-
-                        &_Item2 {
-                            background-color: #d0f0ff;
-                            border: none;
-                            padding: 8px;
-                            height: 32px;
-                            width: 100%;
-                            box-sizing: border-box;
-                            -webkit-box-sizing: border-box;
-                            -moz-box-sizing: border-box;
-                        }
-
-                        & button {
-                            border: none;
-                            border-top-right-radius: 7px;
-                            border-bottom-right-radius: 7px;
-                        }
-                    }
-
-                    &_Row4 {
-                        display: flex;
-                        margin-bottom: 10px;
-                        gap: 4px;
-
-                        &_Item1 {
-                            border: solid 2px #d0f0ff;
-                            border-top-left-radius: 7px;
-                            border-bottom-left-radius: 7px;
-                            padding: 8px;
-                            height: 32px;
-                            width: 100%;
-                            box-sizing: border-box;
-                            -webkit-box-sizing: border-box;
-                            -moz-box-sizing: border-box;
-                        }
-
-                        &_Item2 {
-                            background-color: #d0f0ff;
-                            border: none;
-                            padding: 8px;
-                            height: 32px;
-                            width: 100%;
-                            box-sizing: border-box;
-                            -webkit-box-sizing: border-box;
-                            -moz-box-sizing: border-box;
-                        }
-
-                        & button {
-                            border: none;
-                            border-top-right-radius: 7px;
-                            border-bottom-right-radius: 7px;
-                        }
-                    }
-
-                    &_Row5 {
-                        display: flex;
-                        margin-bottom: 10px;
-                        gap: 4px;
-
-                        &_Item1 {
-                            border-top-left-radius: 7px;
-                            border-bottom-left-radius: 7px;
-                        }
-
-                        & input {
-                            background-color: #d0f0ff;
-                            border: none;
-                            padding: 8px;
-                            height: 32px;
-                            width: 100%;
-                            box-sizing: border-box;
-                            -webkit-box-sizing: border-box;
-                            -moz-box-sizing: border-box;
-                        }
-
-                        & button {
-                            border: none;
-                            border-top-right-radius: 7px;
-                            border-bottom-right-radius: 7px;
-                        }
-                    }
-
-                    &_Row6 {
-                        display: flex;
-                        margin-bottom: 10px;
-                        gap: 4px;
-
-                        &_Item1 {
-                            border-top-left-radius: 7px;
-                            border-bottom-left-radius: 7px;
-                        }
-
-                        & input {
-                            background-color: #d0f0ff;
-                            border: none;
-                            padding: 8px;
-                            height: 32px;
-                            width: 100%;
-                            box-sizing: border-box;
-                            -webkit-box-sizing: border-box;
-                            -moz-box-sizing: border-box;
-                        }
-
-                        & button {
-                            border: none;
-                            border-top-right-radius: 7px;
-                            border-bottom-right-radius: 7px;
-                        }
-                    }
-
-                    &_Row7 {
-                        display: flex;
-                        margin-bottom: 10px;
-                        gap: 4px;
-
-                        & select {
-                            border-radius: 7px;
-                            background-color: #d0f0ff;
-                            border: none;
-                            padding: 8px;
-                            height: 32px;
-                            width: 100%;
-                            box-sizing: border-box;
-                            -webkit-box-sizing: border-box;
-                            -moz-box-sizing: border-box;
-
-                            & option {
-                                background-color: white;
-                            }
-                        }
-                    }
-
-                    &_Row8 {
-                        display: flex;
-                        margin-bottom: 10px;
-                        gap: 4px;
-
-                        & input {
-                            border-top-left-radius: 7px;
-                            border-bottom-left-radius: 7px;
-                            background-color: #d0f0ff;
-                            border: none;
-                            padding: 8px;
-                            height: 32px;
-                            width: 100%;
-                            box-sizing: border-box;
-                            -webkit-box-sizing: border-box;
-                            -moz-box-sizing: border-box;
-                        }
-
-                        & button {
-                            border: none;
-                            border-top-right-radius: 7px;
-                            border-bottom-right-radius: 7px;
-                        }
-                    }
-
-                    &_Row9 {
-                        display: flex;
-                        gap: 4px;
-
-                        & input {
-                            border-top-left-radius: 7px;
-                            border-bottom-left-radius: 7px;
-                            height: 32px;
-                            width: 100%;
-                            padding: 8px;
-                            border: solid 2px #d0f0ff;
-                            box-sizing: border-box;
-                            -webkit-box-sizing: border-box;
-                            -moz-box-sizing: border-box;
-                        }
-
-                        & button {
-                            width: 80px;
-                            background-color: #326ba8;
-                            color: white;
-                            border: none;
-                            border-radius: 7px;
-                        }
-                    }
                 }
             }
         }
+
+        &_Row8 {
+            display: flex;
+            margin-bottom: 10px;
+            gap: 4px;
+
+            & input {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &_Row9 {
+            display: flex;
+            gap: 4px;
+
+            & input {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                height: 32px;
+                width: 100%;
+                padding: 8px;
+                border: solid 2px #d0f0ff;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                width: 80px;
+                background-color: #326ba8;
+                color: white;
+                border: none;
+                border-radius: 7px;
+            }
+        }
+
+
     }
 
     &-Slider {
@@ -916,6 +909,7 @@ $font-size: 30px;
             font-size: 30px;
             font-weight: 500;
             cursor: pointer;
+
             & :focus-within {
                 transition: 0.5s ease-in-out;
             }
@@ -931,6 +925,7 @@ $font-size: 30px;
             width: 50%;
             border-radius: 0px 55px 55px 0px;
             cursor: pointer;
+
             & :focus-within {
                 transition: 0.5s ease-in-out;
             }
