@@ -13,6 +13,8 @@ import SwitchToggle from "../Lib/SwitchToggle";
 import SwitchToggleSetting from "../Lib/SwitchToggleSetting";
 import TablePro from "../Lib/TablePro";
 import TableProSetting from "../Lib/TableProSetting";
+import Number from "../Lib/Number";
+import NumberSetting from "../Lib/NumberSetting";
 
 
 
@@ -30,7 +32,8 @@ export default function Device() {
     Gauge: <Gauge setting={gauge}></Gauge>,
     SliderBar: <SliderBar setting={slider}></SliderBar>,
     SwitchToggle: <SwitchToggle setting={switchtoggle}></SwitchToggle>,
-    TablePro: <TablePro setting={tablepro}></TablePro>
+    TablePro: <TablePro setting={tablepro}></TablePro>,
+    Number: <Number></Number>,
   };
 
   const setting = {
@@ -40,6 +43,7 @@ export default function Device() {
     SliderBar: <SliderSetting />,
     SwitchToggle: <SwitchToggleSetting />,
     TablePro : <TableProSetting/>,
+    Number : <NumberSetting/>,
   };
 
   return (
