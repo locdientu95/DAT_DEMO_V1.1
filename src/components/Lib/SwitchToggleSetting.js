@@ -78,8 +78,8 @@ export default function SwitchToggleSetting() {
           <button onClick={(e)=>handleSaveChange(e)}>Chọn</button>
         </div>
         <div className="DAT_Setting-Switch-Row" id="3">
-          <input placeholder="Width: " ref={wid}></input>
-          <input placeholder="Height: "ref={hei}></input>
+          <input placeholder="Width: " ref={wid} onChange={(e) => handleSaveChange(e)}></input>
+          <input placeholder="Height: "ref={hei} onChange={(e) => handleSaveChange(e)}></input>
           <button>Chọn</button>
         </div>
         <div className="DAT_Setting-Switch-Row" id="4">

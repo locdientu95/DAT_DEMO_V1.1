@@ -83,6 +83,7 @@ export default function Device() {
             <option value={"SliderBar"}>Slider</option>
             <option value={"SwitchToggle"}>SwitchToggle</option>
             <option value={"TablePro"}>TablePro</option>
+            <option value={"Number"}>Number</option>
           </select>
         </div>
         <div className="Device_Content-Container-Group">
