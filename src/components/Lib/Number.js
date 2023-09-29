@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
 
 export default function Number() {
   return (
-    <div>Number</div>
-  )
+    <div className="DAT_Number">
+      <div className="DAT_Number-Main-Value">123</div>
+      <div className="DAT_Number-Main-Unit">Hz</div>
+    </div>
+  );
 }
