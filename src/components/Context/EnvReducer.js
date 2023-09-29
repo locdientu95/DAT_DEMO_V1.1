@@ -26,11 +26,13 @@ export const INITSTATE = {
   slider: {
     min: 0,
     max: 100,
-    width: "500px",
-    height: "30px",
-    thumb: "red",
-    track: "blue",
-    rail: "green",
+    width: "500",
+    height: "20",
+    scale: 5,
+    ori: "horizontal",
+    thumb: { bgcolor: "#1976d2", border: "0" },
+    track: { bgcolor: "#1976d2", border: "0" },
+    rail: { bgcolor: "#1976d2", border: "0" },
   },
 
   button: {
@@ -63,7 +65,7 @@ export const INITSTATE = {
     h: "400px",
     bgcolor: "#808080",
     realdatacolor: "#0000ff",
-    type:"vertical",
+    type: "vertical",
   },
 
   type: "Button",

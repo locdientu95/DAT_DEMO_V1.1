@@ -1,8 +1,4 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
-<<<<<<< HEAD
-
-=======
->>>>>>> d30b323363acc964b882a22d1f4d2b98b004c61b
 import "./Setting.scss";
 import { IgrLinearGaugeModule } from "igniteui-react-gauges";
 import { IgrLinearGauge } from "igniteui-react-gauges";
