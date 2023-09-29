@@ -96,7 +96,7 @@ export default function ErrorReport() {
       name: "ID",
       selector: row => row.id,
       sortable: true,
-      width: "60px"
+      width: "60px",
     },
     {
       name: "Gateway",

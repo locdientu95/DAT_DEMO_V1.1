@@ -83,7 +83,37 @@ export const INITSTATE = {
   },
 
   tablepro: {
-
+    data : [
+      {
+        id: 1,
+        val1: 0,
+        val2: 0
+      },
+      {
+        id: 2,
+        val1: 0,
+        val2: 0
+      },
+      {
+        id: 3,
+        val1: 0,
+        val2: 0
+      }
+    ],
+    head : [
+      {
+        name: 'STT',
+        code: 'id',
+      },
+      {
+        name: "Giá Trị 1",
+        code: 'val1'
+      },
+      {
+        name: 'Giá Trị 2',
+        code: 'val2'
+      }
+    ]
   },
 
   type: "Button",
