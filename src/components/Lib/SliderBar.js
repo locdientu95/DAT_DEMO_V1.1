@@ -27,7 +27,7 @@ export default function SliderBar(props) {
 
   useEffect(() => {
     markConfig(parseInt(props.setting.scale));
-  }, []);
+  }, [props.setting]);
 
   useEffect(() => {
     const thumb = document.querySelector(".MuiSlider-thumb");
@@ -40,8 +40,8 @@ export default function SliderBar(props) {
 
     thumb.style.borderRadius = props.setting.thumb.border + "px";
     track.style.borderRadius = props.setting.track.border + "px";
-    rail.style.borderRadius = props.setting.rail.border + "px";
-  }, []);
+    rail.style.borderRadius = props.setting.track.border + "px";
+  }, [props.setting]);
 
   return (
     <div className="DAT_SliderBar">
