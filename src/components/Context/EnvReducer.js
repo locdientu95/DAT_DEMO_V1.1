@@ -22,7 +22,18 @@ export const INITSTATE = {
 
     cal: "30",
   },
-  slider: {},
+
+  slider: {
+    min: 0,
+    max: 100,
+    width: "500",
+    height: "20",
+    scale: 5,
+    ori: "horizontal",
+    thumb: { bgcolor: "#1976d2", border: "0" },
+    track: { bgcolor: "#1976d2", border: "0" },
+    rail: { bgcolor: "#1976d2", border: "0" },
+  },
 
   button: {
     btntype: "Inching",
@@ -54,7 +65,7 @@ export const INITSTATE = {
     h: "400px",
     bgcolor: "#808080",
     realdatacolor: "#0000ff",
-    type:"vertical",
+    type: "vertical",
   },
 
   toggle: {
@@ -86,12 +97,7 @@ const EnvReducer = (state, action) => {
         ...state,
         gauge: action.payload,
       };
-    case "SET_SLIDER":
-      return {
-        ...state,
-        slider: action.payload,
-      };
-      case "SET_BTN":
+    case "SET_BTN":
       return {
         ...state,
         button: action.payload,
@@ -100,6 +106,11 @@ const EnvReducer = (state, action) => {
       return {
         ...state,
         bar: action.payload,
+      };
+    case "SET_SLIDER":
+      return {
+        ...state,
+        slider: action.payload,
       };
     case "SET_TYPE":
       return {

@@ -1,0 +1,30 @@
+.DAT_Content{
+    &-Container{
+        &-Group{
+            &-head{
+                width:95%;
+                margin: auto;
+                margin-bottom: 20px;
+                & button{
+                    width: 120px;
+                    height:40px;
+                    background-color:rgb(255, 255, 255);
+                    color: black;
+                    border-radius: 10px;
+                    
+                }
+            }
+        }
+    }
+}
+
+.Spreadsheet_{
+    &_table{
+        width: 100%;
+        & colgroup{
+            & col{
+                width: 40px;
+            }
+        }
+    }
+}

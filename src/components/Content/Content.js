@@ -19,6 +19,7 @@ export default function Content() {
               strokeLinejoin="round"
               className="feather feather-activity"
               color="rgba(255, 255, 255, 0.5)"
+              style={{paddingRight: "10px"}}
             >
               <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
             </svg>
@@ -123,6 +124,7 @@ export default function Content() {
             </div>
           </div>
         </div>
+        
         <div className="DAT_Content-Container-Card">
           <div className="DAT_Content-Container-Card-Body">
             <div className="DAT_Content-Container-Card-Body-Center">

@@ -41,14 +41,14 @@
 
     &-Container {
         margin-bottom: 100px;
-
+        margin-top: -96px;
         &-Group {
             display: flex;
             gap: 10px;
             width: 95%;
             margin: auto;
             // height: 100vh;
-            margin-top: -96px;
+            
 
             // background-color: white;
             &-ListTag {

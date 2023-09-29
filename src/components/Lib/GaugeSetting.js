@@ -135,20 +135,13 @@ export default function GaugeSetting() {
     }
 
     return (
-        <div className="DAT_Setting">           
-
+        <div className="DAT_Setting">
             {/* Main */}
             <div className="DAT_Setting_Gauge">
-
                 {/* Content */}
                 <div className="DAT_Setting_Gauge_Content">
-
                     {/* Cài đặt */}
-                    <div className="DAT_Setting_Gauge_Content_Detail">
-                        <div className="DAT_Setting_Gauge_Content_Detail_Title">
-                            Cài đặt
-                        </div>
-                        
+                    <div className="DAT_Setting_Gauge_Content_Detail">                        
                         <div className="DAT_Setting_Gauge_Content_Detail_Content">                           
                             <div className="DAT_Setting_Gauge_Content_Detail_Content_Row1">
                                 <input 

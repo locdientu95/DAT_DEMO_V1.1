@@ -27,28 +27,29 @@ export default function Account() {
 
     return(
         <div className="DAT_Account">
-            {/* Header */}
-            <div className="DAT_Account_Header">
-                <div className="DAT_Account_Header_Content">
-                    <div className="DAT_Account_Header_Content_Icon">                        
-                        <svg 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            width="16" 
-                            height="16" 
-                            viewBox="0 0 24 24" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            strokeWidth="2" 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            className="feather feather-user"
+            <div className="DAT_Account-Header">
+                <div className="DAT_Account-Header-Dashboard">
+                    <div className="DAT_Account-Header-Dashboard-Heading">
+                        <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="28"
+                        height="28"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="feather feather-activity"
+                        style={{paddingRight: "10px"}}
                         >
                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                             <circle cx="12" cy="7" r="4"></circle>
                         </svg>
+                        Cài Đặt Tài Khoản - {tit[nav]}
                     </div>
-                    <div className="DAT_Account_Header_Content_Text">
-                        Cài đặt tài khoản - {tit[nav]}
+                    <div className="DAT_Account-Header-Dashboard-SubHead">
+                        Example dashboard overview and content summary
                     </div>
                 </div>
             </div>

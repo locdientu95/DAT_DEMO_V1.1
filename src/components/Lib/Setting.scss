@@ -194,25 +194,12 @@
                 border-radius: 5px;
                 box-shadow: 0px 0px 16px 4px rgb(136, 136, 136, 0.2);
 
-                &_Title {
-                    height: 50px;
-                    display: flex;
-                    align-items: center;
-                    padding-left: 24px;
-                    color: blue;
-                    background-color: whitesmoke;
-                    border-top-right-radius: 5px;
-                    border-top-left-radius: 5px;
-                    border-bottom: solid 1px rgb(156, 155, 155, 0.2);
-                    font-weight: 500;
-                }
-
                 &_Content {
                     position: relative;
                     background-color: white;
                     border-bottom-left-radius: 5px;
                     border-bottom-right-radius: 5px;
-                    padding: 24px;
+                    padding: 10px;
 
                     &_Row1 {
                         display: flex;
@@ -472,7 +459,216 @@
         }
     }
 
-    &_Slider {
+    &-Slider {
+        padding: 10px;
+
+        &-Row1 {
+            display: flex;
+            margin-bottom: 10px;
+            gap: 8px;
+
+            &-Item1 {
+                border: solid 2px #d0f0ff;
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            &-Item2 {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &-Row2 {
+            display: flex;
+            margin-bottom: 10px;
+            gap: 8px;
+
+            &-Item1 {
+                border: solid 2px #d0f0ff;
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            &-Item2 {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &-Row3 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
+            &-Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
+
+            & input {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & select {
+                width: 100%;
+                background-color: #d0f0ff;
+                border: none;
+
+                & option {
+                    background-color: white;
+                }
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &-Row4 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
+            &-Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
+
+            & input {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &-Row5 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
+            & select {
+                border-radius: 7px;
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+
+                & option {
+                    background-color: white;
+                }
+            }
+        }
+
+        &-Row6 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
+            & input {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &-Row7 {
+            display: flex;
+            gap: 8px;
+
+            & input {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                height: 32px;
+                width: 100%;
+                padding: 8px;
+                border: solid 2px #d0f0ff;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                width: 80px;
+                background-color: #326ba8;
+                color: white;
+                border: none;
+                border-radius: 7px;
+            }
+        }
     }
 
     &-Switch {
@@ -564,19 +760,6 @@
         box-shadow: 0px 0px 16px 4px rgb(136, 136, 136, 0.2);
         margin-bottom: 24px;
 
-        &_Title {
-            height: 50px;
-            display: flex;
-            align-items: center;
-            padding-left: 24px;
-            color: blue;
-            background-color: whitesmoke;
-            border-top-right-radius: 5px;
-            border-top-left-radius: 5px;
-            border-bottom: solid 1px rgb(156, 155, 155, 0.2);
-            font-weight: 500;
-        }
-
         &_Main {
             position: relative;
             background-color: white;
@@ -596,6 +779,7 @@
             }
         }
     }
+
 }
 
 .DAT_Button {
@@ -689,6 +873,13 @@
     }
 }
 
+.DAT_SliderBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+
 $accent: #04da97;
 $border-width: 6px;
 $border-radius: 55px;
@@ -706,6 +897,7 @@ $font-size: 30px;
     justify-content: center;
     align-items: center;
     margin: 20px;
+
     &-Toggle {
         display: flex;
         position: relative;
@@ -713,6 +905,7 @@ $font-size: 30px;
         border-radius: var(--border-radius);
         width: 300px;
         height: 100px;
+
         &-Labelchoice1 {
             display: flex;
             position: relative;
@@ -727,6 +920,7 @@ $font-size: 30px;
                 transition: 0.5s ease-in-out;
             }
         }
+
         &-Labelchoice2 {
             display: flex;
             position: relative;
