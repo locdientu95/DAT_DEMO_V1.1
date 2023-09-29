@@ -85,181 +85,156 @@ const data = [
 ];
 export default function ExportReport() {
 
-  const [newdata, setNewData] = useState([])
+  //const [newdata, setNewData] = useState([])
+  const fields = [
+    {
+      label: "id",
+      key: "id",
+      alternateMatches: ["first name", "first"],
+      fieldType: {
+        type: "input"
+      },
+      example: "Stephanie",
+      validations: [
+        {
+          rule: "required",
+          errorMessage: "Name is required",
+          level: "error"
+        }
+      ]
+    },
+    {
+      label: "name",
+      key: "name",
+      alternateMatches: ["first name", "first"],
+      fieldType: {
+        type: "input"
+      },
+      example: "Stephanie",
+      validations: [
+        {
+          rule: "required",
+          errorMessage: "Name is required",
+          level: "error"
+        }
+      ]
+    },
+    {
+      label: "email",
+      key: "email",
+      alternateMatches: ["first name", "first"],
+      fieldType: {
+        type: "input"
+      },
+      example: "Stephanie",
+      validations: [
+        {
+          rule: "required",
+          errorMessage: "Name is required",
+          level: "error"
+        }
+      ]
+    },
+    {
+      label: "age",
+      key: "age",
+      alternateMatches: ["first name", "first"],
+      fieldType: {
+        type: "input"
+      },
+      example: "Stephanie",
+      validations: [
+        {
+          rule: "required",
+          errorMessage: "Name is required",
+          level: "error"
+        }
+      ]
+    },
+  ]
 
-  const head = [{ value: "id" }, { value: "name" }, { value: "email" }, { value: "age" }]
+  // const head = [{ value: "id" }, { value: "name" }, { value: "email" }, { value: "age" }]
+  // const Loaddata = (row, col) => {
+
+
+  //   const rowEmpty = []
+  //   const rowLength = 0
+  //   const colEmpty = []
 
 
 
-  const Loaddata = (row, col) => {
+  //   for (let i = 1; i < row; i++) {
+  //     rowEmpty.push({ value: null })
+  //   };
 
-
-    const rowEmpty = []
-    const rowLength = 0
-    const colEmpty = []
-
-
-
-    for (let i = 1; i < row; i++) {
-      rowEmpty.push({ value: null })
-    };
-
-    const lasthead = rowEmpty.concat(head)
+  //   const lasthead = rowEmpty.concat(head)
 
 
 
-    for (let i = 0; i < lasthead.length; i++) {
-      colEmpty.push({ value: null })
-    };
-    console.log("colempty", colEmpty)
-    const lastcol = [colEmpty]
+  //   for (let i = 0; i < lasthead.length; i++) {
+  //     colEmpty.push({ value: null })
+  //   };
+  //   console.log("colempty", colEmpty)
+  //   const lastcol = [colEmpty]
 
-    for (let i = 1; i < col - 1; i++) {
-      lastcol.push(colEmpty)
-    };
-    console.log("lastcol", lastcol)
+  //   for (let i = 1; i < col - 1; i++) {
+  //     lastcol.push(colEmpty)
+  //   };
+  //   console.log("lastcol", lastcol)
 
-    const lastdata = lastcol
-    lastdata.push(lasthead)
-    console.log("lastdata", lastdata)
-    data.map((data, index) => {
+  //   const lastdata = lastcol
+  //   lastdata.push(lasthead)
+  //   console.log("lastdata", lastdata)
+  //   data.map((data, index) => {
 
-      const d = [{ value: data.id }, { value: data.name }, { value: data.email }, { value: data.age }]
-      const lastcontent = rowEmpty.concat(d);
-      lastdata.push(lastcontent)
+  //     const d = [{ value: data.id }, { value: data.name }, { value: data.email }, { value: data.age }]
+  //     const lastcontent = rowEmpty.concat(d);
+  //     lastdata.push(lastcontent)
 
-      return setNewData(lastdata)
-    })
+  //     return setNewData(lastdata)
+  //   })
 
-  }
-
-
-  useEffect(() => {
-    Loaddata(0, 0)
-  }, [])
-
+  // }
   // const handleAct = (e) => {
   //   console.log(e.row, e.column)
-
-
   // }
 
 
 
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const [datafile, setDatafile] = useState([])
- 
-  function onClose(){
-      console.log("hello")
-      setOpen(false)
+  //const [head, setHead] = useState([])
+
+  function onClose() {
+    console.log("hello")
+    setOpen(false)
   }
-  function onSubmit(datas){
-    console.log(datas)
-    //setDatafile(datas.validData)
+  function onSubmit(datas) {
+    console.log("Hello", datas.validData)
+
+    var head = []
+    fields.map((data,index)=>{
+      head = [...head,{value:data.label}]
+    })
+    setDatafile(pre => [...pre,head])
+    datas.validData.map((data,index)=>{
+        const list = [{value:data.id},{value:data.name},{value:data.email},{value:data.age}]
+        setDatafile(pre => [...pre,list]) 
+    })
   }
 
-  const fields = [
-    {
-      // Visible in table header and when matching columns.
-      label: "Name",
-      // This is the key used for this field when we call onSubmit.
-      key: "name",
-      // Allows for better automatic column matching. Optional.
-      alternateMatches: ["first name", "first"],
-      // Used when editing and validating information.
-      fieldType: {
-        // There are 3 types - "input" / "checkbox" / "select".
-        type: "input"
-      },
-      // Used in the first step to provide an example of what data is expected in this field. Optional.
-      example: "Stephanie",
-      // Can have multiple validations that are visible in Validation Step table.
-      validations: [
-        {
-          // Can be "required" / "unique" / "regex"
-          rule: "required",
-          errorMessage: "Name is required",
-          // There can be "info" / "warning" / "error" levels. Optional. Default "error".
-          level: "error"
-        }
-      ]
-    },
-    {
-      // Visible in table header and when matching columns.
-      label: "ID",
-      // This is the key used for this field when we call onSubmit.
-      key: "id",
-      // Allows for better automatic column matching. Optional.
-      // Used when editing and validating information.
-      fieldType: {
-        // There are 3 types - "input" / "checkbox" / "select".
-        type: "input"
-      },
-      // Used in the first step to provide an example of what data is expected in this field. Optional.
-      example: "We are working on",
-      // Can have multiple validations that are visible in Validation Step table.
-      validations: [
-        {
-          // Can be "required" / "unique" / "regex"
-          rule: "required",
-          errorMessage: "id is required",
-          // There can be "info" / "warning" / "error" levels. Optional. Default "error".
-          level: "error"
-        }
-      ]
-    },
-    {
-      // Visible in table header and when matching columns.
-      label: "email",
-      // This is the key used for this field when we call onSubmit.
-      key: "Email",
-      // Allows for better automatic column matching. Optional.
-      alternateMatches: ["first name", "first"],
-      // Used when editing and validating information.
-      fieldType: {
-        // There are 3 types - "input" / "checkbox" / "select".
-        type: "input"
-      },
-      // Used in the first step to provide an example of what data is expected in this field. Optional.
-      example: "In Progress",
-      // Can have multiple validations that are visible in Validation Step table.
-      validations: [
-        {
-          // Can be "required" / "unique" / "regex"
-          rule: "required",
-          errorMessage: "Name is required",
-          // There can be "info" / "warning" / "error" levels. Optional. Default "error".
-          level: "error"
-        }
-      ]
-    },
-    {
-      // Visible in table header and when matching columns.
-      label: "Age",
-      // This is the key used for this field when we call onSubmit.
-      key: "status",
-      // Allows for better automatic column matching. Optional.
-      alternateMatches: ["first name", "first"],
-      // Used when editing and validating information.
-      fieldType: {
-        // There are 3 types - "input" / "checkbox" / "select".
-        type: "input"
-      },
-      // Used in the first step to provide an example of what data is expected in this field. Optional.
-      example: "Identified",
-      // Can have multiple validations that are visible in Validation Step table.
-      validations: [
-        {
-          // Can be "required" / "unique" / "regex"
-          rule: "required",
-          errorMessage: "Name is required",
-          // There can be "info" / "warning" / "error" levels. Optional. Default "error".
-          level: "error"
-        }
-      ]
-    },
-  ] 
-   
+
+  useEffect(() => {
+    console.log(datafile)
+  }, [datafile])
+
+
+  
+  const handleImport=()=>{
+    setOpen(true)
+  }
+
+
   return (
     <div className="DAT_Content">
       <div className="DAT_Content-Header">
@@ -298,18 +273,20 @@ export default function ExportReport() {
                   <input type='text' placeholder='Number of start Ex: 1' ref={num}/>
                   <button  placeholder='Confirm' style={{width:'50px', height:'40px'}} onClick={e => handleInput(e)}/>
               </div> */}
-        <div className='DAT_Content-Container-Group'>
-          <div className='DAT_Content-Container-Group-Table'>
-            <div className='DAT_Content-Container-Group-Table-head'>
-            <ReactSpreadsheetImport isOpen={open}  onClose={onClose} onSubmit={onSubmit} fields={fields}  />
-            </div>
-          </div>
-          <Spreadsheet
-            data={newdata}
-          >
+              
+      
 
-          </Spreadsheet>
-        </div>
+            <div className='DAT_Content-Container-Group-head'>
+                <button  
+               // style={{width:"100px",height:"40px", backgroundColor:"red"}} 
+                onClick={handleImport} >Thêm file</button>
+            </div>
+
+            <div className='DAT_Content-Container-Group-Table'>
+                <ReactSpreadsheetImport isOpen={open} onClose={onClose} onSubmit={onSubmit} fields={fields} />
+                <Spreadsheet data={datafile}/>
+            </div>  
+
       </div>
     </div>
   )

@@ -134,8 +134,6 @@ export default function Device() {
                                       setting={slider}
                                     ></SliderSetting>
                                   );
-                                case "Slider":
-                                  return <SliderBar></SliderBar>;
                                 case "SwitchToggleSetting":
                                   return (
                                     <SwitchToggleSetting></SwitchToggleSetting>
@@ -147,6 +145,52 @@ export default function Device() {
                           </div>
                           <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Text">
                             {/* vxcx */}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body">
+                        <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview">
+                          <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Content">
+                            <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body">
+                              <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview">
+                                <div className="DATGroup_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Content">
+                                  {(() => {
+                                    switch (type) {
+                                      case "Button":
+                                        return <ButtonSetting></ButtonSetting>;
+                                      case "Bar":
+                                        return (
+                                          <BarChartSetting
+                                            setting={bardata}
+                                          ></BarChartSetting>
+                                        );
+                                      case "Gauge":
+                                        return (
+                                          <GaugeSetting
+                                            setting={gauge}
+                                          ></GaugeSetting>
+                                        );
+                                      case "SliderBar":
+                                        return (
+                                          <SliderSetting
+                                            setting={slider}
+                                          ></SliderSetting>
+                                        );
+                                      case "SwitchToggleSetting":
+                                        return (
+                                          <SwitchToggleSetting></SwitchToggleSetting>
+                                        );
+                                      default:
+                                        return <></>;
+                                    }
+                                  })()}
+                                </div>
+                                <div className="Device_Content-Container-Group-ListTag-Tag-Info-Body-Preview-Text">
+                                  {/* vxcx */}
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
