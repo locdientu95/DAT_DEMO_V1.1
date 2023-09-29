@@ -20,7 +20,7 @@ export default function SwitchToggleSetting() {
     switchtoggle.texton = txton;
     switchtoggle.textoff = txtoff;
     switchtoggle.textsize = txtsize;
-    switchtoggle.w = 
+    switchtoggle.w = wid;
     envDispatch({ type: "SET_TOGGLE", payload: switchtoggle });
     console.log(switchtoggle);
   };
