@@ -33,23 +33,36 @@ export default function SliderSetting() {
   const ori = useRef();
   const handleCustom = (e) => {
     console.log(ori.current.value);
-    envDispatch({
-      type: "SET_SLIDER",
-      payload: {
-        ...slider,
-        width: width.current.value,
-        height: height.current.value,
-        scale: scale.current.value,
-        ori: ori.current.value,
-      },
-    });
+
+    if (ori.current.value === "horizontal") {
+      envDispatch({
+        type: "SET_SLIDER",
+        payload: {
+          ...slider,
+          width: width.current.value,
+          height: height.current.value,
+          scale: scale.current.value,
+          ori: ori.current.value,
+        },
+      });
+    } else {
+      envDispatch({
+        type: "SET_SLIDER",
+        payload: {
+          ...slider,
+          width: height.current.value,
+          height: width.current.value,
+          scale: scale.current.value,
+          ori: ori.current.value,
+        },
+      });
+    }
   };
 
   const thumbborder = useRef();
   const thumbcolor = useRef();
   const trackborder = useRef();
   const trackcolor = useRef();
-  const railborder = useRef();
   const railcolor = useRef();
   const handleColor = (e) => {
     envDispatch({
@@ -65,7 +78,6 @@ export default function SliderSetting() {
           bgcolor: trackcolor.current.value,
         },
         rail: {
-          border: railborder.current.value,
           bgcolor: railcolor.current.value,
         },
       },
@@ -122,9 +134,8 @@ export default function SliderSetting() {
           ref={thumbborder}
         ></input>
         <input type="color" ref={thumbcolor}></input>
-        <input placeholder="Track Border:" ref={trackborder}></input>
+        <input placeholder="Value Border:" ref={trackborder}></input>
         <input type="color" ref={trackcolor}></input>
-        <input placeholder="Rail Border:" ref={railborder}></input>
         <input type="color" ref={railcolor}></input>
         <button onClick={(e) => handleColor(e)}>Chọn</button>
       </div>

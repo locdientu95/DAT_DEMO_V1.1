@@ -32,7 +32,7 @@ export const INITSTATE = {
     ori: "horizontal",
     thumb: { bgcolor: "#1976d2", border: "0" },
     track: { bgcolor: "#1976d2", border: "0" },
-    rail: { bgcolor: "#1976d2", border: "0" },
+    rail: { bgcolor: "#1976d2" },
   },
 
   button: {
