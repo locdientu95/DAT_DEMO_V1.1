@@ -3,14 +3,15 @@ import Switch from "react-switch";
 import "./Setting.scss";
 
 export default function SwitchToggle(props) {
-  const [check, setCheck] = useState("off");
+  const [check, setCheck] = useState("on");
   const handleChange = (e) => {
-    if(check === "on"){
-      setCheck("off");
+    if(check === "off"){
+      setCheck("on");
     } else {
-      setCheck("on")
+      setCheck("off")
     }
     console.log(e.currentTarget.id)
+    console.log(check)
   };
 
   return (
@@ -24,14 +25,15 @@ export default function SwitchToggle(props) {
             backgroundColor: props.setting.bgoff,
             borderRadius: props.setting.borderradius,
             transform: check === "on" ? "translateX(0px)" :"translateX("+String(parseInt(props.setting.w) - parseInt(props.setting.h))+"px)",
-            transition: "0.9s"
+            transition: "0.5s"
           }}
           
           
         >
         </div>
-        {/* <label className="DAT_Switch-Toggle-Labelchoice1">ON</label> */}
-        {/* <label className="DAT_Switch-Toggle-Labelchoice2">OFF</label> */}
+        {}
+        <label className="DAT_Switch-Toggle-Labelchoice1">ON</label>
+        <label className="DAT_Switch-Toggle-Labelchoice2">OFF</label>
       </form>
       {/* transform: translateY(-50%);
         transition: 0.9s; */}

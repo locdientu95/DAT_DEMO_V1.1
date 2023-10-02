@@ -19,7 +19,7 @@ import NumberSetting from "../Lib/NumberSetting";
 
 
 export default function Device() {
-  const { tablepro,button, bardata, type, gauge, slider, switchtoggle, envDispatch } =
+  const { tablepro,number,button, bardata, type, gauge, slider, switchtoggle, envDispatch } =
     useContext(EnvContext);
   const handleChangeLib = (e) => {
     var temp = e.currentTarget.value;
@@ -33,7 +33,7 @@ export default function Device() {
     SliderBar: <SliderBar setting={slider}></SliderBar>,
     SwitchToggle: <SwitchToggle setting={switchtoggle}></SwitchToggle>,
     TablePro: <TablePro setting={tablepro}></TablePro>,
-    Number: <Number></Number>,
+    Number: <Number setting={number}></Number>,
   };
 
   const setting = {
