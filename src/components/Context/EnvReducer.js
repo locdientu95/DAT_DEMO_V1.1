@@ -84,6 +84,9 @@ export const INITSTATE = {
   },
 
   tablepro: {
+
+    width: "400px",
+    height: "250px",
     data : [
       {
         id: 1,
@@ -114,7 +117,8 @@ export const INITSTATE = {
         name: 'Giá Trị 2',
         code: 'val2'
       }
-    ]
+    ],
+    row : 3,
   },
 
   number: {},
