@@ -97,14 +97,9 @@ export const INITSTATE = {
   },
 
   tablepro: {
-<<<<<<< HEAD
-
     width: "400px",
     height: "250px",
-    data : [
-=======
     data: [
->>>>>>> 7fb2006f4894f9bc1ccc2608e8e729349083f135
       {
         id: 1,
         val1: 0,
@@ -131,18 +126,14 @@ export const INITSTATE = {
         code: "val1",
       },
       {
-<<<<<<< HEAD
         name: 'Giá Trị 2',
         code: 'val2'
       }
     ],
     row : 3,
-=======
-        name: "Giá Trị 2",
-        code: "val2",
-      },
-    ],
->>>>>>> 7fb2006f4894f9bc1ccc2608e8e729349083f135
+       
+
+
   },
 
   number: {
