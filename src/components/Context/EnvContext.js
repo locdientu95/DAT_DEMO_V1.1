@@ -18,6 +18,7 @@ export const EnvContextProvider = ({ children }) => {
         switchtoggle: state.switchtoggle,
         tablepro: state.tablepro,
         number: state.number,
+        lamp: state.lamp,
         envDispatch,
       }}
     >

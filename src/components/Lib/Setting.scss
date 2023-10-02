@@ -1081,6 +1081,9 @@ $font-size: 30px;
         width: 250px;
         height: 100px;
 
+        width: 300px;
+        height: 150px;
+
         // position: absolute;
         &-Icon {
             position: absolute;
@@ -1093,7 +1096,7 @@ $font-size: 30px;
             justify-content: center;
             align-items: center;
             width: 50%;
-            border-radius: 50%;
+            border-radius: 55px;
             font-size: 30px;
             font-weight: 500;
             cursor: pointer;
