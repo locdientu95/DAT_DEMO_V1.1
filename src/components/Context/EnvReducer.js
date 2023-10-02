@@ -83,7 +83,16 @@ export const INITSTATE = {
     borderradiusicon: "0",
   },
 
-  lamp: {},
+  lamp: {
+    value: 0,
+    data: { 0: { text: "hello", color: "#ff0000", bgcolor: "#000000" } },
+    width: "100",
+    height: "30",
+    fontsize: "30",
+    border: "2",
+    borderradius: "10",
+    bordercolor: "#000000",
+  },
 
   tablepro: {
     data: [
