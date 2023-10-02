@@ -21,7 +21,7 @@ import LampSetting from "../Lib/LampSetting";
 
 
 export default function Device() {
-  const { tablepro,number,button, bardata, type, gauge, slider, switchtoggle, envDispatch } =
+  const { tablepro,lamp,number,button, bardata, type, gauge, slider, switchtoggle, envDispatch } =
     useContext(EnvContext);
   const handleChangeLib = (e) => {
     var temp = e.currentTarget.value;
