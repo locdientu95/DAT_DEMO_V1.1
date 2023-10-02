@@ -15,6 +15,8 @@ import TablePro from "../Lib/TablePro";
 import TableProSetting from "../Lib/TableProSetting";
 import Number from "../Lib/Number";
 import NumberSetting from "../Lib/NumberSetting";
+import Lamp from "../Lib/Lamp";
+import LampSetting from "../Lib/LampSetting";
 
 
 
@@ -34,6 +36,7 @@ export default function Device() {
     SwitchToggle: <SwitchToggle setting={switchtoggle}></SwitchToggle>,
     TablePro: <TablePro setting={tablepro}></TablePro>,
     Number: <Number setting={number}></Number>,
+    Lamp: <Lamp setting={lamp}></Lamp>,
   };
 
   const setting = {
@@ -44,6 +47,7 @@ export default function Device() {
     SwitchToggle: <SwitchToggleSetting />,
     TablePro : <TableProSetting/>,
     Number : <NumberSetting/>,
+    Lamp: <LampSetting/>,
   };
 
   return (

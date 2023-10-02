@@ -71,15 +71,19 @@ export const INITSTATE = {
   switchtoggle: {
     texton: "Bật",
     textoff: "Tắt",
-    bgon: "#ffffff",
-    bgoff: "#04da97",
+    bgon: "#04da97",
+    bgoff: "#ffffff",
     txtcoloron: "#000000",
     textsize: 20,
-    w: "350",
+    w: "450",
     h: "150",
-    border: "6px",
-    borderradius: "10%",
+    border: "6",
+    borderradius: "20",
     bordercolor: "#04da97",
+    borderradiusicon: "0",
+  },
+
+  lamp: {
 
   },
 
@@ -168,6 +172,11 @@ const EnvReducer = (state, action) => {
       return {
         ...state,
         number: action.payload,
+      }
+    case "SET_LAMP":
+      return {
+        ...state,
+        lamp: action.payload,
       }
     default:
       throw new Error("Unexpected action");
