@@ -86,44 +86,62 @@ export const INITSTATE = {
   },
 
   lamp: {
-
+    value: 0,
+    data: { 0: { text: "hello", color: "#ff0000", bgcolor: "#000000" } },
+    width: "100",
+    height: "30",
+    fontsize: "30",
+    border: "2",
+    borderradius: "10",
+    bordercolor: "#000000",
   },
 
   tablepro: {
-    data : [
+    data: [
       {
         id: 1,
         val1: 0,
-        val2: 0
+        val2: 0,
       },
       {
         id: 2,
         val1: 0,
-        val2: 0
+        val2: 0,
       },
       {
         id: 3,
         val1: 0,
-        val2: 0
-      }
+        val2: 0,
+      },
     ],
-    head : [
+    head: [
       {
-        name: 'STT',
-        code: 'id',
+        name: "STT",
+        code: "id",
       },
       {
         name: "Giá Trị 1",
-        code: 'val1'
+        code: "val1",
       },
       {
-        name: 'Giá Trị 2',
-        code: 'val2'
-      }
-    ]
+        name: "Giá Trị 2",
+        code: "val2",
+      },
+    ],
   },
 
-  number: {},
+  number: {
+    width: "100",
+    height: "30",
+    unit: "Hz",
+    border: "2",
+    bordercolor: "#000000",
+    borderradius: "10",
+    bgcolor: "#ffffff",
+    textcolor: "#000000",
+    fontsize: "20",
+    type: "false",
+  },
 
   type: "Button",
 };
@@ -169,17 +187,17 @@ const EnvReducer = (state, action) => {
       return {
         ...state,
         tablepro: action.payload,
-      }
+      };
     case "SET_NUMBER":
       return {
         ...state,
         number: action.payload,
-      }
+      };
     case "SET_LAMP":
       return {
         ...state,
         lamp: action.payload,
-      }
+      };
     default:
       throw new Error("Unexpected action");
   }
