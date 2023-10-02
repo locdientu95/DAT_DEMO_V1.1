@@ -15,11 +15,13 @@ import TablePro from "../Lib/TablePro";
 import TableProSetting from "../Lib/TableProSetting";
 import Number from "../Lib/Number";
 import NumberSetting from "../Lib/NumberSetting";
+import Lamp from "../Lib/Lamp";
+import LampSetting from "../Lib/LampSetting";
 
 
 
 export default function Device() {
-  const { tablepro,button, bardata, type, gauge, slider, switchtoggle, envDispatch } =
+  const { tablepro,lamp,number,button, bardata, type, gauge, slider, switchtoggle, envDispatch } =
     useContext(EnvContext);
   const handleChangeLib = (e) => {
     var temp = e.currentTarget.value;
@@ -33,7 +35,8 @@ export default function Device() {
     SliderBar: <SliderBar setting={slider}></SliderBar>,
     SwitchToggle: <SwitchToggle setting={switchtoggle}></SwitchToggle>,
     TablePro: <TablePro setting={tablepro}></TablePro>,
-    Number: <Number></Number>,
+    Number: <Number setting={number}></Number>,
+    Lamp: <Lamp setting={lamp}></Lamp>,
   };
 
   const setting = {
@@ -44,6 +47,7 @@ export default function Device() {
     SwitchToggle: <SwitchToggleSetting />,
     TablePro : <TableProSetting/>,
     Number : <NumberSetting/>,
+    Lamp: <LampSetting/>,
   };
 
   return (
@@ -84,6 +88,7 @@ export default function Device() {
             <option value={"SwitchToggle"}>SwitchToggle</option>
             <option value={"TablePro"}>TablePro</option>
             <option value={"Number"}>Number</option>
+            <option value={"Lamp"}>Lamp</option>
           </select>
         </div>
         <div className="Device_Content-Container-Group">

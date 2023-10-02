@@ -14,6 +14,7 @@ export default function SliderSetting() {
         min: min.current.value,
       },
     });
+    min.current.value = "";
   };
 
   const max = useRef();
@@ -25,6 +26,7 @@ export default function SliderSetting() {
         max: max.current.value,
       },
     });
+    max.current.value = "";
   };
 
   const width = useRef();
@@ -57,6 +59,9 @@ export default function SliderSetting() {
         },
       });
     }
+    width.current.value = "";
+    height.current.value = "";
+    scale.current.value = "";
   };
 
   const thumbborder = useRef();
@@ -82,14 +87,16 @@ export default function SliderSetting() {
         },
       },
     });
+    thumbborder.current.value = "";
+    trackborder.current.value = "";
   };
 
   return (
     <div className="DAT_Setting-Slider">
       <div className="DAT_Setting-Slider-Row1">
         <input
-          placeholder="Min: 0"
           className="DAT_Setting-Slider-Row1-Item1"
+          placeholder={"Min: " + slider.min}
           ref={min}
         ></input>
         <input
@@ -101,8 +108,8 @@ export default function SliderSetting() {
 
       <div className="DAT_Setting-Slider-Row2">
         <input
-          placeholder="Max: 100"
           className="DAT_Setting-Slider-Row2-Item1"
+          placeholder={"Max: " + slider.max}
           ref={max}
         ></input>
         <input
@@ -114,12 +121,12 @@ export default function SliderSetting() {
 
       <div className="DAT_Setting-Slider-Row3">
         <input
-          placeholder="Width: "
           className="DAT_Setting-Slider-Row3-Item1"
+          placeholder={"Width: " + slider.width}
           ref={width}
         ></input>
-        <input placeholder="Height: " ref={height}></input>
-        <input placeholder="Bước kéo: " ref={scale}></input>
+        <input placeholder={"Height: " + slider.height} ref={height}></input>
+        <input placeholder={"Bước kéo: " + slider.scale} ref={scale}></input>
         <select ref={ori}>
           <option value={"horizontal"}>Chiều ngang</option>
           <option value={"vertical"}>Chiều đứng</option>
@@ -130,11 +137,14 @@ export default function SliderSetting() {
       <div className="DAT_Setting-Slider-Row4">
         <input
           className="DAT_Setting-Slider-Row4-Item1"
-          placeholder="Thumb Border:"
+          placeholder={"Thumb Border: " + slider.thumb.border}
           ref={thumbborder}
         ></input>
         <input type="color" ref={thumbcolor}></input>
-        <input placeholder="Value Border:" ref={trackborder}></input>
+        <input
+          placeholder={"Value Border: " + slider.track.border}
+          ref={trackborder}
+        ></input>
         <input type="color" ref={trackcolor}></input>
         <input type="color" ref={railcolor}></input>
         <button onClick={(e) => handleColor(e)}>Chọn</button>

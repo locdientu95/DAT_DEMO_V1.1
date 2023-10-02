@@ -722,6 +722,17 @@
                 }
             }
 
+            &-TextColorOff {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                & input {
+                    width: 27px;
+                }
+            }
+
             &-ValueColor {
                 width: 100%;
                 align-items: center;
@@ -924,8 +935,185 @@
         }
     }
 
+
+
     &-TablePro{
         
+
+    &-Lamp {
+        &-Row1 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
+            &-Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
+
+            & input {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &-Row2 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
+            table,
+            td {
+                border: 1px solid #000;
+                text-align: center;
+                padding: 8px;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+        }
+
+        &-Row3 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
+            &-Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
+
+            & input {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &-Row4 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
+            &-Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
+
+            & input {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &-Row5 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
+            & select {
+                border-radius: 7px;
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+
+                & option {
+                    background-color: white;
+                }
+            }
+        }
+
+        &-Row6 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
+            & input {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &-Row7 {
+            display: flex;
+            gap: 8px;
+
+            & input {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                height: 32px;
+                width: 100%;
+                padding: 8px;
+                border: solid 2px #d0f0ff;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                width: 80px;
+                background-color: #326ba8;
+                color: white;
+                border: none;
+                border-radius: 7px;
+            }
+        }
     }
 }
 
@@ -1084,8 +1272,12 @@ $font-size: 30px;
         border-radius: var(--border-radius);
         width: 250px;
         height: 100px;
+
+        width: 300px;
+        height: 150px;
+
         // position: absolute;
-        &-Icon{
+        &-Icon {
             position: absolute;
         }
 
@@ -1096,7 +1288,7 @@ $font-size: 30px;
             justify-content: center;
             align-items: center;
             width: 50%;
-            border-radius: 50%;
+            border-radius: 55px;
             font-size: 30px;
             font-weight: 500;
             cursor: pointer;
@@ -1127,14 +1319,36 @@ $font-size: 30px;
 }
 
 .DAT_Number {
-    gap: 8px;
+    gap: 5px;
     margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid 2px #000000;
+    padding: 5px;
+
+    & input {
+        border: none;
+        height: 100%;
+        width: 100%;
+        padding: 5px;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+
+    &-Unit {
+        padding-bottom: 4px;
+    }
+}
+
+.DAT_Lamp {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border: solid 2px #000;
     width: 100px;
-    height: 40px;
-    background-color: #04da97;
-    border-radius: 10px;
+    height: 30px;
+}
 }

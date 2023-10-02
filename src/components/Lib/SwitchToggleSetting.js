@@ -8,29 +8,60 @@ export default function SwitchToggleSetting() {
   const [bgison, setBgison] = useState(switchtoggle.bgon);
   const [bgisoff, setBgisoff] = useState(switchtoggle.bgoff);
   const [txtcolor, setTxtcolor] = useState(switchtoggle.txtcoloron);
+  const [txtcoloroff, setTxtcoloroff] = useState(switchtoggle.txtcoloroff);
   const [txton, setTxton] = useState(switchtoggle.texton);
   const [txtoff, setTxtoff] = useState(switchtoggle.textoff);
   const [txtsize, setTxtsize] = useState(switchtoggle.textsize);
   const [borcolor, setBorcolor] = useState(switchtoggle.bordercolor);
   const wid = useRef(switchtoggle.w);
   const hei = useRef(switchtoggle.h);
-  const bor = useRef(switchtoggle.border)
-  const radius = useRef(switchtoggle.borderradius)
+  const bor = useRef(switchtoggle.border);
+  const radius = useRef(switchtoggle.borderradius);
 
-  const handleSaveChange = (e) => {
-    switchtoggle.bgoff = bgisoff;
-    switchtoggle.bgon = bgison;
-    switchtoggle.txtcoloron = txtcolor;
-    switchtoggle.texton = txton;
-    switchtoggle.textoff = txtoff;
-    switchtoggle.textsize = txtsize;
-    switchtoggle.w = wid.current.value;
-    switchtoggle.h = hei.current.value;
+  const handleSaveChange1 = (e) => {
+    if (txton !== "") {
+      switchtoggle.texton = txton;
+    }
+    if (bgison !== "") {
+      switchtoggle.bgon = bgison;
+    }
+    if (txtcolor) {
+      switchtoggle.txtcoloron = txtcolor;
+    }
+    envDispatch({ type: "SET_TOGGLE", payload: switchtoggle });
+  };
+
+  const handleSaveChange2 = (e) => {
+    if (txtoff !== "") {
+      switchtoggle.textoff = txtoff;
+    }
+    if (bgisoff !== "") {
+      switchtoggle.bgoff = bgisoff;
+    }
+    if (txtcoloroff !== "") {
+      switchtoggle.txtcoloroff = txtcoloroff;
+    }
+    envDispatch({ type: "SET_TOGGLE", payload: switchtoggle });
+  };
+
+  const handleSaveChange3 = (e) => {
+    if (wid.current.value !== "") {
+      switchtoggle.w = wid.current.value;
+    }
+    if (hei.current.value !== "") {
+      switchtoggle.h = hei.current.value;
+    }
+    if (txtsize !== "") {
+      switchtoggle.textsize = txtsize;
+    }
+    envDispatch({ type: "SET_TOGGLE", payload: switchtoggle });
+  };
+
+  const handleSaveChange4 = (e) => {
     switchtoggle.border = bor.current.value;
     switchtoggle.borderradius = radius.current.value;
     switchtoggle.bordercolor = borcolor;
     envDispatch({ type: "SET_TOGGLE", payload: switchtoggle });
-    console.log(switchtoggle);
   };
 
   return (
@@ -39,7 +70,7 @@ export default function SwitchToggleSetting() {
         <div className="DAT_Setting-Switch-Row" id="1">
           <input placeholder="ON: 7"></input>
           <input
-            placeholder="TEXT:ON"
+            placeholder={"TEXT: " + switchtoggle.texton}
             onChange={(e) => setTxton(e.currentTarget.value)}
           ></input>
           <div className="DAT_Setting-Switch-Row-BackgroundColorOn">
@@ -58,12 +89,12 @@ export default function SwitchToggleSetting() {
               onChange={(e) => setTxtcolor(e.currentTarget.value)}
             ></input>
           </div>
-          <button onClick={(e) => handleSaveChange(e)}>Chọn</button>
+          <button onClick={(e) => handleSaveChange1(e)}>Chọn</button>
         </div>
         <div className="DAT_Setting-Switch-Row" id="2">
           <input placeholder="OFF: 8"></input>
           <input
-            placeholder="TEXT:OFF"
+            placeholder={"TEXT: " + switchtoggle.textoff}
             onChange={(e) => setTxtoff(e.currentTarget.value)}
           ></input>
           <div className="DAT_Setting-Switch-Row-BackgroundColorOff">
@@ -74,6 +105,19 @@ export default function SwitchToggleSetting() {
               onChange={(e) => setBgisoff(e.currentTarget.value)}
             ></input>
           </div>
+          <div className="DAT_Setting-Switch-Row-TextColorOff">
+            Màu text
+            <input
+              type="color"
+              value={txtcoloroff}
+              onChange={(e) => setTxtcoloroff(e.currentTarget.value)}
+            ></input>
+          </div>
+          <button onClick={(e) => handleSaveChange2(e)}>Chọn</button>
+        </div>
+        <div className="DAT_Setting-Switch-Row" id="3">
+          <input placeholder={"Width: " + switchtoggle.w} ref={wid}></input>
+          <input placeholder={"Height: " + switchtoggle.h} ref={hei}></input>
           <input
             className="DAT_Setting-Switch-Row-TextSize"
             type="number"
@@ -81,14 +125,9 @@ export default function SwitchToggleSetting() {
             min={6}
             max={100}
             step={2}
-            onChange={(e)=>setTxtsize(e.currentTarget.value)}
+            onChange={(e) => setTxtsize(e.currentTarget.value)}
           ></input>
-          <button onClick={(e)=>handleSaveChange(e)}>Chọn</button>
-        </div>
-        <div className="DAT_Setting-Switch-Row" id="3">
-          <input placeholder="Width: " ref={wid} ></input>
-          <input placeholder="Height: "ref={hei} ></input>
-          <button onClick={(e)=>handleSaveChange(e)}>Chọn</button>
+          <button onClick={(e) => handleSaveChange3(e)}>Chọn</button>
         </div>
         <div className="DAT_Setting-Switch-Row" id="4">
           <input
@@ -96,15 +135,19 @@ export default function SwitchToggleSetting() {
             type="number"
             defaultValue={6}
             step={1}
-            placeholder="Border: 6px"
+            placeholder={"Border: " + switchtoggle.border}
             ref={bor}
           ></input>
           <input placeholder="Border radius: 55px" ref={radius}></input>
           <div className="DAT_Setting-Switch-Row-BorderColor">
             Màu border:
-            <input type="color" value={borcolor} onChange={(e) => setBorcolor(e.currentTarget.value)}></input>
+            <input
+              type="color"
+              value={borcolor}
+              onChange={(e) => setBorcolor(e.currentTarget.value)}
+            ></input>
           </div>
-          <button onClick={(e)=>handleSaveChange(e)}>Chọn</button>
+          <button onClick={(e) => handleSaveChange4(e)}>Chọn</button>
         </div>
         <div className="DAT_Setting-Switch-Row" id="5">
           <select>
