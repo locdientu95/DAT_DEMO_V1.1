@@ -88,6 +88,7 @@ export default function Device() {
             <option value={"SwitchToggle"}>SwitchToggle</option>
             <option value={"TablePro"}>TablePro</option>
             <option value={"Number"}>Number</option>
+            <option value={"Lamp"}>Lamp</option>
           </select>
         </div>
         <div className="Device_Content-Container-Group">
