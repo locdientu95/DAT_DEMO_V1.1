@@ -46,11 +46,12 @@ export const INITSTATE = {
     cal: "0",
     w: "161px",
     h: "83px",
-    sizeon: "10px",
+    sizeon: "16px",
     sizeoff: "16px",
     txtcoloron: "#000000",
     txtcoloroff: "#000000",
     type: "button",
+    borderradius: "10px"
   },
 
   bardata: {
@@ -71,9 +72,10 @@ export const INITSTATE = {
   switchtoggle: {
     texton: "Bật",
     textoff: "Tắt",
-    bgon: "#04da97",
+    bgon: "#ffffff",
     bgoff: "#ffffff",
     txtcoloron: "#000000",
+    txtcoloroff: "#000000",
     textsize: 20,
     w: "450",
     h: "150",

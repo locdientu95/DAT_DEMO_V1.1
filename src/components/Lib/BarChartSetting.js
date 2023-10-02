@@ -2,7 +2,6 @@ import React, { useContext, useRef, useState } from "react";
 import { EnvContext } from "../Context/EnvContext";
 import "./Setting.scss";
 
-
 export default function BarChartSetting() {
   const { bardata, envDispatch } = useContext(EnvContext);
   // BAR VARIABLES
@@ -13,23 +12,60 @@ export default function BarChartSetting() {
   const he = useRef("400px");
   const [bgbar, setBgbar] = useState(bardata.bgcolor);
   const [vlbar, setVlbar] = useState(bardata.realdatacolor);
-  const [step,setStep] = useState(bardata.scale);
+  const [step, setStep] = useState(bardata.scale);
   const [type, setType] = useState(bardata.type);
 
   //BAR FUNCTION
   const handlePushData = (e) => {
-    bardata.min = mini.current.value;
-    bardata.max = maxi.current.value;
     bardata.realdata = value.current.value;
-    bardata.w = wi.current.value + "px";
-    bardata.h = he.current.value + "px";
-    bardata.bgcolor = bgbar;
-    bardata.realdatacolor = vlbar;
-    bardata.scale = step;
-    bardata.type = type;
     envDispatch({ type: "SET_BARDATA", payload: bardata });
     console.log("minvalue", bardata);
     console.log(type);
+  };
+
+  const handleSaveChange1 = (e) => {
+    if (mini.current.value !== "") {
+      bardata.min = mini.current.value;
+    }
+
+    envDispatch({ type: "SET_BARDATA", payload: bardata });
+    console.log(bardata);
+  };
+
+  const handleSaveChange2 = (e) => {
+    if (maxi.current.value !== "") {
+      bardata.max = maxi.current.value;
+    }
+    envDispatch({ type: "SET_BARDATA", payload: bardata });
+    console.log(bardata);
+  };
+
+  const handleSaveChange3 = (e) => {
+    if (wi.current.value !== "") {
+      bardata.w = wi.current.value + "px";
+    }
+    if (he.current.value !== "") {
+      bardata.h = he.current.value + "px";
+    }
+    envDispatch({ type: "SET_BARDATA", payload: bardata });
+  };
+
+  const handleSaveChange4 = (e) => {
+    if (type !== "") {
+      bardata.type = type;
+    }
+    if (bgbar !== "") {
+      bardata.bgcolor = bgbar;
+    }
+    if (vlbar !== "") {
+      bardata.realdatacolor = vlbar;
+    }
+    envDispatch({ type: "SET_BARDATA", payload: bardata });
+  };
+
+  const handleSaveChange5 = (e) => {
+    bardata.scale = step;
+    envDispatch({ type: "SET_BARDATA", payload: bardata });
   };
 
   return (
@@ -37,44 +73,44 @@ export default function BarChartSetting() {
       <div className="DAT_Setting-Bar-Row" id="1">
         <input
           className="DAT_Setting-Bar-Row-MinValue"
-          placeholder="Min: 0"
+          placeholder={"Min: " + bardata.min} 
           ref={mini}
         ></input>
         <input
           className="DAT_Setting-Bar-Row-AddMin"
           placeholder="Nhập thanh ghi"
         ></input>
-        <button onClick={(e) => handlePushData(e)}>Chọn</button>
+        <button onClick={(e) => handleSaveChange1(e)}>Chọn</button>
       </div>
       <div className="DAT_Setting-Bar-Row" id="2">
         <input
           className="DAT_Setting-Bar-Row-MaxValue"
-          placeholder="Max: 100"
+          placeholder={"Max: " + bardata.max}
           ref={maxi}
         ></input>
         <input
           className="DAT_Setting-Bar-Row-AddMax"
           placeholder="Nhập thanh ghi"
         ></input>
-        <button onClick={(e) => handlePushData(e)}>Chọn</button>
+        <button onClick={(e) => handleSaveChange2(e)}>Chọn</button>
       </div>
       <div className="DAT_Setting-Bar-Row" id="3">
         <input
           className="DAT_Setting-Bar-Row-Width"
-          placeholder="Width: "
+          placeholder={"Width: "+ bardata.w}
           ref={wi}
         ></input>
         <input
           className="DAT_Setting-Bar-Row-Height"
-          placeholder="Height: "
+          placeholder={"Height: "+ bardata.h}
           ref={he}
         ></input>
-        <button onClick={(e) => handlePushData(e)}>Chọn</button>
+        <button onClick={(e) => handleSaveChange3(e)}>Chọn</button>
       </div>
       <div className="DAT_Setting-Bar-Row" id="4">
-        <select onChange={(e)=>setType(e.currentTarget.value)}>
+        <select onChange={(e) => setType(e.currentTarget.value)}>
           <option value={"vertical"}>Chiều đứng</option>
-          <option value={"horizontal"} >Chiều ngang</option>
+          <option value={"horizontal"}>Chiều ngang</option>
         </select>
         <div className="DAT_Setting-Bar-Row-BackgroundColor">
           Màu nền
@@ -92,20 +128,20 @@ export default function BarChartSetting() {
             onChange={(e) => setVlbar(e.currentTarget.value)}
           ></input>
         </div>
-        <button onClick={(e) => handlePushData(e)}>Chọn</button>
+        <button onClick={(e) => handleSaveChange4(e)}>Chọn</button>
       </div>
       <div className="DAT_Setting-Bar-Row" id="5">
         <input
           className="DAT_Setting-Bar-Row-Scale"
           placeholder="Scale: 25"
           value={step}
-          onChange={(e)=> setStep(e.currentTarget.value)}
+          onChange={(e) => setStep(e.currentTarget.value)}
         ></input>
         <div className="DAT_Setting-Bar-Row-ValueColor">
           Thước đo
           <input type="color"></input>
         </div>
-        <button onClick={(e)=>handlePushData(e)}>Chọn</button>
+        <button onClick={(e) => handleSaveChange5(e)}>Chọn</button>
       </div>
       <div className="DAT_Setting-Bar-Row" id="6">
         <select>

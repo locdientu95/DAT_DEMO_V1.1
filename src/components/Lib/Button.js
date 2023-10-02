@@ -28,6 +28,7 @@ export default function Button(props) {
         <div
           className="DAT_Button-InvertButton"
           style={{
+            borderRadius: props.setting.borderradius + "px",
             backgroundColor: state
               ? String(props.setting.bgon)
               : String(props.setting.bgoff),
@@ -53,6 +54,7 @@ export default function Button(props) {
           onMouseDown={handleMouseDown}
           onMouseLeave={handleMouseUp}
           style={{
+            borderRadius: props.setting.borderradius + "px",
             backgroundColor:
               press === true
                 ? String(props.setting.bgon)
