@@ -13,9 +13,6 @@ export default function GaugeSetting() {
     //gauge.label = speed.current.value;
     //envDispatch({type: 'SET_GAUGE',payload: gauge})
 
-    // if (speed.current.value === "") {
-    //     alert("Vui lòng nhập tên");
-    // } else {
     envDispatch({
       type: "SET_GAUGE",
       payload: {
@@ -25,7 +22,8 @@ export default function GaugeSetting() {
         labelsize: fontsize.current.value,
       },
     });
-    // }
+    speed.current.value = "";
+    fontsize.current.value = "";
   };
 
   const unit = useRef();
@@ -45,6 +43,8 @@ export default function GaugeSetting() {
         },
       });
     }
+    unit.current.value = "";
+    unitsize.current.value = "";
   };
 
   const min = useRef();
@@ -60,6 +60,7 @@ export default function GaugeSetting() {
         },
       });
     }
+    min.current.value = "";
   };
 
   const max = useRef();
@@ -75,6 +76,7 @@ export default function GaugeSetting() {
         },
       });
     }
+    max.current.value = "";
   };
 
   const width = useRef();
@@ -98,6 +100,9 @@ export default function GaugeSetting() {
         },
       });
     }
+    width.current.value = "";
+    height.current.value = "";
+    segment.current.value = "";
   };
 
   const needlecolor = useRef();
@@ -140,15 +145,12 @@ export default function GaugeSetting() {
         <div className="DAT_Setting_Gauge_Row1">
           <input
             className="DAT_Setting_Gauge_Row1_Item1"
-            placeholder="Tên: TỐC ĐỘ"
+            placeholder={"Tên: " + gauge.label}
             ref={speed}
           />
           <input
+            placeholder={"Fontsize: " + gauge.labelsize}
             type="number"
-            defaultValue={20}
-            min={6}
-            max={100}
-            step={2}
             style={{ width: "200px" }}
             ref={fontsize}
           />
@@ -158,16 +160,13 @@ export default function GaugeSetting() {
 
         <div className="DAT_Setting_Gauge_Row2">
           <input
-            placeholder="Đơn vị: Hz"
             className="DAT_Setting_Gauge_Row2_Item1"
+            placeholder={"Đơn vị: " + gauge.unit}
             ref={unit}
           />
           <input
+            placeholder={"Fontsize: " + gauge.valuesize}
             type="number"
-            defaultValue={20}
-            min={6}
-            max={100}
-            step={2}
             style={{ width: "200px" }}
             ref={unitsize}
           />
@@ -177,7 +176,7 @@ export default function GaugeSetting() {
 
         <div className="DAT_Setting_Gauge_Row3">
           <input
-            placeholder="Min: 0"
+            placeholder={"Min: " + gauge.min}
             className="DAT_Setting_Gauge_Row3_Item1"
             ref={min}
           ></input>
@@ -190,7 +189,7 @@ export default function GaugeSetting() {
 
         <div className="DAT_Setting_Gauge_Row4">
           <input
-            placeholder="Max: 50"
+            placeholder={"Max: " + gauge.max}
             className="DAT_Setting_Gauge_Row4_Item1"
             ref={max}
           ></input>
@@ -203,19 +202,23 @@ export default function GaugeSetting() {
 
         <div className="DAT_Setting_Gauge_Row5">
           <input
-            placeholder="Width: 500"
             className="DAT_Setting_Gauge_Row5_Item1"
+            placeholder={"Width: " + gauge.width}
             ref={width}
           />
-          <input placeholder="Height: 300" ref={height} />
-          <input type="number" placeholder="Scale: 10" ref={segment} />
+          <input placeholder={"Height: " + gauge.height} ref={height} />
+          <input
+            type="number"
+            placeholder={"Scale: " + gauge.segment}
+            ref={segment}
+          />
           <button onClick={(e) => handleCustom(e)}>Chọn</button>
         </div>
 
         <div className="DAT_Setting_Gauge_Row6">
           <input
-            type="color"
             className="DAT_Setting_Gauge_Row6_Item1"
+            type="color"
             ref={needlecolor}
           />
           <input type="color" ref={startcolor} />

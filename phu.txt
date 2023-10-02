@@ -1,3 +1,4 @@
 Phu upload 27/09/2023 route, sửa tên trong Setting.scss, gộp source, fix trang Content.js
 Phu upload 28/09/2023 chỉnh trang Gauge, chỉnh trang Account, chỉnh trang Device, làm trang SliderBar
 Phu upload 29/09/2023 hoàn thiện trang SliderBar, làm trang Number
+Phu upload 2/10/2023 hoàn thiện trang Number
