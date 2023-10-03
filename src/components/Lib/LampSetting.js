@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "./Setting.scss";
 import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
@@ -6,8 +6,64 @@ import { EnvContext } from "../Context/EnvContext";
 export default function LampSetting() {
   const { lamp, envDispatch } = useContext(EnvContext);
 
+  // Map data
+  // useEffect(() => {
+  //   Object.entries(lamp.data).map(([key]) => console.log(lamp.data[key]));
+  // }, []);
+
+  const value = useRef();
+  const bgcolor = useRef();
+  const text = useRef();
+  const textcolor = useRef();
+  const handleAdd = (e) => {
+    envDispatch({
+      type: "SET_LAMP",
+      payload: {
+        ...lamp,
+        data: {
+          ...lamp.data,
+          [value.current.value]: {
+            text: text.current.value,
+            color: textcolor.current.value,
+            bgcolor: bgcolor.current.value,
+          },
+        },
+      },
+    });
+    value.current.value = "";
+    bgcolor.current.value = "";
+    text.current.value = "";
+    textcolor.current.value = "";
+  };
+
+  const handleDelete = (e) => {
+    // const key = e.target.parentNode.parentNode.firstChild.innerHTML;
+    // const { [key]: value, ...newData } = lamp.data;
+    // console.log(newData);
+    // envDispatch({
+    //   type: "SET_LAMP",
+    //   payload: {
+    //     ...lamp,
+    //     data: newData,
+    //   },
+    // });
+
+    // console.log(e.target.parentNode.parentNode.firstChild.innerHTML);
+    delete lamp.data[e.target.parentNode.parentNode.firstChild.innerHTML];
+    console.log(lamp.data);
+
+    envDispatch({
+      type: "SET_LAMP",
+      payload: {
+        ...lamp,
+        data: lamp.data,
+      },
+    });
+  };
+
   const width = useRef();
   const height = useRef();
+  const fontsize = useRef();
   const handleCustom = (e) => {
     envDispatch({
       type: "SET_LAMP",
@@ -15,10 +71,12 @@ export default function LampSetting() {
         ...lamp,
         width: width.current.value,
         height: height.current.value,
+        fontsize: fontsize.current.value,
       },
     });
     width.current.value = "";
     height.current.value = "";
+    fontsize.current.value = "";
   };
 
   const border = useRef();
@@ -41,25 +99,31 @@ export default function LampSetting() {
   return (
     <div className="DAT_Setting-Lamp">
       <div className="DAT_Setting-Lamp-Row1">
-        <input className="DAT_Setting-Lamp-Row1-Item1" placeholder="Value" />
-        <input type="color" />
-        <input placeholder="text" />
-        <input type="color" />
-        <button>Thêm</button>
+        <input
+          className="DAT_Setting-Lamp-Row1-Item1"
+          placeholder={"Value: " + lamp.value}
+          ref={value}
+        />
+        <input type="color" ref={bgcolor} />
+        <input placeholder="text" ref={text} />
+        <input type="color" ref={textcolor} />
+        <button onClick={(e) => handleAdd(e)}>Thêm</button>
       </div>
 
       <div className="DAT_Setting-Lamp-Row2">
         <table>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>bg color</td>
-              <td>text</td>
-              <td>text color</td>
-              <td>
-                <button>Xóa</button>
-              </td>
-            </tr>
+            {Object.entries(lamp.data).map(([key]) => (
+              <tr key={key}>
+                <td>{key}</td>
+                <td style={{ backgroundColor: lamp.data[key].bgcolor }}></td>
+                <td>{lamp.data[key].text}</td>
+                <td style={{ backgroundColor: lamp.data[key].color }}></td>
+                <td>
+                  <button onClick={(e) => handleDelete(e)}>Xóa</button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -68,9 +132,10 @@ export default function LampSetting() {
         <input
           className="DAT_Setting-Lamp-Row3-Item1"
           placeholder={"Width: " + lamp.width}
+          ref={width}
         />
-        <input placeholder={"Height: " + lamp.height} />
-        <input placeholder={"Font Size: " + lamp.fontsize} />
+        <input placeholder={"Height: " + lamp.height} ref={height} />
+        <input placeholder={"Font Size: " + lamp.fontsize} ref={fontsize} />
         <button onClick={(e) => handleCustom(e)}>Chọn</button>
       </div>
 
@@ -78,9 +143,13 @@ export default function LampSetting() {
         <input
           className="DAT_Setting-Lamp-Row4-Item1"
           placeholder={"Border: " + lamp.border}
+          ref={border}
         />
-        <input placeholder={"Border Radius: " + lamp.borderradius} />
-        <input type="color" />
+        <input
+          placeholder={"Border Radius: " + lamp.borderradius}
+          ref={borderradius}
+        />
+        <input type="color" ref={bordercolor} />
         <button onClick={(e) => handleBorder(e)}>Chọn</button>
       </div>
 

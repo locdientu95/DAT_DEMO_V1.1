@@ -937,8 +937,8 @@
 
 
 
-    &-TablePro{
-        
+    &-TablePro {}
+
 
     &-Lamp {
         &-Row1 {
@@ -984,6 +984,12 @@
             table {
                 border-collapse: collapse;
                 width: 100%;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
             }
         }
 
@@ -1115,6 +1121,7 @@
             }
         }
     }
+
 }
 
 .DAT_Gauge {
@@ -1347,8 +1354,4 @@ $font-size: 30px;
     justify-content: center;
     align-items: center;
     padding: 5px;
-    border: solid 2px #000;
-    width: 100px;
-    height: 30px;
-}
 }
