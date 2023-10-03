@@ -89,7 +89,7 @@ export const INITSTATE = {
     value: 0,
     data: {
       0: { text: "hello", color: "#ff0000", bgcolor: "#00FF04" },
-      1: { text: "world", color: "#0000ff", bgcolor: "#00FF04" },
+      1: { text: "world", color: "#0000ff", bgcolor: "#ff0000" },
     },
     width: "100",
     height: "30",
@@ -97,6 +97,7 @@ export const INITSTATE = {
     border: "2",
     borderradius: "10",
     bordercolor: "#000000",
+    posi: "center",
   },
 
   tablepro: {

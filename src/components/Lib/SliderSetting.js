@@ -34,7 +34,22 @@ export default function SliderSetting() {
   const scale = useRef();
   const ori = useRef();
   const handleCustom = (e) => {
-    console.log(ori.current.value);
+    // if (width.current.value !== "") {
+    //   slider.width = width.current.value;
+    // }
+
+    // if (height.current.value !== "") {
+    //   slider.height = height.current.value;
+    // }
+
+    // if (scale.current.value !== "") {
+    //   slider.scale = scale.current.value;
+    // }
+
+    // envDispatch({
+    //   type: "SET_SLIDER",
+    //   payload: slider,
+    // });
 
     if (ori.current.value === "horizontal") {
       envDispatch({
@@ -59,6 +74,7 @@ export default function SliderSetting() {
         },
       });
     }
+
     width.current.value = "";
     height.current.value = "";
     scale.current.value = "";
@@ -70,6 +86,14 @@ export default function SliderSetting() {
   const trackcolor = useRef();
   const railcolor = useRef();
   const handleColor = (e) => {
+    if (thumbborder.current.value !== "") {
+      slider.thumb.border = thumbborder.current.value;
+    }
+
+    if (trackborder.current.value !== "") {
+      slider.track.border = trackborder.current.value;
+    }
+
     envDispatch({
       type: "SET_SLIDER",
       payload: {
@@ -87,6 +111,7 @@ export default function SliderSetting() {
         },
       },
     });
+
     thumbborder.current.value = "";
     trackborder.current.value = "";
   };
@@ -140,12 +165,15 @@ export default function SliderSetting() {
           placeholder={"Thumb Border: " + slider.thumb.border}
           ref={thumbborder}
         ></input>
+        <span>Màu nút: </span>
         <input type="color" ref={thumbcolor}></input>
         <input
           placeholder={"Value Border: " + slider.track.border}
           ref={trackborder}
         ></input>
+        <span>Màu giá trị: </span>
         <input type="color" ref={trackcolor}></input>
+        <span>Màu nền: </span>
         <input type="color" ref={railcolor}></input>
         <button onClick={(e) => handleColor(e)}>Chọn</button>
       </div>

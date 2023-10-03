@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import "./Setting.scss";
 import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
+import { useState } from "react";
 
 export default function LampSetting() {
   const { lamp, envDispatch } = useContext(EnvContext);
@@ -30,25 +31,9 @@ export default function LampSetting() {
         },
       },
     });
-    value.current.value = "";
-    bgcolor.current.value = "";
-    text.current.value = "";
-    textcolor.current.value = "";
   };
 
   const handleDelete = (e) => {
-    // const key = e.target.parentNode.parentNode.firstChild.innerHTML;
-    // const { [key]: value, ...newData } = lamp.data;
-    // console.log(newData);
-    // envDispatch({
-    //   type: "SET_LAMP",
-    //   payload: {
-    //     ...lamp,
-    //     data: newData,
-    //   },
-    // });
-
-    // console.log(e.target.parentNode.parentNode.firstChild.innerHTML);
     delete lamp.data[e.target.parentNode.parentNode.firstChild.innerHTML];
     console.log(lamp.data);
 
@@ -65,6 +50,18 @@ export default function LampSetting() {
   const height = useRef();
   const fontsize = useRef();
   const handleCustom = (e) => {
+    if (width.current.value !== "") {
+      lamp.width = width.current.value;
+    }
+
+    if (height.current.value !== "") {
+      lamp.height = height.current.value;
+    }
+
+    if (fontsize.current.value !== "") {
+      lamp.fontsize = fontsize.current.value;
+    }
+
     envDispatch({
       type: "SET_LAMP",
       payload: {
@@ -74,14 +71,15 @@ export default function LampSetting() {
         fontsize: fontsize.current.value,
       },
     });
-    width.current.value = "";
-    height.current.value = "";
-    fontsize.current.value = "";
+    // width.current.value = "";
+    // height.current.value = "";
+    // fontsize.current.value = "";
   };
 
   const border = useRef();
   const borderradius = useRef();
   const bordercolor = useRef();
+  const posi = useRef();
   const handleBorder = (e) => {
     envDispatch({
       type: "SET_LAMP",
@@ -90,10 +88,23 @@ export default function LampSetting() {
         border: border.current.value,
         borderradius: borderradius.current.value,
         bordercolor: bordercolor.current.value,
+        posi: posi.current.value,
       },
     });
-    border.current.value = "";
-    borderradius.current.value = "";
+    // border.current.value = "";
+    // borderradius.current.value = "";
+  };
+
+  const edit = useRef();
+  const handleEdit = (e) => {
+    envDispatch({
+      type: "SET_LAMP",
+      payload: {
+        ...lamp,
+        value: edit.current.value,
+      },
+    });
+    edit.current.value = "";
   };
 
   return (
@@ -150,6 +161,11 @@ export default function LampSetting() {
           ref={borderradius}
         />
         <input type="color" ref={bordercolor} />
+        <select ref={posi}>
+          <option value={"left"}>Left</option>
+          <option value={"center"}>Center</option>
+          <option value={"right"}>Right</option>
+        </select>
         <button onClick={(e) => handleBorder(e)}>Chọn</button>
       </div>
 
@@ -182,8 +198,8 @@ export default function LampSetting() {
       </div>
 
       <div className="DAT_Setting-Lamp-Row7">
-        <input placeholder="0"></input>
-        <button>Xác nhận</button>
+        <input placeholder="0" ref={edit}></input>
+        <button onClick={(e) => handleEdit(e)}>Xác nhận</button>
       </div>
     </div>
   );
