@@ -19,6 +19,7 @@ export const EnvContextProvider = ({ children }) => {
         tablepro: state.tablepro,
         number: state.number,
         lamp: state.lamp,
+        barchart: state.barchart,
         envDispatch,
       }}
     >

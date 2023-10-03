@@ -3,3 +3,8 @@ Tai Upload  27/9/2023 bar, button, Home, Content, select lib, rowbar
 "igniteui-react-gauges" library rowbar
 
 29/9/2023: Can thiep Switch, Reducer
+
+3/10/2023: Install thu vien npm install @mui/x-charts (BARCHART)
+import { BarChart } from '@mui/x-charts/BarChart';
+import { axisClasses } from '@mui/x-charts';
+

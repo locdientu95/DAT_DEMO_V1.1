@@ -13,15 +13,19 @@ export default function GaugeSetting() {
     //gauge.label = speed.current.value;
     //envDispatch({type: 'SET_GAUGE',payload: gauge})
 
+    if (speed.current.value !== "") {
+      gauge.label = speed.current.value;
+    }
+
+    if (fontsize.current.value !== "") {
+      gauge.labelsize = fontsize.current.value;
+    }
+
     envDispatch({
       type: "SET_GAUGE",
-      payload: {
-        ...gauge,
-        label: speed.current.value,
-        labelcolor: color.current.value,
-        labelsize: fontsize.current.value,
-      },
+      payload: gauge,
     });
+
     speed.current.value = "";
     fontsize.current.value = "";
   };
@@ -30,52 +34,46 @@ export default function GaugeSetting() {
   const unitsize = useRef();
   const unitcolor = useRef();
   const handleUnit = (e) => {
-    if (unit.current.value === "") {
-      alert("Vui lòng nhập đơn vị");
-    } else {
-      envDispatch({
-        type: "SET_GAUGE",
-        payload: {
-          ...gauge,
-          unit: unit.current.value,
-          valuesize: unitsize.current.value,
-          valuecolor: unitcolor.current.value,
-        },
-      });
+    if (unit.current.value !== "") {
+      gauge.unit = unit.current.value;
     }
+
+    if (unitsize.current.value !== "") {
+      gauge.valuesize = unitsize.current.value;
+    }
+
+    envDispatch({
+      type: "SET_GAUGE",
+      payload: gauge,
+    });
+
     unit.current.value = "";
     unitsize.current.value = "";
   };
 
   const min = useRef();
   const handleMin = (e) => {
-    if (min.current.value === "") {
-      alert("Vui lòng nhập giá trị min");
-    } else {
-      envDispatch({
-        type: "SET_GAUGE",
-        payload: {
-          ...gauge,
-          min: min.current.value,
-        },
-      });
-    }
+    envDispatch({
+      type: "SET_GAUGE",
+      payload: {
+        ...gauge,
+        min: min.current.value,
+      },
+    });
+
     min.current.value = "";
   };
 
   const max = useRef();
   const handleMax = (e) => {
-    if (max.current.value === "") {
-      alert("Vui lòng nhập giá trị max");
-    } else {
-      envDispatch({
-        type: "SET_GAUGE",
-        payload: {
-          ...gauge,
-          max: max.current.value,
-        },
-      });
-    }
+    envDispatch({
+      type: "SET_GAUGE",
+      payload: {
+        ...gauge,
+        max: max.current.value,
+      },
+    });
+
     max.current.value = "";
   };
 
@@ -83,23 +81,23 @@ export default function GaugeSetting() {
   const height = useRef();
   const segment = useRef();
   const handleCustom = (e) => {
-    if (width.current.value === "") {
-      alert("Vui lòng nhập giá trị width");
-    } else if (height.current.value === "") {
-      alert("Vui lòng nhập giá trị height");
-    } else if (segment.current.value === "") {
-      alert("Vui lòng nhập giá trị scale");
-    } else {
-      envDispatch({
-        type: "SET_GAUGE",
-        payload: {
-          ...gauge,
-          width: width.current.value,
-          height: height.current.value,
-          segment: segment.current.value,
-        },
-      });
+    if (width.current.value !== "") {
+      gauge.width = width.current.value;
     }
+
+    if (height.current.value !== "") {
+      gauge.height = height.current.value;
+    }
+
+    if (segment.current.value !== "") {
+      gauge.segment = segment.current.value;
+    }
+
+    envDispatch({
+      type: "SET_GAUGE",
+      payload: gauge,
+    });
+
     width.current.value = "";
     height.current.value = "";
     segment.current.value = "";
@@ -154,6 +152,7 @@ export default function GaugeSetting() {
             style={{ width: "200px" }}
             ref={fontsize}
           />
+          <span>Màu chữ: </span>
           <input type="color" style={{ width: "200px" }} ref={color} />
           <button onClick={(e) => handleTit(e)}>Chọn</button>
         </div>
@@ -170,6 +169,7 @@ export default function GaugeSetting() {
             style={{ width: "200px" }}
             ref={unitsize}
           />
+          <span>Màu đơn vị: </span>
           <input type="color" style={{ width: "200px" }} ref={unitcolor} />
           <button onClick={(e) => handleUnit(e)}>Chọn</button>
         </div>
@@ -216,12 +216,11 @@ export default function GaugeSetting() {
         </div>
 
         <div className="DAT_Setting_Gauge_Row6">
-          <input
-            className="DAT_Setting_Gauge_Row6_Item1"
-            type="color"
-            ref={needlecolor}
-          />
+          <span className="DAT_Setting_Gauge_Row6_Item1">Màu kim: </span>
+          <input type="color" ref={needlecolor} />
+          <span>Màu bắt đầu: </span>
           <input type="color" ref={startcolor} />
+          <span>Màu kết thúc: </span>
           <input type="color" ref={endcolor} />
           <button onClick={(e) => handleColor(e)}>Chọn</button>
         </div>
@@ -255,7 +254,7 @@ export default function GaugeSetting() {
         </div>
 
         <div className="DAT_Setting_Gauge_Row9">
-          <input placeholder="0" ref={cal}></input>
+          <input placeholder={"value: " + gauge.cal} ref={cal}></input>
           <button onClick={(e) => handleCal(e)}>Xác nhận</button>
         </div>
       </div>

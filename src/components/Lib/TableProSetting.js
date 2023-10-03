@@ -10,9 +10,11 @@ export default function TableProSetting() {
   const width = useRef();
   const height = useRef();
   const row = useRef();
-  const from = useRef();
-  const to = useRef();
+  const fromCol = useRef();
+  const toCol = useRef();
   const col = useRef();
+  const fromRow = useRef();
+  const toRow = useRef();
 
   const handleTable=(e) =>{
     if(width.current.value == ""){
@@ -27,8 +29,6 @@ export default function TableProSetting() {
       })
     }
   }
-
-
   const handleAddRow = (e) =>{
     const arr = []
     const updateRow = parseInt(tablepro.row)+ parseInt(row.current.value)
@@ -41,13 +41,9 @@ export default function TableProSetting() {
           newRow[data.code]=0
         }
       })  
-      
       arr.push(newRow)
-      console.log(arr)
-      
     }
     const newDataTable = tablepro.data.concat(arr)
-      console.log(newDataTable)
       envDispatch({
         type: "SET_TABLEPRO",
         payload:{
@@ -56,20 +52,25 @@ export default function TableProSetting() {
           data: newDataTable
         }
       })
+      console.log(updateRow,col.current.value)
   }
 
   const handleDeleteRow = (e) =>{
-    const start = from.current.value
-    const end = to.current.value
-    const newData = tablepro.data.filter(data=>{
-       return parseInt(data.id) < parseInt(start) || parseInt(data.id) > parseInt(end)
+    const start = fromRow.current.value
+    const end = toRow.current.value
+    if (start>end){
+      alert("Không hợp lệ")
+    }
+    var newData = tablepro.data
+     newData = newData.filter(newData=>{
+       return newData.id < parseInt(start) || newData.id > parseInt(end)
     })
 
     // Tính năng cập nhật lại ID sau khi xóa (Đang tắt)
     // newData.map((data,index) =>{
     //   data.id = index+1
     // })
-
+    console.log(newData)
     envDispatch({
       type: "SET_TABLEPRO",
       payload:{
@@ -83,17 +84,16 @@ export default function TableProSetting() {
 }
 
 const handleAddCol = (e) =>{
-  const leng = tablepro.head.length
-  const sum = parseInt(col.current.value) + parseInt(tablepro.head.length)
+  const leng = tablepro.col
+  const sum = parseInt(col.current.value) + parseInt(leng)
   const newHead = tablepro.head
-  for (var i = tablepro.head.length+1; i<= sum; i++){
-    newHead.push({name: "Giá Trị " + (tablepro.head.length) ,code: "val"+(tablepro.head.length)})
+  for (var i = leng+1; i<= sum; i++){
+    newHead.push({name: "Giá Trị " + i ,code: "val"+i})
   }
-  console.log(tablepro.head)
   const newData =[]
   tablepro.data.map((data,index)=>{
     var x = data
-    for (var i = leng; i< sum; i++){      
+    for (var i = leng; i<= sum; i++){      
       x["val"+i] = 0
     }
     newData.push(x)
@@ -103,28 +103,53 @@ const handleAddCol = (e) =>{
     payload:{
       ...tablepro,
       data: newData,
-      head: newHead
+      head: newHead,
+      col: sum
     }
   })
-
 }
 
 const handleDeleteCol = (e) =>{
-  const start = from.current.value
-  const end = to.current.value
-  const newHead = tablepro.head.filter((data,index)=>{
-    if (index < parseInt(start) || index > parseInt(end)){
-      return data
-    } 
- })
-//  envDispatch({
-//   type: "SET_TABLEPRO",
-//   payload:{
-//     ...tablepro,
-//     head: newHead,
-//   }
-// })
+  const start = fromCol.current.value
+  const end = toCol.current.value
+  const label = "val"
+  var num = parseInt(tablepro.col) - parseInt(parseInt(end)-parseInt(start))
+  var newHead = tablepro.head
+  for (var i = start;i<=end;i++){
+      newHead = newHead.filter( newHead =>  newHead.code != label+i)
+     
+  }
+  const newData = tablepro.data
+  newData.map((data,index)=>{
+    for (var i = start;i<=end;i++){
+      delete data["val"+i]
+    }
+  })
+    // Cập nhật lại các tên trên header
+    // newHead.map((data,index) =>{
+    //   if (index>0){
+    //     data.name = "Giá Trị "+index 
+    //     data.code ="val"+index
+    //   }
+    // })
+ envDispatch({
+  type: "SET_TABLEPRO",
+  payload:{
+    ...tablepro,
+    head: newHead,
+    data: newData,
+    
+  }
+})
 }
+
+// useEffect(()=>{
+//   console.log("HEAD",tablepro.head)
+//   console.log("DATA",tablepro.data)
+//   console.log("COL",tablepro.col)
+//   console.log("ROW",tablepro.row)
+// },[tablepro])
+
   return (
     <div className='DAT_Setting-TablePro'>
       <div className='DAT_Setting-TablePro-Row1'>
@@ -142,14 +167,14 @@ const handleDeleteCol = (e) =>{
       </div>
 
       <div className='DAT_Setting-TablePro-Row4'>
-      <input className='DAT_Setting-TablePro-Row4-RmFrom' placeholder='Xóa Hàng Từ STT' ref={from}/>
-      <input className='DAT_Setting-TablePro-Row4-RmTo' placeholder='Xóa hàng đến STT' ref={to}/>
+      <input className='DAT_Setting-TablePro-Row4-RmFrom' placeholder='Xóa Hàng Từ STT' ref={fromRow}/>
+      <input className='DAT_Setting-TablePro-Row4-RmTo' placeholder='Xóa hàng đến STT' ref={toRow}/>
       <button className='DAT_Setting-TablePro-Row4-Submit'onClick={(e)=>handleDeleteRow(e)}>Xóa</button>
       </div>
 
       <div className='DAT_Setting-TablePro-Row5'>
-      <input className='DAT_Setting-TablePro-Row5-RmFrom' placeholder='Xóa Cột Từ STT' ref={from}/>
-      <input className='DAT_Setting-TablePro-Row5-RmTo' placeholder='Xóa Cột đến STT' ref={to}/>
+      <input className='DAT_Setting-TablePro-Row5-RmFrom' placeholder='Xóa Cột Từ STT' ref={fromCol}/>
+      <input className='DAT_Setting-TablePro-Row5-RmTo' placeholder='Xóa Cột đến STT' ref={toCol}/>
       <button className='DAT_Setting-TablePro-Row5-Submit'onClick={(e)=>handleDeleteCol(e)}>Xóa</button>
       </div>
 
