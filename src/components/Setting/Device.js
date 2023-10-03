@@ -3,8 +3,8 @@ import "./Device.scss";
 import { EnvContext } from "../Context/EnvContext";
 import Button from "../Lib/Button";
 import ButtonSetting from "../Lib/ButtonSetting";
-import BarChart from "../Lib/BarChart";
-import BarChartSetting from "../Lib/BarChartSetting";
+import BarTank from "../Lib/BarTank";
+import BarTankSetting from "../Lib/BarTankSetting";
 import Gauge from "../Lib/Gauge";
 import GaugeSetting from "../Lib/GaugeSetting";
 import SliderBar from "../Lib/SliderBar";
@@ -30,7 +30,7 @@ export default function Device() {
 
   const data = {
     Button: <Button setting={button}></Button>,
-    Bar: <BarChart setting={bardata}></BarChart>,
+    Bar: <BarTank setting={bardata}></BarTank>,
     Gauge: <Gauge setting={gauge}></Gauge>,
     SliderBar: <SliderBar setting={slider}></SliderBar>,
     SwitchToggle: <SwitchToggle setting={switchtoggle}></SwitchToggle>,
@@ -41,7 +41,7 @@ export default function Device() {
 
   const setting = {
     Button: <ButtonSetting />,
-    Bar: <BarChartSetting />,
+    Bar: <BarTankSetting />,
     Gauge: <GaugeSetting />,
     SliderBar: <SliderSetting />,
     SwitchToggle: <SwitchToggleSetting />,

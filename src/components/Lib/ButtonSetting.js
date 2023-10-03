@@ -162,24 +162,24 @@ export default function ButtonSetting() {
       </div>
       <div className="DAT_Setting-Button-Row4">
         <select>
-          <option defaultValue="Inching">Cơ số 10</option>
-          <option value="Invert">Cơ số 16</option>
-          <option value="Invert">Cơ số 2_0</option>
-          <option value="Invert">Cơ số 2_1</option>
-          <option value="Invert">Cơ số 2_2</option>
-          <option value="Invert">Cơ số 2_3</option>
-          <option value="Invert">Cơ số 2_4</option>
-          <option value="Invert">Cơ số 2_5</option>
-          <option value="Invert">Cơ số 2_6</option>
-          <option value="Invert">Cơ số 2_7</option>
-          <option value="Invert">Cơ số 2_8</option>
-          <option value="Invert">Cơ số 2_9</option>
-          <option value="Invert">Cơ số 2_10</option>
-          <option value="Invert">Cơ số 2_11</option>
-          <option value="Invert">Cơ số 2_12</option>
-          <option value="Invert">Cơ số 2_13</option>
-          <option value="Invert">Cơ số 2_14</option>
-          <option value="Invert">Cơ số 2_15</option>
+          <option>Cơ số 10</option>
+          <option>Cơ số 16</option>
+          <option>Cơ số 2_0</option>
+          <option>Cơ số 2_1</option>
+          <option>Cơ số 2_2</option>
+          <option>Cơ số 2_3</option>
+          <option>Cơ số 2_4</option>
+          <option>Cơ số 2_5</option>
+          <option>Cơ số 2_6</option>
+          <option>Cơ số 2_7</option>
+          <option>Cơ số 2_8</option>
+          <option>Cơ số 2_14</option>
+          <option>Cơ số 2_9</option>
+          <option>Cơ số 2_10</option>
+          <option>Cơ số 2_11</option>
+          <option>Cơ số 2_12</option>
+          <option>Cơ số 2_13</option>
+          <option>Cơ số 2_15</option>
         </select>
       </div>
       <div className="DAT_Setting-Button-Row5">

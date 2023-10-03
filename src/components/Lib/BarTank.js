@@ -7,7 +7,7 @@ IgrLinearGaugeModule.register();
 
 //import { Bar } from "react-chartjs-2";
 
-export default function BarChart(props) {
+export default function BarTank(props) {
   return (
     <div
       style={{ display: "flex", justifyContent: "center"   }}
