@@ -14,6 +14,7 @@ export default function ButtonSetting() {
   const textisoff = useRef("OFF");
   const fsizeon = useRef(20);
   const fsizeoff = useRef(20);
+  const btnradius = useRef(button.radius)
   const [textColorOn, setTextColorOn] = useState("#000000");
   const [textColorOff, setTextColorOff] = useState("#000000");
 
@@ -51,8 +52,10 @@ export default function ButtonSetting() {
         ...button,
         w: wid + "px",
         h: hei + "px",
+        radius: btnradius.current.value + "px",
       },
     });
+    console.log(button);
   };
 
   const handleChangebutton = (e) => {
@@ -151,6 +154,11 @@ export default function ButtonSetting() {
           placeholder="Height: 83"
           value={hei}
           onChange={(e) => setHei(e.currentTarget.value)}
+        ></input>
+        <input
+          className="DAT_Setting-Button-Row-BorderRadius"
+          placeholder={button.radius}
+          ref={btnradius}
         ></input>
         <button onClick={(e) => handleSaveChangeSize(e)}>Chọn</button>
       </div>

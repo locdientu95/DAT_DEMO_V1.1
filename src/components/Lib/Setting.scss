@@ -1153,6 +1153,7 @@
         }
     }
 
+
     &-Lamp {
         &-Row1 {
             display: flex;
@@ -1345,242 +1346,303 @@
                 color: white;
                 border: none;
                 border-radius: 7px;
+
+                &-BarChart {
+                    margin-bottom: 10px;
+                    padding: 10px;
+
+                    &-Row {
+                        display: flex;
+                        margin-bottom: 10px;
+                        gap: 5px;
+                        height: 27px;
+
+                        & input {
+                            width: 100%;
+                            background-color: #d0f0ff;
+                            border-style: none;
+                            border-radius: 7px;
+                        }
+
+                        &-BackgroundColor {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+
+                            & input {
+                                width: 27px;
+                            }
+                        }
+
+                        &-ValueColor {
+                            width: 100%;
+                            align-items: center;
+                            gap: 10px;
+                            display: flex;
+
+                            & input {
+                                width: 27px;
+                            }
+                        }
+
+                        & select {
+                            width: 100%;
+                            background-color: #d0f0ff;
+                            border-radius: 7px;
+                            border-style: none;
+                        }
+
+                        &-Confirm {
+                            width: 100px;
+
+                        }
+                    }
+                }
             }
-        }
-    }
-}
 
-.DAT_Gauge {
-    &_Content {
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-        border-radius: 5px;
-        box-shadow: 0px 0px 16px 4px rgb(136, 136, 136, 0.2);
-        margin-bottom: 24px;
+            .DAT_Gauge {
+                &_Content {
+                    position: relative;
+                    width: 100%;
+                    overflow: hidden;
+                    border-radius: 5px;
+                    box-shadow: 0px 0px 16px 4px rgb(136, 136, 136, 0.2);
+                    margin-bottom: 24px;
 
-        &_Main {
-            position: relative;
-            background-color: white;
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-            padding: 24px;
+                    &_Main {
+                        position: relative;
+                        background-color: white;
+                        border-bottom-left-radius: 5px;
+                        border-bottom-right-radius: 5px;
+                        padding: 24px;
 
-            &_Data {
+                        &_Data {
+                            margin: auto;
+                            display: flex;
+                            justify-content: center;
+                        }
+
+                        & label {
+                            display: flex;
+                            justify-content: center;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+
+            .DAT_Button {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                align-items: center;
+
+                &-InvertButton {
+                    font-size: 20px;
+                    margin: 20px;
+                    padding: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 80px;
+                    height: 40px;
+                    background-color: rgb(255, 0, 0, 0.8);
+                    border-radius: 10px;
+                    font-weight: 500;
+                    cursor: pointer;
+                    box-shadow: 4px 4px 4px 4px rgb(136, 136, 136, 0.2);
+
+                    &:hover {
+                        opacity: 85%;
+                        transition: 0.2s ease-in-out;
+                    }
+                }
+
+                &-InchingButton {
+                    font-size: 20px;
+                    margin: 20px;
+                    padding: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 80px;
+                    height: 40px;
+                    background-color: rgb(255, 0, 0, 0.8);
+                    border-radius: 10px;
+                    font-weight: 500;
+                    cursor: pointer;
+                    box-shadow: 4px 4px 4px 4px rgb(136, 136, 136, 0.2);
+
+                    &:hover {
+                        opacity: 85%;
+                        transition: 0.2s ease-in-out;
+                    }
+                }
+            }
+
+            .DAT_Bar {
+                &-Tank {
+                    position: relative;
+                    margin: 20px auto;
+                    width: 100px;
+                    height: 400px;
+                    background-color: #808080;
+                    z-index: 1;
+                    // border-radius: 8px;
+
+                    &-Value {
+                        width: 100%;
+                        height: 30%;
+                        background-color: #0000ff;
+                        position: absolute;
+                        bottom: 0;
+
+                        // border-radius: 0 0 8px 8px;
+                        & p {
+                            position: absolute;
+                            margin: -20px 0;
+                            right: 0;
+                            color: #000;
+                            font-weight: 800;
+                        }
+                    }
+
+                    &-Min {
+                        z-index: 2;
+                        position: absolute;
+                        bottom: 0;
+                        color: white;
+                    }
+
+                    &-Max {
+                        z-index: 2;
+                        position: absolute;
+                        color: white;
+                    }
+                }
+            }
+
+            .DAT_SliderBar {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 8px;
+            }
+
+            $accent: #04da97;
+            $border-width: 6px;
+            $border-radius: 55px;
+            $font-size: 30px;
+
+            :root {
+                --accent: #{$accent};
+                --border-width: #{$border-width};
+                --border-radius: #{$border-radius};
+                --font-size: #{$font-size};
+            }
+
+            .DAT_Switch {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 20px;
+
+                &-Toggle {
+                    position: absolute;
+                    display: flex;
+                    position: relative;
+                    border: solid var(--border-width) var(--accent);
+                    border-radius: var(--border-radius);
+                    width: 250px;
+                    height: 100px;
+
+                    width: 300px;
+                    height: 150px;
+
+                    // position: absolute;
+                    &-Icon {
+                        position: absolute;
+                    }
+
+                    &-Labelchoice1 {
+                        position: relative;
+                        display: flex;
+                        position: relative;
+                        justify-content: center;
+                        align-items: center;
+                        width: 50%;
+                        border-radius: 55px;
+                        font-size: 30px;
+                        font-weight: 500;
+                        cursor: pointer;
+
+                        & :focus-within {
+                            transition: 0.5s ease-in-out;
+                        }
+                    }
+
+                    &-Labelchoice2 {
+                        position: relative;
+                        display: flex;
+                        right: 0px;
+                        position: relative;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 30px;
+                        font-weight: 500;
+                        width: 50%;
+                        border-radius: 50%;
+                        cursor: pointer;
+
+                        & :focus-within {
+                            transition: 0.5s ease-in-out;
+                        }
+                    }
+                }
+            }
+
+            .DAT_Number {
+                gap: 5px;
                 margin: auto;
                 display: flex;
                 justify-content: center;
+                align-items: center;
+                padding: 5px;
+
+                & input {
+                    border: none;
+                    height: 100%;
+                    width: 100%;
+                    padding: 5px;
+                    box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                }
+
+                &-Unit {
+                    padding-bottom: 4px;
+                }
             }
 
-            & label {
+            .DAT_Lamp {
+                margin: auto;
                 display: flex;
-                justify-content: center;
-                font-weight: 600;
+                align-items: center;
+                padding: 5px;
+                border: solid 2px #000;
+                width: 100px;
+                height: 30px;
+                <<<<<<< HEAD overflow: hidden;
             }
-        }
-    }
-}
 
-.DAT_Button {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-
-    &-InvertButton {
-        font-size: 20px;
-        margin: 20px;
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 80px;
-        height: 40px;
-        background-color: rgb(255, 0, 0, 0.8);
-        border-radius: 10px;
-        font-weight: 500;
-        cursor: pointer;
-        box-shadow: 4px 4px 4px 4px rgb(136, 136, 136, 0.2);
-
-        &:hover {
-            opacity: 85%;
-            transition: 0.2s ease-in-out;
-        }
-    }
-
-    &-InchingButton {
-        font-size: 20px;
-        margin: 20px;
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 80px;
-        height: 40px;
-        background-color: rgb(255, 0, 0, 0.8);
-        border-radius: 10px;
-        font-weight: 500;
-        cursor: pointer;
-        box-shadow: 4px 4px 4px 4px rgb(136, 136, 136, 0.2);
-
-        &:hover {
-            opacity: 85%;
-            transition: 0.2s ease-in-out;
-        }
-    }
-}
-
-.DAT_Bar {
-    &-Tank {
-        position: relative;
-        margin: 20px auto;
-        width: 100px;
-        height: 400px;
-        background-color: #808080;
-        z-index: 1;
-        // border-radius: 8px;
-
-        &-Value {
-            width: 100%;
-            height: 30%;
-            background-color: #0000ff;
-            position: absolute;
-            bottom: 0;
-
-            // border-radius: 0 0 8px 8px;
-            & p {
-                position: absolute;
-                margin: -20px 0;
-                right: 0;
-                color: #000;
-                font-weight: 800;
-            }
+            =======
         }
 
-        &-Min {
-            z-index: 2;
-            position: absolute;
-            bottom: 0;
-            color: white;
-        }
-
-        &-Max {
-            z-index: 2;
-            position: absolute;
-            color: white;
-        }
-    }
-}
-
-.DAT_SliderBar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px;
-}
-
-$accent: #04da97;
-$border-width: 6px;
-$border-radius: 55px;
-$font-size: 30px;
-
-:root {
-    --accent: #{$accent};
-    --border-width: #{$border-width};
-    --border-radius: #{$border-radius};
-    --font-size: #{$font-size};
-}
-
-.DAT_Switch {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-
-    &-Toggle {
-        position: absolute;
-        display: flex;
-        position: relative;
-        border: solid var(--border-width) var(--accent);
-        border-radius: var(--border-radius);
-        width: 250px;
-        height: 100px;
-
-        width: 300px;
-        height: 150px;
-
-        // position: absolute;
-        &-Icon {
-            position: absolute;
-        }
-
-        &-Labelchoice1 {
-            position: relative;
+        .DAT_BarChart {
             display: flex;
-            position: relative;
             justify-content: center;
             align-items: center;
-            width: 50%;
-            border-radius: 55px;
-            font-size: 30px;
-            font-weight: 500;
-            cursor: pointer;
-
-            & :focus-within {
-                transition: 0.5s ease-in-out;
-            }
         }
 
-        &-Labelchoice2 {
-            position: relative;
-            display: flex;
-            right: 0px;
-            position: relative;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
-            font-weight: 500;
-            width: 50%;
-            border-radius: 50%;
-            cursor: pointer;
-
-            & :focus-within {
-                transition: 0.5s ease-in-out;
-            }
-        }
-    }
-}
-
-.DAT_Number {
-    gap: 5px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-
-    & input {
-        border: none;
-        height: 100%;
-        width: 100%;
-        padding: 5px;
-        box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-    }
-
-    &-Unit {
-        padding-bottom: 4px;
-    }
-}
-
-.DAT_Lamp {
-    margin: auto;
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    border: solid 2px #000;
-    width: 100px;
-    height: 30px;
-    overflow: hidden;
-}
+        >>>>>>>651b312d2f334efd9b26ed37fd5e8223fe0f95ac
