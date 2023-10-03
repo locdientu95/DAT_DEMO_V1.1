@@ -51,7 +51,7 @@ export const INITSTATE = {
     txtcoloron: "#000000",
     txtcoloroff: "#000000",
     type: "button",
-    borderradius: "10px"
+    borderradius: "10px",
   },
 
   bardata: {
@@ -87,7 +87,10 @@ export const INITSTATE = {
 
   lamp: {
     value: 0,
-    data: { 0: { text: "hello", color: "#ff0000", bgcolor: "#000000" } },
+    data: {
+      0: { text: "hello", color: "#ff0000", bgcolor: "#00FF04" },
+      1: { text: "world", color: "#0000ff", bgcolor: "#00FF04" },
+    },
     width: "100",
     height: "30",
     fontsize: "30",
@@ -133,8 +136,7 @@ export const INITSTATE = {
     row : 3,
     col: 3,
 },
-
-      
+         
   number: {
     width: "100",
     height: "30",

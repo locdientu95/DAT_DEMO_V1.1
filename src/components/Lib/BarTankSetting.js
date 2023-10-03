@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from "react";
 import { EnvContext } from "../Context/EnvContext";
 import "./Setting.scss";
 
-export default function BarChartSetting() {
+export default function BarTankSetting() {
   const { bardata, envDispatch } = useContext(EnvContext);
   // BAR VARIABLES
   const mini = useRef(0);
