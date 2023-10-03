@@ -1120,6 +1120,58 @@
             }
         }
     }
+
+    &-BarChart {
+        margin-bottom: 10px;
+        padding: 10px;
+
+        &-Row {
+            display: flex;
+            margin-bottom: 10px;
+            gap: 5px;
+            height: 27px;
+
+            & input {
+                width: 100%;
+                background-color: #d0f0ff;
+                border-style: none;
+                border-radius: 7px;
+            }
+
+            &-BackgroundColor {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                & input {
+                    width: 27px;
+                }
+            }
+
+            &-ValueColor {
+                width: 100%;
+                align-items: center;
+                gap: 10px;
+                display: flex;
+
+                & input {
+                    width: 27px;
+                }
+            }
+
+            & select {
+                width: 100%;
+                background-color: #d0f0ff;
+                border-radius: 7px;
+                border-style: none;
+            }
+
+            &-Confirm {
+                width: 100px;
+            }
+        }
+    }
 }
 
 .DAT_Gauge {
@@ -1354,4 +1406,10 @@ $font-size: 30px;
     border: solid 2px #000;
     width: 100px;
     height: 30px;
+}
+
+.DAT_BarChart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

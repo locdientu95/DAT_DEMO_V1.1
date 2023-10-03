@@ -17,12 +17,23 @@ import Number from "../Lib/Number";
 import NumberSetting from "../Lib/NumberSetting";
 import Lamp from "../Lib/Lamp";
 import LampSetting from "../Lib/LampSetting";
-
-
+import BarChartHorizontal from "../Lib/BarChartHorizontal";
+import BarChartHorizontalSetting from "../Lib/BarChartHorizontalSetting";
 
 export default function Device() {
-  const { tablepro,lamp,number,button, bardata, type, gauge, slider, switchtoggle, envDispatch } =
-    useContext(EnvContext);
+  const {
+    tablepro,
+    barchart,
+    lamp,
+    number,
+    button,
+    bardata,
+    type,
+    gauge,
+    slider,
+    switchtoggle,
+    envDispatch,
+  } = useContext(EnvContext);
   const handleChangeLib = (e) => {
     var temp = e.currentTarget.value;
     envDispatch({ type: "SET_TYPE", payload: temp });
@@ -37,6 +48,7 @@ export default function Device() {
     TablePro: <TablePro setting={tablepro}></TablePro>,
     Number: <Number setting={number}></Number>,
     Lamp: <Lamp setting={lamp}></Lamp>,
+    BarChart: <BarChartHorizontal setting={barchart}></BarChartHorizontal>,
   };
 
   const setting = {
@@ -45,9 +57,10 @@ export default function Device() {
     Gauge: <GaugeSetting />,
     SliderBar: <SliderSetting />,
     SwitchToggle: <SwitchToggleSetting />,
-    TablePro : <TableProSetting/>,
-    Number : <NumberSetting/>,
-    Lamp: <LampSetting/>,
+    TablePro: <TableProSetting />,
+    Number: <NumberSetting />,
+    Lamp: <LampSetting />,
+    BarChart: <BarChartHorizontalSetting />,
   };
 
   return (
@@ -89,6 +102,7 @@ export default function Device() {
             <option value={"TablePro"}>TablePro</option>
             <option value={"Number"}>Number</option>
             <option value={"Lamp"}>Lamp</option>
+            <option value={"BarChart"}>BarChart</option>
           </select>
         </div>
         <div className="Device_Content-Container-Group">
