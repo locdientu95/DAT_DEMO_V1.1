@@ -11,15 +11,23 @@ export default function NumberSetting() {
   const height = useRef();
   const unit = useRef();
   const handleCustom = (e) => {
+    if (width.current.value !== "") {
+      number.width = width.current.value;
+    }
+
+    if (height.current.value !== "") {
+      number.height = height.current.value;
+    }
+
+    if (unit.current.value !== "") {
+      number.unit = unit.current.value;
+    }
+
     envDispatch({
       type: "SET_NUMBER",
-      payload: {
-        ...number,
-        width: width.current.value,
-        height: height.current.value,
-        unit: unit.current.value,
-      },
+      payload: number,
     });
+
     width.current.value = "";
     height.current.value = "";
     unit.current.value = "";
@@ -29,15 +37,27 @@ export default function NumberSetting() {
   const borderradius = useRef();
   const bordercolor = useRef();
   const handleBorder = (e) => {
+    if (border.current.value !== "") {
+      number.border = border.current.value;
+    }
+
+    if (borderradius.current.value !== "") {
+      number.borderradius = borderradius.current.value;
+    }
+
+    envDispatch({
+      type: "SET_NUMBER",
+      payload: number,
+    });
+
     envDispatch({
       type: "SET_NUMBER",
       payload: {
         ...number,
-        border: border.current.value,
-        borderradius: borderradius.current.value,
         bordercolor: bordercolor.current.value,
       },
     });
+
     border.current.value = "";
     borderradius.current.value = "";
   };
@@ -46,16 +66,35 @@ export default function NumberSetting() {
   const bgcolor = useRef();
   const textcolor = useRef();
   const handleText = (e) => {
+    if (fontsize.current.value !== "") {
+      number.fontsize = fontsize.current.value;
+    }
+    envDispatch({
+      type: "SET_NUMBER",
+      payload: number,
+    });
+
     envDispatch({
       type: "SET_NUMBER",
       payload: {
         ...number,
-        fontsize: fontsize.current.value,
         bgcolor: bgcolor.current.value,
         textcolor: textcolor.current.value,
       },
     });
+
     fontsize.current.value = "";
+  };
+
+  const posi = useRef();
+  const handlePosi = (e) => {
+    envDispatch({
+      type: "SET_NUMBER",
+      payload: {
+        ...number,
+        posi: posi.current.value,
+      },
+    });
   };
 
   const type = useRef();
@@ -111,6 +150,7 @@ export default function NumberSetting() {
           type="number"
           ref={borderradius}
         />
+        <span>Màu border: </span>
         <input type="color" ref={bordercolor} />
         <button onClick={(e) => handleBorder(e)}>Chọn</button>
       </div>
@@ -122,19 +162,29 @@ export default function NumberSetting() {
           type="number"
           ref={fontsize}
         />
+        <span>Màu nền: </span>
         <input type="color" ref={bgcolor} />
+        <span>Màu chữ: </span>
         <input type="color" ref={textcolor} />
         <button onClick={(e) => handleText(e)}>Chọn</button>
       </div>
 
       <div className="DAT_Setting-Number-Row4">
+        <select ref={posi} onChange={(e) => handlePosi(e)}>
+          <option value={"center"}>Center</option>
+          <option value={"left"}>Left</option>
+          <option value={"right"}>Right</option>
+        </select>
+      </div>
+
+      <div className="DAT_Setting-Number-Row5">
         <select ref={type} onChange={(e) => handleType(e)}>
           <option value="false">Read</option>
           <option value="true">Write</option>
         </select>
       </div>
 
-      <div className="DAT_Setting-Number-Row5">
+      <div className="DAT_Setting-Number-Row6">
         <select>
           <option value="0">Cơ số 10</option>
           <option value="1">Cơ số 16</option>
@@ -157,12 +207,12 @@ export default function NumberSetting() {
         </select>
       </div>
 
-      <div className="DAT_Setting-Number-Row6">
+      <div className="DAT_Setting-Number-Row7">
         <input placeholder="Nhập thanh ghi read" />
         <button>Chọn</button>
       </div>
 
-      <div className="DAT_Setting-Number-Row7">
+      <div className="DAT_Setting-Number-Row8">
         <input placeholder="0"></input>
         <button>Xác nhận</button>
       </div>

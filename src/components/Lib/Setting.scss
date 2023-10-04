@@ -596,6 +596,28 @@
             gap: 8px;
             margin-bottom: 10px;
 
+            & select {
+                border-radius: 7px;
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+
+                & option {
+                    background-color: white;
+                }
+            }
+        }
+
+        &-Row5 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
             &-Item1 {
                 border-top-left-radius: 7px;
                 border-bottom-left-radius: 7px;
@@ -626,7 +648,7 @@
             }
         }
 
-        &-Row5 {
+        &-Row6 {
             display: flex;
             gap: 8px;
             margin-bottom: 10px;
@@ -648,7 +670,7 @@
             }
         }
 
-        &-Row6 {
+        &-Row7 {
             display: flex;
             gap: 8px;
             margin-bottom: 10px;
@@ -673,7 +695,7 @@
             }
         }
 
-        &-Row7 {
+        &-Row8 {
             display: flex;
             gap: 8px;
 
@@ -845,6 +867,13 @@
                 -moz-box-sizing: border-box;
             }
 
+            & span {
+                width: 360px;
+                display: flex;
+                align-items: center;
+                background-color: #d0f0ff;
+            }
+
             & button {
                 border: none;
                 border-top-right-radius: 7px;
@@ -871,6 +900,13 @@
                 box-sizing: border-box;
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
+            }
+
+            & span {
+                width: 300px;
+                display: flex;
+                align-items: center;
+                background-color: #d0f0ff;
             }
 
             & button {
@@ -929,6 +965,28 @@
             gap: 8px;
             margin-bottom: 10px;
 
+            & select {
+                border-radius: 7px;
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+
+                & option {
+                    background-color: white;
+                }
+            }
+        }
+
+        &-Row7 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
             & input {
                 border-top-left-radius: 7px;
                 border-bottom-left-radius: 7px;
@@ -949,7 +1007,7 @@
             }
         }
 
-        &-Row7 {
+        &-Row8 {
             display: flex;
             gap: 8px;
 
@@ -1175,6 +1233,14 @@
                 -moz-box-sizing: border-box;
             }
 
+            & span {
+                padding-left: 8px;
+                width: 400px;
+                display: flex;
+                align-items: center;
+                background-color: #d0f0ff;
+            }
+
             & button {
                 border: none;
                 border-top-right-radius: 7px;
@@ -1254,19 +1320,12 @@
                 -moz-box-sizing: border-box;
             }
 
-            & select {
+            & span {
+                padding-left: 8px;
+                width: 480px;
+                display: flex;
+                align-items: center;
                 background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-
-                & option {
-                    background-color: white;
-                }
             }
 
             & button {
@@ -1303,6 +1362,28 @@
             gap: 8px;
             margin-bottom: 10px;
 
+            & select {
+                border-radius: 7px;
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+
+                & option {
+                    background-color: white;
+                }
+            }
+        }
+
+        &-Row7 {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+
             & input {
                 border-top-left-radius: 7px;
                 border-bottom-left-radius: 7px;
@@ -1323,7 +1404,7 @@
             }
         }
 
-        &-Row7 {
+        &-Row8 {
             display: flex;
             gap: 8px;
 
@@ -1611,6 +1692,7 @@ $font-size: 30px;
     justify-content: center;
     align-items: center;
     padding: 5px;
+    overflow: hidden;
 
     & input {
         border: none;

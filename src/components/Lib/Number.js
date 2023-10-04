@@ -35,7 +35,7 @@ export default function Number(props) {
           backgroundColor: props.setting.bgcolor,
           fontSize: props.setting.fontsize + "px",
           color: props.setting.textcolor,
-          textAlign: "center",
+          textAlign: props.setting.posi,
         }}
         ref={input}
         defaultValue={input.current.value}

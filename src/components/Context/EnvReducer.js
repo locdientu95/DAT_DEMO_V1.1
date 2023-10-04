@@ -2,12 +2,12 @@ export const INITSTATE = {
   status: false,
   gauge: {
     label: "text",
-    labelcolor: "black",
     labelsize: "20px",
+    labelcolor: "black",
 
     unit: "hz",
-    valuecolor: "black",
     valuesize: "20px",
+    valuecolor: "black",
 
     min: 0,
     max: 100,
@@ -130,14 +130,14 @@ export const INITSTATE = {
         code: "val1",
       },
       {
-        name: 'Giá Trị 2',
-        code: 'val2'
-      }
+        name: "Giá Trị 2",
+        code: "val2",
+      },
     ],
-    row : 3,
+    row: 3,
     col: 3,
-},
-         
+  },
+
   number: {
     width: "100",
     height: "30",
@@ -149,6 +149,7 @@ export const INITSTATE = {
     textcolor: "#000000",
     fontsize: "20",
     type: "false",
+    posi: "center",
   },
 
   barchart: {
@@ -238,12 +239,11 @@ export const INITSTATE = {
         month: "Dec",
       },
     ],
-    w : "500",
-    h : "300",
+    w: "500",
+    h: "300",
     labelsize: "10px",
     valuestep: 20,
   },
-
 
   type: "Button",
 };

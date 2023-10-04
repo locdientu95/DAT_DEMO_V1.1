@@ -38,7 +38,7 @@ export default function Gauge(props) {
                 endColor={data.endcolor}
                 segments={parseInt(data.segment)}
                 needleColor={data.needlecolor}
-                needleTransition="easeQuadInOut"
+                needleTransition="easeCubicIn"
                 needleTransitionDuration={1000}
               />
             </div>
