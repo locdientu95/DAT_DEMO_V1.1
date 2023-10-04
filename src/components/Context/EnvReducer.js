@@ -106,36 +106,22 @@ export const INITSTATE = {
     data: [
       {
         id: 1,
-        val1: 0,
-        val2: 0,
+        val_1: 0,
       },
-      {
-        id: 2,
-        val1: 0,
-        val2: 0,
-      },
-      {
-        id: 3,
-        val1: 0,
-        val2: 0,
-      },
+      
     ],
     head: [
       {
-        name: "STT",
+        name:"STT",
         code: "id",
       },
       {
         name: "Giá Trị 1",
-        code: "val1",
+        code: "val_1",
       },
-      {
-        name: 'Giá Trị 2',
-        code: 'val2'
-      }
     ],
-    row : 3,
-    col: 3,
+    row : 2,
+    col: 2,
 },
          
   number: {
