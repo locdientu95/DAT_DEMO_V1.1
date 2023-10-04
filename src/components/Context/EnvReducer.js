@@ -183,7 +183,12 @@ export const INITSTATE = {
     tickminstep: 0,
   },
 
-  numberh: {},
+  numberh: {
+    data: {
+      0: { label: "Gia tri 0", value: "0", unit: "unit" },
+      1: { label: "Gia tri 1", value: "0", unit: "unit" },
+    },
+  },
 
   type: "Button",
 };

@@ -166,7 +166,7 @@ export default function SliderSetting() {
 
       <div className="DAT_Setting-Slider-Row5">
         <input
-          className="DAT_Setting-Slider-Row4-Item1"
+          className="DAT_Setting-Slider-Row5-Item1"
           placeholder={"Thumb Border: " + slider.thumb.border}
           ref={thumbborder}
         ></input>

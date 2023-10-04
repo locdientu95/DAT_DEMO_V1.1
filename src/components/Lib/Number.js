@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import "./Setting.scss";
 
 export default function Number(props) {
   const input = useRef("");
