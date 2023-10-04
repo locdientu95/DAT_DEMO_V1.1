@@ -8,10 +8,10 @@ export default function BarChartHorizontal(props) {
   const chartSetting = {
     yAxis: [
       {
-        label: 'rainfall (mm)',
-        tickMaxStep: 10,
-        tickMinStep: 5,
-        tickNumber: props.setting.valuestep,
+        label: 'Value',
+        tickMaxStep: props.setting.tickmaxstep,
+        tickMinStep: props.setting.tickminstep,
+        tickNumber: props.setting.tickNumb,
       },
     ],
     width: parseInt(props.setting.w),
@@ -116,10 +116,10 @@ export default function BarChartHorizontal(props) {
     <div className="DAT_BarChart">
        <BarChart
       dataset={props.setting.dataset}
-      xAxis={[{ scaleType: 'band', dataKey: 'month' }]}
+      xAxis={[{ scaleType: 'band', dataKey: 'xAxis', label: 'Series' }]}
       series={[
-        { dataKey: 'london', label: 'London', valueFormatter, color: 'green' },
-        // { dataKey: 'paris', label: 'Paris', valueFormatter },
+        { dataKey: 'value1', label: 'Value1', valueFormatter, color: 'green' },
+        { dataKey: 'value2', label: 'Value2', valueFormatter },
         // { dataKey: 'newYork', label: 'New York', valueFormatter },
         // { dataKey: 'seoul', label: 'Seoul', valueFormatter },
       ]}

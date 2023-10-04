@@ -1439,7 +1439,9 @@
             margin-bottom: 10px;
             gap: 5px;
             height: 27px;
-
+            & label {
+                width: 100%;
+            }
             & input {
                 width: 100%;
                 background-color: #d0f0ff;
