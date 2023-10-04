@@ -119,7 +119,7 @@ export default function BarChartHorizontal(props) {
       xAxis={[{ scaleType: 'band', dataKey: 'xAxis', label: 'Series' }]}
       series={[
         { dataKey: 'value1', label: 'Value1', valueFormatter, color: 'green' },
-        { dataKey: 'value2', label: 'Value2', valueFormatter },
+        { dataKey: 'value2', label: 'Value2', valueFormatter, color: 'red'},
         // { dataKey: 'newYork', label: 'New York', valueFormatter },
         // { dataKey: 'seoul', label: 'Seoul', valueFormatter },
       ]}
