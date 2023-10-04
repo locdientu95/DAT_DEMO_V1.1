@@ -19,6 +19,8 @@ import Lamp from "../Lib/Lamp";
 import LampSetting from "../Lib/LampSetting";
 import BarChartHorizontal from "../Lib/BarChartHorizontal";
 import BarChartHorizontalSetting from "../Lib/BarChartHorizontalSetting";
+import NumberH from "../Lib/NumberH";
+import NumberHSetting from "../Lib/NumberHSetting";
 
 export default function Device() {
   const {
@@ -31,6 +33,7 @@ export default function Device() {
     type,
     gauge,
     slider,
+    numberh,
     switchtoggle,
     envDispatch,
   } = useContext(EnvContext);
@@ -49,6 +52,7 @@ export default function Device() {
     Number: <Number setting={number}></Number>,
     Lamp: <Lamp setting={lamp}></Lamp>,
     BarChart: <BarChartHorizontal setting={barchart}></BarChartHorizontal>,
+    NumberH: <NumberH setting={numberh}></NumberH>,
   };
 
   const setting = {
@@ -61,6 +65,7 @@ export default function Device() {
     Number: <NumberSetting />,
     Lamp: <LampSetting />,
     BarChart: <BarChartHorizontalSetting />,
+    NumberH: <NumberHSetting/>,
   };
 
   return (
@@ -103,6 +108,7 @@ export default function Device() {
             <option value={"Number"}>Number</option>
             <option value={"Lamp"}>Lamp</option>
             <option value={"BarChart"}>BarChart</option>
+            <option value={"NumberH"}>NumberH</option>
           </select>
         </div>
         <div className="Device_Content-Container-Group">
