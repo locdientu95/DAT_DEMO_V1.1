@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import { EnvContext } from '../Context/EnvContext'
 import { useRef } from 'react'
+import { Col } from 'react-bootstrap'
 
 export default function TableProSetting() {
   const {tablepro, envDispatch} = useContext(EnvContext)
@@ -9,8 +10,11 @@ export default function TableProSetting() {
   const width = useRef();
   const height = useRef();
   const row = useRef();
-  const from = useRef();
-  const to = useRef();
+  const fromCol = useRef();
+  const toCol = useRef();
+  const col = useRef();
+  const fromRow = useRef();
+  const toRow = useRef();
 
   const handleTable=(e) =>{
     if(width.current.value == ""){
@@ -25,8 +29,6 @@ export default function TableProSetting() {
       })
     }
   }
-
-
   const handleAddRow = (e) =>{
     const arr = []
     const updateRow = parseInt(tablepro.row)+ parseInt(row.current.value)
@@ -39,13 +41,9 @@ export default function TableProSetting() {
           newRow[data.code]=0
         }
       })  
-      
       arr.push(newRow)
-      console.log(arr)
-      
     }
     const newDataTable = tablepro.data.concat(arr)
-      console.log(newDataTable)
       envDispatch({
         type: "SET_TABLEPRO",
         payload:{
@@ -54,20 +52,103 @@ export default function TableProSetting() {
           data: newDataTable
         }
       })
+      console.log(updateRow,col.current.value)
   }
 
-  const handleDelete = (e) =>{
-    const start = from.current.value
-    const end = to.current.value
-    const newData = tablepro.data
-    if (parseInt(start) >= parseInt(end)){
-      alert("Lỗi gòi")
-    }else {
-      for (start;start<=end;start++){
-        newData = tablepro.data.filter()
+  const handleDeleteRow = (e) =>{
+    const start = fromRow.current.value
+    const end = toRow.current.value
+    if (start>end){
+      alert("Không hợp lệ")
+    }
+    var newData = tablepro.data
+     newData = newData.filter(newData=>{
+       return newData.id < parseInt(start) || newData.id > parseInt(end)
+    })
+
+    // Tính năng cập nhật lại ID sau khi xóa (Đang tắt)
+    // newData.map((data,index) =>{
+    //   data.id = index+1
+    // })
+    console.log(newData)
+    envDispatch({
+      type: "SET_TABLEPRO",
+      payload:{
+        ...tablepro,
+        data: newData,
+        //row: newData.length //Chỉ dùng khi bật tính năng cập nhật
       }
-  }
+    })
+    
+
 }
+
+const handleAddCol = (e) =>{
+  const leng = tablepro.col
+  const sum = parseInt(col.current.value) + parseInt(leng)
+  const newHead = tablepro.head
+  for (var i = leng+1; i<= sum; i++){
+    newHead.push({name: "Giá Trị " + i ,code: "val"+i})
+  }
+  const newData =[]
+  tablepro.data.map((data,index)=>{
+    var x = data
+    for (var i = leng; i<= sum; i++){      
+      x["val"+i] = 0
+    }
+    newData.push(x)
+  })
+  envDispatch({
+    type: "SET_TABLEPRO",
+    payload:{
+      ...tablepro,
+      data: newData,
+      head: newHead,
+      col: sum
+    }
+  })
+}
+
+const handleDeleteCol = (e) =>{
+  const start = fromCol.current.value
+  const end = toCol.current.value
+  const label = "val"
+  var num = parseInt(tablepro.col) - parseInt(parseInt(end)-parseInt(start))
+  var newHead = tablepro.head
+  for (var i = start;i<=end;i++){
+      newHead = newHead.filter( newHead =>  newHead.code != label+i)
+     
+  }
+  const newData = tablepro.data
+  newData.map((data,index)=>{
+    for (var i = start;i<=end;i++){
+      delete data["val"+i]
+    }
+  })
+    // Cập nhật lại các tên trên header
+    // newHead.map((data,index) =>{
+    //   if (index>0){
+    //     data.name = "Giá Trị "+index 
+    //     data.code ="val"+index
+    //   }
+    // })
+ envDispatch({
+  type: "SET_TABLEPRO",
+  payload:{
+    ...tablepro,
+    head: newHead,
+    data: newData,
+    
+  }
+})
+}
+
+// useEffect(()=>{
+//   console.log("HEAD",tablepro.head)
+//   console.log("DATA",tablepro.data)
+//   console.log("COL",tablepro.col)
+//   console.log("ROW",tablepro.row)
+// },[tablepro])
 
   return (
     <div className='DAT_Setting-TablePro'>
@@ -78,15 +159,25 @@ export default function TableProSetting() {
       </div>
       <div className='DAT_Setting-TablePro-Row2'>
         <input className='DAT_Setting-TablePro-Row2-TableRow' placeholder='Số hàng table' ref={row}/>
-        <input className='DAT_Setting-TablePro-Row2-TableColumn' placeholder='Số cột table' />
         <button className='DAT_Setting-TablePro-Row2-Submit'onClick={(e) => handleAddRow(e)}>Chọn</button>
       </div>
-
       <div className='DAT_Setting-TablePro-Row3'>
-      <input className='DAT_Setting-TablePro-Row3-RmFrom' placeholder='Xóa Từ STT' ref={from}/>
-      <input className='DAT_Setting-TablePro-Row3-RmTo' placeholder='Xóa đến STT' ref={to}/>
-      <button className='DAT_Setting-TablePro-Row3-Submit'onClick={(e)=>handleDelete(e)}>Xóa</button>
+        <input className='DAT_Setting-TablePro-Row3-TableColumn' placeholder='Số cột table' ref={col}/>
+        <button className='DAT_Setting-TablePro-Row3-Submit'onClick={(e) => handleAddCol(e)}>Chọn</button>
       </div>
+
+      <div className='DAT_Setting-TablePro-Row4'>
+      <input className='DAT_Setting-TablePro-Row4-RmFrom' placeholder='Xóa Hàng Từ STT' ref={fromRow}/>
+      <input className='DAT_Setting-TablePro-Row4-RmTo' placeholder='Xóa hàng đến STT' ref={toRow}/>
+      <button className='DAT_Setting-TablePro-Row4-Submit'onClick={(e)=>handleDeleteRow(e)}>Xóa</button>
+      </div>
+
+      <div className='DAT_Setting-TablePro-Row5'>
+      <input className='DAT_Setting-TablePro-Row5-RmFrom' placeholder='Xóa Cột Từ STT' ref={fromCol}/>
+      <input className='DAT_Setting-TablePro-Row5-RmTo' placeholder='Xóa Cột đến STT' ref={toCol}/>
+      <button className='DAT_Setting-TablePro-Row5-Submit'onClick={(e)=>handleDeleteCol(e)}>Xóa</button>
+      </div>
+
     </div>
   )
 }

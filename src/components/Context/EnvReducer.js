@@ -130,13 +130,14 @@ export const INITSTATE = {
         code: "val1",
       },
       {
-        name: "Giá Trị 2",
-        code: "val2",
-      },
+        name: 'Giá Trị 2',
+        code: 'val2'
+      }
     ],
-    row: 3,
-  },
-
+    row : 3,
+    col: 3,
+},
+         
   number: {
     width: "100",
     height: "30",
