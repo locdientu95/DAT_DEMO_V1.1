@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { EnvContext } from "../Context/EnvContext";
 import "./Setting.scss";
 
@@ -7,7 +7,27 @@ export default function BarChartSetting() {
   const wi = useRef(barchart.w);
   const he = useRef(barchart.h);
   const fsize = useRef(barchart.labelsize);
-  const valstep = useRef(barchart.valuestep);
+  const numb = useRef(barchart.tickNumb);
+  const min = useRef(barchart.tickminstep);
+  const max = useRef(barchart.tickmaxstep);
+  const val1 = useRef("");
+  const val2 = useRef("");
+  const xAxisName = useRef("");
+
+  // const mapData = () => {
+  //   var newData = barchart.dataset;
+  //   newData.map((data, index)=>{
+  //     if(index==0){
+  //       console.log(data.xAxis);
+  //     }
+  //   })
+  // }
+
+  const handleDeleteData = (e) => {
+    var tempxAxisName = xAxisName.current.value;
+    barchart.dataset.filter(data=>data.xAxis === tempxAxisName)
+    console.log(barchart.dataset)
+  };
 
   const handleSaveChange1 = (e) => {
     if (wi.current.value !== "") {
@@ -23,11 +43,63 @@ export default function BarChartSetting() {
   };
 
   const handleSaveChange2 = (e) => {
-    if(valstep.current.value!==""){
-      barchart.valuestep=valstep.current.value;
+    if (numb.current.value !== "") {
+      barchart.tickNumb = numb.current.value;
     }
+    if (max.current.value !== "") {
+      barchart.tickmaxstep = max.current.value;
+    }
+    if (min.current.value !== "") {
+      barchart.tickminstep = min.current.value;
+    }
+    console.log(barchart.tickNumb);
     envDispatch({ type: "SET_BARCHART", payload: barchart });
-  }
+  };
+
+  const handleSaveChange3 = (e) => {
+    // const newData = {
+    //   value1: parseInt(val1.current.value),
+    //   value2: parseInt(val2.current.value),
+    //   xAxis: xAxisName.current.value,
+    // };
+    // console.log(barchart.dataset)
+    // // barchart.dataset.push(newData);
+
+    // // console.log(barchart.dataset);
+    // envDispatch({ type: "SET_BARCHART", payload: barchart });
+
+    var tempval1 = val1.current.value;
+    var tempval2 = val2.current.value;
+    var tempxAxisName = xAxisName.current.value;
+
+    var newData = barchart.dataset;
+    const index = newData.findIndex(
+      (newData) => newData.xAxis == tempxAxisName
+    );
+    if (index < 0) {
+      const tempData = {
+        value1: parseInt(val1.current.value),
+        value2: parseInt(val2.current.value),
+        xAxis: xAxisName.current.value,
+      };
+      newData.push(tempData);
+      
+    } else {
+      newData[index].value1 = parseInt(tempval1);
+      newData[index].value2 = parseInt(tempval2);
+    }
+    console.log(index);
+
+    envDispatch({ type: "SET_BARCHART", payload: barchart });
+
+    console.log(newData);
+  };
+
+  useEffect(() => {
+    console.log(barchart.dataset);
+  }, [barchart]);
+
+  
   return (
     <div className="DAT_Setting-BarChart">
       <div className="DAT_Setting-BarChart-Row" id="1">
@@ -37,8 +109,50 @@ export default function BarChartSetting() {
         <button onClick={(e) => handleSaveChange1(e)}>Chọn</button>
       </div>
       <div className="DAT_Setting-BarChart-Row" id="2">
-        <input placeholder={"ValueStep: " + barchart.valuestep} ref={valstep}></input>
+        <input
+          placeholder={"Max step: " + barchart.tickmaxstep}
+          ref={max}
+        ></input>
+        <input
+          placeholder={"Min step: " + barchart.tickminstep}
+          ref={min}
+        ></input>
+        <input placeholder={"Number: " + barchart.tickNumb} ref={numb}></input>
         <button onClick={(e) => handleSaveChange2(e)}>Chọn</button>
+      </div>
+      <div className="DAT_Setting-BarChart-Row" id="3">
+        <label>Thêm data</label>
+        <input placeholder="Giá trị 1" ref={val1}></input>
+        <input placeholder="Giá trị 2" ref={val2}></input>
+        <input placeholder="Tên" ref={xAxisName}></input>
+        <button onClick={(e) => handleSaveChange3(e)}>Chọn</button>
+      </div>
+      <div className="DAT_Setting-BarChart-Row" id="4">
+        <table>
+          <tbody>
+            {Object.entries(barchart.dataset).map(([key]) => {
+              return (
+                <tr key={key}>
+                  <td>{barchart.dataset[key].value1}</td>
+                  <td>{barchart.dataset[key].value2}</td>
+                  <td>{barchart.dataset[key].xAxis}</td>
+                  <td>
+                    <button onClick={(e) => handleDeleteData(e)}>Xóa</button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+
+        {/* <select>
+          {barchart.dataset.map((singledata)=>{
+            const name = (
+              <option value={singledata.xAxis} >{singledata.xAxis}</option>
+            );
+            return name;
+          })}
+        </select> */}
       </div>
     </div>
   );

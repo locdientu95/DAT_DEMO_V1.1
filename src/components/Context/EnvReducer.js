@@ -2,12 +2,12 @@ export const INITSTATE = {
   status: false,
   gauge: {
     label: "text",
-    labelcolor: "black",
     labelsize: "20px",
+    labelcolor: "black",
 
     unit: "hz",
-    valuecolor: "black",
     valuesize: "20px",
+    valuecolor: "black",
 
     min: 0,
     max: 100,
@@ -123,7 +123,6 @@ export const INITSTATE = {
     row : 2,
     col: 2,
 },
-         
   number: {
     width: "100",
     height: "30",
@@ -135,101 +134,46 @@ export const INITSTATE = {
     textcolor: "#000000",
     fontsize: "20",
     type: "false",
+    posi: "center",
   },
 
   barchart: {
     dataset: [
       {
-        london: 59,
-        paris: 57,
-        newYork: 86,
-        seoul: 21,
-        month: "Jan",
+        value1: 59,
+        value2: 57,
+        xAxis: "seriesA",
       },
       {
-        london: 50,
-        paris: 52,
-        newYork: 78,
-        seoul: 28,
-        month: "Fev",
+        value1: 50,
+        value2: 52,
+        xAxis: "seriesB",
       },
       {
-        london: 47,
-        paris: 53,
-        newYork: 106,
-        seoul: 41,
-        month: "Mar",
+        value1: 32,
+        value2: 19,
+        xAxis: "seriesC",
       },
       {
-        london: 54,
-        paris: 56,
-        newYork: 92,
-        seoul: 73,
-        month: "Apr",
-      },
-      {
-        london: 57,
-        paris: 69,
-        newYork: 92,
-        seoul: 99,
-        month: "May",
-      },
-      {
-        london: 60,
-        paris: 63,
-        newYork: 103,
-        seoul: 144,
-        month: "June",
-      },
-      {
-        london: 59,
-        paris: 60,
-        newYork: 105,
-        seoul: 319,
-        month: "July",
-      },
-      {
-        london: 65,
-        paris: 60,
-        newYork: 106,
-        seoul: 249,
-        month: "Aug",
-      },
-      {
-        london: 51,
-        paris: 51,
-        newYork: 95,
-        seoul: 131,
-        month: "Sept",
-      },
-      {
-        london: 60,
-        paris: 65,
-        newYork: 97,
-        seoul: 55,
-        month: "Oct",
-      },
-      {
-        london: 119,
-        paris: 64,
-        newYork: 76,
-        seoul: 48,
-        month: "Nov",
-      },
-      {
-        london: 61,
-        paris: 70,
-        newYork: 103,
-        seoul: 25,
-        month: "Dec",
+        value1: 32,
+        value2: 19,
+        xAxis: "seriesD",
       },
     ],
-    w : "500",
-    h : "300",
+    w: "500",
+    h: "300",
     labelsize: "10px",
-    valuestep: 20,
+    tickNumb: 20,
+    tickmaxstep: 0,
+    tickminstep: 0,
   },
 
+  numberh: {
+    data: {
+      0: { label: "Gia tri 0", value: "0", unit: "unit" },
+      1: { label: "Gia tri 1", value: "0", unit: "unit" },
+    },
+  },
 
   type: "Button",
 };
@@ -290,6 +234,11 @@ const EnvReducer = (state, action) => {
       return {
         ...state,
         barchart: action.payload,
+      };
+    case "SET_NUMBERH":
+      return {
+        ...state,
+        numberh: action.payload,
       };
     default:
       throw new Error("Unexpected action");

@@ -20,6 +20,7 @@ export const EnvContextProvider = ({ children }) => {
         number: state.number,
         lamp: state.lamp,
         barchart: state.barchart,
+        numberh: state.numberh,
         envDispatch,
       }}
     >

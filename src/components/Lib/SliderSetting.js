@@ -14,6 +14,7 @@ export default function SliderSetting() {
         min: min.current.value,
       },
     });
+
     min.current.value = "";
   };
 
@@ -26,39 +27,47 @@ export default function SliderSetting() {
         max: max.current.value,
       },
     });
+
     max.current.value = "";
   };
 
   const width = useRef();
   const height = useRef();
   const scale = useRef();
-  const ori = useRef();
   const handleCustom = (e) => {
-    // if (width.current.value !== "") {
-    //   slider.width = width.current.value;
-    // }
+    if (width.current.value !== "") {
+      slider.width = width.current.value;
+    }
 
-    // if (height.current.value !== "") {
-    //   slider.height = height.current.value;
-    // }
+    if (height.current.value !== "") {
+      slider.height = height.current.value;
+    }
 
-    // if (scale.current.value !== "") {
-    //   slider.scale = scale.current.value;
-    // }
+    if (scale.current.value !== "") {
+      slider.scale = scale.current.value;
+    }
 
-    // envDispatch({
-    //   type: "SET_SLIDER",
-    //   payload: slider,
-    // });
+    envDispatch({
+      type: "SET_SLIDER",
+      payload: slider,
+    });
+
+    width.current.value = "";
+    height.current.value = "";
+    scale.current.value = "";
+  };
+
+  const ori = useRef();
+  const handleOri = (e) => {
+    console.log(ori.current.value);
+    console.log(width.current.value);
+    console.log(height.current.value);
 
     if (ori.current.value === "horizontal") {
       envDispatch({
         type: "SET_SLIDER",
         payload: {
           ...slider,
-          width: width.current.value,
-          height: height.current.value,
-          scale: scale.current.value,
           ori: ori.current.value,
         },
       });
@@ -67,17 +76,10 @@ export default function SliderSetting() {
         type: "SET_SLIDER",
         payload: {
           ...slider,
-          width: height.current.value,
-          height: width.current.value,
-          scale: scale.current.value,
           ori: ori.current.value,
         },
       });
     }
-
-    width.current.value = "";
-    height.current.value = "";
-    scale.current.value = "";
   };
 
   const thumbborder = useRef();
@@ -152,16 +154,19 @@ export default function SliderSetting() {
         ></input>
         <input placeholder={"Height: " + slider.height} ref={height}></input>
         <input placeholder={"Bước kéo: " + slider.scale} ref={scale}></input>
-        <select ref={ori}>
-          <option value={"horizontal"}>Chiều ngang</option>
-          <option value={"vertical"}>Chiều đứng</option>
-        </select>
         <button onClick={(e) => handleCustom(e)}>Chọn</button>
       </div>
 
       <div className="DAT_Setting-Slider-Row4">
+        <select ref={ori} onChange={(e) => handleOri(e)}>
+          <option value={"horizontal"}>Chiều ngang</option>
+          <option value={"vertical"}>Chiều đứng</option>
+        </select>
+      </div>
+
+      <div className="DAT_Setting-Slider-Row5">
         <input
-          className="DAT_Setting-Slider-Row4-Item1"
+          className="DAT_Setting-Slider-Row5-Item1"
           placeholder={"Thumb Border: " + slider.thumb.border}
           ref={thumbborder}
         ></input>
@@ -178,7 +183,7 @@ export default function SliderSetting() {
         <button onClick={(e) => handleColor(e)}>Chọn</button>
       </div>
 
-      <div className="DAT_Setting-Slider-Row5">
+      <div className="DAT_Setting-Slider-Row6">
         <select>
           <option value="0">Cơ số 10</option>
           <option value="1">Cơ số 16</option>
@@ -201,12 +206,12 @@ export default function SliderSetting() {
         </select>
       </div>
 
-      <div className="DAT_Setting-Slider-Row6">
+      <div className="DAT_Setting-Slider-Row7">
         <input placeholder="Nhập thanh ghi read" />
         <button>Chọn</button>
       </div>
 
-      <div className="DAT_Setting-Slider-Row7">
+      <div className="DAT_Setting-Slider-Row8">
         <input placeholder="0"></input>
         <button>Xác nhận</button>
       </div>
