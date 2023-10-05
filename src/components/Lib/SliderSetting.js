@@ -120,6 +120,17 @@ export default function SliderSetting() {
 
   return (
     <div className="DAT_Setting-Slider">
+      <div className="DAT_Setting-Slider-Row3">
+        <input
+          className="DAT_Setting-Slider-Row3-Item1"
+          placeholder={"Width: " + slider.width}
+          ref={width}
+        ></input>
+        <input placeholder={"Height: " + slider.height} ref={height}></input>
+        <input placeholder={"Bước kéo: " + slider.scale} ref={scale}></input>
+        <button onClick={(e) => handleCustom(e)}>Chọn</button>
+      </div>
+
       <div className="DAT_Setting-Slider-Row1">
         <input
           className="DAT_Setting-Slider-Row1-Item1"
@@ -144,17 +155,6 @@ export default function SliderSetting() {
           className="DAT_Setting-Slider-Row2-Item2"
         ></input>
         <button onClick={(e) => handleMax(e)}>Chọn</button>
-      </div>
-
-      <div className="DAT_Setting-Slider-Row3">
-        <input
-          className="DAT_Setting-Slider-Row3-Item1"
-          placeholder={"Width: " + slider.width}
-          ref={width}
-        ></input>
-        <input placeholder={"Height: " + slider.height} ref={height}></input>
-        <input placeholder={"Bước kéo: " + slider.scale} ref={scale}></input>
-        <button onClick={(e) => handleCustom(e)}>Chọn</button>
       </div>
 
       <div className="DAT_Setting-Slider-Row4">

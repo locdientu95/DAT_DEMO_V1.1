@@ -148,6 +148,21 @@ export default function GaugeSetting() {
   return (
     <>
       <div className="DAT_Setting_Gauge">
+        <div className="DAT_Setting_Gauge_Row5">
+          <input
+            className="DAT_Setting_Gauge_Row5_Item1"
+            placeholder={"Width: " + gauge.width}
+            ref={width}
+          />
+          <input placeholder={"Height: " + gauge.height} ref={height} />
+          <input
+            type="number"
+            placeholder={"Scale: " + gauge.segment}
+            ref={segment}
+          />
+          <button onClick={(e) => handleCustom(e)}>Chọn</button>
+        </div>
+
         <div className="DAT_Setting_Gauge_Row1">
           <input
             className="DAT_Setting_Gauge_Row1_Item1"
@@ -206,21 +221,6 @@ export default function GaugeSetting() {
             className="DAT_Setting_Gauge_Row4_Item2"
           ></input>
           <button onClick={(e) => handleMax(e)}>Chọn</button>
-        </div>
-
-        <div className="DAT_Setting_Gauge_Row5">
-          <input
-            className="DAT_Setting_Gauge_Row5_Item1"
-            placeholder={"Width: " + gauge.width}
-            ref={width}
-          />
-          <input placeholder={"Height: " + gauge.height} ref={height} />
-          <input
-            type="number"
-            placeholder={"Scale: " + gauge.segment}
-            ref={segment}
-          />
-          <button onClick={(e) => handleCustom(e)}>Chọn</button>
         </div>
 
         <div className="DAT_Setting_Gauge_Row6">

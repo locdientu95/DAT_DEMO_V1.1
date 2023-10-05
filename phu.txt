@@ -4,3 +4,4 @@ Phu upload 29/09/2023 hoàn thiện trang SliderBar, làm trang Number
 Phu upload 2/10/2023 hoàn thiện trang Number, làm trang Lamp
 Phu upload 3/10/2023 hoàn thiện trang Lamp
 Phu upload 4/10/2023 fix các lỗi của trang Gauge, Slider, Number, Lamp, làm trang NumberH
+Phu upload 5/10/2023 chỉnh sửa các trang Setting

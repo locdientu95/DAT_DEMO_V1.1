@@ -125,6 +125,17 @@ export default function LampSetting() {
 
   return (
     <div className="DAT_Setting-Lamp">
+      <div className="DAT_Setting-Lamp-Row3">
+        <input
+          className="DAT_Setting-Lamp-Row3-Item1"
+          placeholder={"Width: " + lamp.width}
+          ref={width}
+        />
+        <input placeholder={"Height: " + lamp.height} ref={height} />
+        <input placeholder={"Font Size: " + lamp.fontsize} ref={fontsize} />
+        <button onClick={(e) => handleCustom(e)}>Chọn</button>
+      </div>
+
       <div className="DAT_Setting-Lamp-Row1">
         <input
           className="DAT_Setting-Lamp-Row1-Item1"
@@ -155,17 +166,6 @@ export default function LampSetting() {
             ))}
           </tbody>
         </table>
-      </div>
-
-      <div className="DAT_Setting-Lamp-Row3">
-        <input
-          className="DAT_Setting-Lamp-Row3-Item1"
-          placeholder={"Width: " + lamp.width}
-          ref={width}
-        />
-        <input placeholder={"Height: " + lamp.height} ref={height} />
-        <input placeholder={"Font Size: " + lamp.fontsize} ref={fontsize} />
-        <button onClick={(e) => handleCustom(e)}>Chọn</button>
       </div>
 
       <div className="DAT_Setting-Lamp-Row4">

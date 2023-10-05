@@ -1,161 +1,103 @@
 .DAT_Setting {
     &-Button {
-        margin-bottom: 10px;
-        padding: 10px;
-
-        &-Row1 {
+        &-Row {
             display: flex;
-            margin-bottom: 10px;
-            gap: 5px;
-
-            & input {
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                border-style: none;
-                background-color: #d0f0ff;
-                border-radius: 7px;
-            }
-
-            & button {
-                width: 50px;
-                height: 27px;
-            }
-        }
-
-        &-Row2 {
-            display: flex;
-            margin-bottom: 10px;
-            gap: 5px;
-
-            & input {
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                border-style: none;
-                background-color: #d0f0ff;
-                border-radius: 7px;
-            }
-
-            & button {
-                height: 27px;
-                width: 50px;
-            }
-        }
-
-        &-Row3 {
-            display: flex;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 10px;
 
-            & input {
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                border-style: none;
-                background-color: #d0f0ff;
-                border-radius: 7px;
-            }
-
-            & button {
-                height: 27px;
-                width: 50px;
-            }
-        }
-
-        &-Row4 {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
-
-            & select {
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                border-style: none;
-                background-color: #d0f0ff;
-                border-radius: 7px;
+            &-Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
             }
 
             & input {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
                 width: 100%;
                 box-sizing: border-box;
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
-                border-style: none;
+            }
+
+            & span {
+                padding-left: 8px;
+                width: 550px;
+                display: flex;
+                align-items: center;
                 background-color: #d0f0ff;
-                border-radius: 7px;
             }
 
             & select {
-                width: 100%;
-                height: 27px;
-            }
-
-            & button {
-                height: 27px;
-                width: 50px;
-            }
-        }
-
-        &-Row5 {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
-
-            & input {
+                border-radius: 7px;
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
                 width: 100%;
                 box-sizing: border-box;
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
-                border-style: none;
-                background-color: #d0f0ff;
-                border-radius: 7px;
+
+                & option {
+                    background-color: white;
+                }
             }
 
             & button {
-                height: 27px;
-                width: 50px;
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
             }
         }
 
-        &-Row6 {
+        &-Last {
             display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
+            gap: 8px;
 
             & input {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                height: 32px;
                 width: 100%;
+                padding: 8px;
+                border: solid 2px #d0f0ff;
                 box-sizing: border-box;
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
-                border-style: none;
-                background-color: #d0f0ff;
+            }
+
+            & button {
+                width: 80px;
+                background-color: #326ba8;
+                color: white;
+                border: none;
                 border-radius: 7px;
-                height: 27px;
             }
         }
     }
 
     &-Bar {
-        margin-bottom: 10px;
-        padding: 10px;
-
         &-Row {
             display: flex;
+            gap: 8px;
             margin-bottom: 10px;
-            gap: 5px;
-            height: 27px;
+
+            &-Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
 
             & input {
-                width: 100%;
                 background-color: #d0f0ff;
-                border-style: none;
-                border-radius: 7px;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
             }
 
             &-BackgroundColor {
@@ -181,29 +123,59 @@
             }
 
             & select {
-                width: 100%;
-                background-color: #d0f0ff;
                 border-radius: 7px;
-                border-style: none;
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+
+                & option {
+                    background-color: white;
+                }
             }
 
-            &-Confirm {
-                width: 100px;
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &-Last {
+            display: flex;
+            gap: 8px;
+
+            & input {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                height: 32px;
+                width: 100%;
+                padding: 8px;
+                border: solid 2px #d0f0ff;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                width: 80px;
+                background-color: #326ba8;
+                color: white;
+                border: none;
+                border-radius: 7px;
             }
         }
     }
 
     &_Gauge {
-        position: relative;
-        background-color: white;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-        padding: 10px;
-
         &_Row1 {
             display: flex;
             margin-bottom: 10px;
-            gap: 4px;
+            gap: 8px;
 
             &_Item1 {
                 border-top-left-radius: 7px;
@@ -239,7 +211,7 @@
         &_Row2 {
             display: flex;
             margin-bottom: 10px;
-            gap: 4px;
+            gap: 8px;
 
             &_Item1 {
                 border-top-left-radius: 7px;
@@ -275,7 +247,7 @@
         &_Row3 {
             display: flex;
             margin-bottom: 10px;
-            gap: 4px;
+            gap: 8px;
 
             &_Item1 {
                 border: solid 2px #d0f0ff;
@@ -310,7 +282,7 @@
         &_Row4 {
             display: flex;
             margin-bottom: 10px;
-            gap: 4px;
+            gap: 8px;
 
             &_Item1 {
                 border: solid 2px #d0f0ff;
@@ -345,7 +317,7 @@
         &_Row5 {
             display: flex;
             margin-bottom: 10px;
-            gap: 4px;
+            gap: 8px;
 
             &_Item1 {
                 border-top-left-radius: 7px;
@@ -373,7 +345,7 @@
         &_Row6 {
             display: flex;
             margin-bottom: 10px;
-            gap: 4px;
+            gap: 8px;
 
             &_Item1 {
                 border-top-left-radius: 7px;
@@ -413,7 +385,7 @@
         &_Row7 {
             display: flex;
             margin-bottom: 10px;
-            gap: 4px;
+            gap: 8px;
 
             & select {
                 border-radius: 7px;
@@ -435,7 +407,7 @@
         &_Row8 {
             display: flex;
             margin-bottom: 10px;
-            gap: 4px;
+            gap: 8px;
 
             & input {
                 border-top-left-radius: 7px;
@@ -459,7 +431,7 @@
 
         &_Row9 {
             display: flex;
-            gap: 4px;
+            gap: 8px;
 
             & input {
                 border-top-left-radius: 7px;
@@ -822,35 +794,7 @@
     }
 
     &-Number {
-        &-Row1 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            &-Item1 {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-            }
-
-            & input {
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &-Row2 {
+        &-Row {
             display: flex;
             gap: 8px;
             margin-bottom: 10px;
@@ -879,54 +823,6 @@
                 background-color: #d0f0ff;
             }
 
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &-Row3 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            &-Item1 {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-            }
-
-            & input {
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            & span {
-                padding-left: 8px;
-                width: 300px;
-                display: flex;
-                align-items: center;
-                background-color: #d0f0ff;
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &-Row4 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
             & select {
                 border-radius: 7px;
                 background-color: #d0f0ff;
@@ -942,69 +838,6 @@
                     background-color: white;
                 }
             }
-        }
-
-        &-Row5 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            & select {
-                border-radius: 7px;
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-
-                & option {
-                    background-color: white;
-                }
-            }
-        }
-
-        &-Row6 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            & select {
-                border-radius: 7px;
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-
-                & option {
-                    background-color: white;
-                }
-            }
-        }
-
-        &-Row7 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            & input {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
 
             & button {
                 border: none;
@@ -1013,7 +846,7 @@
             }
         }
 
-        &-Row8 {
+        &-Last {
             display: flex;
             gap: 8px;
 
