@@ -3,6 +3,7 @@ import "./Setting.scss";
 import { useRef } from "react";
 import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
+import { Button, Input, InputFist, Span } from "./FunctionElement";
 
 export default function NumberSetting() {
   const { number, envDispatch } = useContext(EnvContext);
@@ -123,36 +124,18 @@ export default function NumberSetting() {
   return (
     <div className="DAT_Setting-Number">
       <div className="DAT_Setting-Number-Row1">
-        <input
-          className="DAT_Setting-Number-Row1-Item1"
-          placeholder={"Width: " + number.width}
-          type="number"
-          ref={width}
-        />
-        <input
-          placeholder={"Height: " + number.height}
-          type="number"
-          ref={height}
-        />
-        <input placeholder={"Đơn vị: " + number.unit} type="text" ref={unit} />
-        <button onClick={(e) => handleCustom(e)}>Chọn</button>
+        {InputFist("number", "Width: " + number.width, width)}
+        {Input("number", "Height: " + number.height, height)}
+        {Input("text", "Unit: " + number.unit, unit)}
+        {Button(handleCustom, "Chọn")}
       </div>
 
-      <div className="DAT_Setting-Number-Row2">
-        <input
-          className="DAT_Setting-Number-Row2-Item1"
-          placeholder={"Border: " + number.border}
-          type="number"
-          ref={border}
-        />
-        <input
-          placeholder={"Border Radius: " + number.borderradius}
-          type="number"
-          ref={borderradius}
-        />
-        <span>Màu border: </span>
-        <input type="color" ref={bordercolor} />
-        <button onClick={(e) => handleBorder(e)}>Chọn</button>
+      <div className="DAT_Setting-Number-Row1">
+        {InputFist("number", "Boder: " + number.border, border)}
+        {Input("number", "Radius: " + number.borderradius, borderradius)}
+        {Span("Màu border: ")}
+        {Input("color", "", bordercolor)}
+        {Button(handleBorder, "Chọn")}
       </div>
 
       <div className="DAT_Setting-Number-Row3">

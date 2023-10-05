@@ -1805,29 +1805,25 @@ $font-size: 30px;
             }
         }
 
+        &-Labelchoice2 {
+            position: relative;
+            display: flex;
+            right: 0px;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: 500;
+            width: 50%;
+            border-radius: 50%;
+            cursor: pointer;
 
-    }
-
-    &-Labelchoice2 {
-        position: relative;
-        display: flex;
-        right: 0px;
-        position: relative;
-        justify-content: center;
-        align-items: center;
-        font-size: 30px;
-        font-weight: 500;
-        width: 50%;
-        border-radius: 50%;
-        cursor: pointer;
-
-        & :focus-within {
-            transition: 0.5s ease-in-out;
+            & :focus-within {
+                transition: 0.5s ease-in-out;
+            }
         }
     }
 }
-
-
 
 .DAT_Number {
     gap: 5px;
