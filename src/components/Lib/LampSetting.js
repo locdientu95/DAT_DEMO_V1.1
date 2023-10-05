@@ -1,8 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import "./Setting.scss";
 import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
-import { useState } from "react";
 
 export default function LampSetting() {
   const { lamp, envDispatch } = useContext(EnvContext);
@@ -64,35 +63,52 @@ export default function LampSetting() {
 
     envDispatch({
       type: "SET_LAMP",
-      payload: {
-        ...lamp,
-        width: width.current.value,
-        height: height.current.value,
-        fontsize: fontsize.current.value,
-      },
+      payload: lamp,
     });
-    // width.current.value = "";
-    // height.current.value = "";
-    // fontsize.current.value = "";
+
+    width.current.value = "";
+    height.current.value = "";
+    fontsize.current.value = "";
   };
 
   const border = useRef();
   const borderradius = useRef();
   const bordercolor = useRef();
-  const posi = useRef();
   const handleBorder = (e) => {
+    if (border.current.value !== "") {
+      lamp.border = border.current.value;
+    }
+
+    if (borderradius.current.value !== "") {
+      lamp.borderradius = borderradius.current.value;
+    }
+
+    envDispatch({
+      type: "SET_LAMP",
+      payload: lamp,
+    });
+
     envDispatch({
       type: "SET_LAMP",
       payload: {
         ...lamp,
-        border: border.current.value,
-        borderradius: borderradius.current.value,
         bordercolor: bordercolor.current.value,
+      },
+    });
+
+    border.current.value = "";
+    borderradius.current.value = "";
+  };
+
+  const posi = useRef();
+  const handlePosi = (e) => {
+    envDispatch({
+      type: "SET_LAMP",
+      payload: {
+        ...lamp,
         posi: posi.current.value,
       },
     });
-    // border.current.value = "";
-    // borderradius.current.value = "";
   };
 
   const edit = useRef();
@@ -109,14 +125,27 @@ export default function LampSetting() {
 
   return (
     <div className="DAT_Setting-Lamp">
+      <div className="DAT_Setting-Lamp-Row3">
+        <input
+          className="DAT_Setting-Lamp-Row3-Item1"
+          placeholder={"Width: " + lamp.width}
+          ref={width}
+        />
+        <input placeholder={"Height: " + lamp.height} ref={height} />
+        <input placeholder={"Font Size: " + lamp.fontsize} ref={fontsize} />
+        <button onClick={(e) => handleCustom(e)}>Chọn</button>
+      </div>
+
       <div className="DAT_Setting-Lamp-Row1">
         <input
           className="DAT_Setting-Lamp-Row1-Item1"
           placeholder={"Value: " + lamp.value}
           ref={value}
         />
+        <span>Màu nền: </span>
         <input type="color" ref={bgcolor} />
         <input placeholder="text" ref={text} />
+        <span>Màu chữ: </span>
         <input type="color" ref={textcolor} />
         <button onClick={(e) => handleAdd(e)}>Thêm</button>
       </div>
@@ -139,17 +168,6 @@ export default function LampSetting() {
         </table>
       </div>
 
-      <div className="DAT_Setting-Lamp-Row3">
-        <input
-          className="DAT_Setting-Lamp-Row3-Item1"
-          placeholder={"Width: " + lamp.width}
-          ref={width}
-        />
-        <input placeholder={"Height: " + lamp.height} ref={height} />
-        <input placeholder={"Font Size: " + lamp.fontsize} ref={fontsize} />
-        <button onClick={(e) => handleCustom(e)}>Chọn</button>
-      </div>
-
       <div className="DAT_Setting-Lamp-Row4">
         <input
           className="DAT_Setting-Lamp-Row4-Item1"
@@ -160,16 +178,20 @@ export default function LampSetting() {
           placeholder={"Border Radius: " + lamp.borderradius}
           ref={borderradius}
         />
+        <span>Màu border: </span>
         <input type="color" ref={bordercolor} />
-        <select ref={posi}>
-          <option value={"left"}>Left</option>
-          <option value={"center"}>Center</option>
-          <option value={"right"}>Right</option>
-        </select>
         <button onClick={(e) => handleBorder(e)}>Chọn</button>
       </div>
 
       <div className="DAT_Setting-Lamp-Row5">
+        <select ref={posi} onChange={(e) => handlePosi(e)}>
+          <option value={"center"}>Center</option>
+          <option value={"left"}>Left</option>
+          <option value={"right"}>Right</option>
+        </select>
+      </div>
+
+      <div className="DAT_Setting-Lamp-Row6">
         <select>
           <option value="0">Cơ số 10</option>
           <option value="1">Cơ số 16</option>
@@ -192,12 +214,12 @@ export default function LampSetting() {
         </select>
       </div>
 
-      <div className="DAT_Setting-Lamp-Row6">
+      <div className="DAT_Setting-Lamp-Row7">
         <input placeholder="Nhập thanh ghi read" />
         <button>Chọn</button>
       </div>
 
-      <div className="DAT_Setting-Lamp-Row7">
+      <div className="DAT_Setting-Lamp-Row8">
         <input placeholder="0" ref={edit}></input>
         <button onClick={(e) => handleEdit(e)}>Xác nhận</button>
       </div>

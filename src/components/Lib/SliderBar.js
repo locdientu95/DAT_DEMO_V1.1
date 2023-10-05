@@ -27,7 +27,7 @@ export default function SliderBar(props) {
 
   useEffect(() => {
     markConfig(parseInt(props.setting.scale));
-  }, [props.setting]);
+  }, [props.setting.scale, props.setting.min, props.setting.max]);
 
   useEffect(() => {
     const thumb = document.querySelector(".MuiSlider-thumb");
@@ -47,8 +47,14 @@ export default function SliderBar(props) {
     <div className="DAT_SliderBar">
       <Slider
         style={{
-          height: props.setting.height + "px",
-          width: props.setting.width + "px",
+          height:
+            props.setting.ori === "horizontal"
+              ? props.setting.height + "px"
+              : props.setting.width + "px",
+          width:
+            props.setting.ori === "horizontal"
+              ? props.setting.width + "px"
+              : props.setting.height + "px",
         }}
         min={parseInt(props.setting.min)}
         max={parseInt(props.setting.max)}

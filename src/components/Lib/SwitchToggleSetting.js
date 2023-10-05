@@ -67,6 +67,21 @@ export default function SwitchToggleSetting() {
   return (
     <div>
       <div className="DAT_Setting-Switch">
+        <div className="DAT_Setting-Switch-Row" id="3">
+          <input placeholder={"Width: " + switchtoggle.w} ref={wid}></input>
+          <input placeholder={"Height: " + switchtoggle.h} ref={hei}></input>
+          <input
+            className="DAT_Setting-Switch-Row-TextSize"
+            type="number"
+            defaultValue={txtsize}
+            min={6}
+            max={100}
+            step={2}
+            onChange={(e) => setTxtsize(e.currentTarget.value)}
+          ></input>
+          <button onClick={(e) => handleSaveChange3(e)}>Chọn</button>
+        </div>
+
         <div className="DAT_Setting-Switch-Row" id="1">
           <input placeholder="ON: 7"></input>
           <input
@@ -91,6 +106,7 @@ export default function SwitchToggleSetting() {
           </div>
           <button onClick={(e) => handleSaveChange1(e)}>Chọn</button>
         </div>
+
         <div className="DAT_Setting-Switch-Row" id="2">
           <input placeholder="OFF: 8"></input>
           <input
@@ -115,20 +131,7 @@ export default function SwitchToggleSetting() {
           </div>
           <button onClick={(e) => handleSaveChange2(e)}>Chọn</button>
         </div>
-        <div className="DAT_Setting-Switch-Row" id="3">
-          <input placeholder={"Width: " + switchtoggle.w} ref={wid}></input>
-          <input placeholder={"Height: " + switchtoggle.h} ref={hei}></input>
-          <input
-            className="DAT_Setting-Switch-Row-TextSize"
-            type="number"
-            defaultValue={txtsize}
-            min={6}
-            max={100}
-            step={2}
-            onChange={(e) => setTxtsize(e.currentTarget.value)}
-          ></input>
-          <button onClick={(e) => handleSaveChange3(e)}>Chọn</button>
-        </div>
+
         <div className="DAT_Setting-Switch-Row" id="4">
           <input
             className="DAT_Setting-Switch-Row-BorderRadius"
@@ -149,6 +152,7 @@ export default function SwitchToggleSetting() {
           </div>
           <button onClick={(e) => handleSaveChange4(e)}>Chọn</button>
         </div>
+
         <div className="DAT_Setting-Switch-Row" id="5">
           <select>
             <option defaultValue="Inching">Cơ số 10</option>
@@ -171,10 +175,12 @@ export default function SwitchToggleSetting() {
             <option value="Invert">Cơ số 2_15</option>
           </select>
         </div>
+
         <div className="DAT_Setting-Switch-Row" id="7">
           <input placeholder="Nhập thanh ghi read"></input>
           <button>Chọn</button>
         </div>
+
         <div className="DAT_Setting-Switch-Row" id="8">
           <input placeholder="0"></input>
           <button className="DAT_Setting-Bar-Row-Confirm">Xác nhận</button>

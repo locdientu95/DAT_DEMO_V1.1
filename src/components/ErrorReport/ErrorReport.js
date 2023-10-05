@@ -99,7 +99,13 @@ export default function ErrorReport() {
       width: "60px",
     },
     {
-      name: "Gateway",
+      name:
+      <div style={{color:"red", }}>
+        Gateway
+        <div>
+          
+        </div>
+        </div> ,
       selector: row => row.DeviceID,
       sortable: true,
       width: "150px",

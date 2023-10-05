@@ -1,61 +1,130 @@
 import React, { useContext, useRef, useState } from "react";
 import { EnvContext } from "../Context/EnvContext";
 import "./Setting.scss";
-
+import {
+  Box,
+  BoxOnchange,
+  Button,
+  Input,
+  InputFist,
+  Span,
+} from "./FunctionElement";
 
 export default function ButtonSetting() {
-    // BUTTON VARIABLES
+  // BUTTON VARIABLES
   const { button, envDispatch } = useContext(EnvContext);
   const [bgison, setBgison] = useState(button.bgon);
-  const [bgisoff, setBgisoff] = useState(button.bgoff);
-  const [wid, setWid] = useState(button.w);
-  const [hei, setHei] = useState(button.h);
   const textison = useRef("ON");
-  const textisoff = useRef("OFF");
   const fsizeon = useRef(20);
-  const fsizeoff = useRef(20);
-  const btnradius = useRef(button.radius)
   const [textColorOn, setTextColorOn] = useState("#000000");
+  const [bgisoff, setBgisoff] = useState(button.bgoff);
+  const textisoff = useRef("OFF");
+  const fsizeoff = useRef(20);
   const [textColorOff, setTextColorOff] = useState("#000000");
+  const wid = useRef(button.w);
+  const hei = useRef(button.h);
+  const btnradius = useRef(button.radius);
 
-   //BUTTON FUNCTION
-   const handleSaveChangeOn = (e) => {
+  const change = ["Inching", "Invert"];
+
+  const base = [
+    "Cơ số 10",
+    "Cơ số 16",
+    "Cơ số 2_0",
+    "Cơ số 2_1",
+    "Cơ số 2_2",
+    "Cơ số 2_3",
+    "Cơ số 2_4",
+    "Cơ số 2_5",
+    "Cơ số 2_6",
+    "Cơ số 2_7",
+    "Cơ số 2_8",
+    "Cơ số 2_9",
+    "Cơ số 2_10",
+    "Cơ số 2_11",
+    "Cơ số 2_12",
+    "Cơ số 2_13",
+    "Cơ số 2_14",
+    "Cơ số 2_15",
+  ];
+
+  //BUTTON FUNCTION
+  const handleSaveChangeOn = (e) => {
+    if (textison.current.value !== "") {
+      button.texton = textison.current.value;
+    }
+
+    if (fsizeon.current.value !== "") {
+      button.sizeon = fsizeon.current.value + "px";
+    }
+
+    envDispatch({
+      type: "SET_BTN",
+      payload: button,
+    });
+
     envDispatch({
       type: "SET_BTN",
       payload: {
         ...button,
         bgon: bgison,
-        texton: textison.current.value,
-        sizeon: fsizeon.current.value + "px",
         txtcoloron: textColorOn,
       },
     });
+
+    textison.current.value = "";
+    fsizeon.current.value = "";
   };
 
   const handleSaveChangeOff = (e) => {
+    if (textisoff.current.value !== "") {
+      button.textoff = textisoff.current.value;
+    }
+
+    if (fsizeoff.current.value !== "") {
+      button.sizeoff = fsizeoff.current.value + "px";
+    }
+
+    envDispatch({
+      type: "SET_BTN",
+      payload: button,
+    });
+
     envDispatch({
       type: "SET_BTN",
       payload: {
         ...button,
         bgoff: bgisoff,
-        textoff: textisoff.current.value,
         txtcoloroff: textColorOff,
-        sizeoff: fsizeoff.current.value + "px",
       },
     });
+
+    textisoff.current.value = "";
+    fsizeoff.current.value = "";
   };
 
   const handleSaveChangeSize = (e) => {
+    console.log(btnradius.current.value);
+    if (wid.current.value !== "") {
+      button.w = wid.current.value + "px";
+    }
+
+    if (hei.current.value !== "") {
+      button.h = hei.current.value + "px";
+    }
+
+    if (btnradius.current.value !== "") {
+      button.radius = btnradius.current.value + "px";
+    }
+
     envDispatch({
       type: "SET_BTN",
-      payload: {
-        ...button,
-        w: wid + "px",
-        h: hei + "px",
-        radius: btnradius.current.value + "px",
-      },
+      payload: button,
     });
-    console.log(button);
+
+    wid.current.value = "";
+    hei.current.value = "";
+    btnradius.current.value = "";
   };
 
   const handleChangebutton = (e) => {
@@ -63,13 +132,22 @@ export default function ButtonSetting() {
     button.btntype = value;
     envDispatch({ type: "SET_BTN", payload: button });
   };
+
   return (
     <div className="DAT_Setting-Button">
-      <div className="DAT_Setting-Button-Row1">
+      <div className="DAT_Setting-Button-Row">
+        {InputFist("", "Width: " + button.w, wid)}
+        {Input("", "Height: " + button.h, hei)}
+        {Input("", "Border Radius: " + button.radius, btnradius)}
+        {Button(handleSaveChangeSize, "Chọn")}
+      </div>
+
+      <div className="DAT_Setting-Button-Row">
         <input
-          className="DAT_Setting-Button-Row1-Statement"
+          className="DAT_Setting-Button-Row-Item1"
           placeholder="ON:7"
         ></input>
+        {Span("Màu nền: ")}
         <input
           className="DAT_Setting-Button-Row1-Buttoncolor"
           type="color"
@@ -78,21 +156,10 @@ export default function ButtonSetting() {
           value={bgison}
           onChange={(e) => setBgison(e.currentTarget.value)}
           // value={bgison}
-        ></input>
-        <input
-          className="DAT_Setting-Button-Row1-Text"
-          placeholder="Text: Bật"
-          ref={textison}
-        ></input>
-        <input
-          className="DAT_Setting-Button-Row1-Fontsize"
-          type="number"
-          defaultValue={20}
-          min={6}
-          max={100}
-          step={2}
-          ref={fsizeon}
-        ></input>
+        />
+        {Input("text", "Text: " + button.texton, textison)}
+        {Input("number", "Font Size: " + button.sizeon, fsizeon)}
+        {Span("Màu chữ: ")}
         <input
           className="DAT_Setting-Button-Row1-TextColor"
           type="color"
@@ -101,14 +168,16 @@ export default function ButtonSetting() {
           value={textColorOn}
           onChange={(e) => setTextColorOn(e.currentTarget.value)}
           // value={bgison}
-        ></input>
-        <button onClick={(e) => handleSaveChangeOn(e)}>Chọn</button>
+        />
+        {Button(handleSaveChangeOn, "Chọn")}
       </div>
-      <div className="DAT_Setting-Button-Row2">
+
+      <div className="DAT_Setting-Button-Row">
         <input
-          className="DAT_Setting-Button-Row-Statement"
+          className="DAT_Setting-Button-Row-Item1"
           placeholder="OFF:8"
         ></input>
+        {Span("Màu nền: ")}
         <input
           className="DAT_Setting-Button-Row2-Buttoncolor"
           type="color"
@@ -118,20 +187,9 @@ export default function ButtonSetting() {
           value={bgisoff}
           onChange={(e) => setBgisoff(e.currentTarget.value)}
         ></input>
-        <input
-          className="DAT_Setting-Button-Row-Text"
-          placeholder="Text: Tắt"
-          ref={textisoff}
-        ></input>
-        <input
-          className="DAT_Setting-Button-Row-Fontsize"
-          type="number"
-          defaultValue={20}
-          step={2}
-          min={6}
-          max={100}
-          ref={fsizeoff}
-        ></input>
+        {Input("text", "Text: " + button.textoff, textisoff)}
+        {Input("number", "Font Size: " + button.sizeoff, fsizeoff)}
+        {Span("Màu chữ: ")}
         <input
           className="DAT_Setting-Button-Row1-TextColor"
           type="color"
@@ -139,64 +197,24 @@ export default function ButtonSetting() {
           name="favcolor"
           value={textColorOff}
           onChange={(e) => setTextColorOff(e.currentTarget.value)}
-        ></input>
-        <button onClick={(e) => handleSaveChangeOff(e)}>Chọn</button>
+        />
+        {Button(handleSaveChangeOff, "Chọn")}
       </div>
-      <div className="DAT_Setting-Button-Row3">
-        <input
-          className="DAT_Setting-Button-Row-Statement"
-          placeholder="Width: 161"
-          value={wid}
-          onChange={(e) => setWid(e.currentTarget.value)}
-        ></input>
-        <input
-          className="DAT_Setting-Button-Row-Buttoncolor"
-          placeholder="Height: 83"
-          value={hei}
-          onChange={(e) => setHei(e.currentTarget.value)}
-        ></input>
-        <input
-          className="DAT_Setting-Button-Row-BorderRadius"
-          placeholder={button.radius}
-          ref={btnradius}
-        ></input>
-        <button onClick={(e) => handleSaveChangeSize(e)}>Chọn</button>
+
+      <div className="DAT_Setting-Button-Row">
+        {BoxOnchange(change, handleChangebutton)}
       </div>
-      <div className="DAT_Setting-Button-Row4">
-        <select onChange={(e) => handleChangebutton(e)}>
-          <option defaultValue="Inching">Inching</option>
-          <option value="Invert">Invert</option>
-        </select>
-      </div>
-      <div className="DAT_Setting-Button-Row4">
-        <select>
-          <option>Cơ số 10</option>
-          <option>Cơ số 16</option>
-          <option>Cơ số 2_0</option>
-          <option>Cơ số 2_1</option>
-          <option>Cơ số 2_2</option>
-          <option>Cơ số 2_3</option>
-          <option>Cơ số 2_4</option>
-          <option>Cơ số 2_5</option>
-          <option>Cơ số 2_6</option>
-          <option>Cơ số 2_7</option>
-          <option>Cơ số 2_8</option>
-          <option>Cơ số 2_14</option>
-          <option>Cơ số 2_9</option>
-          <option>Cơ số 2_10</option>
-          <option>Cơ số 2_11</option>
-          <option>Cơ số 2_12</option>
-          <option>Cơ số 2_13</option>
-          <option>Cơ số 2_15</option>
-        </select>
-      </div>
-      <div className="DAT_Setting-Button-Row5">
-        <input placeholder="Nhập thanh ghi"></input>
+
+      <div className="DAT_Setting-Button-Row">{Box(base)}</div>
+
+      <div className="DAT_Setting-Button-Row">
+        {InputFist("text", "Nhập thanh ghi read")}
         <button>Chọn</button>
       </div>
-      <div className="DAT_Setting-Button-Row6">
+
+      <div className="DAT_Setting-Button-Last">
         <input placeholder="0"></input>
-        <button>Chọn</button>
+        <button>Xác nhận</button>
       </div>
     </div>
   );

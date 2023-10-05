@@ -2,12 +2,12 @@ export const INITSTATE = {
   status: false,
   gauge: {
     label: "text",
-    labelcolor: "black",
     labelsize: "20px",
+    labelcolor: "black",
 
     unit: "hz",
-    valuecolor: "black",
     valuesize: "20px",
+    valuecolor: "black",
 
     min: 0,
     max: 100,
@@ -106,38 +106,23 @@ export const INITSTATE = {
     data: [
       {
         id: 1,
-        val1: 0,
-        val2: 0,
+        val_1: 0,
       },
-      {
-        id: 2,
-        val1: 0,
-        val2: 0,
-      },
-      {
-        id: 3,
-        val1: 0,
-        val2: 0,
-      },
+      
     ],
     head: [
       {
-        name: "STT",
+        name:"STT",
         code: "id",
       },
       {
         name: "Giá Trị 1",
-        code: "val1",
-      },
-      {
-        name: "Giá Trị 2",
-        code: "val2",
+        code: "val_1",
       },
     ],
-    row: 3,
-    col: 3,
-  },
-
+    row : 2,
+    col: 2,
+},
   number: {
     width: "100",
     height: "30",
@@ -149,6 +134,7 @@ export const INITSTATE = {
     textcolor: "#000000",
     fontsize: "20",
     type: "false",
+    posi: "center",
   },
 
   barchart: {
@@ -187,7 +173,12 @@ export const INITSTATE = {
     chartnamefsize: "10px"
   },
 
-  numberh: {},
+  numberh: {
+    data: {
+      0: { label: "Gia tri 0", value: "0", unit: "unit" },
+      1: { label: "Gia tri 1", value: "0", unit: "unit" },
+    },
+  },
 
   type: "Button",
 };

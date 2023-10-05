@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import "./Setting.scss";
 
 export default function Number(props) {
   const input = useRef("");
@@ -30,12 +31,12 @@ export default function Number(props) {
         className="DAT_Number-Input"
         type="text"
         placeholder="12345"
-        readOnly={props.setting.type === "false" ? true : false}
+        readOnly={props.setting.type === "Read" ? true : false}
         style={{
           backgroundColor: props.setting.bgcolor,
           fontSize: props.setting.fontsize + "px",
           color: props.setting.textcolor,
-          textAlign: "center",
+          textAlign: props.setting.posi,
         }}
         ref={input}
         defaultValue={input.current.value}
