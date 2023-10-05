@@ -1,14 +1,13 @@
 import * as React from "react";
-import { BarChart } from '@mui/x-charts/BarChart';
-import { axisClasses } from '@mui/x-charts';
+import { BarChart } from "@mui/x-charts/BarChart";
+import { axisClasses } from "@mui/x-charts";
 import "./Setting.scss";
-
 
 export default function BarChartHorizontal(props) {
   const chartSetting = {
     yAxis: [
       {
-        label: 'Value',
+        label: props.setting.labelname,
         tickMaxStep: props.setting.tickmaxstep,
         tickMinStep: props.setting.tickminstep,
         tickNumber: props.setting.tickNumb,
@@ -18,7 +17,7 @@ export default function BarChartHorizontal(props) {
     height: parseInt(props.setting.h),
     sx: {
       [`.${axisClasses.left} .${axisClasses.label}`]: {
-        transform: 'rotate(-90deg) translate(0px, -20px)',
+        transform: "rotate(-90deg) translate(0px, -20px)",
         fontSize: props.setting.labelsize,
       },
     },
@@ -114,17 +113,29 @@ export default function BarChartHorizontal(props) {
 
   return (
     <div className="DAT_BarChart">
-       <BarChart
-      dataset={props.setting.dataset}
-      xAxis={[{ scaleType: 'band', dataKey: 'xAxis', label: 'Series' }]}
-      series={[
-        { dataKey: 'value1', label: 'Value1', valueFormatter, color: 'green' },
-        { dataKey: 'value2', label: 'Value2', valueFormatter, color: 'red'},
-        // { dataKey: 'newYork', label: 'New York', valueFormatter },
-        // { dataKey: 'seoul', label: 'Seoul', valueFormatter },
-      ]}
-      {...chartSetting}
-    />
+      <BarChart
+        dataset={props.setting.dataset}
+        xAxis={[
+          {
+            scaleType: "band",
+            dataKey: "xAxis",
+            label: props.setting.series,
+            fontSize: props.setting.chartnamefsize,
+          },
+        ]}
+        series={[
+          {
+            dataKey: "value1",
+            // label: props.setting.valuetitle,
+            valueFormatter,
+            color: props.setting.valuecolor,
+          },
+          // { dataKey: 'value2', label: 'Value2', valueFormatter, color: 'red'},
+          // { dataKey: 'newYork', label: 'New York', valueFormatter },
+          // { dataKey: 'seoul', label: 'Seoul', valueFormatter },
+        ]}
+        {...chartSetting}
+      />
     </div>
   );
 }

@@ -41,10 +41,12 @@ export default function App() {
   const [mail, setMail] = useState("unknown@gmail.com");
 
   useState(() => {
+    //CRUD
     var newInfo = data
-    newInfo = newInfo.filter(newInfo => newInfo.id === 3)
-    // newInfo = newInfo.filter(newInfo => newInfo.id !== 3)
-
+    //newInfo = newInfo.filter(data => data.id === 3)
+    
+    newInfo = newInfo.filter(newInfo => newInfo.id !== 3)// delete
+    console.log(newInfo)
     setInfo(newInfo[0].name)
     setMail(newInfo[0].mail)
   }, [])
