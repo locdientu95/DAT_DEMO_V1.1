@@ -112,30 +112,46 @@ export default function BarChartHorizontal(props) {
   const valueFormatter = (value) => `${value}mm`;
 
   return (
-    <div className="DAT_BarChart">
-      <BarChart
-        dataset={props.setting.dataset}
-        xAxis={[
-          {
-            scaleType: "band",
-            dataKey: "xAxis",
-            label: props.setting.series,
-            fontSize: props.setting.chartnamefsize,
-          },
-        ]}
-        series={[
-          {
-            dataKey: "value1",
-            // label: props.setting.valuetitle,
-            valueFormatter,
-            color: props.setting.valuecolor,
-          },
-          // { dataKey: 'value2', label: 'Value2', valueFormatter, color: 'red'},
-          // { dataKey: 'newYork', label: 'New York', valueFormatter },
-          // { dataKey: 'seoul', label: 'Seoul', valueFormatter },
-        ]}
-        {...chartSetting}
-      />
+    <div>
+      <div className="DAT_BarChart">
+        <BarChart
+          dataset={props.setting.dataset}
+          xAxis={[
+            {
+              scaleType: "band",
+              dataKey: "xAxis",
+              // label: props.setting.series,
+              // fontSize: "20px",
+              // labelFontSize: 20,
+              // props.setting.chartnamefsize,
+            },
+          ]}
+          series={[
+            {
+              dataKey: "value1",
+              // label: props.setting.valuetitle,
+              valueFormatter,
+              color: props.setting.valuecolor,
+            },
+            // { dataKey: 'value2', label: 'Value2', valueFormatter, color: 'red'},
+            // { dataKey: 'newYork', label: 'New York', valueFormatter },
+            // { dataKey: 'seoul', label: 'Seoul', valueFormatter },
+          ]}
+          {...chartSetting}
+        />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignContent: "center",
+          marginBottom: "20px",
+          marginTop: "0px",
+          fontSize: props.setting.chartnamefsize,
+        }}
+      >
+        {props.setting.series}
+      </div>
     </div>
   );
 }

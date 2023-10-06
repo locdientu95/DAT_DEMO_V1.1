@@ -1166,7 +1166,7 @@
             margin-bottom: 10px;
             gap: 5px;
 
-            height: 27px;
+            // height: 27px;
 
 
             & label {
@@ -1226,6 +1226,7 @@
             }
 
             table {
+                // display: flex;
                 border-collapse: collapse;
                 width: 100%;
                 height: 100%;
@@ -1695,6 +1696,7 @@ $font-size: 30px;
 
 .DAT_BarChart {
     display: flex;
+    // flex-direction: column;
     justify-content: center;
     align-items: center;
 }
