@@ -16,6 +16,7 @@ import Account from "./components/Account/Account";
 import Device from "./components/Setting/Device";
 import DATGroup from "./components/DATGroup/DATGroup";
 import Login from "./components/Login/Login";
+import Configuration from "./components/Configuration/Configuration";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useContext } from "react";
 import { EnvContext } from "./components/Context/EnvContext";
@@ -165,6 +166,16 @@ export default function App() {
               element={
                 login.status ? (
                   <Device name={login.username}></Device>
+                ) : (
+                  <Login></Login>
+                )
+              }
+            />
+            <Route
+              path="/Configuration"
+              element={
+                login.status ? (
+                  <Configuration name={login.username}></Configuration>
                 ) : (
                   <Login></Login>
                 )

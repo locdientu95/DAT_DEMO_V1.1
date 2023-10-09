@@ -8,11 +8,11 @@ export default function Sidebar(props) {
 
   const handleDropdown = (e) => {
     var id = e.currentTarget.id;
-    
+
     if (state) {
       //true
       if (drop !== id) {
-        setDrop(id);        
+        setDrop(id);
       } else {
         setDrop("Default"); //hook
         setState(false); //hook
@@ -30,8 +30,14 @@ export default function Sidebar(props) {
         {/* Menu */}
         <div className="DAT_Sidebar_Content_Menu">
           {/* Trang chu */}
-          <Link to="/" style={{textDecoration:"none", color:"black"}}>
-            <div className="DAT_Sidebar_Content_Menu_Item" id="Home" onClick={(e) => {handleDropdown(e);}}>
+          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+            <div
+              className="DAT_Sidebar_Content_Menu_Item"
+              id="Home"
+              onClick={(e) => {
+                handleDropdown(e);
+              }}
+            >
               <div className="DAT_Sidebar_Content_Menu_Item_Icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -63,13 +69,16 @@ export default function Sidebar(props) {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 384 512"
                   data-fa-i2svg=""
-                  style={{ transform: (drop==="Home") ? "rotate(0deg)" : "rotate(-90deg)" }}
+                  style={{
+                    transform:
+                      drop === "Home" ? "rotate(0deg)" : "rotate(-90deg)",
+                  }}
                 >
                   <path
                     fill="currentColor"
                     d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
                   ></path>
-                </svg>              
+                </svg>
               </div>
             </div>
           </Link>
@@ -78,22 +87,34 @@ export default function Sidebar(props) {
           {drop === "Home" ? (
             <div className="DAT_Sidebar_Content_Menu_Dropdown" id="Home_Drop">
               <div className="DAT_Sidebar_Content_Menu_Dropdown_List">
-                <Link to="/Automation" style={{textDecoration:"none", color:"black"}}>
+                <Link
+                  to="/Automation"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
                   <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
                     Tự động hóa
                   </div>
                 </Link>
-                <Link to="/SolarEnergy" style={{textDecoration:"none", color:"black"}}>
+                <Link
+                  to="/SolarEnergy"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
                   <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
                     Năng lượng mặt trời
                   </div>
                 </Link>
-                <Link to="/Elevator" style={{textDecoration:"none", color:"black"}}>
+                <Link
+                  to="/Elevator"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
                   <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
                     Thang máy
                   </div>
                 </Link>
-                <Link to="/UPS" style={{textDecoration:"none", color:"black"}}>
+                <Link
+                  to="/UPS"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
                   <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
                     Ups
                   </div>
@@ -105,19 +126,28 @@ export default function Sidebar(props) {
           )}
 
           {/* Vi tri */}
-          <Link to={"/Location"} style={{textDecoration:"none", color:"black"}}>
-            <div className="DAT_Sidebar_Content_Menu_Item" id="ViTri" onClick={(e) => {handleDropdown(e);}}>
+          <Link
+            to={"/Location"}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <div
+              className="DAT_Sidebar_Content_Menu_Item"
+              id="ViTri"
+              onClick={(e) => {
+                handleDropdown(e);
+              }}
+            >
               <div className="DAT_Sidebar_Content_Menu_Item_Icon">
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  width="16" 
-                  height="16" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="feather feather-filter"
                 >
                   <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
@@ -166,9 +196,18 @@ export default function Sidebar(props) {
           )} */}
 
           {/* Thong bao */}
-          <Link to="/Notification" style={{textDecoration:"none", color:"black"}}>
-            <div className="DAT_Sidebar_Content_Menu_Item" id="ThongBao" onClick={(e) => {handleDropdown(e);}}>
-              <div className="DAT_Sidebar_Content_Menu_Item_Icon">             
+          <Link
+            to="/Notification"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <div
+              className="DAT_Sidebar_Content_Menu_Item"
+              id="ThongBao"
+              onClick={(e) => {
+                handleDropdown(e);
+              }}
+            >
+              <div className="DAT_Sidebar_Content_Menu_Item_Icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -212,10 +251,16 @@ export default function Sidebar(props) {
           </Link>
 
           {/* SMS */}
-          <Link to="/SMS" style={{textDecoration:"none", color:"black"}}>
-            <div className="DAT_Sidebar_Content_Menu_Item" id="SMS" onClick={(e) => {handleDropdown(e);}}>
-              <div className="DAT_Sidebar_Content_Menu_Item_Icon">             
-              <svg
+          <Link to="/SMS" style={{ textDecoration: "none", color: "black" }}>
+            <div
+              className="DAT_Sidebar_Content_Menu_Item"
+              id="SMS"
+              onClick={(e) => {
+                handleDropdown(e);
+              }}
+            >
+              <div className="DAT_Sidebar_Content_Menu_Item_Icon">
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
@@ -258,18 +303,24 @@ export default function Sidebar(props) {
           </Link>
 
           {/* Bao cao */}
-          <div className="DAT_Sidebar_Content_Menu_Item" id="BaoCao" onClick={(e) => {handleDropdown(e);}}>
+          <div
+            className="DAT_Sidebar_Content_Menu_Item"
+            id="BaoCao"
+            onClick={(e) => {
+              handleDropdown(e);
+            }}
+          >
             <div className="DAT_Sidebar_Content_Menu_Item_Icon">
-            <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                width="16" 
-                height="16" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="feather feather-repeat"
               >
                 <polyline points="17 1 21 5 17 9"></polyline>
@@ -293,13 +344,16 @@ export default function Sidebar(props) {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 384 512"
                 data-fa-i2svg=""
-                style={{ transform: (drop==="BaoCao") ? "rotate(0deg)" : "rotate(-90deg)" }}
+                style={{
+                  transform:
+                    drop === "BaoCao" ? "rotate(0deg)" : "rotate(-90deg)",
+                }}
               >
                 <path
                   fill="currentColor"
                   d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
                 ></path>
-              </svg>              
+              </svg>
             </div>
           </div>
 
@@ -307,12 +361,18 @@ export default function Sidebar(props) {
           {drop === "BaoCao" ? (
             <div className="DAT_Sidebar_Content_Menu_Dropdown" id="BaoCao_Drop">
               <div className="DAT_Sidebar_Content_Menu_Dropdown_List">
-                <Link to="/ErrorReport" style={{textDecoration:"none", color:"black"}}>
+                <Link
+                  to="/ErrorReport"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
                   <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
                     Báo cáo lỗi
                   </div>
                 </Link>
-                <Link to="/ExportReport" style={{textDecoration:"none", color:"black"}}>
+                <Link
+                  to="/ExportReport"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
                   <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
                     Xuất báo cáo
                   </div>
@@ -324,7 +384,13 @@ export default function Sidebar(props) {
           )}
 
           {/* Cai dat */}
-          <div className="DAT_Sidebar_Content_Menu_Item" id="CaiDat" onClick={(e) => {handleDropdown(e);}}>
+          <div
+            className="DAT_Sidebar_Content_Menu_Item"
+            id="CaiDat"
+            onClick={(e) => {
+              handleDropdown(e);
+            }}
+          >
             <div className="DAT_Sidebar_Content_Menu_Item_Icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -356,7 +422,10 @@ export default function Sidebar(props) {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 384 512"
                 data-fa-i2svg=""
-                style={{ transform: (drop==="CaiDat") ? "rotate(0deg)" : "rotate(-90deg)" }}
+                style={{
+                  transform:
+                    drop === "CaiDat" ? "rotate(0deg)" : "rotate(-90deg)",
+                }}
               >
                 <path
                   fill="currentColor"
@@ -370,15 +439,29 @@ export default function Sidebar(props) {
           {drop === "CaiDat" ? (
             <div className="DAT_Sidebar_Content_Menu_Dropdown" id="CaiDat_Drop">
               <div className="DAT_Sidebar_Content_Menu_Dropdown_List">
-                <Link to="/DeviceSetting" style={{textDecoration:"none", color:"black"}}>
+                <Link
+                  to="/DeviceSetting"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
                   <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
                     Thiết bị
                   </div>
                 </Link>
-                <Link to="/Account" style={{textDecoration:"none", color:"black"}}>
+                <Link
+                  to="/Account"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
                   <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
                     Tài khoản
-                  </div>                
+                  </div>
+                </Link>
+                <Link
+                  to="/Configuration"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
+                    Cấu hình
+                  </div>
                 </Link>
               </div>
             </div>
@@ -387,19 +470,28 @@ export default function Sidebar(props) {
           )}
 
           {/* Thong tin DAT */}
-          <Link to="/DATGroup" style={{textDecoration:"none", color:"black"}}>
-            <div className="DAT_Sidebar_Content_Menu_Item" id="DAT" onClick={(e) => {handleDropdown(e);}}>
+          <Link
+            to="/DATGroup"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <div
+              className="DAT_Sidebar_Content_Menu_Item"
+              id="DAT"
+              onClick={(e) => {
+                handleDropdown(e);
+              }}
+            >
               <div className="DAT_Sidebar_Content_Menu_Item_Icon">
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  width="16" 
-                  height="16" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="feather feather-grid"
                 >
                   <rect x="3" y="3" width="7" height="7"></rect>
@@ -441,7 +533,9 @@ export default function Sidebar(props) {
             <div className="DAT_Sidebar_Content_Footer_Content_Title">
               Logged in as:
             </div>
-            <div className="DAT_Sidebar_Content_Footer_Content_Text">{props.name}</div>
+            <div className="DAT_Sidebar_Content_Footer_Content_Text">
+              {props.name}
+            </div>
           </div>
         </div>
       </div>
