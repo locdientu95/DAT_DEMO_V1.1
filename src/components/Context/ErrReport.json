@@ -1,0 +1,41 @@
+[
+        {
+            "name": "STT",
+            "code": "id"
+        },
+        {
+            "name": "Mã Lỗi",
+            "code": "Errcode"
+        },
+        {
+            "name": "Device Type",
+            "code": "DeviceType"
+        },
+        {
+            "name": "Trạng Thái",
+            "code": "ErrStt"
+        },
+        {
+            "name": "Loại Lỗi",
+            "code": "ErrType"
+        },
+        {
+            "name": "Tên Dự Án",
+            "code": "ProjectName"
+        },
+        {
+            "name": "Device ID",
+            "code": "DeviceID"
+        },
+        {
+            "name": "Thời Gian",
+            "code": "Datetime"
+        }
+    
+
+    
+    
+]
+
+
+
