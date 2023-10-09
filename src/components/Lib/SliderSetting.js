@@ -1,9 +1,40 @@
 import React, { useContext, useRef } from "react";
 import "./Setting.scss";
 import { EnvContext } from "../Context/EnvContext";
+import {
+  Box,
+  BoxOnchange,
+  Button,
+  Input,
+  InputFist,
+  Span,
+} from "./FunctionElement";
 
 export default function SliderSetting() {
   const { slider, envDispatch } = useContext(EnvContext);
+
+  const base = [
+    "Cơ số 10",
+    "Cơ số 16",
+    "Cơ số 2_0",
+    "Cơ số 2_1",
+    "Cơ số 2_2",
+    "Cơ số 2_3",
+    "Cơ số 2_4",
+    "Cơ số 2_5",
+    "Cơ số 2_6",
+    "Cơ số 2_7",
+    "Cơ số 2_8",
+    "Cơ số 2_9",
+    "Cơ số 2_10",
+    "Cơ số 2_11",
+    "Cơ số 2_12",
+    "Cơ số 2_13",
+    "Cơ số 2_14",
+    "Cơ số 2_15",
+  ];
+
+  const H_V = ["horizontal", "vertical"];
 
   const min = useRef();
   const handleMin = (e) => {
@@ -57,18 +88,13 @@ export default function SliderSetting() {
     scale.current.value = "";
   };
 
-  const ori = useRef();
   const handleOri = (e) => {
-    console.log(ori.current.value);
-    console.log(width.current.value);
-    console.log(height.current.value);
-
-    if (ori.current.value === "horizontal") {
+    if (e.currentTarget.value === "horizontal") {
       envDispatch({
         type: "SET_SLIDER",
         payload: {
           ...slider,
-          ori: ori.current.value,
+          ori: e.currentTarget.value,
         },
       });
     } else {
@@ -76,7 +102,7 @@ export default function SliderSetting() {
         type: "SET_SLIDER",
         payload: {
           ...slider,
-          ori: ori.current.value,
+          ori: e.currentTarget.value,
         },
       });
     }
@@ -120,99 +146,64 @@ export default function SliderSetting() {
 
   return (
     <div className="DAT_Setting-Slider">
+      <div className="DAT_Setting-Slider-Row">
+        {InputFist("", "Width: " + slider.width, width)}
+        {Input("", "Height: " + slider.height, height)}
+        {Input("", "Scale: " + slider.scale, scale)}
+        {Button(handleCustom, "Chọn")}
+      </div>
+
       <div className="DAT_Setting-Slider-Row1">
         <input
           className="DAT_Setting-Slider-Row1-Item1"
           placeholder={"Min: " + slider.min}
           ref={min}
-        ></input>
+        />
         <input
           placeholder="Nhập thanh ghi"
           className="DAT_Setting-Slider-Row1-Item2"
-        ></input>
-        <button onClick={(e) => handleMin(e)}>Chọn</button>
+        />
+        {Button(handleMin, "Chọn")}
       </div>
 
-      <div className="DAT_Setting-Slider-Row2">
+      <div className="DAT_Setting-Slider-Row1">
         <input
-          className="DAT_Setting-Slider-Row2-Item1"
+          className="DAT_Setting-Slider-Row1-Item1"
           placeholder={"Max: " + slider.max}
           ref={max}
-        ></input>
+        />
         <input
           placeholder="Nhập thanh ghi"
-          className="DAT_Setting-Slider-Row2-Item2"
-        ></input>
-        <button onClick={(e) => handleMax(e)}>Chọn</button>
+          className="DAT_Setting-Slider-Row1-Item2"
+        />
+        {Button(handleMax, "Chọn")}
       </div>
 
-      <div className="DAT_Setting-Slider-Row3">
-        <input
-          className="DAT_Setting-Slider-Row3-Item1"
-          placeholder={"Width: " + slider.width}
-          ref={width}
-        ></input>
-        <input placeholder={"Height: " + slider.height} ref={height}></input>
-        <input placeholder={"Bước kéo: " + slider.scale} ref={scale}></input>
-        <button onClick={(e) => handleCustom(e)}>Chọn</button>
+      <div className="DAT_Setting-Slider-Row">
+        {BoxOnchange(H_V, handleOri)}
       </div>
 
-      <div className="DAT_Setting-Slider-Row4">
-        <select ref={ori} onChange={(e) => handleOri(e)}>
-          <option value={"horizontal"}>Chiều ngang</option>
-          <option value={"vertical"}>Chiều đứng</option>
-        </select>
+      <div className="DAT_Setting-Slider-Row">
+        {InputFist("", "Thumb Border: " + slider.thumb.border, thumbborder)}
+        {Span("Màu nút: ")}
+        {Input("color", "", thumbcolor)}
+        {Input("", "Value Border: " + slider.track.border, trackborder)}
+        {Span("Màu giá trị: ")}
+        {Input("color", "", trackcolor)}
+        {Span("Màu nền: ")}
+        {Input("color", "", railcolor)}
+        {Button(handleColor, "Chọn")}
       </div>
 
-      <div className="DAT_Setting-Slider-Row5">
-        <input
-          className="DAT_Setting-Slider-Row5-Item1"
-          placeholder={"Thumb Border: " + slider.thumb.border}
-          ref={thumbborder}
-        ></input>
-        <span>Màu nút: </span>
-        <input type="color" ref={thumbcolor}></input>
-        <input
-          placeholder={"Value Border: " + slider.track.border}
-          ref={trackborder}
-        ></input>
-        <span>Màu giá trị: </span>
-        <input type="color" ref={trackcolor}></input>
-        <span>Màu nền: </span>
-        <input type="color" ref={railcolor}></input>
-        <button onClick={(e) => handleColor(e)}>Chọn</button>
-      </div>
+      <div className="DAT_Setting-Slider-Row">{Box(base)}</div>
 
-      <div className="DAT_Setting-Slider-Row6">
-        <select>
-          <option value="0">Cơ số 10</option>
-          <option value="1">Cơ số 16</option>
-          <option value="2">Cơ số 2_0</option>
-          <option value="3">Cơ số 2_1</option>
-          <option value="4">Cơ số 2_2</option>
-          <option value="5">Cơ số 2_3</option>
-          <option value="6">Cơ số 2_4</option>
-          <option value="7">Cơ số 2_5</option>
-          <option value="8">Cơ số 2_6</option>
-          <option value="9">Cơ số 2_7</option>
-          <option value="10">Cơ số 2_8</option>
-          <option value="11">Cơ số 2_9</option>
-          <option value="12">Cơ số 2_10</option>
-          <option value="13">Cơ số 2_11</option>
-          <option value="14">Cơ số 2_12</option>
-          <option value="15">Cơ số 2_13</option>
-          <option value="16">Cơ số 2_14</option>
-          <option value="17">Cơ số 2_15</option>
-        </select>
-      </div>
-
-      <div className="DAT_Setting-Slider-Row7">
-        <input placeholder="Nhập thanh ghi read" />
+      <div className="DAT_Setting-Slider-Row">
+        {InputFist("text", "Nhập thanh ghi read")}
         <button>Chọn</button>
       </div>
 
-      <div className="DAT_Setting-Slider-Row8">
-        <input placeholder="0"></input>
+      <div className="DAT_Setting-Slider-Last">
+        <input placeholder="0" />
         <button>Xác nhận</button>
       </div>
     </div>

@@ -21,6 +21,8 @@ export const EnvContextProvider = ({ children }) => {
         lamp: state.lamp,
         barchart: state.barchart,
         numberh: state.numberh,
+        register: state.register,
+        login: state.login,
         envDispatch,
       }}
     >

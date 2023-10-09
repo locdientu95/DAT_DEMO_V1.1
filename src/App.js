@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./index.scss";
 import Header from "./components/Header/Header";
 import Content from "./components/Content/Content";
 import Sidebar from "./components/Sidebar/Sidebar";
-import Automation from "./components/Automation/Automation"
+import Automation from "./components/Automation/Automation";
 import SolarEnergy from "./components/SolarEnergy/Solar";
 import Elevator from "./components/Elevator/Elevator";
 import UPS from "./components/UPS/UPS";
@@ -15,62 +15,194 @@ import ExportReport from "./components/ExportReport/ExportReport";
 import Account from "./components/Account/Account";
 import Device from "./components/Setting/Device";
 import DATGroup from "./components/DATGroup/DATGroup";
-import  {BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-var data = [
-  {
-    id: 1,
-    name: "Huu Huynh",
-    mail: "huuhuynh@gmail.com"
-  },
-  {
-    id: 2,
-    name: "Tai Ngo",
-    mail: "taingo@gmail.com"
-  },
-  {
-    id: 3,
-    name: "Phu Nguyen",
-    mail: "phunguyen@gmail.com"
-  }
-];
+import Login from "./components/Login/Login";
+import Configuration from "./components/Configuration/Configuration";
+import ErrorSetting from "./components/ErrorSetting/ErrorSetting";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useContext } from "react";
+import { EnvContext } from "./components/Context/EnvContext";
 
 export default function App() {
-
-  const [info, setInfo] = useState("unknown");
-  const [mail, setMail] = useState("unknown@gmail.com");
-
-  useState(() => {
-    var newInfo = data
-    newInfo = newInfo.filter(newInfo => newInfo.id === 3)
-    // newInfo = newInfo.filter(newInfo => newInfo.id !== 3)
-
-    setInfo(newInfo[0].name)
-    setMail(newInfo[0].mail)
-  }, [])
+  const { login } = useContext(EnvContext);
 
   return (
     <Router>
       <div className="DAT_Container">
-        <Header name={info} mail={mail} />
+        {login.status ? (
+          <Header name={login.username} mail={login.mail} />
+        ) : (
+          <></>
+        )}
         <div className="DAT_Container-Main">
-          <Sidebar name={info} mail={mail} />
-          
-            <Routes>
-              <Route exact path="/" element={<Content></Content>} />
-              <Route path="/Automation" element={<Automation></Automation>} />
-              <Route path="/SolarEnergy" element={<SolarEnergy></SolarEnergy>} />
-              <Route path="/Elevator" element={<Elevator></Elevator>} />
-              <Route path="/UPS" element={<UPS></UPS>} />
-              <Route path="/Location" element={<Location></Location>} />
-              <Route path="/Notification" element={<Notification></Notification>} />
-              <Route path="/SMS" element={<SMS></SMS>} />
-              <Route path="/ErrorReport" element={<ErrorReport></ErrorReport>} />
-              <Route path="/ExportReport" element={<ExportReport></ExportReport>} />
-              <Route path="/Account" element={<Account></Account>} />
-              <Route path="/DeviceSetting" element={<Device></Device>} />
-              <Route path="/DATGroup" element={<DATGroup></DATGroup>} />
-            </Routes>
+          {login.status ? (
+            <Sidebar name={login.username} mail={login.mail} />
+          ) : (
+            <></>
+          )}
+
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                login.status ? (
+                  <Content name={login.username}></Content>
+                ) : (
+                  <Login></Login>
+                )
+              }
+            />
+            <Route
+              path="/Login"
+              element={
+                login.status ? (
+                  <Content name={login.username}></Content>
+                ) : (
+                  <Login></Login>
+                )
+              }
+            />
+            <Route
+              path="/Automation"
+              element={
+                login.status ? (
+                  <Automation name={login.username}></Automation>
+                ) : (
+                  <Login></Login>
+                )
+              }
+            />
+            <Route
+              path="/SolarEnergy"
+              element={
+                login.status ? (
+                  <SolarEnergy name={login.username}></SolarEnergy>
+                ) : (
+                  <Login></Login>
+                )
+              }
+            />
+            <Route
+              path="/Elevator"
+              element={
+                login.status ? (
+                  <Elevator name={login.username}></Elevator>
+                ) : (
+                  <Login></Login>
+                )
+              }
+            />
+            <Route
+              path="/UPS"
+              element={
+                login.status ? (
+                  <UPS name={login.username}></UPS>
+                ) : (
+                  <Login></Login>
+                )
+              }
+            />
+            <Route
+              path="/Location"
+              element={
+                login.status ? (
+                  <Location name={login.username}></Location>
+                ) : (
+                  <Login></Login>
+                )
+              }
+            />
+            <Route
+              path="/Notification"
+              element={
+                login.status ? (
+                  <Notification name={login.username}></Notification>
+                ) : (
+                  <Login></Login>
+                )
+              }
+            />
+            <Route
+              path="/SMS"
+              element={
+                login.status ? (
+                  <SMS name={login.username}></SMS>
+                ) : (
+                  <Login></Login>
+                )
+              }
+            />
+            <Route
+              path="/ErrorReport"
+              element={
+                login.status ? (
+                  <ErrorReport name={login.username}></ErrorReport>
+                ) : (
+                  <Login></Login>
+                )
+              }
+            />
+            <Route
+              path="/ExportReport"
+              element={
+                login.status ? (
+                  <ExportReport name={login.username}></ExportReport>
+                ) : (
+                  <Login></Login>
+                )
+              }
+            />
+            <Route
+              path="/Account"
+              element={
+                login.status ? (
+                  <Account name={login.username}></Account>
+                ) : (
+                  <Login></Login>
+                )
+              }
+            />
+            <Route
+              path="/DeviceSetting"
+              element={
+                login.status ? (
+                  <Device name={login.username}></Device>
+                ) : (
+                  <Login></Login>
+                )
+              }
+            />
+            <Route
+              path="/Configuration"
+              element={
+                login.status ? (
+                  <Configuration name={login.username}></Configuration>
+                ) : (
+                  <Login></Login>
+                )
+              }
+            />
+            <Route
+              path="/ErrorSetting"
+              element={
+                login.status ? (
+                  <ErrorSetting name={login.username}></ErrorSetting>
+                ) : (
+                  <Login></Login>
+                )
+              }
+            />
+            <Route
+              path="/DATGroup"
+              element={
+                login.status ? (
+                  <DATGroup name={login.username}></DATGroup>
+                ) : (
+                  <Login></Login>
+                )
+              }
+            />
+          </Routes>
         </div>
       </div>
     </Router>

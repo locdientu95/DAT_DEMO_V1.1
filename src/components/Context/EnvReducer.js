@@ -108,11 +108,10 @@ export const INITSTATE = {
         id: 1,
         val_1: 0,
       },
-      
     ],
     head: [
       {
-        name:"STT",
+        name: "STT",
         code: "id",
       },
       {
@@ -120,9 +119,10 @@ export const INITSTATE = {
         code: "val_1",
       },
     ],
-    row : 2,
+    row: 2,
     col: 2,
-},
+  },
+
   number: {
     width: "100",
     height: "30",
@@ -162,10 +162,15 @@ export const INITSTATE = {
     ],
     w: "500",
     h: "300",
-    labelsize: "10px",
-    tickNumb: 20,
-    tickmaxstep: 0,
-    tickminstep: 0,
+    labelsize: "10",
+    tickNumb: 5,
+    tickmaxstep: 5,
+    tickminstep: 2,
+    labelname: "Value",
+    valuecolor: "#008000",
+    series: "Series",
+    valuetitle: "value1",
+    chartnamefsize: "10px",
   },
 
   numberh: {
@@ -174,6 +179,109 @@ export const INITSTATE = {
       1: { label: "Gia tri 1", value: "0", unit: "unit" },
     },
   },
+
+  login: { username: "unknown", mail: "unknown@gmail.com", status: false },
+
+  // register: [
+  //   {
+  //     id: 1,
+  //     username: "admin",
+  //     password: "123456",
+  //     email: "admin@gmail.com",
+  //     role: "admin",
+  //   },
+  //   {
+  //     id: 2,
+  //     username: "huuhuynh",
+  //     password: "huu123",
+  //     email: "huuhuynh@gmail.com",
+  //     role: "user",
+  //   },
+  //   {
+  //     id: 3,
+  //     username: "phunguyen",
+  //     password: "phu123",
+  //     email: "phunguyen@gmail.com",
+  //     role: "user",
+  //   },
+  //   {
+  //     id: 4,
+  //     username: "taingo",
+  //     password: "tai123",
+  //     email: "taingo@gmail.com",
+  //     role: "user",
+  //   },
+  // ],
+
+  // project: [
+  //   {
+  //     projectid: "P01",
+  //     name: "GREEN GROWTH SHOW 2023",
+  //     company: "Công ty Cổ phần Tập đoàn DAT",
+  //     info: "Phố đi bộ Nguyễn Huệ, quận 1, Hình Chí Mô",
+  //     statement: 0, //0: Bật 1:Tắt 2:Bảo trì
+  //     custom: "",
+  //   },
+  //   {
+  //     projectid: "P02",
+  //     name: "YASUO EVENT",
+  //     company: "Công ty TNHH Một Mình Tôi",
+  //     info: "Ngoài rìa thành phố Thủ Đức",
+  //     statement: 1,
+  //     custom: "",
+  //   },
+  //   {
+  //     projectid: "P03",
+  //     name: "PIZZA HUT THUOC LA",
+  //     company: "Công ty Mai Tài Phến - MTP Entertainment",
+  //     info: "Phía bên kia dãy Bạch Mã",
+  //     statement: 1, //0: Bật 1:Tắt 2:Bảo trì
+  //     custom: "",
+  //   },
+  //   {
+  //     projectid: "P04",
+  //     name: "CHO ĐI ĐỂ VÀO ĐẦU MÀY 1 CÁI BÂY CHỪ",
+  //     company: "Công ty đòi nợ Đất Bắc",
+  //     info: "Hiện diện trong Nam, xuất thân gốc Bắc",
+  //     statement: 2, //0: Bật 1:Tắt 2:Bảo trì
+  //     custom: "",
+  //   },
+  // ],
+
+  // device: [
+  //   {
+  //     deviceid: 116,
+  //     name: "Solar Power",
+  //     description: "",
+  //     statement: 2,
+  //     gateway: "I0622B066940",
+  //     custome: "",
+  //   },
+  //   {
+  //     deviceid: 117,
+  //     name: "Eletric Valve",
+  //     description: "",
+  //     statement: 1,
+  //     gateway: "IOT323195643",
+  //     custome: "",
+  //   },
+  //   {
+  //     deviceid: 118,
+  //     name: "Pump",
+  //     description: "",
+  //     statement: 1,
+  //     gateway: "LY283409228",
+  //     custome: "",
+  //   },
+  //   {
+  //     deviceid: 119,
+  //     name: "Microwave",
+  //     description: "",
+  //     statement: 0,
+  //     gateway: "I0222195940",
+  //     custome: "",
+  //   },
+  // ],
 
   type: "Button",
 };
@@ -239,6 +347,11 @@ const EnvReducer = (state, action) => {
       return {
         ...state,
         numberh: action.payload,
+      };
+    case "SET_LOGIN":
+      return {
+        ...state,
+        login: action.payload,
       };
     default:
       throw new Error("Unexpected action");

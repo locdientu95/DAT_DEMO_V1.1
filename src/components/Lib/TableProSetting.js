@@ -1,9 +1,10 @@
-import React, { Fragment, useEffect, useState } from 'react'
-import { useContext } from 'react'
-import { EnvContext } from '../Context/EnvContext'
-import { useRef } from 'react'
+import React, { Fragment, useEffect, useState } from "react";
+import { useContext } from "react";
+import { EnvContext } from "../Context/EnvContext";
+import { useRef } from "react";
+import { Button, Input, InputFist, Span } from "./FunctionElement";
 export default function TableProSetting() {
-  const { tablepro, envDispatch } = useContext(EnvContext)
+  const { tablepro, envDispatch } = useContext(EnvContext);
   const width = useRef();
   const height = useRef();
   const row = useRef();
@@ -17,14 +18,15 @@ export default function TableProSetting() {
   const selID = useRef();
   const selVal = useRef();
   const newval = useRef();
-  const valuesplit=(text)=>{
-    var t = text
-      t = t.split("_")
-      return t[1]
-  }
+
+  const valuesplit = (text) => {
+    var t = text;
+    t = t.split("_");
+    return t[1];
+  };
 
   const handleTable = (e) => {
-    if (width.current.value == "") {
+    if (width.current.value === "") {
     } else {
       envDispatch({
         type: "SET_TABLEPRO",
@@ -32,40 +34,43 @@ export default function TableProSetting() {
           ...tablepro,
           width: width.current.value,
           //height: height.current.value
-        }
-      })
+        },
+      });
     }
-  }
+
+    width.current.value = "";
+  };
+
   const handleAddRow = (e) => {
-    const arr = []
-    const updateRow = parseInt(tablepro.row) + parseInt(row.current.value)
+    const arr = [];
+    const updateRow = parseInt(tablepro.row) + parseInt(row.current.value);
     for (let i = 0; i < row.current.value; i++) {
-      var newRow = {}
+      var newRow = {};
       tablepro.head.map((data, index) => {
         if (index == 0) {
           newRow[data.code] = parseInt(tablepro.row) + i;
         } else {
-          newRow[data.code] = 0
+          newRow[data.code] = 0;
         }
-      })
-      arr.push(newRow)
+      });
+      arr.push(newRow);
     }
-    const newDataTable = tablepro.data.concat(arr)
+    const newDataTable = tablepro.data.concat(arr);
     envDispatch({
       type: "SET_TABLEPRO",
       payload: {
         ...tablepro,
         row: updateRow,
-        data: newDataTable
-      }
-    })
-  }
+        data: newDataTable,
+      },
+    });
+  };
 
   const handleDeleteRow = (e) => {
-    const start = fromRow.current.value
-    const end = toRow.current.value
+    const start = fromRow.current.value;
+    const end = toRow.current.value;
     if (tablepro.row <= 2) {
-      alert("Số hàng tối thiểu là 2")
+      alert("Số hàng tối thiểu là 2");
     } else {
       if(start == "" || end == ""){
         alert("Nhập sai, vui lòng nhập lại")
@@ -78,6 +83,7 @@ export default function TableProSetting() {
         newData = newData.filter(newData => {
           return newData.id < parseInt(start) || newData.id > parseInt(end)
         })
+  
         // Tính năng cập nhật lại ID sau khi xóa (Đang tắt)
         // newData.map((data,index) =>{
         //   data.id = index+1
@@ -88,69 +94,68 @@ export default function TableProSetting() {
             ...tablepro,
             data: newData,
             //row: newData.length //Chỉ dùng khi bật tính năng cập nhật
-          }
-        })
+          },
+        });
       }
-    }  
-  }
+    }
+  };
 
   const handleAddCol = (e) => {
-    const leng = tablepro.col
-    const sum = parseInt(col.current.value) + parseInt(leng)
-    const newHead = tablepro.head
+    const leng = tablepro.col;
+    const sum = parseInt(col.current.value) + parseInt(leng);
+    const newHead = tablepro.head;
     for (var i = leng + 1; i <= sum; i++) {
-      newHead.push({ name: "Giá Trị " + (i - 1), code: "val_" + (i - 1) })
+      newHead.push({ name: "Giá Trị " + (i - 1), code: "val_" + (i - 1) });
     }
-    const newData = []
+    const newData = [];
     tablepro.data.map((data, index) => {
-      var x = data
+      var x = data;
       for (var i = leng; i <= sum; i++) {
-        x["val_" + i] = 0
+        x["val_" + i] = 0;
       }
-      newData.push(x)
-    })
+      newData.push(x);
+    });
     envDispatch({
       type: "SET_TABLEPRO",
       payload: {
         ...tablepro,
         data: newData,
         head: newHead,
-        col: sum
-      }
-    })
-  }
+        col: sum,
+      },
+    });
+  };
 
   const handleDeleteCol = (e) => {
-
-    const start = fromCol.current.value
-    const end = toCol.current.value
+    const start = fromCol.current.value;
+    const end = toCol.current.value;
     if (tablepro.col <= 2) {
-      alert("Số cột tối thiểu là 2")
+      alert("Số cột tối thiểu là 2");
     } else {
       if (start <= 0 || end <= 0) {
-        alert("Nhập sai, vui lòng nhập lại")
+        alert("Nhập sai, vui lòng nhập lại");
       } else if (start > end) {
-        alert("Nhập sai, vui lòng nhập lại")
-      }else if (start == "" || end == "") {
-        alert("Nhập sai, vui lòng nhập lại")
+        alert("Nhập sai, vui lòng nhập lại");
+      } else if (start == "" || end == "") {
+        alert("Nhập sai, vui lòng nhập lại");
       } else {
-        const label = "val_"
-        var num = parseInt(tablepro.col) - parseInt(parseInt(end) - parseInt(start))
-        var newHead = tablepro.head
+        const label = "val_";
+        var num =
+          parseInt(tablepro.col) - parseInt(parseInt(end) - parseInt(start));
+        var newHead = tablepro.head;
         for (var i = start; i <= end; i++) {
-          newHead = newHead.filter(newHead => newHead.code != label + i)
-
+          newHead = newHead.filter((newHead) => newHead.code != label + i);
         }
-        const newData = tablepro.data
+        const newData = tablepro.data;
         newData.map((data, index) => {
           for (var i = start; i <= end; i++) {
-            delete data["val_" + i]
+            delete data["val_" + i];
           }
-        })
+        });
         // Cập nhật lại các tên trên header
         // newHead.map((data,index) =>{
         //   if (index>0){
-        //     data.name = "Giá Trị "+index 
+        //     data.name = "Giá Trị "+index
         //     data.code ="val_"+index
         //   }
         // })
@@ -160,48 +165,45 @@ export default function TableProSetting() {
             ...tablepro,
             head: newHead,
             data: newData,
-
-          }
-        })
+          },
+        });
       }
     }
-
-  }
+  };
 
   const handleChangeTitle = (e) => {
-    var valueNumber = sel.current.value
-    const newName = tit.current.value
+    var valueNumber = sel.current.value;
+    const newName = tit.current.value;
     var newHead = tablepro.head;
     newHead.map((data, index) => {
       if (index == parseInt(valueNumber)) {
-        data.name = newName
+        data.name = newName;
       }
-    })
+    });
     envDispatch({
       type: "SET_TABLEPRO",
       payload: {
         ...tablepro,
         head: newHead,
-      }
-    })
-  }
+      },
+    });
+  };
 
-  const handleChangeValue =(e)=>{
-    const row = selID.current.value
-    const col = selVal.current.value
-    const val = newval.current.value
-    var newData = tablepro.data
-    const index = newData.findIndex(newData => newData.id == row)
-    newData[index]["val_"+col] = val
+  const handleChangeValue = (e) => {
+    const row = selID.current.value;
+    const col = selVal.current.value;
+    const val = newval.current.value;
+    var newData = tablepro.data;
+    const index = newData.findIndex((newData) => newData.id == row);
+    newData[index]["val_" + col] = val;
     envDispatch({
       type: "SET_TABLEPRO",
       payload: {
         ...tablepro,
         data: newData,
-      }
-    })
-    
-  }
+      },
+    });
+  };
 
   // useEffect(() => {
   //   console.log("HEAD", tablepro.head)
@@ -210,24 +212,13 @@ export default function TableProSetting() {
   //   console.log("ROW", tablepro.row)
   // }, [tablepro])
 
-
-
   return (
-    <div className='DAT_Setting-TablePro'>
-      <div className='DAT_Setting-TablePro-Row1'> 
-        <input className='DAT_Setting-TablePro-Row1-Width' placeholder='Nhập chiều dài table' ref={width} />
+    <div className="DAT_Setting-TablePro">
+      <div className="DAT_Setting-TablePro-Row">
+        {InputFist("", "Width: " + tablepro.width, width)}
         {/* <input className='DAT_Setting-TablePro-Row1-Height' placeholder='Chiều cao table' ref={height}/> */}
-        <button className='DAT_Setting-TablePro-Row1-Submit' onClick={(e) => handleTable(e)}>Chọn</button>
+        {Button(handleTable, "Chọn")}
       </div>
-      <div className='DAT_Setting-TablePro-Row2'>
-        <input className='DAT_Setting-TablePro-Row2-TableRow' placeholder='Nhập số hàng muốn thêm' ref={row} />
-        <button className='DAT_Setting-TablePro-Row2-Submit' onClick={(e) => handleAddRow(e)}>Thêm</button>
-      </div>
-      <div className='DAT_Setting-TablePro-Row3'>
-        <input className='DAT_Setting-TablePro-Row3-TableColumn' placeholder='Nhập số cột muốn thêm' ref={col} />
-        <button className='DAT_Setting-TablePro-Row3-Submit' onClick={(e) => handleAddCol(e)}>Thêm</button>
-      </div>
-
       <div className='DAT_Setting-TablePro-Row4'>
         <div className='DAT_Setting-TablePro-Row4-RmFrom'>
           Xóa hàng từ: 
@@ -303,7 +294,72 @@ export default function TableProSetting() {
               <button onClick={(e)=>handleChangeValue(e)}>Thay đổi</button>
             </div>
         </div>     
+      <div className="DAT_Setting-TablePro-Row">
+        {InputFist("", "Nhập số hàng muốn thêm: ", row)}
+        {Button(handleAddRow, "Thêm")}
+      </div>
 
+      <div className="DAT_Setting-TablePro-Row">
+        {InputFist("", "Nhập số cột muốn thêm: ", col)}
+        {Button(handleAddCol, "Thêm")}
+      </div>
+
+      <div className="DAT_Setting-TablePro-Row">
+        <span className="DAT_Setting-TablePro-Row-Item1">Xóa hàng từ STT:</span>
+        {Input("", "Xóa hàng từ STT", fromRow)}
+        {Span("Đến: ")}
+        {Input("", "Xóa hàng đến STT", toRow)}
+        {Button(handleDeleteRow, "Xóa")}
+      </div>
+      <div className="DAT_Setting-TablePro-Row">
+        <span className="DAT_Setting-TablePro-Row-Item1">Xóa cột từ STT:</span>
+        {Input("", "Xóa cột từ STT", fromCol)}
+        {Span("Đến: ")}
+        {Input("", "Xóa cột đến STT", toCol)}
+        {Button(handleDeleteCol, "Xóa")}
+      </div>
+
+      <div className="DAT_Setting-TablePro-Row">
+        <span className="DAT_Setting-TablePro-Row-Item1">
+          Chọn cột cần thay đổi tên
+        </span>
+        <select ref={sel}>
+          {tablepro.head.map((data, index) => {
+            return <option key={index}>{index}</option>;
+          })}
+        </select>
+        {Input("", "Nhập tên header", tit)}
+        {Button(handleChangeTitle, "Thay đổi")}
+      </div>
+
+      <div className="DAT_Setting-TablePro-Row">
+        <span className="DAT_Setting-TablePro-Row-Item1">
+          Chọn id cần thay đổi
+        </span>
+        <select ref={selID}>
+          {tablepro.data.map((data, index) => {
+            return (
+              <option key={index} value={data.id}>
+                Hàng thứ {data.id}
+              </option>
+            );
+          })}
+        </select>
+        {Span("Chọn vị trí cột cần thay đổi giá trị")}
+        <select ref={selVal}>
+          {tablepro.head.map((data, index) => {
+            return index !== 0 ? (
+              <option key={index} value={index}>
+                Cột thứ {index}
+              </option>
+            ) : (
+              <Fragment key={index}></Fragment>
+            );
+          })}
+        </select>
+        {Input("", "Nhập giá trị", newval)}
+        {Button(handleChangeValue, "Thay đổi")}
+      </div>
     </div>
-  )
+  );
 }

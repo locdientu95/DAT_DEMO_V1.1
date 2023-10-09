@@ -1,161 +1,103 @@
 .DAT_Setting {
     &-Button {
-        margin-bottom: 10px;
-        padding: 10px;
-
-        &-Row1 {
+        &-Row {
             display: flex;
-            margin-bottom: 10px;
-            gap: 5px;
-
-            & input {
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                border-style: none;
-                background-color: #d0f0ff;
-                border-radius: 7px;
-            }
-
-            & button {
-                width: 50px;
-                height: 27px;
-            }
-        }
-
-        &-Row2 {
-            display: flex;
-            margin-bottom: 10px;
-            gap: 5px;
-
-            & input {
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                border-style: none;
-                background-color: #d0f0ff;
-                border-radius: 7px;
-            }
-
-            & button {
-                height: 27px;
-                width: 50px;
-            }
-        }
-
-        &-Row3 {
-            display: flex;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 10px;
 
-            & input {
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                border-style: none;
-                background-color: #d0f0ff;
-                border-radius: 7px;
-            }
-
-            & button {
-                height: 27px;
-                width: 50px;
-            }
-        }
-
-        &-Row4 {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
-
-            & select {
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                border-style: none;
-                background-color: #d0f0ff;
-                border-radius: 7px;
+            &-Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
             }
 
             & input {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
                 width: 100%;
                 box-sizing: border-box;
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
-                border-style: none;
+            }
+
+            & span {
+                padding-left: 8px;
+                width: 550px;
+                display: flex;
+                align-items: center;
                 background-color: #d0f0ff;
-                border-radius: 7px;
             }
 
             & select {
-                width: 100%;
-                height: 27px;
-            }
-
-            & button {
-                height: 27px;
-                width: 50px;
-            }
-        }
-
-        &-Row5 {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
-
-            & input {
+                border-radius: 7px;
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
                 width: 100%;
                 box-sizing: border-box;
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
-                border-style: none;
-                background-color: #d0f0ff;
-                border-radius: 7px;
+
+                & option {
+                    background-color: white;
+                }
             }
 
             & button {
-                height: 27px;
-                width: 50px;
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
             }
         }
 
-        &-Row6 {
+        &-Last {
             display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
+            gap: 8px;
 
             & input {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                height: 32px;
                 width: 100%;
+                padding: 8px;
+                border: solid 2px #d0f0ff;
                 box-sizing: border-box;
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
-                border-style: none;
-                background-color: #d0f0ff;
+            }
+
+            & button {
+                width: 80px;
+                background-color: #326ba8;
+                color: white;
+                border: none;
                 border-radius: 7px;
-                height: 27px;
             }
         }
     }
 
     &-Bar {
-        margin-bottom: 10px;
-        padding: 10px;
-
         &-Row {
             display: flex;
+            gap: 8px;
             margin-bottom: 10px;
-            gap: 5px;
-            height: 27px;
+
+            &-Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
 
             & input {
-                width: 100%;
                 background-color: #d0f0ff;
-                border-style: none;
-                border-radius: 7px;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
             }
 
             &-BackgroundColor {
@@ -181,29 +123,94 @@
             }
 
             & select {
-                width: 100%;
-                background-color: #d0f0ff;
                 border-radius: 7px;
-                border-style: none;
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+
+                & option {
+                    background-color: white;
+                }
             }
 
-            &-Confirm {
-                width: 100px;
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &-Row1 {
+            display: flex;
+            margin-bottom: 10px;
+            gap: 8px;
+
+            &_Item1 {
+                border: solid 2px #d0f0ff;
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            &_Item2 {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &-Last {
+            display: flex;
+            gap: 8px;
+
+            & input {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                height: 32px;
+                width: 100%;
+                padding: 8px;
+                border: solid 2px #d0f0ff;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                width: 80px;
+                background-color: #326ba8;
+                color: white;
+                border: none;
+                border-radius: 7px;
             }
         }
     }
 
     &_Gauge {
-        position: relative;
-        background-color: white;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-        padding: 10px;
-
-        &_Row1 {
+        &_Row {
             display: flex;
             margin-bottom: 10px;
-            gap: 4px;
+            gap: 8px;
 
             &_Item1 {
                 border-top-left-radius: 7px;
@@ -223,197 +230,11 @@
 
             & span {
                 padding-left: 8px;
-                width: 150px;
+                width: 500px;
                 display: flex;
                 align-items: center;
                 background-color: #d0f0ff;
             }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &_Row2 {
-            display: flex;
-            margin-bottom: 10px;
-            gap: 4px;
-
-            &_Item1 {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-            }
-
-            & input {
-                background-color: #d0f0ff;
-                padding: 8px;
-                border: none;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            & span {
-                padding-left: 8px;
-                width: 150px;
-                display: flex;
-                align-items: center;
-                background-color: #d0f0ff;
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &_Row3 {
-            display: flex;
-            margin-bottom: 10px;
-            gap: 4px;
-
-            &_Item1 {
-                border: solid 2px #d0f0ff;
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            &_Item2 {
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &_Row4 {
-            display: flex;
-            margin-bottom: 10px;
-            gap: 4px;
-
-            &_Item1 {
-                border: solid 2px #d0f0ff;
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            &_Item2 {
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &_Row5 {
-            display: flex;
-            margin-bottom: 10px;
-            gap: 4px;
-
-            &_Item1 {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-            }
-
-            & input {
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &_Row6 {
-            display: flex;
-            margin-bottom: 10px;
-            gap: 4px;
-
-            &_Item1 {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-                display: flex;
-                align-items: center;
-                background-color: #d0f0ff;
-                padding-left: 8px;
-            }
-
-            & input {
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            & span {
-                padding-left: 8px;
-                width: 480px;
-                display: flex;
-                align-items: center;
-                background-color: #d0f0ff;
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &_Row7 {
-            display: flex;
-            margin-bottom: 10px;
-            gap: 4px;
 
             & select {
                 border-radius: 7px;
@@ -430,16 +251,32 @@
                     background-color: white;
                 }
             }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
         }
 
-        &_Row8 {
+        &_Row3 {
             display: flex;
             margin-bottom: 10px;
-            gap: 4px;
+            gap: 8px;
 
-            & input {
+            &_Item1 {
+                border: solid 2px #d0f0ff;
                 border-top-left-radius: 7px;
                 border-bottom-left-radius: 7px;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            &_Item2 {
                 background-color: #d0f0ff;
                 border: none;
                 padding: 8px;
@@ -457,9 +294,9 @@
             }
         }
 
-        &_Row9 {
+        &_Last {
             display: flex;
-            gap: 4px;
+            gap: 8px;
 
             & input {
                 border-top-left-radius: 7px;
@@ -484,8 +321,6 @@
     }
 
     &-Slider {
-        padding: 10px;
-
         &-Row1 {
             display: flex;
             margin-bottom: 10px;
@@ -521,42 +356,7 @@
             }
         }
 
-        &-Row2 {
-            display: flex;
-            margin-bottom: 10px;
-            gap: 8px;
-
-            &-Item1 {
-                border: solid 2px #d0f0ff;
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            &-Item2 {
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &-Row3 {
+        &-Row {
             display: flex;
             gap: 8px;
             margin-bottom: 10px;
@@ -576,28 +376,6 @@
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
             }
-
-            & select {
-                width: 100%;
-                background-color: #d0f0ff;
-                border: none;
-
-                & option {
-                    background-color: white;
-                }
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &-Row4 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
 
             & select {
                 border-radius: 7px;
@@ -613,28 +391,6 @@
                 & option {
                     background-color: white;
                 }
-            }
-        }
-
-        &-Row5 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            &-Item1 {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-            }
-
-            & input {
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
             }
 
             & span {
@@ -652,54 +408,7 @@
             }
         }
 
-        &-Row6 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            & select {
-                border-radius: 7px;
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-
-                & option {
-                    background-color: white;
-                }
-            }
-        }
-
-        &-Row7 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            & input {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &-Row8 {
+        &-Last {
             display: flex;
             gap: 8px;
 
@@ -726,20 +435,25 @@
     }
 
     &-Switch {
-        margin-bottom: 10px;
-        padding: 10px;
-
         &-Row {
             display: flex;
+            gap: 8px;
             margin-bottom: 10px;
-            gap: 5px;
-            height: 27px;
+
+            &-Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
 
             & input {
-                width: 100%;
                 background-color: #d0f0ff;
-                border-style: none;
-                border-radius: 7px;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
             }
 
             &-BackgroundColorOn {
@@ -809,30 +523,7 @@
             }
 
             & select {
-                width: 100%;
-                background-color: #d0f0ff;
                 border-radius: 7px;
-                border-style: none;
-            }
-
-            &-Confirm {
-                width: 100px;
-            }
-        }
-    }
-
-    &-Number {
-        &-Row1 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            &-Item1 {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-            }
-
-            & input {
                 background-color: #d0f0ff;
                 border: none;
                 padding: 8px;
@@ -841,6 +532,10 @@
                 box-sizing: border-box;
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
+
+                & option {
+                    background-color: white;
+                }
             }
 
             & button {
@@ -850,7 +545,34 @@
             }
         }
 
-        &-Row2 {
+        &-Last {
+            display: flex;
+            gap: 8px;
+
+            & input {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                height: 32px;
+                width: 100%;
+                padding: 8px;
+                border: solid 2px #d0f0ff;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                width: 80px;
+                background-color: #326ba8;
+                color: white;
+                border: none;
+                border-radius: 7px;
+            }
+        }
+    }
+
+    &-Number {
+        &-Row {
             display: flex;
             gap: 8px;
             margin-bottom: 10px;
@@ -879,6 +601,22 @@
                 background-color: #d0f0ff;
             }
 
+            & select {
+                border-radius: 7px;
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+
+                & option {
+                    background-color: white;
+                }
+            }
+
             & button {
                 border: none;
                 border-top-right-radius: 7px;
@@ -886,7 +624,34 @@
             }
         }
 
-        &-Row3 {
+        &-Last {
+            display: flex;
+            gap: 8px;
+
+            & input {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                height: 32px;
+                width: 100%;
+                padding: 8px;
+                border: solid 2px #d0f0ff;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                width: 80px;
+                background-color: #326ba8;
+                color: white;
+                border: none;
+                border-radius: 7px;
+            }
+        }
+    }
+
+    &-Lamp {
+        &-Row {
             display: flex;
             gap: 8px;
             margin-bottom: 10px;
@@ -909,24 +674,12 @@
 
             & span {
                 padding-left: 8px;
-                width: 300px;
+                width: 400px;
                 display: flex;
                 align-items: center;
                 background-color: #d0f0ff;
             }
 
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &-Row4 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
             & select {
                 border-radius: 7px;
                 background-color: #d0f0ff;
@@ -942,68 +695,22 @@
                     background-color: white;
                 }
             }
-        }
 
-        &-Row5 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            & select {
-                border-radius: 7px;
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-
-                & option {
-                    background-color: white;
-                }
+            table,
+            td,
+            th {
+                border: 1px solid black;
+                text-align: center;
             }
-        }
 
-        &-Row6 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            & select {
-                border-radius: 7px;
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
+            table {
+                border-collapse: collapse;
                 width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-
-                & option {
-                    background-color: white;
-                }
             }
-        }
 
-        &-Row7 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            & input {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-                background-color: #d0f0ff;
-                border: none;
+            th,
+            td {
                 padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
             }
 
             & button {
@@ -1013,7 +720,7 @@
             }
         }
 
-        &-Row8 {
+        &-Last {
             display: flex;
             gap: 8px;
 
@@ -1040,45 +747,36 @@
     }
 
     &-TablePro {
-        &-Row1{
-            width: 100%;
+        &-Row {
             display: flex;
-            justify-content: space-between;
-            padding-bottom: 10px;
-            & input{
-                width: 90%;
+            gap: 8px;
+            margin-bottom: 10px;
+
+            &-Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
+
+            & input {
                 background-color: #d0f0ff;
-                border: solid #d0f0ff;
-                height: 20px;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
             }
-            
-            & button{
-                
-                width: 50px;
-            }
-        }
-        &-Row2{
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding-bottom: 10px;
-            & input{
-                width: 90%;
+
+            & span {
+                padding-left: 8px;
+                width: 750px;
+                display: flex;
+                align-items: center;
                 background-color: #d0f0ff;
-                border: solid #d0f0ff;
-                height: 20px;
             }
-            & button{
-                width: 50px;
-            }
-        }
-        &-Row3{
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding-bottom: 10px;
-            & input{
-                width: 90%;
+
+            & select {
                 background-color: #d0f0ff;
                 border: solid #d0f0ff;
                 height: 20px;
@@ -1166,8 +864,23 @@
                 & input{
                     margin-left: 20px;
                     width: 300px;
-                    height:25px
+                    height:25px;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+
+                & option {
+                    background-color: white;
                 }
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
             }
         }
 
@@ -1186,7 +899,6 @@
             }
         }
     }
-    
     &-BarChart {
         margin-bottom: 10px;
         padding: 10px;
@@ -1196,7 +908,7 @@
             margin-bottom: 10px;
             gap: 5px;
 
-            height: 27px;
+            // height: 27px;
 
 
             & label {
@@ -1256,6 +968,7 @@
             }
 
             table {
+                // display: flex;
                 border-collapse: collapse;
                 width: 100%;
                 height: 100%;
@@ -1668,9 +1381,6 @@ $font-size: 30px;
             }
         }
 
-
-    }
-
         &-Labelchoice2 {
             position: relative;
             display: flex;
@@ -1689,6 +1399,8 @@ $font-size: 30px;
             }
         }
     }
+}
+
 
 .DAT_Number {
     gap: 5px;
@@ -1727,6 +1439,7 @@ $font-size: 30px;
 
 .DAT_BarChart {
     display: flex;
+    // flex-direction: column;
     justify-content: center;
     align-items: center;
 }

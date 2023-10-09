@@ -11,7 +11,12 @@ export default function BarChartSetting() {
   const min = useRef(barchart.tickminstep);
   const max = useRef(barchart.tickmaxstep);
   const val1 = useRef("");
-  const val2 = useRef("");
+  const yName = useRef(barchart.labelname);
+  const valcolor = useRef(barchart.valuecolor);
+  const series = useRef(barchart.series);
+  // const detail = useRef(barchart.valuetitle);
+  const namefsize = useRef(barchart.chartnamefsize);
+  // const val2 = useRef("");
   const xAxisName = useRef("");
 
   // const mapData = () => {
@@ -24,9 +29,36 @@ export default function BarChartSetting() {
   // }
 
   const handleDeleteData = (e) => {
-    var tempxAxisName = xAxisName.current.value;
-    barchart.dataset.filter(data=>data.xAxis === tempxAxisName)
-    console.log(barchart.dataset)
+    var id = e.currentTarget.id;
+    var arr = id.split("_");
+    if (barchart.dataset.length > 1) {
+      if (barchart.dataset && Array.isArray(barchart.dataset)) {
+        barchart.dataset = barchart.dataset.filter(
+          (data) => data.xAxis != arr[0]
+        );
+      }
+      // console.log(arr[0]);
+      // console.log(barchart.dataset);
+      envDispatch({ type: "SET_BARCHART", payload: barchart });
+    } else {
+      alert(
+        "ERROR127 :Can't delete data, bar chart need atleast 1 atribute to display !"
+      );
+    }
+
+    //   var newData ={}
+    //  barchart.dataset.filter((data,index)=>{
+    //   if (parseInt(key)!=index){
+    //     newData = data
+    //   }
+    // })
+    // console.log(newData)
+
+    // barchart.dataset = barchart.dataset.filter(data=>data.xAxis != "seriesD")
+    // console.log(barchart.dataset)
+    // envDispatch({ type: "SET_BARCHART", payload: barchart });
+
+    // console.log(e);
   };
 
   const handleSaveChange1 = (e) => {
@@ -40,6 +72,7 @@ export default function BarChartSetting() {
       barchart.labelsize = fsize.current.value;
     }
     envDispatch({ type: "SET_BARCHART", payload: barchart });
+    console.log(barchart);
   };
 
   const handleSaveChange2 = (e) => {
@@ -52,7 +85,8 @@ export default function BarChartSetting() {
     if (min.current.value !== "") {
       barchart.tickminstep = min.current.value;
     }
-    console.log(barchart.tickNumb);
+
+    // console.log(barchart.tickNumb);
     envDispatch({ type: "SET_BARCHART", payload: barchart });
   };
 
@@ -69,7 +103,7 @@ export default function BarChartSetting() {
     // envDispatch({ type: "SET_BARCHART", payload: barchart });
 
     var tempval1 = val1.current.value;
-    var tempval2 = val2.current.value;
+    // var tempval2 = val2.current.value;
     var tempxAxisName = xAxisName.current.value;
 
     var newData = barchart.dataset;
@@ -79,14 +113,13 @@ export default function BarChartSetting() {
     if (index < 0) {
       const tempData = {
         value1: parseInt(val1.current.value),
-        value2: parseInt(val2.current.value),
+        // value2: parseInt(val2.current.value),
         xAxis: xAxisName.current.value,
       };
       newData.push(tempData);
-      
     } else {
       newData[index].value1 = parseInt(tempval1);
-      newData[index].value2 = parseInt(tempval2);
+      // newData[index].value2 = parseInt(tempval2);
     }
     console.log(index);
 
@@ -95,11 +128,29 @@ export default function BarChartSetting() {
     console.log(newData);
   };
 
+  const handleSaveChange5 = (e) => {
+    if (yName.current.value !== "") {
+      barchart.labelname = yName.current.value;
+      console.log(yName);
+    }
+    if (series.current.value !== "") {
+      barchart.series = series.current.value;
+    }
+    // if (detail.current.value !== "") {
+    //   barchart.valuetitle = detail.current.value;
+    // }
+    barchart.valuecolor = valcolor.current.value;
+    if (namefsize.current.value !== "") {
+      barchart.chartnamefsize = namefsize.current.value;
+    }
+    envDispatch({ type: "SET_BARCHART", payload: barchart });
+    // console.log(barchart);
+  };
+
   useEffect(() => {
     console.log(barchart.dataset);
   }, [barchart]);
 
-  
   return (
     <div className="DAT_Setting-BarChart">
       <div className="DAT_Setting-BarChart-Row" id="1">
@@ -108,6 +159,7 @@ export default function BarChartSetting() {
         <input placeholder={"Label: " + barchart.labelsize} ref={fsize}></input>
         <button onClick={(e) => handleSaveChange1(e)}>Chọn</button>
       </div>
+
       <div className="DAT_Setting-BarChart-Row" id="2">
         <input
           placeholder={"Max step: " + barchart.tickmaxstep}
@@ -120,13 +172,15 @@ export default function BarChartSetting() {
         <input placeholder={"Number: " + barchart.tickNumb} ref={numb}></input>
         <button onClick={(e) => handleSaveChange2(e)}>Chọn</button>
       </div>
+
       <div className="DAT_Setting-BarChart-Row" id="3">
         <label>Thêm data</label>
         <input placeholder="Giá trị 1" ref={val1}></input>
-        <input placeholder="Giá trị 2" ref={val2}></input>
+        {/* <input placeholder="Giá trị 2" ref={val2}></input> */}
         <input placeholder="Tên" ref={xAxisName}></input>
         <button onClick={(e) => handleSaveChange3(e)}>Chọn</button>
       </div>
+
       <div className="DAT_Setting-BarChart-Row" id="4">
         <table>
           <tbody>
@@ -134,10 +188,16 @@ export default function BarChartSetting() {
               return (
                 <tr key={key}>
                   <td>{barchart.dataset[key].value1}</td>
-                  <td>{barchart.dataset[key].value2}</td>
+                  {/* <td>{barchart.dataset[key].value2}</td> */}
                   <td>{barchart.dataset[key].xAxis}</td>
                   <td>
-                    <button onClick={(e) => handleDeleteData(e)}>Xóa</button>
+                    <button
+                      id={barchart.dataset[key].xAxis + "_barchart"}
+                      key={key}
+                      onClick={(e) => handleDeleteData(e)}
+                    >
+                      Xóa
+                    </button>
                   </td>
                 </tr>
               );
@@ -153,6 +213,31 @@ export default function BarChartSetting() {
             return name;
           })}
         </select> */}
+      </div>
+
+      <div className="DAT_Setting-BarChart-Row" id="5">
+        <input
+          placeholder={"Value unit: " + barchart.labelname}
+          ref={yName}
+        ></input>
+        <input
+          type="color"
+          ref={valcolor}
+          defaultValue={barchart.valuecolor}
+        ></input>
+        <input
+          placeholder={"Chart Title : " + barchart.series}
+          ref={series}
+        ></input>
+        {/* <input
+          placeholder={"Series: " + barchart.valuetitle}
+          ref={detail}
+        ></input> */}
+        <input
+          placeholder={"Font size: " + barchart.chartnamefsize}
+          ref={namefsize}
+        ></input>
+        <button onClick={(e) => handleSaveChange5(e)}>Chọn</button>
       </div>
     </div>
   );

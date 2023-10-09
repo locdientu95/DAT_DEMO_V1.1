@@ -9,10 +9,9 @@ IgrLinearGaugeModule.register();
 
 export default function BarTank(props) {
   return (
-    <div
-      style={{ display: "flex", justifyContent: "center"   }}
-    >
+    <div style={{ display: "flex", justifyContent: "center" }}>
       <IgrLinearGauge
+        style={{ borderRadius: "10px" }}
         height={String(props.setting.h)}
         width={String(props.setting.w)}
         minimumValue={String(props.setting.min)}
