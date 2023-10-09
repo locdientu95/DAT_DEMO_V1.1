@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import "./ErrorReport.scss"
 import DataTable from 'react-data-table-component';
 import { CSVLink } from 'react-csv';
+import Err from '../Context/ErrReport.json';
+
 
 const data = [
   {
@@ -83,6 +85,8 @@ const data = [
     Date: "9/8/2023 19:20:00"
   }
 ];
+const newDAta = Err
+console.log(newDAta)
 
 export default function ErrorReport() {
   const paginationComponentOptions = {
@@ -93,44 +97,53 @@ export default function ErrorReport() {
   };
   const column = [
     {
-      name: "ID",
-      selector: row => row.id,
+      name: "STT",
+      code: "id",
       sortable: true,
-      width: "60px",
-    },
-    {
-      name:
-      <div style={{color:"red", }}>
-        Gateway
-        <div>
-          
-        </div>
-        </div> ,
-      selector: row => row.DeviceID,
-      sortable: true,
-      width: "150px",
-
-    },
-    {
-      name: "Mô Tả",
-      
-    },
-    {
+      selector: row =>row.id,
+      width: "60px"
+  },
+  {
       name: "Mã Lỗi",
-      selector: row => row.ErrCode,
-      sortable: true,
+      code: "Errcode",
+      selector: row =>row.ErrCode,
       width: "100px"
-    },
-    {
+  },
+  {
+      name: "Device Type",
+      code: "DeviceType",
+      selector: row =>row.DeviceType
+  },
+  {
+      name: "Trạng Thái",
+      code: "ErrStt",
+      selector: row =>row.ErrStt,
+      
+  },
+  {
+      name: "Loại Lỗi",
+      code: "ErrType",
+      selector: row =>row.ErrType,
+      width: "150px"
+  },
+  {
+      name: "Tên Dự Án",
+      code: "ProjectName",
+      selector: row =>row.ProjectName
+  },
+  {
+      name: "Device ID",
+      code: "DeviceID",
+      selector: row =>row.DeviceID
+  },
+  {
       name: "Thời Gian",
-      selector: row => row.Date,
-      sortable: true,
-      width: "200px"
-    },
+      code: "Datetime",
+      selector: row =>row.Datetime
+  }
     
   ]
   const [record, setRecord] = useState(data);
-
 
   const handleInput = (e) => {
     const newData = data.filter(row => {
@@ -188,7 +201,7 @@ export default function ErrorReport() {
             <div className='DAT_Content-Container-Group-Table-head'>
 
               <CSVLink data={record}>
-                <button> Export</button>
+                <button> Function here</button>
               </CSVLink>
 
 
@@ -203,7 +216,7 @@ export default function ErrorReport() {
                 <div className='DAT_Content-Container-Group-Table-Content-tb'>
                   <DataTable
                     columns={column}
-                    data={record}
+                    data= {data}
                     pagination
                     paginationComponentOptions={paginationComponentOptions} />
               </div>

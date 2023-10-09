@@ -74,20 +74,14 @@ export default function TableProSetting() {
       }else if (start <=0 || end <=0){
         alert("Nhập sai, vui lòng nhập lại")
       }else{
-
-      
-      
-
         var newData = tablepro.data
         newData = newData.filter(newData => {
           return newData.id < parseInt(start) || newData.id > parseInt(end)
         })
-
         // Tính năng cập nhật lại ID sau khi xóa (Đang tắt)
         // newData.map((data,index) =>{
         //   data.id = index+1
         // })
-
         envDispatch({
           type: "SET_TABLEPRO",
           payload: {
@@ -236,8 +230,8 @@ export default function TableProSetting() {
 
       <div className='DAT_Setting-TablePro-Row4'>
         <div className='DAT_Setting-TablePro-Row4-RmFrom'>
-          Xóa hàng từ ID: 
-          <input  placeholder='Xóa Hàng Từ STT' ref={fromRow} />
+          Xóa hàng từ: 
+          <input placeholder='Xóa Hàng Từ STT' ref={fromRow} />
         </div>
         <div className='DAT_Setting-TablePro-Row4-RmTo'>
           Đến: 
@@ -249,21 +243,30 @@ export default function TableProSetting() {
       </div>
 
       <div className='DAT_Setting-TablePro-Row5'>
-        <input className='DAT_Setting-TablePro-Row5-RmFrom' placeholder='Xóa Cột Từ STT' ref={fromCol} />
-        <input className='DAT_Setting-TablePro-Row5-RmTo' placeholder='Xóa Cột đến STT' ref={toCol} />
-        <button className='DAT_Setting-TablePro-Row5-Submit' onClick={(e) => handleDeleteCol(e)}>Xóa</button>
+        <div className='DAT_Setting-TablePro-Row5-RmFrom'>
+          Xóa cột từ: 
+        <input placeholder='Xóa Cột Từ STT' ref={fromCol} />
+        </div>
+        <div className='DAT_Setting-TablePro-Row5-RmTo'>
+          Đến: 
+        <input  placeholder='Xóa Cột đến STT' ref={toCol} />
+        </div>
+        <div className='DAT_Setting-TablePro-Row5-Submit'>
+        <button  onClick={(e) => handleDeleteCol(e)}>Xóa</button>
+        </div>
       </div>
 
       <div className='DAT_Setting-TablePro-Row6'>
         <div className='DAT_Setting-TablePro-Row6-select'>
-          Chọn cột cần thay đổi tên
-          <select ref={sel}>
+          Chọn cột cần thay đổi tên: 
+          <select  ref={sel}>
             {tablepro.head.map((data, index) => {
               return (<option key={index} >{index}</option>
               )})}
           </select>
         </div>
         <div className='DAT_Setting-TablePro-Row6-input'>
+          Nhập tên Header mới: 
           <input placeholder='Nhập tên header' ref={tit} />
         </div>
         <div className='DAT_Setting-TablePro-Row6-submit'>
@@ -273,7 +276,7 @@ export default function TableProSetting() {
 
         <div className='DAT_Setting-TablePro-Row7'>
             <div className='DAT_Setting-TablePro-Row7-selectId'>
-              Chọn id cần thay đổi
+              Chọn hàng cần thay đổi:
             <select ref={selID}>
             {tablepro.data.map((data, index) => {
               return( <option key={index} value={data.id} >Hàng thứ {data.id}</option>
@@ -281,7 +284,7 @@ export default function TableProSetting() {
           </select>
             </div>
             <div className='DAT_Setting-TablePro-Row7-selectVal'>
-              Chọn vị trí cột cần thay đổi giá trị
+              Chọn cột cần thay đổi:
           <select ref={selVal}>
             {tablepro.head.map((data,index)=>{
               return (
@@ -293,6 +296,7 @@ export default function TableProSetting() {
           </select>
             </div>
             <div className='DAT_Setting-TablePro-Row7-Input'>
+              Giá trị: 
               <input placeholder='Nhập giá trị' ref={newval}/>
             </div> 
             <div className='DAT_Setting-TablePro-Row7-Submit'>

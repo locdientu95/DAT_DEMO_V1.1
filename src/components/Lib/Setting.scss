@@ -1090,13 +1090,103 @@
         &-Row4{
             display:flex;
             justify-content: space-between;
+            margin: auto;
+            padding-bottom: 10px;
             &-RmFrom{
                 & input{
-                   
+                   margin-left: 20px;
+                   width: 300px;
+                   background-color: #d0f0ff;
+                    border: solid #d0f0ff;
+                    height: 20px;
+                }
+            }
+
+            &-RmTo{
+                & input{
+                    margin-left: 20px;
+                    width: 300px;
+                    background-color: #d0f0ff;
+                    border: solid #d0f0ff;
+                    height: 20px;
+                }
+            }
+            & button{
+                width: 50px;
+            }
+
+
+        }
+
+        &-Row5{
+            display:flex;
+            justify-content: space-between;
+            margin: auto;
+            padding-bottom: 10px;
+            width: 100%;
+            &-RmFrom{
+                & input{
+                   margin-left: 33px;
+                   width: 300px;
+                   background-color: #d0f0ff;
+                    border: solid #d0f0ff;
+                    height: 20px;
+                }
+            }
+
+            &-RmTo{
+                & input{
+                    margin-left: 20px;
+                    width: 300px;
+                    background-color: #d0f0ff;
+                    border: solid #d0f0ff;
+                    height: 20px;
+                }
+            }
+            & button{
+                width: 50px;
+            }
+
+
+        }
+
+        &-Row6{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding-bottom: 10px;
+            &-select{
+                & select{
+                    width: 100px;
+                    height:30px;
+                    margin-left: 20px
+                }
+            }
+            &-input{
+                & input{
+                    margin-left: 20px;
+                    width: 300px;
+                    height:25px
                 }
             }
         }
+
+        &-Row7{
+            display: flex;
+            justify-content: space-between;
+            & select{
+                margin-left: 33px;
+                width: 100px;
+                height: 30px;
+            }
+
+            & input{
+                margin-left: 20px;
+                height:25px;
+            }
+        }
     }
+    
     &-BarChart {
         margin-bottom: 10px;
         padding: 10px;
@@ -1599,8 +1689,6 @@ $font-size: 30px;
             }
         }
     }
-
-
 
 .DAT_Number {
     gap: 5px;
