@@ -21,11 +21,6 @@ export default function Login() {
     );
 
     if (newInfo.length) {
-      console.log(newInfo);
-      // login.username = userName.current.value;
-      // login.mail = register.email;
-      // login.status = true;
-
       envDispatch({
         type: "SET_LOGIN",
         payload: {
@@ -37,18 +32,6 @@ export default function Login() {
     } else {
       alert("Wrong Username or Password");
     }
-
-    // if (
-    //   userName.current.value === register.username &&
-    //   password.current.value === register.password
-    // ) {
-    //   login.username = userName.current.value;
-    //   login.mail = register.email;
-    //   login.status = true;
-    //   alert("Login success");
-    // } else {
-    //   alert("Wrong Username or Password");
-    // }
   };
 
   return (

@@ -20,32 +20,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useContext } from "react";
 import { EnvContext } from "./components/Context/EnvContext";
 
-// const login2 = { username: "phunguyen", password: "phu123" };
-
 export default function App() {
-  // const [info, setInfo] = useState("unknown");
-  // const [mail, setMail] = useState("unknown@gmail.com");
-
   const { register, login } = useContext(EnvContext);
-
-  // useEffect(() => {
-  //   var newInfo = register;
-  //   console.log(newInfo);
-
-  //   newInfo = newInfo.filter(
-  //     (newInfo) =>
-  //       newInfo.username === login2.username &&
-  //       newInfo.password === login2.password
-  //   );
-
-  //   console.log(newInfo);
-  //   if (newInfo.length === 0) {
-  //     alert("Wrong Username or Password");
-  //   } else {
-  //     setInfo(newInfo[0].username);
-  //     setMail(newInfo[0].email);
-  //   }
-  // }, []);
 
   return (
     <Router>
