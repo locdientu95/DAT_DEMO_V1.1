@@ -5,3 +5,5 @@ Phu upload 2/10/2023 hoàn thiện trang Number, làm trang Lamp
 Phu upload 3/10/2023 hoàn thiện trang Lamp
 Phu upload 4/10/2023 fix các lỗi của trang Gauge, Slider, Number, Lamp, làm trang NumberH
 Phu upload 5/10/2023 chỉnh sửa các trang Setting
+Phu upload 6/10/2023 làm trang Login, tạo data
+Phu upload 9/10/2023 hoàn thiện trang Login sử dụng file json, làm trang Cấu Hình - Dự Án và Thiết Bị

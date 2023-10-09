@@ -1,19 +1,18 @@
 import React, { useContext, useRef } from "react";
 import "./Login.scss";
 import { EnvContext } from "../Context/EnvContext";
+import Register from "../Context/Register.json";
 
 export default function Login() {
-  const { register, login, envDispatch } = useContext(EnvContext);
+  const { envDispatch } = useContext(EnvContext);
 
   const userName = useRef();
   const password = useRef();
 
   const handleLogin = (e) => {
-    console.log(userName.current.value);
-    console.log(password.current.value);
+    e.preventDefault();
 
-    var newInfo = register;
-
+    var newInfo = Register;
     newInfo = newInfo.filter(
       (newInfo) =>
         newInfo.username === userName.current.value &&
@@ -41,19 +40,27 @@ export default function Login() {
           <span>Login</span>
         </div>
 
-        <div className="DAT_Login-Container-Main">
+        <form
+          className="DAT_Login-Container-Main"
+          onSubmit={(e) => handleLogin(e)}
+        >
           <div className="DAT_Login-Container-Main-Username">
             <div className="DAT_Login-Container-Main-Username-Tit">
               Username
             </div>
-            <input type="text" placeholder="Username" ref={userName} />
+            <input type="text" placeholder="Username" ref={userName} required />
           </div>
 
           <div className="DAT_Login-Container-Main-Password">
             <div className="DAT_Login-Container-Main-Password-Tit">
               Password
             </div>
-            <input type="password" placeholder="Password" ref={password} />
+            <input
+              type="password"
+              placeholder="Password"
+              ref={password}
+              required
+            />
           </div>
 
           <div className="DAT_Login-Container-Main-Checkbox">
@@ -65,14 +72,11 @@ export default function Login() {
             <div className="DAT_Login-Container-Main-Button-Text">
               Forgot password?
             </div>
-            <button
-              className="DAT_Login-Container-Main-Button-Login"
-              onClick={(e) => handleLogin(e)}
-            >
+            <button className="DAT_Login-Container-Main-Button-Login">
               Login
             </button>
           </div>
-        </div>
+        </form>
 
         <div className="DAT_Login-Container-Footer">
           <span>Need an account? Sign up!</span>

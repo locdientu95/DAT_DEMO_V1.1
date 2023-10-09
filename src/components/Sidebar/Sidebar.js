@@ -463,6 +463,14 @@ export default function Sidebar(props) {
                     Cấu hình
                   </div>
                 </Link>
+                <Link
+                  to="/ErrorSetting"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
+                    Cài đặt lỗi
+                  </div>
+                </Link>
               </div>
             </div>
           ) : (
