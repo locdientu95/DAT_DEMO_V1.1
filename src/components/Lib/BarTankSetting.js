@@ -104,15 +104,29 @@ export default function BarTankSetting() {
         {Button(handleSaveChange3, "Chọn")}
       </div>
 
-      <div className="DAT_Setting-Bar-Row" id="1">
-        {InputFist("", "Min: " + bardata.min, mini)}
-        <input placeholder="Nhập thanh ghi" />
+      <div className="DAT_Setting-Bar-Row1" id="1">
+        <input
+          className="DAT_Setting-Bar-Row1_Item1"
+          placeholder={"Min: " + bardata.min}
+          ref={mini}
+        />
+        <input
+          className="DAT_Setting-Bar-Row1_Item2"
+          placeholder="Nhập thanh ghi"
+        />
         {Button(handleSaveChange1, "Chọn")}
       </div>
 
-      <div className="DAT_Setting-Bar-Row" id="2">
-        {InputFist("", "Max: " + bardata.max, maxi)}
-        <input placeholder="Nhập thanh ghi" />
+      <div className="DAT_Setting-Bar-Row1" id="2">
+        <input
+          className="DAT_Setting-Bar-Row1_Item1"
+          placeholder={"Max: " + bardata.max}
+          ref={maxi}
+        />
+        <input
+          className="DAT_Setting-Bar-Row1_Item2"
+          placeholder="Nhập thanh ghi"
+        />
         <button onClick={(e) => handleSaveChange2(e)}>Chọn</button>
       </div>
 

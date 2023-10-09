@@ -108,11 +108,10 @@ export const INITSTATE = {
         id: 1,
         val_1: 0,
       },
-      
     ],
     head: [
       {
-        name:"STT",
+        name: "STT",
         code: "id",
       },
       {
@@ -120,9 +119,10 @@ export const INITSTATE = {
         code: "val_1",
       },
     ],
-    row : 2,
+    row: 2,
     col: 2,
-},
+  },
+
   number: {
     width: "100",
     height: "30",
@@ -170,7 +170,7 @@ export const INITSTATE = {
     valuecolor: "#008000",
     series: "Series",
     valuetitle: "value1",
-    chartnamefsize: "10px"
+    chartnamefsize: "10px",
   },
 
   numberh: {
@@ -179,6 +179,39 @@ export const INITSTATE = {
       1: { label: "Gia tri 1", value: "0", unit: "unit" },
     },
   },
+
+  login: { username: "unknown", mail: "unknown@gmail.com", status: false },
+
+  register: [
+    {
+      id: 1,
+      username: "admin",
+      password: "123456",
+      email: "admin@gmail.com",
+      role: "admin",
+    },
+    {
+      id: 2,
+      username: "huuhuynh",
+      password: "huu123",
+      email: "huuhuynh@gmail.com",
+      role: "user",
+    },
+    {
+      id: 3,
+      username: "phunguyen",
+      password: "phu123",
+      email: "phunguyen@gmail.com",
+      role: "user",
+    },
+    {
+      id: 4,
+      username: "taingo",
+      password: "tai123",
+      email: "taingo@gmail.com",
+      role: "user",
+    },
+  ],
 
   type: "Button",
 };
@@ -244,6 +277,11 @@ const EnvReducer = (state, action) => {
       return {
         ...state,
         numberh: action.payload,
+      };
+    case "SET_LOGIN":
+      return {
+        ...state,
+        login: action.payload,
       };
     default:
       throw new Error("Unexpected action");

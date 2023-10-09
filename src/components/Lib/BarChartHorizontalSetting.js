@@ -41,7 +41,9 @@ export default function BarChartSetting() {
       // console.log(barchart.dataset);
       envDispatch({ type: "SET_BARCHART", payload: barchart });
     } else {
-      alert("ERROR127 :Can't delete data, bar chart need atleast 1 atribute to display !")
+      alert(
+        "ERROR127 :Can't delete data, bar chart need atleast 1 atribute to display !"
+      );
     }
 
     //   var newData ={}
@@ -83,7 +85,7 @@ export default function BarChartSetting() {
     if (min.current.value !== "") {
       barchart.tickminstep = min.current.value;
     }
-    
+
     // console.log(barchart.tickNumb);
     envDispatch({ type: "SET_BARCHART", payload: barchart });
   };
@@ -138,8 +140,8 @@ export default function BarChartSetting() {
     //   barchart.valuetitle = detail.current.value;
     // }
     barchart.valuecolor = valcolor.current.value;
-    if(namefsize.current.value!==""){
-      barchart.chartnamefsize=namefsize.current.value;
+    if (namefsize.current.value !== "") {
+      barchart.chartnamefsize = namefsize.current.value;
     }
     envDispatch({ type: "SET_BARCHART", payload: barchart });
     // console.log(barchart);
@@ -157,6 +159,7 @@ export default function BarChartSetting() {
         <input placeholder={"Label: " + barchart.labelsize} ref={fsize}></input>
         <button onClick={(e) => handleSaveChange1(e)}>Chọn</button>
       </div>
+
       <div className="DAT_Setting-BarChart-Row" id="2">
         <input
           placeholder={"Max step: " + barchart.tickmaxstep}
@@ -169,6 +172,7 @@ export default function BarChartSetting() {
         <input placeholder={"Number: " + barchart.tickNumb} ref={numb}></input>
         <button onClick={(e) => handleSaveChange2(e)}>Chọn</button>
       </div>
+
       <div className="DAT_Setting-BarChart-Row" id="3">
         <label>Thêm data</label>
         <input placeholder="Giá trị 1" ref={val1}></input>
@@ -176,6 +180,7 @@ export default function BarChartSetting() {
         <input placeholder="Tên" ref={xAxisName}></input>
         <button onClick={(e) => handleSaveChange3(e)}>Chọn</button>
       </div>
+
       <div className="DAT_Setting-BarChart-Row" id="4">
         <table>
           <tbody>
@@ -209,6 +214,7 @@ export default function BarChartSetting() {
           })}
         </select> */}
       </div>
+
       <div className="DAT_Setting-BarChart-Row" id="5">
         <input
           placeholder={"Value unit: " + barchart.labelname}

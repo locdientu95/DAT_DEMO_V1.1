@@ -145,6 +145,41 @@
             }
         }
 
+        &-Row1 {
+            display: flex;
+            margin-bottom: 10px;
+            gap: 8px;
+
+            &_Item1 {
+                border: solid 2px #d0f0ff;
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            &_Item2 {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
         &-Last {
             display: flex;
             gap: 8px;
@@ -172,7 +207,7 @@
     }
 
     &_Gauge {
-        &_Row1 {
+        &_Row {
             display: flex;
             margin-bottom: 10px;
             gap: 8px;
@@ -195,46 +230,26 @@
 
             & span {
                 padding-left: 8px;
-                width: 150px;
+                width: 500px;
                 display: flex;
                 align-items: center;
                 background-color: #d0f0ff;
             }
 
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &_Row2 {
-            display: flex;
-            margin-bottom: 10px;
-            gap: 8px;
-
-            &_Item1 {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-            }
-
-            & input {
+            & select {
+                border-radius: 7px;
                 background-color: #d0f0ff;
-                padding: 8px;
                 border: none;
+                padding: 8px;
                 height: 32px;
                 width: 100%;
                 box-sizing: border-box;
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
-            }
 
-            & span {
-                padding-left: 8px;
-                width: 150px;
-                display: flex;
-                align-items: center;
-                background-color: #d0f0ff;
+                & option {
+                    background-color: white;
+                }
             }
 
             & button {
@@ -279,157 +294,7 @@
             }
         }
 
-        &_Row4 {
-            display: flex;
-            margin-bottom: 10px;
-            gap: 8px;
-
-            &_Item1 {
-                border: solid 2px #d0f0ff;
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            &_Item2 {
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &_Row5 {
-            display: flex;
-            margin-bottom: 10px;
-            gap: 8px;
-
-            &_Item1 {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-            }
-
-            & input {
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &_Row6 {
-            display: flex;
-            margin-bottom: 10px;
-            gap: 8px;
-
-            &_Item1 {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-                display: flex;
-                align-items: center;
-                background-color: #d0f0ff;
-                padding-left: 8px;
-            }
-
-            & input {
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            & span {
-                padding-left: 8px;
-                width: 480px;
-                display: flex;
-                align-items: center;
-                background-color: #d0f0ff;
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &_Row7 {
-            display: flex;
-            margin-bottom: 10px;
-            gap: 8px;
-
-            & select {
-                border-radius: 7px;
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-
-                & option {
-                    background-color: white;
-                }
-            }
-        }
-
-        &_Row8 {
-            display: flex;
-            margin-bottom: 10px;
-            gap: 8px;
-
-            & input {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &_Row9 {
+        &_Last {
             display: flex;
             gap: 8px;
 
@@ -456,8 +321,6 @@
     }
 
     &-Slider {
-        padding: 10px;
-
         &-Row1 {
             display: flex;
             margin-bottom: 10px;
@@ -493,42 +356,7 @@
             }
         }
 
-        &-Row2 {
-            display: flex;
-            margin-bottom: 10px;
-            gap: 8px;
-
-            &-Item1 {
-                border: solid 2px #d0f0ff;
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            &-Item2 {
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &-Row3 {
+        &-Row {
             display: flex;
             gap: 8px;
             margin-bottom: 10px;
@@ -548,28 +376,6 @@
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
             }
-
-            & select {
-                width: 100%;
-                background-color: #d0f0ff;
-                border: none;
-
-                & option {
-                    background-color: white;
-                }
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &-Row4 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
 
             & select {
                 border-radius: 7px;
@@ -585,28 +391,6 @@
                 & option {
                     background-color: white;
                 }
-            }
-        }
-
-        &-Row5 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            &-Item1 {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-            }
-
-            & input {
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
             }
 
             & span {
@@ -624,54 +408,7 @@
             }
         }
 
-        &-Row6 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            & select {
-                border-radius: 7px;
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-
-                & option {
-                    background-color: white;
-                }
-            }
-        }
-
-        &-Row7 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            & input {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &-Row8 {
+        &-Last {
             display: flex;
             gap: 8px;
 
@@ -698,20 +435,25 @@
     }
 
     &-Switch {
-        margin-bottom: 10px;
-        padding: 10px;
-
         &-Row {
             display: flex;
+            gap: 8px;
             margin-bottom: 10px;
-            gap: 5px;
-            height: 27px;
+
+            &-Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
 
             & input {
-                width: 100%;
                 background-color: #d0f0ff;
-                border-style: none;
-                border-radius: 7px;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
             }
 
             &-BackgroundColorOn {
@@ -781,14 +523,50 @@
             }
 
             & select {
-                width: 100%;
-                background-color: #d0f0ff;
                 border-radius: 7px;
-                border-style: none;
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+
+                & option {
+                    background-color: white;
+                }
             }
 
-            &-Confirm {
-                width: 100px;
+            & button {
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+
+        &-Last {
+            display: flex;
+            gap: 8px;
+
+            & input {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                height: 32px;
+                width: 100%;
+                padding: 8px;
+                border: solid 2px #d0f0ff;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & button {
+                width: 80px;
+                background-color: #326ba8;
+                color: white;
+                border: none;
+                border-radius: 7px;
             }
         }
     }
@@ -873,7 +651,7 @@
     }
 
     &-Lamp {
-        &-Row1 {
+        &-Row {
             display: flex;
             gap: 8px;
             margin-bottom: 10px;
@@ -902,17 +680,21 @@
                 background-color: #d0f0ff;
             }
 
-            & button {
+            & select {
+                border-radius: 7px;
+                background-color: #d0f0ff;
                 border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
 
-        &-Row2 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
+                & option {
+                    background-color: white;
+                }
+            }
 
             table,
             td,
@@ -930,28 +712,6 @@
             td {
                 padding: 8px;
             }
-        }
-
-        &-Row3 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            &-Item1 {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-            }
-
-            & input {
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
 
             & button {
                 border: none;
@@ -960,112 +720,7 @@
             }
         }
 
-        &-Row4 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            &-Item1 {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-            }
-
-            & input {
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            & span {
-                padding-left: 8px;
-                width: 480px;
-                display: flex;
-                align-items: center;
-                background-color: #d0f0ff;
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &-Row5 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            & select {
-                border-radius: 7px;
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-
-                & option {
-                    background-color: white;
-                }
-            }
-        }
-
-        &-Row6 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            & select {
-                border-radius: 7px;
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-
-                & option {
-                    background-color: white;
-                }
-            }
-        }
-
-        &-Row7 {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-
-            & input {
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-                background-color: #d0f0ff;
-                border: none;
-                padding: 8px;
-                height: 32px;
-                width: 100%;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-            }
-
-            & button {
-                border: none;
-                border-top-right-radius: 7px;
-                border-bottom-right-radius: 7px;
-            }
-        }
-
-        &-Row8 {
+        &-Last {
             display: flex;
             gap: 8px;
 
@@ -1092,67 +747,53 @@
     }
 
     &-TablePro {
-        &-Row1 {
-            width: 100%;
+        &-Row {
             display: flex;
-            justify-content: space-between;
-            padding-bottom: 10px;
+            gap: 8px;
+            margin-bottom: 10px;
+
+            &-Item1 {
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
 
             & input {
-                width: 90%;
                 background-color: #d0f0ff;
-                border: solid #d0f0ff;
-                height: 20px;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                width: 100%;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+            & span {
+                padding-left: 8px;
+                width: 750px;
+                display: flex;
+                align-items: center;
+                background-color: #d0f0ff;
+            }
+
+            & select {
+                background-color: #d0f0ff;
+                border: none;
+                padding: 8px;
+                height: 32px;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+
+                & option {
+                    background-color: white;
+                }
             }
 
             & button {
-
-                width: 50px;
-            }
-        }
-
-        &-Row2 {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding-bottom: 10px;
-
-            & input {
-                width: 90%;
-                background-color: #d0f0ff;
-                border: solid #d0f0ff;
-                height: 20px;
-            }
-
-            & button {
-                width: 50px;
-            }
-        }
-
-        &-Row3 {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding-bottom: 10px;
-
-            & input {
-                width: 90%;
-                background-color: #d0f0ff;
-                border: solid #d0f0ff;
-                height: 20px;
-            }
-
-            & button {
-                width: 50px;
-            }
-        }
-
-        &-Row4 {
-            display: flex;
-            justify-content: space-between;
-
-            &-RmFrom {
-                & input {}
+                border: none;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
             }
         }
     }

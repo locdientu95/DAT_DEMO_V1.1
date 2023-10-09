@@ -1,13 +1,15 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
+import { EnvContext } from "../Context/EnvContext";
 
 export default function Header(props) {
   const [arrow, setArrow] = useState(false); //hook
+  const { envDispatch } = useContext(EnvContext);
 
   const getDrop = (id) => {
     //function
-    
+
     if (id === "Document") {
       setArrow(true);
     } else {
@@ -43,7 +45,7 @@ export default function Header(props) {
 
   const handleSearch = () => {
     console.log("search:", search.current.value);
-  };  
+  };
 
   const handleSidebar = () => {
     var get = document.getElementById("Sidebar");
@@ -55,12 +57,29 @@ export default function Header(props) {
     }
   };
 
+  const handleLogout = () => {
+    envDispatch({
+      type: "SET_LOGIN",
+      payload: {
+        username: "",
+        mail: "",
+        status: false,
+      },
+    });
+  };
+
   return (
     <>
       <div className="DAT_Header">
         {/* Menu Button */}
         <div className="DAT_Header-Menu">
-          <button className="DAT_Header-Menu-Toggle" id="Menu" onClick={(e) => {handleSidebar(e);}}>
+          <button
+            className="DAT_Header-Menu-Toggle"
+            id="Menu"
+            onClick={(e) => {
+              handleSidebar(e);
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="12"
@@ -81,14 +100,17 @@ export default function Header(props) {
         </div>
 
         {/* Left */}
-        <div className="DAT_Header-Left">
-          DAT Group
-        </div>
+        <div className="DAT_Header-Left">DAT Group</div>
 
         {/* Search */}
         <form className="DAT_Header-Center">
           <div className="DAT_Header-Center-Form">
-            <input type="search" placeholder="Search" onChange={() => handleSearch()} ref={search}/>
+            <input
+              type="search"
+              placeholder="Search"
+              onChange={() => handleSearch()}
+              ref={search}
+            />
             <div className="DAT_Header-Center-Form-Icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +134,13 @@ export default function Header(props) {
         {/* Right Side */}
         <div className="DAT_Header-Right">
           {/* Documentation */}
-          <div className="DAT_Header-Right-Item1" id="Document" onClick={(e) => {handleDropDown(e)}}>
+          <div
+            className="DAT_Header-Right-Item1"
+            id="Document"
+            onClick={(e) => {
+              handleDropDown(e);
+            }}
+          >
             <div className="DAT_Header-Right-Item1-Profile">
               <div className="DAT_Header-Right-Item1-Profile-Documentation">
                 Documentation
@@ -131,7 +159,9 @@ export default function Header(props) {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 320 512"
                   data-fa-i2svg=""
-                  style={{ transform: (arrow) ? "rotate(90deg)" : "rotate(0deg)" }}
+                  style={{
+                    transform: arrow ? "rotate(90deg)" : "rotate(0deg)",
+                  }}
                 >
                   <path
                     fill="currentColor"
@@ -143,7 +173,13 @@ export default function Header(props) {
           </div>
 
           {/* Alert */}
-          <div className="DAT_Header-Right-Item2" id="Alert" onClick={(e) => {handleDropDown(e)}}>
+          <div
+            className="DAT_Header-Right-Item2"
+            id="Alert"
+            onClick={(e) => {
+              handleDropDown(e);
+            }}
+          >
             <button className="DAT_Header-Right-Item2-AlertIcon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -164,7 +200,13 @@ export default function Header(props) {
           </div>
 
           {/* Message */}
-          <div className="DAT_Header-Right-Item3" id="Message" onClick={(e) => {handleDropDown(e)}}>
+          <div
+            className="DAT_Header-Right-Item3"
+            id="Message"
+            onClick={(e) => {
+              handleDropDown(e);
+            }}
+          >
             <button className="DAT_Header-Right-Item3-MessageIcon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -185,9 +227,19 @@ export default function Header(props) {
           </div>
 
           {/* Account */}
-          <div className="DAT_Header-Right-Item4" id="Account" onClick={(e) => {handleDropDown(e)}}>
+          <div
+            className="DAT_Header-Right-Item4"
+            id="Account"
+            onClick={(e) => {
+              handleDropDown(e);
+            }}
+          >
             <button className="DAT_Header-Right-Item4-Account">
-              <img alt="" src="./DAT_Pictures/user1.png" style={{ height: "36px", borderRadius: "50%" }}/>
+              <img
+                alt=""
+                src="./DAT_Pictures/user1.png"
+                style={{ height: "36px", borderRadius: "50%" }}
+              />
             </button>
           </div>
         </div>
@@ -551,7 +603,10 @@ export default function Header(props) {
                         </div>
                       </div>
                     </div>
-                    <Link to="/Account" style={{textDecoration:"none", color:"black"}}>
+                    <Link
+                      to="/Account"
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
                       <div className="DAT_Header_Account_Header_Setting">
                         <div className="DAT_Header_Account_Header_Setting-Icon">
                           <svg
@@ -573,7 +628,10 @@ export default function Header(props) {
                         Account
                       </div>
                     </Link>
-                    <div className="DAT_Header_Account_Header_Logout">
+                    <div
+                      className="DAT_Header_Account_Header_Logout"
+                      onClick={(e) => handleLogout(e)}
+                    >
                       <div className="DAT_Header_Account_Header_Logout-Icon">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

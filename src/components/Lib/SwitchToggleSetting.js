@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { EnvContext } from "../Context/EnvContext";
 import "./Setting.scss";
 import { useRef } from "react";
+import { Box, Button, Input, InputFist } from "./FunctionElement";
 
 export default function SwitchToggleSetting() {
   const { switchtoggle, envDispatch } = useContext(EnvContext);
@@ -17,6 +18,27 @@ export default function SwitchToggleSetting() {
   const hei = useRef(switchtoggle.h);
   const bor = useRef(switchtoggle.border);
   const radius = useRef(switchtoggle.borderradius);
+
+  const base = [
+    "Cơ số 10",
+    "Cơ số 16",
+    "Cơ số 2_0",
+    "Cơ số 2_1",
+    "Cơ số 2_2",
+    "Cơ số 2_3",
+    "Cơ số 2_4",
+    "Cơ số 2_5",
+    "Cơ số 2_6",
+    "Cơ số 2_7",
+    "Cơ số 2_8",
+    "Cơ số 2_9",
+    "Cơ số 2_10",
+    "Cơ số 2_11",
+    "Cơ số 2_12",
+    "Cơ số 2_13",
+    "Cơ số 2_14",
+    "Cơ số 2_15",
+  ];
 
   const handleSaveChange1 = (e) => {
     if (txton !== "") {
@@ -55,46 +77,55 @@ export default function SwitchToggleSetting() {
       switchtoggle.textsize = txtsize;
     }
     envDispatch({ type: "SET_TOGGLE", payload: switchtoggle });
+
+    wid.current.value = "";
+    hei.current.value = "";
   };
 
   const handleSaveChange4 = (e) => {
-    switchtoggle.border = bor.current.value;
-    switchtoggle.borderradius = radius.current.value;
+    if (bor.current.value !== "") {
+      switchtoggle.border = bor.current.value;
+    }
+
+    if (radius.current.value !== "") {
+      switchtoggle.borderradius = radius.current.value;
+    }
+
     switchtoggle.bordercolor = borcolor;
+
     envDispatch({ type: "SET_TOGGLE", payload: switchtoggle });
+
+    bor.current.value = "";
+    radius.current.value = "";
   };
 
   return (
     <div>
       <div className="DAT_Setting-Switch">
         <div className="DAT_Setting-Switch-Row" id="3">
-          <input placeholder={"Width: " + switchtoggle.w} ref={wid}></input>
-          <input placeholder={"Height: " + switchtoggle.h} ref={hei}></input>
+          {InputFist("", "Width: " + switchtoggle.w, wid)}
+          {Input("", "Height: " + switchtoggle.h, hei)}
           <input
-            className="DAT_Setting-Switch-Row-TextSize"
             type="number"
-            defaultValue={txtsize}
-            min={6}
-            max={100}
-            step={2}
+            placeholder={"Text size: " + switchtoggle.textsize}
             onChange={(e) => setTxtsize(e.currentTarget.value)}
-          ></input>
-          <button onClick={(e) => handleSaveChange3(e)}>Chọn</button>
+          />
+          {Button(handleSaveChange3, "Chọn")}
         </div>
 
         <div className="DAT_Setting-Switch-Row" id="1">
-          <input placeholder="ON: 7"></input>
+          {InputFist("", "ON: 7")}
           <input
             placeholder={"TEXT: " + switchtoggle.texton}
             onChange={(e) => setTxton(e.currentTarget.value)}
-          ></input>
+          />
           <div className="DAT_Setting-Switch-Row-BackgroundColorOn">
             Màu button
             <input
               type="color"
               value={bgison}
               onChange={(e) => setBgison(e.currentTarget.value)}
-            ></input>
+            />
           </div>
           <div className="DAT_Setting-Switch-Row-TextColor">
             Màu text
@@ -102,13 +133,13 @@ export default function SwitchToggleSetting() {
               type="color"
               value={txtcolor}
               onChange={(e) => setTxtcolor(e.currentTarget.value)}
-            ></input>
+            />
           </div>
-          <button onClick={(e) => handleSaveChange1(e)}>Chọn</button>
+          {Button(handleSaveChange1, "Chọn")}
         </div>
 
         <div className="DAT_Setting-Switch-Row" id="2">
-          <input placeholder="OFF: 8"></input>
+          {InputFist("", "OFF: 8")}
           <input
             placeholder={"TEXT: " + switchtoggle.textoff}
             onChange={(e) => setTxtoff(e.currentTarget.value)}
@@ -129,19 +160,12 @@ export default function SwitchToggleSetting() {
               onChange={(e) => setTxtcoloroff(e.currentTarget.value)}
             ></input>
           </div>
-          <button onClick={(e) => handleSaveChange2(e)}>Chọn</button>
+          {Button(handleSaveChange2, "Chọn")}
         </div>
 
         <div className="DAT_Setting-Switch-Row" id="4">
-          <input
-            className="DAT_Setting-Switch-Row-BorderRadius"
-            type="number"
-            defaultValue={6}
-            step={1}
-            placeholder={"Border: " + switchtoggle.border}
-            ref={bor}
-          ></input>
-          <input placeholder="Border radius: 55px" ref={radius}></input>
+          {InputFist("number", "Border: " + switchtoggle.border, bor)}
+          {Input("", "Border radius: " + switchtoggle.borderradius, radius)}
           <div className="DAT_Setting-Switch-Row-BorderColor">
             Màu border:
             <input
@@ -150,39 +174,20 @@ export default function SwitchToggleSetting() {
               onChange={(e) => setBorcolor(e.currentTarget.value)}
             ></input>
           </div>
-          <button onClick={(e) => handleSaveChange4(e)}>Chọn</button>
+          {Button(handleSaveChange4, "Chọn")}
         </div>
 
         <div className="DAT_Setting-Switch-Row" id="5">
-          <select>
-            <option defaultValue="Inching">Cơ số 10</option>
-            <option value="Invert">Cơ số 16</option>
-            <option value="Invert">Cơ số 2_0</option>
-            <option value="Invert">Cơ số 2_1</option>
-            <option value="Invert">Cơ số 2_2</option>
-            <option value="Invert">Cơ số 2_3</option>
-            <option value="Invert">Cơ số 2_4</option>
-            <option value="Invert">Cơ số 2_5</option>
-            <option value="Invert">Cơ số 2_6</option>
-            <option value="Invert">Cơ số 2_7</option>
-            <option value="Invert">Cơ số 2_8</option>
-            <option value="Invert">Cơ số 2_9</option>
-            <option value="Invert">Cơ số 2_10</option>
-            <option value="Invert">Cơ số 2_11</option>
-            <option value="Invert">Cơ số 2_12</option>
-            <option value="Invert">Cơ số 2_13</option>
-            <option value="Invert">Cơ số 2_14</option>
-            <option value="Invert">Cơ số 2_15</option>
-          </select>
+          {Box(base)}
         </div>
 
         <div className="DAT_Setting-Switch-Row" id="7">
-          <input placeholder="Nhập thanh ghi read"></input>
+          {InputFist("text", "Nhập thanh ghi read")}
           <button>Chọn</button>
         </div>
 
-        <div className="DAT_Setting-Switch-Row" id="8">
-          <input placeholder="0"></input>
+        <div className="DAT_Setting-Switch-Last" id="8">
+          <input placeholder="0" />
           <button className="DAT_Setting-Bar-Row-Confirm">Xác nhận</button>
         </div>
       </div>
