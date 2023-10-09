@@ -289,30 +289,28 @@ export const INITSTATE = {
     adddata: [
       {
         id: 1,
-        addressCode: '100-1',
+        addressCode: "100-1",
         addressState: "'1-1'",
-        value: '1',
-      }
+        value: "1",
+      },
     ],
 
-    infodata:[
+    infodata: [
       {
         id: 1,
         Errcode: 10,
         ErrName: "Quá tải động cơ",
         ErrType: "Error",
-        info: "-Bị kẹt tải" + 
-         "Thông số chưa phù hợp" + 
-         "Điện áp nguồn không đủ",
-        solution: "- Kiểm tra cơ khí"+
-        "Kiểm tra điện áp nguồn "+
-        "Tinh chỉnh thông số"
-      }
-    ]
-  }
+        info:
+          "-Bị kẹt tải" + "Thông số chưa phù hợp" + "Điện áp nguồn không đủ",
+        solution:
+          "- Kiểm tra cơ khí" +
+          "Kiểm tra điện áp nguồn " +
+          "Tinh chỉnh thông số",
+      },
+    ],
+  },
 };
-
-  
 
 const EnvReducer = (state, action) => {
   switch (action.type) {
@@ -381,11 +379,21 @@ const EnvReducer = (state, action) => {
         ...state,
         login: action.payload,
       };
-      case "SET_ERR":
-        return {
-          ...state,
-          errs: action.payload
-        };
+    case "SET_PROJECT":
+      return {
+        ...state,
+        project: action.payload,
+      };
+    case "SET_DEVICE":
+      return {
+        ...state,
+        device: action.payload,
+      };
+    case "SET_ERR":
+      return {
+        ...state,
+        errs: action.payload,
+      };
     default:
       throw new Error("Unexpected action");
   }
