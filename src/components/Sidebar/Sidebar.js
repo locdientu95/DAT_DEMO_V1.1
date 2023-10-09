@@ -91,7 +91,7 @@ export default function Sidebar(props) {
                   to="/Automation"
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
+                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item" id="AUTO">
                     Tự động hóa
                   </div>
                 </Link>
@@ -99,7 +99,7 @@ export default function Sidebar(props) {
                   to="/SolarEnergy"
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
+                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item" id="SOLAR">
                     Năng lượng mặt trời
                   </div>
                 </Link>
@@ -107,7 +107,7 @@ export default function Sidebar(props) {
                   to="/Elevator"
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
+                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item" id="ELEV">
                     Thang máy
                   </div>
                 </Link>
@@ -115,7 +115,7 @@ export default function Sidebar(props) {
                   to="/UPS"
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
+                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item" id="UPS">
                     Ups
                   </div>
                 </Link>
