@@ -285,12 +285,12 @@ export const INITSTATE = {
 
   type: "Button",
 
-  errs: {
+  errsetting: {
     adddata: [
       {
         id: 1,
-        addressCode: '100-1',
-        addressState: "'1-1'",
+        addressCode: "100-1",
+        addressState: "1-1",
         value: '1',
       }
     ],
@@ -301,12 +301,8 @@ export const INITSTATE = {
         Errcode: 10,
         ErrName: "Quá tải động cơ",
         ErrType: "Error",
-        info: "-Bị kẹt tải" + 
-         "Thông số chưa phù hợp" + 
-         "Điện áp nguồn không đủ",
-        solution: "- Kiểm tra cơ khí"+
-        "Kiểm tra điện áp nguồn "+
-        "Tinh chỉnh thông số"
+        info: "Bị kẹt tải; Thông số chưa phù hợp; Điện áp nguồn không đủ",
+        solution: "Kiểm tra cơ khí; Kiểm tra điện nguồn; Tinh chỉnh thông số"
       }
     ]
   }

@@ -10,53 +10,72 @@ const addcol = [
     code: "id",
     selector: row => row.id,
     sortable: true,
+    width: "60px",
+    center: true
   },
   {
     name: "Địa Chỉ Mã Lỗi",
     code: "addressCode",
-    selector: row => row.addressCode
+    selector: row => row.addressCode,
+    center: true
   },
   {
     name: "Địa Chỉ",
     code: "addressState",
-    selector: row => row.addressState
+    selector: row => row.addressState,
+    center: true
   },
   {
     name: "Giá Trị",
     code: "value",
-    selector: row => row.value
+    selector: row => row.value,
+    center: true
   },
 ]
 
 const infoCol =[
   {
     name: "STT",
-    code: "id"
+    code: "id",
+    selector: row => row.id,
+    sortable: true,
+    width: "60px",
+    center: true
   },
   {
     name: "Mã Lỗi",
-    code: "Errcode"
+    code: "Errcode",
+    selector: row => row.Errcode,
+    width: "100px",
+    center: true
   },
   {
     name: "Tên Lỗi",
-    code: "ErrName"
+    code: "ErrName",
+    selector: row => row.ErrName,
+    center: true
   },
   {
     name: "Loại Lỗi",
-    code: "ErrType"
+    code: "ErrType",
+    selector: row => row.ErrType,
+    width: "150px",
+    center: true
   },
   {
     name: "Nguyên Nhân",
-    code: "info"
+    code: "info",
+    selector: row => row.info
   },
   {
     name: "Biện Pháp",
-    code: "solution"
+    code: "solution",
+    selector: row => row.solution
   }
 ]
 
 export default function ErrorSetting(props) {
-  const { errs, envDispatch } = useContext(EnvContext);
+  const { errsetting, envDispatch } = useContext(EnvContext);
   return (
     
     <div className="DAT_ErrorSetting">
@@ -87,13 +106,27 @@ export default function ErrorSetting(props) {
         </div>
       </div>
       <div className="DAT_ErrorSetting-Main">
-        <div className="DAT_ErrorSetting-Main-AddressSetting">
+        <div className="DAT_ErrorSetting-Main-Address">
+          <div className="DAT_ErrorSetting-Main-Address-Table">
           <DataTable columns={addcol}
-          data={errs.adddata}/>
+          data={errsetting.adddata}/>
+          </div>
+          <div className="DAT_ErrorSetting-Main-Address-Setting">
+
+
+            
+          </div>
         </div>
-        <div className="DAT_ErrorSetting-Main-InfoSetting">
+        <div className="DAT_ErrorSetting-Main-Info">
+          <div className="DAT_ErrorSetting-Main-Info-Table">
           <DataTable columns={infoCol} 
-          data={""}/>
+          data={errsetting.infodata}/>
+          </div>
+          <div className="DAT_ErrorSetting-Main-Info-Setting">
+
+
+
+          </div>
         </div>
       </div>
     </div>
