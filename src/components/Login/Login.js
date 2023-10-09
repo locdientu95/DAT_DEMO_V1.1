@@ -1,10 +1,10 @@
 import React, { useContext, useRef } from "react";
 import "./Login.scss";
 import { EnvContext } from "../Context/EnvContext";
-import Register from "../Context/Register.json";
+// import Register from "../Context/Register.json";
 
 export default function Login() {
-  const { envDispatch } = useContext(EnvContext);
+  const { register, envDispatch } = useContext(EnvContext);
 
   const userName = useRef();
   const password = useRef();
@@ -12,7 +12,7 @@ export default function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    var newInfo = Register;
+    var newInfo = register;
     newInfo = newInfo.filter(
       (newInfo) =>
         newInfo.username === userName.current.value &&

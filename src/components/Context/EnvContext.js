@@ -23,6 +23,8 @@ export const EnvContextProvider = ({ children }) => {
         numberh: state.numberh,
         register: state.register,
         login: state.login,
+        project: state.project,
+        device: state.device,
         envDispatch,
       }}
     >
