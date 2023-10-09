@@ -1,6 +1,6 @@
 import React from "react";
 import "./ErrorSetting.scss";
-import DataTable from 'react-data-table-component';
+import DataTable from "react-data-table-component";
 import { EnvContext } from "../Context/EnvContext";
 import { useContext } from "react";
 
@@ -8,57 +8,56 @@ const addcol = [
   {
     name: "STT",
     code: "id",
-    selector: row => row.id,
+    selector: (row) => row.id,
     sortable: true,
   },
   {
     name: "Địa Chỉ Mã Lỗi",
     code: "addressCode",
-    selector: row => row.addressCode
+    selector: (row) => row.addressCode,
   },
   {
     name: "Địa Chỉ",
     code: "addressState",
-    selector: row => row.addressState
+    selector: (row) => row.addressState,
   },
   {
     name: "Giá Trị",
     code: "value",
-    selector: row => row.value
+    selector: (row) => row.value,
   },
-]
+];
 
-const infoCol =[
+const infoCol = [
   {
     name: "STT",
-    code: "id"
+    code: "id",
   },
   {
     name: "Mã Lỗi",
-    code: "Errcode"
+    code: "Errcode",
   },
   {
     name: "Tên Lỗi",
-    code: "ErrName"
+    code: "ErrName",
   },
   {
     name: "Loại Lỗi",
-    code: "ErrType"
+    code: "ErrType",
   },
   {
     name: "Nguyên Nhân",
-    code: "info"
+    code: "info",
   },
   {
     name: "Biện Pháp",
-    code: "solution"
-  }
-]
+    code: "solution",
+  },
+];
 
 export default function ErrorSetting(props) {
-  const { errs, envDispatch } = useContext(EnvContext);
+  const { errsetting, envDispatch } = useContext(EnvContext);
   return (
-    
     <div className="DAT_ErrorSetting">
       <div className="DAT_ErrorSetting-Header">
         <div className="DAT_ErrorSetting-Header-Dashboard">
@@ -88,12 +87,10 @@ export default function ErrorSetting(props) {
       </div>
       <div className="DAT_ErrorSetting-Main">
         <div className="DAT_ErrorSetting-Main-AddressSetting">
-          <DataTable columns={addcol}
-          data={errs.adddata}/>
+          <DataTable columns={addcol} data={errsetting.adddata} />
         </div>
         <div className="DAT_ErrorSetting-Main-InfoSetting">
-          <DataTable columns={infoCol} 
-          data={""}/>
+          <DataTable columns={infoCol} data={errsetting.infodata} />
         </div>
       </div>
     </div>
