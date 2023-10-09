@@ -182,106 +182,106 @@ export const INITSTATE = {
 
   login: { username: "unknown", mail: "unknown@gmail.com", status: false },
 
-  // register: [
-  //   {
-  //     id: 1,
-  //     username: "admin",
-  //     password: "123456",
-  //     email: "admin@gmail.com",
-  //     role: "admin",
-  //   },
-  //   {
-  //     id: 2,
-  //     username: "huuhuynh",
-  //     password: "huu123",
-  //     email: "huuhuynh@gmail.com",
-  //     role: "user",
-  //   },
-  //   {
-  //     id: 3,
-  //     username: "phunguyen",
-  //     password: "phu123",
-  //     email: "phunguyen@gmail.com",
-  //     role: "user",
-  //   },
-  //   {
-  //     id: 4,
-  //     username: "taingo",
-  //     password: "tai123",
-  //     email: "taingo@gmail.com",
-  //     role: "user",
-  //   },
-  // ],
+  register: [
+    {
+      id: 1,
+      username: "admin",
+      password: "123456",
+      email: "admin@gmail.com",
+      role: "admin",
+    },
+    {
+      id: 2,
+      username: "huuhuynh",
+      password: "huu123",
+      email: "huuhuynh@gmail.com",
+      role: "user",
+    },
+    {
+      id: 3,
+      username: "phunguyen",
+      password: "phu123",
+      email: "phunguyen@gmail.com",
+      role: "user",
+    },
+    {
+      id: 4,
+      username: "taingo",
+      password: "tai123",
+      email: "taingo@gmail.com",
+      role: "user",
+    },
+  ],
 
-  // project: [
-  //   {
-  //     projectid: "P01",
-  //     name: "GREEN GROWTH SHOW 2023",
-  //     company: "Công ty Cổ phần Tập đoàn DAT",
-  //     info: "Phố đi bộ Nguyễn Huệ, quận 1, Hình Chí Mô",
-  //     statement: 0, //0: Bật 1:Tắt 2:Bảo trì
-  //     custom: "",
-  //   },
-  //   {
-  //     projectid: "P02",
-  //     name: "YASUO EVENT",
-  //     company: "Công ty TNHH Một Mình Tôi",
-  //     info: "Ngoài rìa thành phố Thủ Đức",
-  //     statement: 1,
-  //     custom: "",
-  //   },
-  //   {
-  //     projectid: "P03",
-  //     name: "PIZZA HUT THUOC LA",
-  //     company: "Công ty Mai Tài Phến - MTP Entertainment",
-  //     info: "Phía bên kia dãy Bạch Mã",
-  //     statement: 1, //0: Bật 1:Tắt 2:Bảo trì
-  //     custom: "",
-  //   },
-  //   {
-  //     projectid: "P04",
-  //     name: "CHO ĐI ĐỂ VÀO ĐẦU MÀY 1 CÁI BÂY CHỪ",
-  //     company: "Công ty đòi nợ Đất Bắc",
-  //     info: "Hiện diện trong Nam, xuất thân gốc Bắc",
-  //     statement: 2, //0: Bật 1:Tắt 2:Bảo trì
-  //     custom: "",
-  //   },
-  // ],
+  project: [
+    {
+      projectid: "P01",
+      name: "GREEN GROWTH SHOW 2023",
+      company: "Công ty Cổ phần Tập đoàn DAT",
+      info: "Phố đi bộ Nguyễn Huệ, quận 1, Hình Chí Mô",
+      statement: 0, //0: Bật 1:Tắt 2:Bảo trì
+      custom: "",
+    },
+    {
+      projectid: "P02",
+      name: "YASUO EVENT",
+      company: "Công ty TNHH Một Mình Tôi",
+      info: "Ngoài rìa thành phố Thủ Đức",
+      statement: 1,
+      custom: "",
+    },
+    {
+      projectid: "P03",
+      name: "PIZZA HUT THUOC LA",
+      company: "Công ty Mai Tài Phến - MTP Entertainment",
+      info: "Phía bên kia dãy Bạch Mã",
+      statement: 1, //0: Bật 1:Tắt 2:Bảo trì
+      custom: "",
+    },
+    {
+      projectid: "P04",
+      name: "CHO ĐI ĐỂ VÀO ĐẦU MÀY 1 CÁI BÂY CHỪ",
+      company: "Công ty đòi nợ Đất Bắc",
+      info: "Hiện diện trong Nam, xuất thân gốc Bắc",
+      statement: 2, //0: Bật 1:Tắt 2:Bảo trì
+      custom: "",
+    },
+  ],
 
-  // device: [
-  //   {
-  //     deviceid: 116,
-  //     name: "Solar Power",
-  //     description: "",
-  //     statement: 2,
-  //     gateway: "I0622B066940",
-  //     custome: "",
-  //   },
-  //   {
-  //     deviceid: 117,
-  //     name: "Eletric Valve",
-  //     description: "",
-  //     statement: 1,
-  //     gateway: "IOT323195643",
-  //     custome: "",
-  //   },
-  //   {
-  //     deviceid: 118,
-  //     name: "Pump",
-  //     description: "",
-  //     statement: 1,
-  //     gateway: "LY283409228",
-  //     custome: "",
-  //   },
-  //   {
-  //     deviceid: 119,
-  //     name: "Microwave",
-  //     description: "",
-  //     statement: 0,
-  //     gateway: "I0222195940",
-  //     custome: "",
-  //   },
-  // ],
+  device: [
+    {
+      deviceid: 116,
+      name: "Solar Power",
+      description: "",
+      statement: 2,
+      gateway: "I0622B066940",
+      custome: "",
+    },
+    {
+      deviceid: 117,
+      name: "Eletric Valve",
+      description: "",
+      statement: 1,
+      gateway: "IOT323195643",
+      custome: "",
+    },
+    {
+      deviceid: 118,
+      name: "Pump",
+      description: "",
+      statement: 1,
+      gateway: "LY283409228",
+      custome: "",
+    },
+    {
+      deviceid: 119,
+      name: "Microwave",
+      description: "",
+      statement: 0,
+      gateway: "I0222195940",
+      custome: "",
+    },
+  ],
 
   type: "Button",
 
@@ -295,7 +295,7 @@ export const INITSTATE = {
       }
     ],
 
-    infodata:[
+    infodata: [
       {
         id: 1,
         Errcode: 10,
@@ -307,8 +307,6 @@ export const INITSTATE = {
     ]
   }
 };
-
-  
 
 const EnvReducer = (state, action) => {
   switch (action.type) {
@@ -377,11 +375,21 @@ const EnvReducer = (state, action) => {
         ...state,
         login: action.payload,
       };
-      case "SET_ERR":
-        return {
-          ...state,
-          errs: action.payload
-        };
+    case "SET_PROJECT":
+      return {
+        ...state,
+        project: action.payload,
+      };
+    case "SET_DEVICE":
+      return {
+        ...state,
+        device: action.payload,
+      };
+    case "SET_ERR":
+      return {
+        ...state,
+        errs: action.payload,
+      };
     default:
       throw new Error("Unexpected action");
   }

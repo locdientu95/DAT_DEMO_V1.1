@@ -1,20 +1,39 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Configuration.scss";
 import { useRef } from "react";
+import { EnvContext } from "../Context/EnvContext";
 
 export default function Devices() {
+  const { device, envDispatch } = useContext(EnvContext);
+
   const name = useRef();
   const info = useRef();
-  const connect = useRef();
   const gateway = useRef();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(
-      name.current.value,
-      info.current.value,
-      connect.current.value,
-      gateway.current.value
-    );
+
+    var data = device;
+
+    data.push({
+      deviceid: device.length + 1,
+      name: name.current.value,
+      description: info.current.value,
+      statement: 0,
+      gateway: gateway.current.value,
+      custome: "",
+    });
+
+    envDispatch({
+      type: "SET_DEVICE",
+      payload: device,
+    });
+
+    name.current.value = "";
+    info.current.value = "";
+    gateway.current.value = "";
+
+    console.log(device);
   };
 
   return (
@@ -51,14 +70,14 @@ export default function Devices() {
                   </div>
                 </div>
 
-                <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row">
+                {/* <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item_Label">
                       Kết Nối
                     </div>
                     <input type="text" ref={connect} required />
                   </div>
-                </div>
+                </div> */}
 
                 <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item">

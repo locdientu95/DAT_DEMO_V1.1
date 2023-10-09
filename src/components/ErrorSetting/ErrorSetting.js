@@ -1,6 +1,6 @@
 import React from "react";
 import "./ErrorSetting.scss";
-import DataTable from 'react-data-table-component';
+import DataTable from "react-data-table-component";
 import { EnvContext } from "../Context/EnvContext";
 import { useContext } from "react";
 
@@ -8,7 +8,7 @@ const addcol = [
   {
     name: "STT",
     code: "id",
-    selector: row => row.id,
+    selector: (row) => row.id,
     sortable: true,
     width: "60px",
     center: true
@@ -31,9 +31,9 @@ const addcol = [
     selector: row => row.value,
     center: true
   },
-]
+];
 
-const infoCol =[
+const infoCol = [
   {
     name: "STT",
     code: "id",
@@ -77,7 +77,6 @@ const infoCol =[
 export default function ErrorSetting(props) {
   const { errsetting, envDispatch } = useContext(EnvContext);
   return (
-    
     <div className="DAT_ErrorSetting">
       <div className="DAT_ErrorSetting-Header">
         <div className="DAT_ErrorSetting-Header-Dashboard">

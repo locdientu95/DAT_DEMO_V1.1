@@ -1,12 +1,12 @@
 import React from "react";
 import "./Configuration.scss";
 import { useRef } from "react";
-import Projects from "../Context/Projects.json";
-import { useEffect } from "react";
-
-// const fs = require("fs");
+import { useContext } from "react";
+import { EnvContext } from "../Context/EnvContext";
 
 export default function Project() {
+  const { project, envDispatch } = useContext(EnvContext);
+
   const projectid = useRef();
   const name = useRef();
   const company = useRef();
@@ -15,7 +15,9 @@ export default function Project() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    Projects.push({
+    var data = project;
+
+    data.push({
       projectid: projectid.current.value,
       name: name.current.value,
       company: company.current.value,
@@ -24,15 +26,18 @@ export default function Project() {
       custom: "",
     });
 
+    envDispatch({
+      type: "SET_PROJECT",
+      payload: project,
+    });
+
     projectid.current.value = "";
     name.current.value = "";
     company.current.value = "";
     info.current.value = "";
 
-    console.log(Projects);
+    console.log(project);
   };
-
-  useEffect(() => {}, []);
 
   return (
     <div className="DAT_Project">
