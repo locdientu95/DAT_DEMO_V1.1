@@ -1,4 +1,8 @@
-import React from 'react'
+import React, { useState } from "react";
+import './Automation.scss'
+import DeviceManager from "../Manager/DeviceManager";
+import ProjectManager from "../Manager/ProjectManager";
+
 
 export default function Automation() {
   return (
@@ -18,7 +22,7 @@ export default function Automation() {
               strokeLinejoin="round"
               className="feather feather-activity"
               color="rgba(255, 255, 255, 0.5)"
-              style={{ paddingRight: '10px' }}
+              style={{ paddingRight: "10px" }}
             >
               <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
             </svg>
@@ -29,6 +33,23 @@ export default function Automation() {
           </div>
         </div>
       </div>
+
+      <div className="Automation_Content-Container">
+        <div className="Automation_Content-Container-Group">
+          <div className="Automation_Content-Container-Group-Head">Danh sách dự án</div>
+          <div className="Automation_Content-Container-Group-Body">
+            {/* <ProjectList></ProjectList> */}
+            <ProjectManager></ProjectManager>
+          </div>
+        </div>
+        <div className="Automation_Content-Container-Group">
+          <div className="Automation_Content-Container-Group-Head">Danh sách thiết bị</div>
+          <div className="Automation_Content-Container-Group-Body">
+            {/* <DeviceList></DeviceList> */}
+            <DeviceManager></DeviceManager>
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }

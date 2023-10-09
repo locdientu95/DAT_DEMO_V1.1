@@ -1,0 +1,22 @@
+[
+    {
+        "deviceid": "I0622B066940",
+        "username": "huuhuynh",
+        "code" : "AUTO"
+    },
+    {
+        "deviceid": "IOT323195643",
+        "username": "taingo",
+        "code" : "ELEV"
+    },
+    {
+        "deviceid": "LY283409228",
+        "username": "taingo",
+        "code" : "UPS"
+    },
+    {
+        "deviceid": "I0222195940",
+        "username": "phunguyen",
+        "code" : "SOLAR"
+    }
+]
