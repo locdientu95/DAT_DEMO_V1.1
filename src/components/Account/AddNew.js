@@ -1,7 +1,22 @@
 import React from "react";
 import "./Account.scss";
+import { useRef } from "react";
 
 export default function AddNew() {
+  const username = useRef();
+  const email = useRef();
+  const password = useRef();
+  const repassword = useRef();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(
+      username.current.value,
+      email.current.value,
+      password.current.value,
+      repassword.current.value
+    );
+  };
+
   return (
     <div className="DAT_AddNew">
       <div className="DAT_AddNew_Main">
@@ -14,13 +29,21 @@ export default function AddNew() {
             </div>
 
             <div className="DAT_AddNew_Main_Content_Detail_Content">
-              <div className="DAT_AddNew_Main_Content_Detail_Content_Form">
+              <form
+                className="DAT_AddNew_Main_Content_Detail_Content_Form"
+                onSubmit={(e) => handleSubmit(e)}
+              >
                 <div className="DAT_AddNew_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_AddNew_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_AddNew_Main_Content_Detail_Content_Form_Row_Item_Label">
                       Username
                     </div>
-                    <input type="text" placeholder="Mật Khẩu Hiện Tại" />
+                    <input
+                      type="text"
+                      placeholder="Username"
+                      ref={username}
+                      required
+                    />
                   </div>
                 </div>
 
@@ -29,7 +52,12 @@ export default function AddNew() {
                     <div className="DAT_AddNew_Main_Content_Detail_Content_Form_Row_Item_Label">
                       Email
                     </div>
-                    <input type="text" placeholder="Mật Khẩu Mới" />
+                    <input
+                      type="email"
+                      placeholder="Mật Khẩu Mới"
+                      ref={email}
+                      required
+                    />
                   </div>
                 </div>
 
@@ -41,6 +69,8 @@ export default function AddNew() {
                     <input
                       type="password"
                       placeholder="Nhập Lại Mật Khẩu Mới"
+                      ref={password}
+                      required
                     />
                   </div>
                 </div>
@@ -53,6 +83,8 @@ export default function AddNew() {
                     <input
                       type="password"
                       placeholder="Nhập Lại Mật Khẩu Mới"
+                      ref={repassword}
+                      required
                     />
                   </div>
                 </div>
@@ -60,7 +92,7 @@ export default function AddNew() {
                 <button className="DAT_AddNew_Main_Content_Detail_Content_Form_Button">
                   Lưu thay đổi
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>

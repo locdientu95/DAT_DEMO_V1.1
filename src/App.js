@@ -17,12 +17,13 @@ import Device from "./components/Setting/Device";
 import DATGroup from "./components/DATGroup/DATGroup";
 import Login from "./components/Login/Login";
 import Configuration from "./components/Configuration/Configuration";
+import ErrorSetting from "./components/ErrorSetting/ErrorSetting";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useContext } from "react";
 import { EnvContext } from "./components/Context/EnvContext";
 
 export default function App() {
-  const { register, login } = useContext(EnvContext);
+  const { login } = useContext(EnvContext);
 
   return (
     <Router>
@@ -176,6 +177,16 @@ export default function App() {
               element={
                 login.status ? (
                   <Configuration name={login.username}></Configuration>
+                ) : (
+                  <Login></Login>
+                )
+              }
+            />
+            <Route
+              path="/ErrorSetting"
+              element={
+                login.status ? (
+                  <ErrorSetting name={login.username}></ErrorSetting>
                 ) : (
                   <Login></Login>
                 )
