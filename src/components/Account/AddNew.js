@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "./Account.scss";
 import { useRef } from "react";
 import { EnvContext } from "../Context/EnvContext";
+import { useEffect } from "react";
 
 export default function AddNew() {
   const { register, envDispatch } = useContext(EnvContext);
@@ -14,14 +15,12 @@ export default function AddNew() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // console.log(register);
-
     envDispatch({
       type: "SET_REGISTER",
       payload: {
         ...register,
         [Object.keys(register).length]: {
-          id: register.length,
+          id: parseInt(register.length + 1),
           username: username.current.value,
           email: email.current.value,
           password: password.current.value,
@@ -37,6 +36,10 @@ export default function AddNew() {
     repassword.current.value = "";
     name.current.value = "";
   };
+
+  useEffect(() => {
+    console.log(register);
+  }, [register]);
 
   return (
     <div className="DAT_AddNew">
