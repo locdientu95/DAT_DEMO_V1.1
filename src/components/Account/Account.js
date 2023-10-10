@@ -4,13 +4,15 @@ import Info from "./Info";
 import Security from "./Security";
 import Language from "./Language";
 import AddNew from "./AddNew";
+import UserList from "./UserList";
 
 export default function Account() {
   const tit = {
     info: "Thông Tin",
     security: "Bảo Mật",
     language: "Ngôn Ngữ",
-    addNew: "Thêm Tài Khoản",
+    addNew: "Thêm Người Dùng",
+    userList: "Danh Sách Người Dùng",
   };
 
   const color = {
@@ -100,7 +102,18 @@ export default function Account() {
               handleNav(e);
             }}
           >
-            Thêm Tài Khoản
+            Thêm Người Dùng
+          </div>
+
+          <div
+            className="DAT_Account_Main_Nav_Item"
+            id="userList"
+            style={{ color: nav === "userList" ? color.cur : color.pre }}
+            onClick={(e) => {
+              handleNav(e);
+            }}
+          >
+            Danh Sách Người Dùng
           </div>
         </div>
 
@@ -130,6 +143,12 @@ export default function Account() {
                 return (
                   <>
                     <AddNew></AddNew>
+                  </>
+                );
+              case "userList":
+                return (
+                  <>
+                    <UserList></UserList>
                   </>
                 );
               default:
