@@ -72,18 +72,18 @@ export default function TableProSetting() {
     if (tablepro.row <= 2) {
       alert("Số hàng tối thiểu là 2");
     } else {
-      if(start == "" || end == ""){
-        alert("Nhập sai, vui lòng nhập lại")
-      }else if(start > end){
-        alert("Nhập sai, vui lòng nhập lại")
-      }else if (start <=0 || end <=0){
-        alert("Nhập sai, vui lòng nhập lại")
-      }else{
-        var newData = tablepro.data
-        newData = newData.filter(newData => {
-          return newData.id < parseInt(start) || newData.id > parseInt(end)
-        })
-  
+      if (start == "" || end == "") {
+        alert("Nhập sai, vui lòng nhập lại");
+      } else if (start > end) {
+        alert("Nhập sai, vui lòng nhập lại");
+      } else if (start <= 0 || end <= 0) {
+        alert("Nhập sai, vui lòng nhập lại");
+      } else {
+        var newData = tablepro.data;
+        newData = newData.filter((newData) => {
+          return newData.id < parseInt(start) || newData.id > parseInt(end);
+        });
+
         // Tính năng cập nhật lại ID sau khi xóa (Đang tắt)
         // newData.map((data,index) =>{
         //   data.id = index+1
@@ -219,81 +219,7 @@ export default function TableProSetting() {
         {/* <input className='DAT_Setting-TablePro-Row1-Height' placeholder='Chiều cao table' ref={height}/> */}
         {Button(handleTable, "Chọn")}
       </div>
-      <div className='DAT_Setting-TablePro-Row4'>
-        <div className='DAT_Setting-TablePro-Row4-RmFrom'>
-          Xóa hàng từ: 
-          <input placeholder='Xóa Hàng Từ STT' ref={fromRow} />
-        </div>
-        <div className='DAT_Setting-TablePro-Row4-RmTo'>
-          Đến: 
-          <input  placeholder='Xóa hàng đến STT' ref={toRow} />
-        </div>
-        <div className='DAT_Setting-TablePro-Row4-Submit'>
-        <button  onClick={(e) => handleDeleteRow(e)}>Xóa</button>
-        </div>
-      </div>
 
-      <div className='DAT_Setting-TablePro-Row5'>
-        <div className='DAT_Setting-TablePro-Row5-RmFrom'>
-          Xóa cột từ: 
-        <input placeholder='Xóa Cột Từ STT' ref={fromCol} />
-        </div>
-        <div className='DAT_Setting-TablePro-Row5-RmTo'>
-          Đến: 
-        <input  placeholder='Xóa Cột đến STT' ref={toCol} />
-        </div>
-        <div className='DAT_Setting-TablePro-Row5-Submit'>
-        <button  onClick={(e) => handleDeleteCol(e)}>Xóa</button>
-        </div>
-      </div>
-
-      <div className='DAT_Setting-TablePro-Row6'>
-        <div className='DAT_Setting-TablePro-Row6-select'>
-          Chọn cột cần thay đổi tên: 
-          <select  ref={sel}>
-            {tablepro.head.map((data, index) => {
-              return (<option key={index} >{index}</option>
-              )})}
-          </select>
-        </div>
-        <div className='DAT_Setting-TablePro-Row6-input'>
-          Nhập tên Header mới: 
-          <input placeholder='Nhập tên header' ref={tit} />
-        </div>
-        <div className='DAT_Setting-TablePro-Row6-submit'>
-          <button onClick={(e) => handleChangeTitle(e)}>Thay đổi</button>
-        </div>
-      </div>
-
-        <div className='DAT_Setting-TablePro-Row7'>
-            <div className='DAT_Setting-TablePro-Row7-selectId'>
-              Chọn hàng cần thay đổi:
-            <select ref={selID}>
-            {tablepro.data.map((data, index) => {
-              return( <option key={index} value={data.id} >Hàng thứ {data.id}</option>
-              )})}
-          </select>
-            </div>
-            <div className='DAT_Setting-TablePro-Row7-selectVal'>
-              Chọn cột cần thay đổi:
-          <select ref={selVal}>
-            {tablepro.head.map((data,index)=>{
-              return (
-              (index !== 0)
-                ?<option key={index} value={index}>Cột thứ {index}</option>
-                :<Fragment key={index}></Fragment> 
-              
-                )})}
-          </select>
-            </div>
-            <div className='DAT_Setting-TablePro-Row7-Input'>
-              Giá trị: 
-              <input placeholder='Nhập giá trị' ref={newval}/>
-            </div> 
-            <div className='DAT_Setting-TablePro-Row7-Submit'>
-              <button onClick={(e)=>handleChangeValue(e)}>Thay đổi</button>
-            </div>
-        </div>     
       <div className="DAT_Setting-TablePro-Row">
         {InputFist("", "Nhập số hàng muốn thêm: ", row)}
         {Button(handleAddRow, "Thêm")}
@@ -311,6 +237,7 @@ export default function TableProSetting() {
         {Input("", "Xóa hàng đến STT", toRow)}
         {Button(handleDeleteRow, "Xóa")}
       </div>
+
       <div className="DAT_Setting-TablePro-Row">
         <span className="DAT_Setting-TablePro-Row-Item1">Xóa cột từ STT:</span>
         {Input("", "Xóa cột từ STT", fromCol)}

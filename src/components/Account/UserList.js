@@ -7,7 +7,7 @@ export default function UserList() {
 
   const handleDelete = (e) => {
     delete register[e.target.parentNode.parentNode.firstChild.innerHTML];
-    console.log(register);
+    // console.log(register);
 
     envDispatch({
       type: "SET_REGISTER",
