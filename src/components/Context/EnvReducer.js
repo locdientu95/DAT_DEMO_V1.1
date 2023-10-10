@@ -184,7 +184,6 @@ export const INITSTATE = {
 
   register: [
     {
-      id: 1,
       username: "admin",
       password: "123456",
       email: "admin@gmail.com",
@@ -192,7 +191,6 @@ export const INITSTATE = {
       role: "admin",
     },
     {
-      id: 2,
       username: "huuhuynh",
       password: "huu123",
       email: "huuhuynh@gmail.com",
@@ -200,7 +198,6 @@ export const INITSTATE = {
       role: "user",
     },
     {
-      id: 3,
       username: "phunguyen",
       password: "phu123",
       email: "phunguyen@gmail.com",
@@ -208,7 +205,6 @@ export const INITSTATE = {
       role: "user",
     },
     {
-      id: 4,
       username: "taingo",
       password: "tai123",
       email: "taingo@gmail.com",
