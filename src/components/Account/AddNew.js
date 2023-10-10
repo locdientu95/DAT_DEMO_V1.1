@@ -1,20 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Account.scss";
 import { useRef } from "react";
+import { EnvContext } from "../Context/EnvContext";
 
 export default function AddNew() {
+  const { register, envDispatch } = useContext(EnvContext);
+
   const username = useRef();
   const email = useRef();
   const password = useRef();
   const repassword = useRef();
+  const name = useRef();
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(
-      username.current.value,
-      email.current.value,
-      password.current.value,
-      repassword.current.value
-    );
+
+    // console.log(register);
+
+    envDispatch({
+      type: "SET_REGISTER",
+      payload: {
+        ...register,
+        [Object.keys(register).length]: {
+          id: register.length,
+          username: username.current.value,
+          email: email.current.value,
+          password: password.current.value,
+          name: name.current.value,
+          role: "user",
+        },
+      },
+    });
+
+    username.current.value = "";
+    email.current.value = "";
+    password.current.value = "";
+    repassword.current.value = "";
+    name.current.value = "";
   };
 
   return (
@@ -36,25 +57,23 @@ export default function AddNew() {
                 <div className="DAT_AddNew_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_AddNew_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_AddNew_Main_Content_Detail_Content_Form_Row_Item_Label">
-                      Username
+                      Tài Khoản
                     </div>
                     <input
                       type="text"
-                      placeholder="Username"
+                      placeholder="Tài Khoản"
                       ref={username}
                       required
                     />
                   </div>
-                </div>
 
-                <div className="DAT_AddNew_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_AddNew_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_AddNew_Main_Content_Detail_Content_Form_Row_Item_Label">
                       Email
                     </div>
                     <input
                       type="email"
-                      placeholder="Mật Khẩu Mới"
+                      placeholder="Email"
                       ref={email}
                       required
                     />
@@ -68,7 +87,7 @@ export default function AddNew() {
                     </div>
                     <input
                       type="password"
-                      placeholder="Nhập Lại Mật Khẩu Mới"
+                      placeholder="Nhập Mật Khẩu"
                       ref={password}
                       required
                     />
@@ -82,15 +101,29 @@ export default function AddNew() {
                     </div>
                     <input
                       type="password"
-                      placeholder="Nhập Lại Mật Khẩu Mới"
+                      placeholder="Nhập Lại Mật Khẩu"
                       ref={repassword}
                       required
                     />
                   </div>
                 </div>
 
+                <div className="DAT_AddNew_Main_Content_Detail_Content_Form_Row">
+                  <div className="DAT_AddNew_Main_Content_Detail_Content_Form_Row_Item">
+                    <div className="DAT_AddNew_Main_Content_Detail_Content_Form_Row_Item_Label">
+                      Tên
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="Nhập Tên"
+                      ref={name}
+                      required
+                    />
+                  </div>
+                </div>
+
                 <button className="DAT_AddNew_Main_Content_Detail_Content_Form_Button">
-                  Lưu thay đổi
+                  Thêm
                 </button>
               </form>
             </div>

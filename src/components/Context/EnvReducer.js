@@ -188,6 +188,7 @@ export const INITSTATE = {
       username: "admin",
       password: "123456",
       email: "admin@gmail.com",
+      name: "Admin",
       role: "admin",
     },
     {
@@ -195,6 +196,7 @@ export const INITSTATE = {
       username: "huuhuynh",
       password: "huu123",
       email: "huuhuynh@gmail.com",
+      name: "Huynh Huu",
       role: "user",
     },
     {
@@ -202,6 +204,7 @@ export const INITSTATE = {
       username: "phunguyen",
       password: "phu123",
       email: "phunguyen@gmail.com",
+      name: "Nguyen Thanh Phu",
       role: "user",
     },
     {
@@ -209,6 +212,7 @@ export const INITSTATE = {
       username: "taingo",
       password: "tai123",
       email: "taingo@gmail.com",
+      name: "Ngo Dinh Tan Tai",
       role: "user",
     },
   ],
@@ -291,8 +295,8 @@ export const INITSTATE = {
         id: 1,
         addressCode: "100-1",
         addressState: "1-1",
-        value: '1',
-      }
+        value: "1",
+      },
     ],
 
     infodata: [
@@ -302,10 +306,10 @@ export const INITSTATE = {
         ErrName: "Quá tải động cơ",
         ErrType: "Error",
         info: "Bị kẹt tải; Thông số chưa phù hợp; Điện áp nguồn không đủ",
-        solution: "Kiểm tra cơ khí; Kiểm tra điện nguồn; Tinh chỉnh thông số"
-      }
-    ]
-  }
+        solution: "Kiểm tra cơ khí; Kiểm tra điện nguồn; Tinh chỉnh thông số",
+      },
+    ],
+  },
 };
 
 const EnvReducer = (state, action) => {
@@ -389,6 +393,11 @@ const EnvReducer = (state, action) => {
       return {
         ...state,
         errs: action.payload,
+      };
+    case "SET_REGISTER":
+      return {
+        ...state,
+        register: action.payload,
       };
     default:
       throw new Error("Unexpected action");
