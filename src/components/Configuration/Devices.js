@@ -70,14 +70,17 @@ export default function Devices() {
                   </div>
                 </div>
 
-                {/* <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row">
+                <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item_Label">
                       Kết Nối
                     </div>
-                    <input type="text" ref={connect} required />
+                    <select>
+                      <option>None</option>
+                      <option>P01</option>
+                    </select>
                   </div>
-                </div> */}
+                </div>
 
                 <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item">

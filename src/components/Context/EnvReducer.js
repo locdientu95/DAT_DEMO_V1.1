@@ -221,6 +221,8 @@ export const INITSTATE = {
       info: "Phố đi bộ Nguyễn Huệ, quận 1, Hình Chí Mô",
       statement: 0, //0: Bật 1:Tắt 2:Bảo trì
       custom: "",
+      long: "",
+      lat: "",
     },
     {
       projectid: "P02",
@@ -229,6 +231,8 @@ export const INITSTATE = {
       info: "Ngoài rìa thành phố Thủ Đức",
       statement: 1,
       custom: "",
+      long: "",
+      lat: "",
     },
     {
       projectid: "P03",
@@ -237,6 +241,8 @@ export const INITSTATE = {
       info: "Phía bên kia dãy Bạch Mã",
       statement: 1, //0: Bật 1:Tắt 2:Bảo trì
       custom: "",
+      long: "",
+      lat: "",
     },
     {
       projectid: "P04",
@@ -245,6 +251,8 @@ export const INITSTATE = {
       info: "Hiện diện trong Nam, xuất thân gốc Bắc",
       statement: 2, //0: Bật 1:Tắt 2:Bảo trì
       custom: "",
+      long: "",
+      lat: "",
     },
   ],
 
