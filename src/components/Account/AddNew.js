@@ -51,12 +51,6 @@ export default function AddNew() {
     } else {
       alert("Mật khẩu không khớp");
     }
-
-    username.current.value = "";
-    email.current.value = "";
-    password.current.value = "";
-    repassword.current.value = "";
-    name.current.value = "";
   };
 
   useEffect(() => {

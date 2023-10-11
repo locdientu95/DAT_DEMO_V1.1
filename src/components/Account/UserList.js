@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect } from "react";
 import "./Account.scss";
 import { EnvContext } from "../Context/EnvContext";
 import DataTable from "react-data-table-component";
@@ -57,7 +57,6 @@ export default function UserList() {
   ];
 
   const handleDelete = (e) => {
-    //console.log(e.target.id);
     var newData = data;
     newData = newData.filter((data) => data.username !== e.target.id);
     console.log(newData);

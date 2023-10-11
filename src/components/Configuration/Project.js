@@ -3,7 +3,6 @@ import "./Configuration.scss";
 import { useRef } from "react";
 import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
-import { useEffect } from "react";
 
 export default function Project() {
   const { project, envDispatch } = useContext(EnvContext);
@@ -42,17 +41,10 @@ export default function Project() {
         payload: dataPush,
       });
 
+      alert("Thêm thành công");
+
       console.log(project);
     }
-
-    // projectid.current.value = "";
-    // name.current.value = "";
-    // company.current.value = "";
-    // info.current.value = "";
-    // long.current.value = "";
-    // lat.current.value = "";
-
-    // console.log(project);
   };
 
   return (
