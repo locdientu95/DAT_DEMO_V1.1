@@ -1,64 +1,315 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ErrorSetting.scss";
-import DataTable from 'react-data-table-component';
+import DataTable from "react-data-table-component";
 import { EnvContext } from "../Context/EnvContext";
 import { useContext } from "react";
-
-const addcol = [
-  {
-    name: "STT",
-    code: "id",
-    selector: row => row.id,
-    sortable: true,
-  },
-  {
-    name: "Địa Chỉ Mã Lỗi",
-    code: "addressCode",
-    selector: row => row.addressCode
-  },
-  {
-    name: "Địa Chỉ",
-    code: "addressState",
-    selector: row => row.addressState
-  },
-  {
-    name: "Giá Trị",
-    code: "value",
-    selector: row => row.value
-  },
-]
-
-const infoCol =[
-  {
-    name: "STT",
-    code: "id"
-  },
-  {
-    name: "Mã Lỗi",
-    code: "Errcode"
-  },
-  {
-    name: "Tên Lỗi",
-    code: "ErrName"
-  },
-  {
-    name: "Loại Lỗi",
-    code: "ErrType"
-  },
-  {
-    name: "Nguyên Nhân",
-    code: "info"
-  },
-  {
-    name: "Biện Pháp",
-    code: "solution"
-  }
-]
+import { useRef } from "react";
 
 export default function ErrorSetting(props) {
-  const { errs, envDispatch } = useContext(EnvContext);
+  const addressCode = useRef("");
+  const addressState = useRef("");
+  const value = useRef("");
+  const id = useRef("");
+  const Errcode = useRef("");
+  const Errname = useRef("");
+  const Errtype = useRef("");
+  const Info = useRef("");
+  const Solution = useRef("")
+  const Errid = useRef("")
+  const datainrow = useRef("")
+  const datainaddressrow = useRef("")
+  const [pop, setPop] = useState(false)
+  const [infopop, setInfoPop] = useState(false)
+  const [idrow, setIdrow] = useState('')
+  const [addrow, setAddrow] = useState('')
+  const { errsetting, envDispatch } = useContext(EnvContext);
+  const addcol = [
+    {
+      name: "STT",
+      code: "id",
+      selector: (row) => row.id,
+      sortable: true,
+      width: "60px",
+      center: true
+    },
+    {
+      name: "Địa Chỉ Mã Lỗi",
+      code: "addressCode",
+      selector: (row) => (
+        <>
+          <div id={"addressCode_" + row.id} onClick={e => handleChange(e)} style={{ cursor: "pointer" }}>{row.addressCode} </div>
+        </>
+      ),
+      center: true
+    },
+    {
+      name: "Địa Chỉ",
+      code: "addressState",
+      selector: (row) => (
+        <>
+          <div id={"addressState_" + row.id} onClick={e => handleChange(e)} style={{ cursor: "pointer" }}>{row.addressState} </div>
+        </>
+      ),
+      center: true
+    },
+    {
+      name: "Giá Trị",
+      code: "value",
+      selector: (row) => (
+        <>
+          <div id={"value_" + row.id} onClick={e => handleChange(e)} style={{ cursor: "pointer" }}>{row.value} </div>
+        </>
+      ),
+      center: true
+    },
+    {
+      name: "",
+      selector: (row) => (
+        <>
+          <div id={row.id} onClick={e => handleDeleAddressRow(e)} style={{ cursor: "pointer", color: "red" }}>Xóa</div>
+        </>
+      ),
+      center: true
+    }
+  ];
+
+  const handleChange2 = (e) => {
+    setIdrow(e.currentTarget.id)
+    setPop(true)
+  };
+  const handleChange = (e) => {
+    setAddrow(e.currentTarget.id)
+    setInfoPop(true)
+  };
+
+  const handleSaveRow = (e) => {
+    e.preventDefault()
+    const data = datainrow.current.value
+    const t = idrow.split("_")
+    var newData = errsetting.infodata;
+    const index = newData.findIndex((newData) => newData.id == t[1]);
+    if (t[0]== "ErrCode"){
+      for(let i =0;i<errsetting.infodata.length;i++){
+        if (errsetting.infodata[i].ErrCode != data){
+          newData[index][t[0]] = data;
+          break;
+        }else{
+          alert("Trùng mã lỗi");
+          break;
+        }
+        break;
+      }
+    }
+    console.log(newData)
+    setPop(false)
+    envDispatch({
+      type: "SET_ERR",
+      payload: {
+        ...errsetting,
+        infodata: newData,
+      },
+    });
+  }
+
+  const infoCol = [
+    {
+      name: "STT",
+      code: "id",
+      selector: row => row.id,
+      sortable: true,
+      width: "60px",
+      center: true
+    },
+    {
+      name: "Mã Lỗi",
+      code: "ErrCode",
+      selector: (row) => (
+        <>
+          <div id={"ErrCode_" + row.id} onClick={e => handleChange2(e)} style={{ cursor: "pointer" }}>{row.ErrCode} </div>
+        </>
+      ),
+      width: "100px",
+      center: true
+    },
+    {
+      name: "Tên Lỗi",
+      code: "ErrName",
+      selector: (row) => (
+        <>
+          <div id={"ErrName_" + row.id} onClick={e => handleChange2(e)} style={{ cursor: "pointer" }}>{row.ErrName} </div>
+        </>
+      ),
+      center: true
+    },
+    {
+      name: "Loại Lỗi",
+      code: "ErrType",
+      selector: (row) => (
+        <>
+          <div id={"ErrType_" + row.id} onClick={e => handleChange2(e)} style={{ cursor: "pointer" }}>{row.ErrType} </div>
+        </>
+      ),
+      width: "150px",
+      center: true
+    },
+    {
+      name: "Nguyên Nhân",
+      code: "info",
+      selector: (row) => (
+        <>
+          <div id={"info_" + row.id} onClick={e => handleChange2(e)} style={{ cursor: "pointer" }}>{row.info} </div>
+        </>
+      ),
+    },
+    {
+      name: "Biện Pháp",
+      code: "solution",
+      selector: (row) => (
+        <>
+          <div id={"solution_" + row.id} onClick={e => handleChange2(e)} style={{ cursor: "pointer" }}>{row.solution} </div>
+        </>
+      ),
+    },
+    {
+      name: "",
+      selector: (row) => (
+        <>
+          <div id={row.id} onClick={e => handleDeleInfoRow(e)} style={{ cursor: "pointer", color: "red" }}>Xóa</div>
+        </>
+      ),
+      center: true
+    }
+  ]
+  const handleAdd = (e) => {
+    var leng = errsetting.addDataRow
+    var newData = errsetting.adddata
+    newData = [...newData, { id: leng, addressCode: "...", addressState: "...", value: "..." }]
+    leng++
+    console.log(leng)
+    newData.map((data,index)=>{
+      data.id = index+1
+    })
+    envDispatch({
+      type: "SET_ERR",
+      payload: {
+        ...errsetting,
+        adddata: newData,
+        addDataRow: leng,
+        
+      },
+    });
+  }
+
+  const handleAddInfo = (e) => {
+    var leng = errsetting.infoDataRow
+    var newData = errsetting.infodata
+    newData = [...newData, { id: leng, ErrCode: "...", ErrName: "...", ErrType: "...", info: "...", solution: "..." }]
+    leng++
+    newData.map((data,index)=>{
+      data.id = index+1
+    })
+    console.log(leng)
+    envDispatch({
+      type: "SET_ERR",
+      payload: {
+        ...errsetting,
+        infodata: newData,
+        infoDataRow: leng
+      },
+    });
+  }
+
+  const handleSave = (e) => {
+    const STT = id.current.value;
+    var newData = errsetting.adddata;
+    const index = newData.findIndex((newData) => newData.id == STT);
+    newData[index].addressCode = addressCode.current.value;
+    newData[index].addressState = addressState.current.value;
+    newData[index].value = value.current.value;
+    envDispatch({
+      type: "SET_ERR",
+      payload: {
+        ...errsetting,
+        adddata: newData,
+      },
+    });
+  };
+
+  const handleSaveInfo = (e) => {
+    var newData = errsetting.infodata
+    const index = errsetting.infodata.findIndex((newData) => newData.id == Errid.current.value);
+    for (let i = 0; i < newData.length; i++) {
+      if (newData[i].ErrCode != Errcode.current.value) {
+        newData[index].ErrCode = Errcode.current.value;
+        newData[index].ErrName = Errname.current.value;
+        newData[index].ErrType = Errtype.current.value;
+        newData[index].info = Info.current.value;
+        newData[index].solution = Solution.current.value;
+        break;
+      }
+      alert("Trùng mã lỗi, vui lòng thử lại")
+      break;
+    }
+    envDispatch({
+      type: "SET_ERR",
+      payload: {
+        ...errsetting,
+        infodata: newData,
+      },
+    });
+  }
+
+  const handleSaveAddressRow = (e) => {
+    e.preventDefault()
+    const data = datainaddressrow.current.value
+    const t = addrow.split("_")
+    var newData = errsetting.adddata;
+    const index = newData.findIndex((newData) => newData.id == t[1]);
+    newData[index][t[0]] = data;
+    setPop(false)
+    envDispatch({
+      type: "SET_ERR",
+      payload: {
+        ...errsetting,
+        adddata: newData,
+      },
+    });
+  }
+
+  const handleDeleAddressRow = (e) => {
+    var newData = errsetting.adddata;
+    newData = newData.filter((newData) => {
+      return newData.id != parseInt(e.currentTarget.id)
+    })
+    newData.map((data,index)=>{
+      data.id = index+1
+    })
+    envDispatch({
+      type: "SET_ERR",
+      payload: {
+        ...errsetting,
+        adddata: newData,
+      },
+    });
+  }
+
+  const handleDeleInfoRow = (e) => {
+    var newData = errsetting.infodata;
+    newData = newData.filter((newData) => {
+      return newData.id != parseInt(e.currentTarget.id)
+    })
+    newData.map((data,index)=>{
+      data.id = index+1
+    })
+    envDispatch({
+      type: "SET_ERR",
+      payload: {
+        ...errsetting,
+        infodata: newData,
+      },
+    });
+  }
   return (
-    
     <div className="DAT_ErrorSetting">
       <div className="DAT_ErrorSetting-Header">
         <div className="DAT_ErrorSetting-Header-Dashboard">
@@ -86,16 +337,109 @@ export default function ErrorSetting(props) {
           </div>
         </div>
       </div>
-      <div className="DAT_ErrorSetting-Main">
-        <div className="DAT_ErrorSetting-Main-AddressSetting">
-          <DataTable columns={addcol}
-          data={errs.adddata}/>
+      <div className="DAT_ErrorSetting-Main" style={{ marginBottom: "100px" }}>
+        <div className="DAT_ErrorSetting-Main-Address">
+          <div className="DAT_ErrorSetting-Main-Address-Table">
+            <DataTable columns={addcol}
+              data={errsetting.adddata}
+            />
+            <button onClick={(e) => handleAdd(e)}>Thêm</button>
+          </div>
+          <div className="DAT_ErrorSetting-Main-Address-Setting">
+            <div className="DAT_ErrorSetting-Main-Address-Setting-Table">
+              <select ref={id}>
+                {errsetting.adddata.map((data, index) => {
+                  return (
+                    <option key={index} value={data.id}>
+                      STT {data.id}
+                    </option>
+                  );
+                })}
+              </select>
+              <div className="DAT_ErrorSetting-Main-Address-Setting-Table-Input1">
+                Địa chỉ mã lỗi:
+                <input placeholder="DCML" ref={addressCode} />
+              </div>
+              <div className="DAT_ErrorSetting-Main-Address-Setting-Table-Input2">
+                Địa chỉ:
+                <input placeholder="Địa chỉ" ref={addressState} />
+              </div>
+              <div className="DAT_ErrorSetting-Main-Address-Setting-Table-Input3">
+                Giá trị:
+                <input placeholder="Giá trị" ref={value} />
+              </div>
+              <div className="DAT_ErrorSetting-Main-Address-Setting-Table-Submit">
+                <button onClick={(e) => handleSave(e)}>Lưu</button>
+              </div>
+            </div>
+          </div>
+          <div className="DAT_ErrorSetting-Main-Address-Config">
+            <form className="DAT_ErrorSetting-Main-Address-Config-Group" style={{ display: (infopop) ? "block" : "none" }}
+              onSubmit={(e) => handleSaveAddressRow(e)}>
+              <input type="text" required ref={datainaddressrow}></input>
+              <button>Lưu</button>
+            </form>
+          </div>
         </div>
-        <div className="DAT_ErrorSetting-Main-InfoSetting">
-          <DataTable columns={infoCol} 
-          data={""}/>
+        <div className="DAT_ErrorSetting-Main-Info">
+          <div className="DAT_ErrorSetting-Main-Info-Table">
+            <DataTable columns={infoCol}
+              data={errsetting.infodata}
+            />
+            <button onClick={(e) => handleAddInfo(e)}>Thêm</button>
+          </div>
+          <div className="DAT_ErrorSetting-Main-Info-Setting">
+            <div className="DAT_ErrorSetting-Main-Info-Setting-Table">
+              <select ref={Errid}>
+                {errsetting.infodata.map((data, index) => {
+                  return (
+                    <option key={index} value={data.id}>
+                      STT {data.id}
+                    </option>
+                  );
+                })}
+              </select>
+              <div className="DAT_ErrorSetting-Main-Info-Setting-Table-Input1">
+                Mã Lỗi:
+                <input placeholder="Mã lỗi" ref={Errcode} />
+              </div>
+              <div className="DAT_ErrorSetting-Main-Info-Setting-Table-Input2">
+                Tên Lỗi:
+                <input placeholder="Tên Lỗi" ref={Errname} />
+              </div>
+              <div className="DAT_ErrorSetting-Main-Info-Setting-Table-Input3">
+                Loại lỗi:
+                <input placeholder="Loại Lỗi" ref={Errtype} />
+              </div>
+              <div className="DAT_ErrorSetting-Main-Info-Setting-Table-Input4">
+                Nguyên Nhân:
+                <input placeholder="Nguyên Nhân" ref={Info} />
+              </div>
+              <div className="DAT_ErrorSetting-Main-Info-Setting-Table-Input5">
+                Biện Pháp:
+                <input placeholder="Biện Pháp" ref={Solution} />
+              </div>
+              <div className="DAT_ErrorSetting-Main-Info-Setting-Table-Submit">
+                <button onClick={(e) => handleSaveInfo(e)}>Lưu</button>
+              </div>
+            </div>
+          </div>
+          <div className="DAT_ErrorSetting-Main-Info-Config">
+            <form className="DAT_ErrorSetting-Main-Info-Config-Group" style={{ display: (pop) ? "block" : "none" }}
+              onSubmit={(e) => handleSaveRow(e)}>
+              <input type="text" required ref={datainrow}></input>
+              <button>Lưu</button>
+            </form>
+          </div>
+
         </div>
       </div>
+
+
     </div>
   );
 }
+
+
+
+

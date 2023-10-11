@@ -4,10 +4,11 @@ import { useRef } from "react";
 import { EnvContext } from "../Context/EnvContext";
 
 export default function Devices() {
-  const { device, envDispatch } = useContext(EnvContext);
+  const { device, project, envDispatch } = useContext(EnvContext);
 
   const name = useRef();
   const info = useRef();
+  const projectid = useRef();
   const gateway = useRef();
 
   const handleSubmit = (e) => {
@@ -21,6 +22,7 @@ export default function Devices() {
       description: info.current.value,
       statement: 0,
       gateway: gateway.current.value,
+      projectid: projectid.current.value,
       custome: "",
     });
 
@@ -29,9 +31,7 @@ export default function Devices() {
       payload: device,
     });
 
-    name.current.value = "";
-    info.current.value = "";
-    gateway.current.value = "";
+    alert("Thêm thành công");
 
     console.log(device);
   };
@@ -70,14 +70,23 @@ export default function Devices() {
                   </div>
                 </div>
 
-                {/* <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row">
+                <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item_Label">
-                      Kết Nối
+                      Mã Dự Án
                     </div>
-                    <input type="text" ref={connect} required />
+                    <select ref={projectid}>
+                      <option value={"None"}>None</option>
+                      {project.map((data, index) => {
+                        return (
+                          <option key={index} value={data.projectid}>
+                            {data.projectid}
+                          </option>
+                        );
+                      })}
+                    </select>
                   </div>
-                </div> */}
+                </div>
 
                 <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item">

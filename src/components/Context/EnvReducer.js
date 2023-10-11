@@ -184,31 +184,31 @@ export const INITSTATE = {
 
   register: [
     {
-      id: 1,
       username: "admin",
       password: "123456",
       email: "admin@gmail.com",
+      name: "Admin",
       role: "admin",
     },
     {
-      id: 2,
       username: "huuhuynh",
       password: "huu123",
       email: "huuhuynh@gmail.com",
+      name: "Huynh Huu",
       role: "user",
     },
     {
-      id: 3,
       username: "phunguyen",
       password: "phu123",
       email: "phunguyen@gmail.com",
+      name: "Nguyen Thanh Phu",
       role: "user",
     },
     {
-      id: 4,
       username: "taingo",
       password: "tai123",
       email: "taingo@gmail.com",
+      name: "Ngo Dinh Tan Tai",
       role: "user",
     },
   ],
@@ -221,6 +221,8 @@ export const INITSTATE = {
       info: "Phố đi bộ Nguyễn Huệ, quận 1, Hình Chí Mô",
       statement: 0, //0: Bật 1:Tắt 2:Bảo trì
       custom: "",
+      long: "",
+      lat: "",
     },
     {
       projectid: "P02",
@@ -229,6 +231,8 @@ export const INITSTATE = {
       info: "Ngoài rìa thành phố Thủ Đức",
       statement: 1,
       custom: "",
+      long: "",
+      lat: "",
     },
     {
       projectid: "P03",
@@ -237,6 +241,8 @@ export const INITSTATE = {
       info: "Phía bên kia dãy Bạch Mã",
       statement: 1, //0: Bật 1:Tắt 2:Bảo trì
       custom: "",
+      long: "",
+      lat: "",
     },
     {
       projectid: "P04",
@@ -245,52 +251,191 @@ export const INITSTATE = {
       info: "Hiện diện trong Nam, xuất thân gốc Bắc",
       statement: 2, //0: Bật 1:Tắt 2:Bảo trì
       custom: "",
+      long: "",
+      lat: "",
     },
   ],
 
   device: [
     {
-      deviceid: 116,
+      deviceid: 1,
       name: "Solar Power",
       description: "",
       statement: 2,
       gateway: "I0622B066940",
-      custome: "",
+      projectid: "P01",
+      custom: "",
     },
     {
-      deviceid: 117,
+      deviceid: 2,
       name: "Eletric Valve",
       description: "",
       statement: 1,
       gateway: "IOT323195643",
-      custome: "",
+      projectid: "P02",
+      custom: "",
     },
     {
-      deviceid: 118,
+      deviceid: 3,
       name: "Pump",
       description: "",
       statement: 1,
       gateway: "LY283409228",
-      custome: "",
+      projectid: "P03",
+      custom: "",
     },
     {
-      deviceid: 119,
+      deviceid: 4,
       name: "Microwave",
       description: "",
       statement: 0,
       gateway: "I0222195940",
-      custome: "",
+      projectid: "P04",
+      custom: "",
+    },
+  ],
+
+  errorlogs: [
+    {
+      id: 1,
+      DeviceID: "IO6112233",
+      ErrCode: "E123",
+      DeviceType: "IO",
+      ErrStt: "In",
+      ErrType: "Error",
+      ProjectName: "Dự Án 1",
+      Datetime: "28/9/2023 08:54:00",
+    },
+    {
+      id: 2,
+      DeviceID: "IO6892323",
+      ErrCode: "E923",
+      DeviceType: "IO",
+      ErrStt: "In",
+      ErrType: "Error",
+      ProjectName: "Dự Án 1",
+      Datetime: "22/9/2021 18:54:00",
+    },
+    {
+      id: 3,
+      DeviceID: "IO6231235",
+      ErrCode: "E999",
+      DeviceType: "IO",
+      ErrStt: "In",
+      ErrType: "Error",
+      ProjectName: "Dự Án 1",
+      Datetime: "28/8/2023 10:54:00",
+    },
+    {
+      id: 4,
+      DeviceID: "IO62321312",
+      ErrCode: "E019",
+      DeviceType: "IO",
+      ErrStt: "In",
+      ErrType: "Error",
+      ProjectName: "Dự Án 1",
+      Datetime: "21/3/2020 07:45:00",
+    },
+    {
+      id: 5,
+      DeviceID: "IO643647474",
+      ErrCode: "DE787",
+      DeviceType: "IO",
+      ErrStt: "In",
+      ErrType: "Error",
+      ProjectName: "Dự Án 1",
+      Datetime: "10/3/2023 17:54:00",
+    },
+    {
+      id: 6,
+      DeviceID: "IO63129387",
+      ErrCode: "E767",
+      DeviceType: "IO",
+      ErrStt: "In",
+      ErrType: "Error",
+      ProjectName: "Dự Án 1",
+      Datetime: "2/9/2023 00:00:00",
+    },
+    {
+      id: 7,
+      DeviceID: "IO61234091",
+      ErrCode: "E555",
+      DeviceType: "IO",
+      ErrStt: "In",
+      ErrType: "Error",
+      ProjectName: "Dự Án 1",
+      Datetime: "30/1/2020 9:00:00",
+    },
+    {
+      id: 8,
+      DeviceID: "IO60219833",
+      ErrCode: "E199",
+      DeviceType: "IO",
+      ErrStt: "In",
+      ErrType: "Error",
+      ProjectName: "Dự Án 1",
+      Datetime: "17/3/2019 20:54:00",
+    },
+    {
+      id: 9,
+      DeviceID: "IO612093812",
+      ErrCode: "E141",
+      DeviceType: "IO",
+      ErrStt: "In",
+      ErrType: "Error",
+      ProjectName: "Dự Án 1",
+      Datetime: "1/4/2023 12:54:00",
+    },
+    {
+      id: 10,
+      DeviceID: "IO621093812",
+      ErrCode: "E404",
+      DeviceType: "IO",
+      ErrStt: "In",
+      ErrType: "Error",
+      ProjectName: "Dự Án 1",
+      Datetime: "20/5/2023 13:30:00",
+    },
+    {
+      id: 11,
+      DeviceID: "IO62345433",
+      ErrCode: "E918",
+      DeviceType: "IO",
+      ErrStt: "In",
+      ErrType: "Error",
+      ProjectName: "Dự Án 1",
+      Datetime: "7/5/2023 15:15:00",
+    },
+    {
+      id: 12,
+      DeviceID: "IO620398120",
+      ErrCode: "E113",
+      DeviceType: "IO",
+      ErrStt: "In",
+      ErrType: "Error",
+      ProjectName: "Dự Án 1",
+      Datetime: "10/10/2021 10:13:00",
+    },
+    {
+      id: 13,
+      DeviceID: "IO6123943912",
+      ErrCode: "E010",
+      DeviceType: "IO",
+      ErrStt: "In",
+      ErrType: "Error",
+      ProjectName: "Dự Án 1",
+      Datetime: "9/8/2023 19:20:00",
     },
   ],
 
   type: "Button",
 
-  errs: {
+  errsetting: {
     adddata: [
       {
         id: 1,
         addressCode: "100-1",
-        addressState: "'1-1'",
+        addressState: "1-1",
         value: "1",
       },
     ],
@@ -298,17 +443,16 @@ export const INITSTATE = {
     infodata: [
       {
         id: 1,
-        Errcode: 10,
+        ErrCode: 10,
         ErrName: "Quá tải động cơ",
         ErrType: "Error",
-        info:
-          "-Bị kẹt tải" + "Thông số chưa phù hợp" + "Điện áp nguồn không đủ",
-        solution:
-          "- Kiểm tra cơ khí" +
-          "Kiểm tra điện áp nguồn " +
-          "Tinh chỉnh thông số",
+        info: "Bị kẹt tải; Thông số chưa phù hợp; Điện áp nguồn không đủ",
+        solution: "Kiểm tra cơ khí; Kiểm tra điện nguồn; Tinh chỉnh thông số",
       },
     ],
+
+    addDataRow: 2,
+    infoDataRow: 2
   },
 
   sidebarid: "AUTO",
@@ -394,7 +538,12 @@ const EnvReducer = (state, action) => {
     case "SET_ERR":
       return {
         ...state,
-        errs: action.payload,
+        errsetting: action.payload,
+      };
+    case "SET_REGISTER":
+      return {
+        ...state,
+        register: action.payload,
       };
     case "SET_SIDEBARID":
       return{
