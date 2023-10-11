@@ -310,6 +310,8 @@ export const INITSTATE = {
       },
     ],
   },
+
+  sidebarid: "AUTO",
 };
 
 const EnvReducer = (state, action) => {
@@ -394,6 +396,11 @@ const EnvReducer = (state, action) => {
         ...state,
         errs: action.payload,
       };
+    case "SET_SIDEBARID":
+      return{
+        ...state,
+        sidebarid: action.payload
+      }
     default:
       throw new Error("Unexpected action");
   }

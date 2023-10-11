@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./Sidebar.scss";
 import { Link } from "react-router-dom";
+import { EnvContext } from "../Context/EnvContext";
 
 export default function Sidebar(props) {
   const [drop, setDrop] = useState("default");
   const [state, setState] = useState(false);
+  const { sidebarid, envDispatch } = useContext(EnvContext);
 
   const handleDropdown = (e) => {
     var id = e.currentTarget.id;
@@ -22,6 +24,17 @@ export default function Sidebar(props) {
       setDrop(id);
       setState(true);
     }
+  };
+
+  useEffect(()=>{
+    console.log(sidebarid)
+  },[sidebarid])
+
+  const handlePushID = (e) => {
+    // e.preventDefault();
+    var temp = e.target.id;
+    envDispatch({ type: "SET_SIDEBARID", payload: temp });
+    // console.log(sidebarid);
   };
 
   return (
@@ -90,32 +103,48 @@ export default function Sidebar(props) {
                 <Link
                   to="/Automation"
                   style={{ textDecoration: "none", color: "black" }}
+                  onClick={(e) => handlePushID(e)}
                 >
-                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item" id="AUTO">
+                  <div
+                    className="DAT_Sidebar_Content_Menu_Dropdown_List_Item"
+                    id="AUTO"
+                  >
                     Tự động hóa
                   </div>
                 </Link>
                 <Link
                   to="/SolarEnergy"
                   style={{ textDecoration: "none", color: "black" }}
+                  onClick={(e) => handlePushID(e)}
                 >
-                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item" id="SOLAR">
+                  <div
+                    className="DAT_Sidebar_Content_Menu_Dropdown_List_Item"
+                    id="SOLAR"
+                  >
                     Năng lượng mặt trời
                   </div>
                 </Link>
                 <Link
                   to="/Elevator"
                   style={{ textDecoration: "none", color: "black" }}
+                  onClick={(e) => handlePushID(e)}
                 >
-                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item" id="ELEV">
+                  <div
+                    className="DAT_Sidebar_Content_Menu_Dropdown_List_Item"
+                    id="ELEV"
+                  >
                     Thang máy
                   </div>
                 </Link>
                 <Link
                   to="/UPS"
                   style={{ textDecoration: "none", color: "black" }}
+                  onClick={(e) => handlePushID(e)}
                 >
-                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item" id="UPS">
+                  <div
+                    className="DAT_Sidebar_Content_Menu_Dropdown_List_Item"
+                    id="UPS"
+                  >
                     Ups
                   </div>
                 </Link>

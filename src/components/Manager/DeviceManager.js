@@ -2,20 +2,24 @@ import React from "react";
 import DataTable from "react-data-table-component";
 import { useEffect } from "react";
 import { useState } from "react";
-import data from "../Context/Devices.json";
-// import "./Automation.scss";
+// import data from "../Context/Devices.json";
+// import { EnvContext } from "../Context/EnvContext";
+// import { useContext } from "react";
+// import { useRef } from "react";
 
-export default function DeviceManager() {
-  const [record, setRecord] = useState(data);
+export default function DeviceManager(props) {
+  const [record, setRecord] = useState([]);
 
   useEffect(() => {
-    var newData = data;
-    newData.map((data, index) => {
-      data["id"] = index + 1;
-    });
+    var newData = props.list
+    newData.map((data,index)=>{
+      data['id']=index+1
+    })
+
+    console.log(newData)
+
     setRecord(newData);
-    console.log(newData);
-  });
+  }, [props.list]);
 
   const paginationComponentOptions = {
     rowsPerPageText: "Số hàng",
@@ -28,7 +32,7 @@ export default function DeviceManager() {
     {
       name: "STT",
       selector: (row) => row.id,
-      sortable: true,
+      // sortable: true,
       width: "60px",
     },
 

@@ -48,7 +48,7 @@ export default function Login() {
             <div className="DAT_Login-Container-Main-Username-Tit">
               Username
             </div>
-            <input type="text" placeholder="Username" ref={userName} required />
+            <input type="text" placeholder="Username"  defaultValue="taingo" ref={userName} required />
           </div>
 
           <div className="DAT_Login-Container-Main-Password">
@@ -58,6 +58,7 @@ export default function Login() {
             <input
               type="password"
               placeholder="Password"
+              defaultValue="tai123"
               ref={password}
               required
             />

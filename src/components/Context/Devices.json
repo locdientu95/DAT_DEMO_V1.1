@@ -1,27 +1,24 @@
 [
   {
-    "deviceid": 116,
     "name": "Solar Power",
     "description": "",
     "statement": 2,
     "gateway": "I0622B066940"
   },
   {
-    "deviceid": 117,
     "name": "Eletric Valve",
     "description": "",
     "statement": 1,
     "gateway": "IOT323195643"
   },
   {
-    "deviceid": 118,
     "name": "Pump",
     "description": "",
     "statement": 1,
     "gateway": "LY283409228"
   },
   {
-    "deviceid": 119,
+
     "name": "Microwave",
     "description": "",
     "statement": 0,
