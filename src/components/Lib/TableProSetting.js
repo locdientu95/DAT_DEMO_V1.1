@@ -195,7 +195,7 @@ export default function TableProSetting() {
     const val = newval.current.value;
     var newData = tablepro.data;
     const index = newData.findIndex((newData) => newData.id == row);
-    newData[index]["val_" + col] = val;
+    newData[index][col] = val;
     envDispatch({
       type: "SET_TABLEPRO",
       payload: {
@@ -276,7 +276,7 @@ export default function TableProSetting() {
         <select ref={selVal}>
           {tablepro.head.map((data, index) => {
             return index !== 0 ? (
-              <option key={index} value={index}>
+              <option key={index} value={data.code}>
                 Cột thứ {index}
               </option>
             ) : (

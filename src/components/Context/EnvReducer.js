@@ -302,13 +302,16 @@ export const INITSTATE = {
     infodata: [
       {
         id: 1,
-        Errcode: 10,
+        ErrCode: 10,
         ErrName: "Quá tải động cơ",
         ErrType: "Error",
         info: "Bị kẹt tải; Thông số chưa phù hợp; Điện áp nguồn không đủ",
         solution: "Kiểm tra cơ khí; Kiểm tra điện nguồn; Tinh chỉnh thông số",
       },
     ],
+
+    addDataRow: 2,
+    infoDataRow: 2
   },
 };
 
@@ -392,7 +395,7 @@ const EnvReducer = (state, action) => {
     case "SET_ERR":
       return {
         ...state,
-        errs: action.payload,
+        errsetting: action.payload,
       };
     case "SET_REGISTER":
       return {
