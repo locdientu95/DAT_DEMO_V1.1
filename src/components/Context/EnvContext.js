@@ -25,12 +25,9 @@ export const EnvContextProvider = ({ children }) => {
         login: state.login,
         project: state.project,
         device: state.device,
-<<<<<<< HEAD
-        sidebarid: state.sidebarid,
-=======
         errsetting: state.errsetting,
         errorlogs: state.errorlogs,
->>>>>>> 22d6e31812bcb74c93f677501c6279c4c9253cc8
+        sidebarid: state.sidebarid,
         envDispatch,
       }}
     >

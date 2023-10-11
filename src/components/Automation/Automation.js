@@ -15,13 +15,18 @@ export default function Automation(props) {
   const [device, setDevice] = useState([]);
 
 
+
   // PROJECTS
   useEffect(() => {
     var project = pjm;
-    project = project.filter(
-      (pjdata) => pjdata.code == sidebarid && pjdata.username == props.name
-    );
-    //console.log(project);
+
+    console.log(sidebarid)
+    project = project.filter((pjdata)=> pjdata.code == sidebarid)
+    
+    console.log(project);
+
+    project = project.filter((pjdata) => pjdata.code == sidebarid && pjdata.username == props.name);
+    // console.log(project);
     setProject([]);
     project.map((p) => {
       var d = pjdata;

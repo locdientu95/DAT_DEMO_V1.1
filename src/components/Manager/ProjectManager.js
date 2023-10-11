@@ -18,7 +18,7 @@ export default function ProjectManager(props) {
       data['id']=index+1
     })
 
-    console.log(newData)
+    // console.log(newData)
 
     setRecord(newData);
   }, [props.list]);
