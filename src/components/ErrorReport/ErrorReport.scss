@@ -3,17 +3,17 @@
         &-Group {
             &-Table {
                 width: 100%;
+
                 &-head {
                     margin-bottom: 20px;
-                    & button{
-                        width: 80px;
+
+                    & button {
                         height: 40px;
                         border-radius: 10px;
                         margin-right: 10px
                     }
 
-                    & input{
-                        width: 200px;
+                    & input {
                         height: 35px;
                         border-radius: 10px;
                         padding-left: 10px;
@@ -25,6 +25,7 @@
                     border-radius: 10px;
                     overflow: hidden;
                     background-color: white;
+                    box-shadow: 0px 0px 16px 4px rgb(136, 136, 136, 0.2);
 
                     &-tit {
                         height: 60px;
@@ -43,56 +44,3 @@
         }
     }
 }
-
-// .DAT_Content{
-
-//     &-Container{
-//         &-Group{
-
-//             &-Table{
-//                 width: 95%;
-//                 margin: auto;
-//                 &-head{
-//                     width: 100%;
-//                     margin-bottom: 20px;
-//                 }
-//                 &-Content{
-//                     width: 100%;
-//                     border-radius: 10px;
-//                     overflow: hidden ;
-//                     background-color: white;
-
-//                     &-tit{
-//                         height: 60px;
-//                         background-color: rgb(226, 226, 226);
-//                         border-bottom: solid 1px gray;
-//                         padding-left: 10px;
-//                         display: flex;
-//                         align-items: center;
-//                     }
-//                     &-tb{
-//                         padding: 20px;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-//     margin: auto;
-//     position: relative;
-//     margin-top: 100px;
-//     &-head{
-//         display: flex;
-//         justify-content: space-between;
-//     }
-
-//     &-list{
-
-
-//         &-tit{
-//             font-size: 18px;
-//             color: #3072FF;
-//         }
-//         &-tb{
-
-//         }
-//     }

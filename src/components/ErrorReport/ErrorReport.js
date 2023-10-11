@@ -1,168 +1,113 @@
-import React, { useEffect, useState } from 'react';
-import "./ErrorReport.scss"
-import DataTable from 'react-data-table-component';
-import { CSVLink } from 'react-csv';
-import Err from '../Context/ErrReport.json';
-
-
-const data = [
-  {
-    id: 1,
-    DeviceID: "IO6112233",
-    ErrCode: "E123",
-    Date: "28/9/2023 08:54:00"
-  },
-  {
-    id: 2,
-    DeviceID: "IO6892323",
-    ErrCode: "E923",
-    Date: "22/9/2021 18:54:00"
-  },
-  {
-    id: 3,
-    DeviceID: "IO6231235",
-    ErrCode: "E999",
-    Date: "28/8/2023 10:54:00"
-  },
-  {
-    id: 4,
-    DeviceID: "IO62321312",
-    ErrCode: "E019",
-    Date: "21/3/2020 07:45:00"
-  },
-  {
-    id: 5,
-    DeviceID: "IO643647474",
-    ErrCode: "DE787",
-    Date: "10/3/2023 17:54:00"
-  },
-  {
-    id: 6,
-    DeviceID: "IO63129387",
-    ErrCode: "E767",
-    Date: "2/9/2023 00:00:00"
-  },
-  {
-    id: 7,
-    DeviceID: "IO61234091",
-    ErrCode: "E555",
-    Date: "30/1/2020 9:00:00"
-  },
-  {
-    id: 8,
-    DeviceID: "IO60219833",
-    ErrCode: "E199",
-    Date: "17/3/2019 20:54:00"
-  },
-  {
-    id: 9,
-    DeviceID: "IO612093812",
-    ErrCode: "E141",
-    Date: "1/4/2023 12:54:00"
-  },
-  {
-    id: 10,
-    DeviceID: "IO621093812",
-    ErrCode: "E404",
-    Date: "20/5/2023 13:30:00"
-  },
-  {
-    id: 11,
-    DeviceID: "IO62345433",
-    ErrCode: "E918",
-    Date: "7/5/2023 15:15:00"
-  },
-  {
-    id: 12,
-    DeviceID: "IO620398120",
-    ErrCode: "E113",
-    Date: "10/10/2021 10:13:00"
-  },
-  {
-    id: 13,
-    DeviceID: "IO6123943912",
-    ErrCode: "E010",
-    Date: "9/8/2023 19:20:00"
-  }
-];
-const newDAta = Err
-console.log(newDAta)
+import React, { useContext, useEffect, useState } from "react";
+import "./ErrorReport.scss";
+import DataTable from "react-data-table-component";
+import { CSVLink } from "react-csv";
+import { EnvContext } from "../Context/EnvContext";
 
 export default function ErrorReport() {
+  const { errorlogs, envDispatch } = useContext(EnvContext);
+  const [data, setRecord] = useState([]);
+
+  useEffect(() => {
+    var newData = errorlogs;
+
+    console.log(newData);
+    setRecord(errorlogs);
+  }, [errorlogs]);
+
   const paginationComponentOptions = {
-    rowsPerPageText: 'Số hàng',
-    rangeSeparatorText: 'đến',
+    rowsPerPageText: "Số hàng",
+    rangeSeparatorText: "đến",
     selectAllRowsItem: true,
-    selectAllRowsItemText: 'tất cả',
+    selectAllRowsItemText: "tất cả",
   };
+
   const column = [
     {
       name: "STT",
       code: "id",
       sortable: true,
-      selector: row =>row.id,
-      width: "60px"
-  },
-  {
+      selector: (row) => row.id,
+      width: "60px",
+    },
+    {
       name: "Mã Lỗi",
       code: "Errcode",
-      selector: row =>row.ErrCode,
-      width: "100px"
-  },
-  {
-      name: "Device Type",
+      selector: (row) => row.ErrCode,
+      width: "100px",
+    },
+    {
+      name: "Thiết Bị",
       code: "DeviceType",
-      selector: row =>row.DeviceType
-  },
-  {
+      selector: (row) => row.DeviceType,
+    },
+    {
       name: "Trạng Thái",
       code: "ErrStt",
-      selector: row =>row.ErrStt,
-      
-  },
-  {
+      selector: (row) => row.ErrStt,
+    },
+    {
       name: "Loại Lỗi",
       code: "ErrType",
-      selector: row =>row.ErrType,
-      width: "150px"
-  },
-  {
+      selector: (row) => row.ErrType,
+    },
+    {
       name: "Tên Dự Án",
       code: "ProjectName",
-      selector: row =>row.ProjectName
-  },
-  {
-      name: "Device ID",
+      selector: (row) => row.ProjectName,
+    },
+    {
+      name: "Gateway",
       code: "DeviceID",
-      selector: row =>row.DeviceID
-  },
-  {
+      selector: (row) => row.DeviceID,
+    },
+    {
       name: "Thời Gian",
       code: "Datetime",
-      selector: row =>row.Datetime
-  }
-    
-  ]
-  const [record, setRecord] = useState(data);
+      selector: (row) => row.Datetime,
+      width: "200px",
+    },
+    {
+      name: "",
+      selector: (row) => (
+        <div
+          // id={row.username}
+          // onClick={(e) => handleDelete(e)}
+          style={{ cursor: "pointer", color: "red" }}
+        >
+          xóa
+        </div>
+      ),
+      width: "70px",
+      center: true,
+    },
+  ];
 
   const handleInput = (e) => {
-    const newData = data.filter(row => {
-      //return row.name.toLowerCase().includes(e.target.value)
-      return row.DeviceID.includes(e.target.value) ||
-        row.id == e.target.value ||
-        (row.ErrCode.includes(e.target.value)) ||
-        row.Date.includes(e.target.value)
-        
-    })
-    setRecord(newData);
-  }
+    var newdb = errorlogs;
 
+    console.log(e.target.value);
 
-  useEffect(() => {
-    var newdb = data
-    setRecord(newdb);
-    //console.log("hello",record);
-  }, [])
+    if (e.target.value === "") {
+      setRecord(newdb);
+    } else {
+      const newData = errorlogs.filter((row) => {
+        return (
+          row.id === parseInt(e.target.value) ||
+          row.DeviceID.includes(e.target.value) ||
+          row.ErrCode.includes(e.target.value) ||
+          row.DeviceType.includes(e.target.value) ||
+          row.ErrStt.includes(e.target.value) ||
+          row.ErrType.includes(e.target.value) ||
+          row.ProjectName.includes(e.target.value) ||
+          row.Datetime.includes(e.target.value)
+        );
+      });
+
+      setRecord(newData);
+    }
+  };
+
   return (
     <div className="DAT_Content">
       <div className="DAT_Content-Header">
@@ -192,41 +137,40 @@ export default function ErrorReport() {
             Example dashboard overview and content summary
           </div>
         </div>
-
-
       </div>
-      <div className="DAT_Content-Container">
-        <div className='DAT_Content-Container-Group'>
-          <div className='DAT_Content-Container-Group-Table'>
-            <div className='DAT_Content-Container-Group-Table-head'>
 
-              <CSVLink data={record}>
-                <button> Function here</button>
+      <div className="DAT_Content-Container">
+        <div className="DAT_Content-Container-Group">
+          <div className="DAT_Content-Container-Group-Table">
+            <div className="DAT_Content-Container-Group-Table-head">
+              <CSVLink data={data}>
+                <button>Xuất Báo Cáo</button>
               </CSVLink>
 
-
-              <input type='text' placeholder='Search' onChange={e => handleInput(e)} />
-
+              <input
+                type="text"
+                placeholder="Tìm kiếm"
+                onChange={(e) => handleInput(e)}
+              />
             </div>
-            <div className='DAT_Content-Container-Group-Table-Content'>
-                <div className='DAT_Content-Container-Group-Table-Content-tit'>
-                  Danh sách lỗi
-                </div>
-                
-                <div className='DAT_Content-Container-Group-Table-Content-tb'>
-                  <DataTable
-                    columns={column}
-                    data= {data}
-                    pagination
-                    paginationComponentOptions={paginationComponentOptions} />
+
+            <div className="DAT_Content-Container-Group-Table-Content">
+              <div className="DAT_Content-Container-Group-Table-Content-tit">
+                Danh Sách Lỗi
+              </div>
+
+              <div className="DAT_Content-Container-Group-Table-Content-tb">
+                <DataTable
+                  columns={column}
+                  data={data}
+                  pagination
+                  paginationComponentOptions={paginationComponentOptions}
+                />
               </div>
             </div>
           </div>
         </div>
-
       </div>
-
-
     </div>
-  )
+  );
 }
