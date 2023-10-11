@@ -11,32 +11,40 @@ export default function Project() {
   const name = useRef();
   const company = useRef();
   const info = useRef();
+  const long = useRef();
+  const lat = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     var data = project;
 
-    data.push({
-      projectid: projectid.current.value,
-      name: name.current.value,
-      company: company.current.value,
-      info: info.current.value,
-      statement: 0,
-      custom: "",
-    });
+    data = data.filter((data) => data.projectid === projectid.current.value);
 
-    envDispatch({
-      type: "SET_PROJECT",
-      payload: project,
-    });
+    if (data.length) {
+      alert("Mã dự án đã tồn tại");
+    } else {
+      var dataPush = project;
+      dataPush.push({
+        projectid: projectid.current.value,
+        name: name.current.value,
+        company: company.current.value,
+        info: info.current.value,
+        statement: 0,
+        custom: "",
+        long: long.current.value,
+        lat: lat.current.value,
+      });
 
-    projectid.current.value = "";
-    name.current.value = "";
-    company.current.value = "";
-    info.current.value = "";
+      envDispatch({
+        type: "SET_PROJECT",
+        payload: dataPush,
+      });
 
-    console.log(project);
+      alert("Thêm thành công");
+
+      console.log(project);
+    }
   };
 
   return (
@@ -60,12 +68,7 @@ export default function Project() {
                     <div className="DAT_Project_Main_Content_Detail_Content_Form_Row_Item_Label">
                       Mã Dự Án
                     </div>
-                    <input
-                      type="text"
-                      // placeholder={"" + Projects[0].projectid}
-                      ref={projectid}
-                      required
-                    />
+                    <input type="text" ref={projectid} required />
                   </div>
                 </div>
 
@@ -74,12 +77,7 @@ export default function Project() {
                     <div className="DAT_Project_Main_Content_Detail_Content_Form_Row_Item_Label">
                       Tên Dự Án
                     </div>
-                    <input
-                      type="text"
-                      // placeholder={"" + Projects[0].name}
-                      ref={name}
-                      required
-                    />
+                    <input type="text" ref={name} required />
                   </div>
                 </div>
 
@@ -88,12 +86,7 @@ export default function Project() {
                     <div className="DAT_Project_Main_Content_Detail_Content_Form_Row_Item_Label">
                       Công Ty
                     </div>
-                    <input
-                      type="text"
-                      // placeholder={"" + Projects[0].company}
-                      ref={company}
-                      required
-                    />
+                    <input type="text" ref={company} required />
                   </div>
                 </div>
 
@@ -102,12 +95,25 @@ export default function Project() {
                     <div className="DAT_Project_Main_Content_Detail_Content_Form_Row_Item_Label">
                       Thông Tin
                     </div>
-                    <input
-                      type="Text"
-                      // placeholder={"" + Projects[0].info}
-                      ref={info}
-                      required
-                    />
+                    <input type="Text" ref={info} required />
+                  </div>
+                </div>
+
+                <div className="DAT_Project_Main_Content_Detail_Content_Form_Row">
+                  <div className="DAT_Project_Main_Content_Detail_Content_Form_Row_Item">
+                    <div className="DAT_Project_Main_Content_Detail_Content_Form_Row_Item_Label">
+                      Kinh Độ
+                    </div>
+                    <input type="Text" ref={long} required />
+                  </div>
+                </div>
+
+                <div className="DAT_Project_Main_Content_Detail_Content_Form_Row">
+                  <div className="DAT_Project_Main_Content_Detail_Content_Form_Row_Item">
+                    <div className="DAT_Project_Main_Content_Detail_Content_Form_Row_Item_Label">
+                      Vĩ Độ
+                    </div>
+                    <input type="Text" ref={lat} required />
                   </div>
                 </div>
 

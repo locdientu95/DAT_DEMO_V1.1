@@ -15,26 +15,42 @@ export default function AddNew() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    envDispatch({
-      type: "SET_REGISTER",
-      payload: {
-        ...register,
-        [Object.keys(register).length]: {
-          id: parseInt(register.length + 1),
-          username: username.current.value,
-          email: email.current.value,
-          password: password.current.value,
-          name: name.current.value,
-          role: "user",
-        },
-      },
-    });
+    var newData = register;
 
-    username.current.value = "";
-    email.current.value = "";
-    password.current.value = "";
-    repassword.current.value = "";
-    name.current.value = "";
+    newData = newData.filter(
+      (newData) =>
+        newData.username === username.current.value ||
+        newData.email === email.current.value
+    );
+
+    if (password.current.value === repassword.current.value) {
+      if (newData.length) {
+        alert("Tài khoản hoặc email đã tồn tại");
+      } else {
+        var pushData = register;
+        pushData = [
+          ...pushData,
+          {
+            username: username.current.value,
+            email: email.current.value,
+            password: repassword.current.value,
+            name: name.current.value,
+            role: "user",
+          },
+        ];
+
+        console.log(pushData);
+
+        envDispatch({
+          type: "SET_REGISTER",
+          payload: pushData,
+        });
+
+        alert("Thêm thành công");
+      }
+    } else {
+      alert("Mật khẩu không khớp");
+    }
   };
 
   useEffect(() => {
