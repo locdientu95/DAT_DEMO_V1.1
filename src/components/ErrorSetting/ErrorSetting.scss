@@ -1,9 +1,9 @@
 .DAT_ErrorSetting {
-    margin-top: 58px;
-    height: 100vh;
-    background-color: #f2f6fc;
+    background-color: rgb(182, 195, 219, 0.2);
     flex: 1;
+    width: 100%;
     overflow-y: scroll;
+    margin-top: 58px;
 
     &-Header {
         background-color: #0061f2;
@@ -24,7 +24,6 @@
                 font-size: 36px;
                 font-weight: 500px;
                 color: white;
-                width: 459px;
                 height: 36px;
             }
 
@@ -39,11 +38,46 @@
     }
 
     &-Main {
-        margin-bottom: 100px;
+        margin: auto;
         margin-top: -96px;
+        padding-bottom: 4px !important;
+        margin-bottom: 60px;
+        background-color: white;
+        width: 95%;
+        border-radius: 10px;
+        box-shadow: 4px 4px 4px 4px rgb(136, 136, 136, 0.2);
+
+        &_Nav {
+            padding-top: 24px;
+            margin-left: 24px;
+            margin-right: 24px;
+            border-bottom: solid 1px rgb(199, 199, 199);
+            display: flex;
+            gap: 24px;
+            margin-bottom: 24px;
+
+            &_Item {
+                padding-bottom: 10px;
+                cursor: pointer;
+            }
+        }
+    }
+
+}
+
+.DAT_ReaderSetting {
+    &-Main {
+        margin: auto;
+        margin-top: -96px;
+        padding-bottom: 4px !important;
+        margin-bottom: 60px;
+        background-color: white;
+        width: 95%;
+        border-radius: 10px;
+        box-shadow: 4px 4px 4px 4px rgb(136, 136, 136, 0.2);
 
         &-Content {
-            // gap: 10px;
+            position: relative;
             width: 95%;
             margin: auto;
             background-color: white;
@@ -62,23 +96,115 @@
             }
 
             &-Table {
+                position: relative;
                 padding-left: 16px;
                 padding-right: 16px;
                 margin-bottom: 16px;
             }
 
             &-Config {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: rgb(0, 0, 0, 0.5);
+
                 &-Group {
-                    padding-left: 16px;
-                    margin-bottom: 16px;
+                    padding: 8px;
+                    width: 220px;
+                    margin: auto;
+                    background-color: #f2f6fc;
+                    margin-top: 110px;
+                    border-radius: 10px;
+
+                    &-Tit {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 8px;
+
+                        &-Close {
+                            cursor: pointer;
+                        }
+                    }
 
                     & button {
-                        margin-left: 4px;
-
+                        margin-left: 8px;
                     }
                 }
             }
         }
     }
+}
 
+.DAT_InfoSetting {
+    &-Main {
+        margin: auto;
+        margin-top: -96px;
+        padding-bottom: 4px !important;
+        margin-bottom: 60px;
+        background-color: white;
+        width: 95%;
+        border-radius: 10px;
+        box-shadow: 4px 4px 4px 4px rgb(136, 136, 136, 0.2);
+
+        &-Content {
+            position: relative;
+            width: 95%;
+            margin: auto;
+            background-color: white;
+            margin-bottom: 20px;
+            border-radius: 7px;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+            &-Tit {
+                background-color: rgb(219, 219, 219);
+                border-bottom: solid 1px rgb(186, 186, 186);
+                height: 50px;
+                display: flex;
+                align-items: center;
+                padding-left: 16px;
+            }
+
+            &-Table {
+                position: relative;
+                padding-left: 16px;
+                padding-right: 16px;
+                margin-bottom: 16px;
+            }
+
+            &-Config {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: rgb(0, 0, 0, 0.5);
+
+                &-Group {
+                    padding: 8px;
+                    width: 220px;
+                    margin: auto;
+                    background-color: #f2f6fc;
+                    margin-top: 110px;
+                    border-radius: 10px;
+
+                    &-Tit {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 8px;
+
+                        &-Close {
+                            cursor: pointer;
+                        }
+                    }
+
+                    & button {
+                        margin-left: 8px;
+                    }
+                }
+            }
+        }
+    }
 }
