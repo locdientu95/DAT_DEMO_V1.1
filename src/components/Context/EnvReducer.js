@@ -452,7 +452,7 @@ export const INITSTATE = {
     ],
 
     addDataRow: 2,
-    infoDataRow: 2
+    infoDataRow: 2,
   },
 
   sidebarid: "AUTO",
@@ -546,10 +546,15 @@ const EnvReducer = (state, action) => {
         register: action.payload,
       };
     case "SET_SIDEBARID":
-      return{
+      return {
         ...state,
-        sidebarid: action.payload
-      }
+        sidebarid: action.payload,
+      };
+    case "SET_ERRORLOGS":
+      return {
+        ...state,
+        errorlogs: action.payload,
+      };
     default:
       throw new Error("Unexpected action");
   }

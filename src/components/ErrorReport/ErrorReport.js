@@ -10,6 +10,9 @@ export default function ErrorReport() {
 
   useEffect(() => {
     var newData = errorlogs;
+    newData.map((data, index) => {
+      return (data["id"] = index + 1);
+    });
 
     console.log(newData);
     setRecord(errorlogs);
@@ -71,8 +74,8 @@ export default function ErrorReport() {
       name: "",
       selector: (row) => (
         <div
-          // id={row.username}
-          // onClick={(e) => handleDelete(e)}
+          id={row.id}
+          onClick={(e) => handleDelete(e)}
           style={{ cursor: "pointer", color: "red" }}
         >
           xóa
@@ -106,6 +109,16 @@ export default function ErrorReport() {
 
       setRecord(newData);
     }
+  };
+
+  const handleDelete = (e) => {
+    var newData = errorlogs;
+    newData = newData.filter((data) => data.id !== parseInt(e.target.id));
+    console.log(newData);
+    envDispatch({
+      type: "SET_ERRORLOGS",
+      payload: newData,
+    });
   };
 
   return (
