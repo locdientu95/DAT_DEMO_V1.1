@@ -83,14 +83,15 @@ export default function ErrorSetting(props) {
         if (errsetting.infodata[i].ErrCode != data){
           newData[index][t[0]] = data;
           break;
-        }else{
-          alert("Trùng mã lỗi");
-          break;
-        }
-        break;
+          }else {
+            alert("Trùng mã lỗi");
+            break;
+          }
+        } 
+      }else{
+        newData[index][t[0]] = data;
       }
-    }
-    console.log(newData)
+    console.log(data)
     setPop(false)
     envDispatch({
       type: "SET_ERR",
@@ -256,7 +257,7 @@ export default function ErrorSetting(props) {
     var newData = errsetting.adddata;
     const index = newData.findIndex((newData) => newData.id == t[1]);
     newData[index][t[0]] = data;
-    setPop(false)
+    setInfoPop(false)
     envDispatch({
       type: "SET_ERR",
       payload: {
