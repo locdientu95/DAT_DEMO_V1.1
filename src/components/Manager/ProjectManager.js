@@ -11,7 +11,7 @@ import { EnvContext } from "../Context/EnvContext";
 export default function ProjectManager(props) {
   const { pjdata } = useContext(EnvContext);
   const [record, setRecord] = useState([]);
-  const [update, setUpdate] = useState(false);
+  const [show, setShow] = useState(false);
   // const { sidebarid ,login } = useContext(EnvContext);
   // const filter = useRef("");
 
@@ -52,6 +52,10 @@ export default function ProjectManager(props) {
     setRecord(newData);
   }, [props.list]);
 
+  const handleChange = (e) => {
+    console.log(e.currentTarget.id)
+  }
+
   const paginationComponentOptions = {
     rowsPerPageText: "Số hàng",
     rangeSeparatorText: "đến",
@@ -69,28 +73,68 @@ export default function ProjectManager(props) {
 
     {
       name: "Tên dự án",
-      selector: (row) => row.name,
+      selector: (row) => (
+        <>
+          <div
+            id={"name_" + row.name}
+            onClick={(e) => handleChange(e)}
+            style={{ cursor: "pointer" }}
+          >
+            {row.name}
+          </div>
+        </>
+      ),
       sortable: true,
       // width: "100px"
     },
 
     {
       name: "Tên công ty",
-      selector: (row) => row.company,
+      selector: (row) => (
+        <>
+          <div
+            id={"company" + row.company}
+            onClick={(e) => handleChange(e)}
+            style={{ cursor: "pointer" }}
+          >
+            {row.company}
+          </div>
+        </>
+      ),
       sortable: true,
       // width: "100px"
     },
 
     {
       name: "Thông tin",
-      selector: (row) => row.info,
+      selector: (row) => (
+        <>
+          <div
+            id={"info" + row.info}
+            onClick={(e) => handleChange(e)}
+            style={{ cursor: "pointer" }}
+          >
+            {row.info}
+          </div>
+        </>
+      ),
       sortable: true,
       // width: "100px"
     },
 
     {
       name: "Trạng thái",
-      selector: (row) => row.statement,
+      selector: (row) => (
+        <>
+          <div
+            id={"statement" + row.statement}
+            onClick={(e) => handleChange(e)}
+            style={{ cursor: "pointer" }}
+          >
+            {row.statement}
+          </div>
+        </>
+      ),
       sortable: true,
       width: "100px",
     },
@@ -102,15 +146,12 @@ export default function ProjectManager(props) {
             borderRadius: "0px",
             backgroundColor: "transparent",
             border: "1px solid transparent",
-            cursor: "pointer"
+            cursor: "pointer",
           }}
           onChange={(e, row) => handleDelete(e, row)}
         >
           <option defaultValue={0}>...</option>
           <option value={row.projectid}>Xóa</option>
-          <option value={update} onClick={handleRaiseChangeBox()}>
-            Sửa
-          </option>
         </select>
       ),
       width: "100px",
