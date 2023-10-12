@@ -129,6 +129,8 @@
                 margin: auto;
 
                 &-Center {
+                    display: flex;
+
                     &-Img {
                         display: flex;
                         justify-content: center;

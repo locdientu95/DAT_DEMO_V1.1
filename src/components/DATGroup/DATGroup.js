@@ -33,6 +33,25 @@ export default function DATGroup() {
       </div>
 
       <div className="DAT_Content-Container">
+        <div className="DAT_Content-Container-Card">
+          {/* <div className="DAT_Content-Container-Card-Body"> */}
+          {/* <div className="DAT_Content-Container-Card-Body-Center"> */}
+          <div className="DAT_Content-Container-Card-Body-Center-Text">
+            <h5>New reports are here! Generate custom reports now!</h5>
+            <p>
+              Our new report generation system is now online. You can start
+              creating custom reporting for any documents available on your
+              account.
+            </p>
+            <a href="#!">Get Started</a>
+          </div>
+          {/* <div className="DAT_Content-Container-Card-Body-Center-Img"> */}
+          {/* <img alt="" src="/DAT_Pictures/statistics.svg"></img> */}
+          {/* </div> */}
+          {/* </div> */}
+          {/* </div> */}
+        </div>
+
         {/* <div className="DAT_Content-Container-Group">
           <div className="DAT_Content-Container-Group-ListTag">
             <div className="DAT_Content-Container-Group-ListTag-Tag">
@@ -65,6 +84,7 @@ export default function DATGroup() {
               <img alt="" src="/DAT_Pictures/browser-stats.svg"></img>
             </div>
           </div>
+
           <div className="DAT_Content-Container-Group-ListTag">
             <div className="DAT_Content-Container-Group-ListTag-Tag">
               <div className="DAT_Content-Container-Group-ListTag-Tag-Info">
@@ -94,6 +114,7 @@ export default function DATGroup() {
               <img alt="" src="/DAT_Pictures/processing.svg"></img>
             </div>
           </div>
+
           <div className="DAT_Content-Container-Group-ListTag">
             <div className="DAT_Content-Container-Group-ListTag-Tag">
               <div className="DAT_Content-Container-Group-ListTag-Tag-Info">
@@ -125,25 +146,6 @@ export default function DATGroup() {
             </div>
           </div>
         </div> */}
-
-        <div className="DAT_Content-Container-Card">
-          <div className="DAT_Content-Container-Card-Body">
-            <div className="DAT_Content-Container-Card-Body-Center">
-              <div className="DAT_Content-Container-Card-Body-Center-Img">
-                <img alt="" src="/DAT_Pictures/logo_DAT.png"></img>
-              </div>
-              <div className="DAT_Content-Container-Card-Body-Center-Text">
-                <h5>New reports are here! Generate custom reports now!</h5>
-                <p>
-                  Our new report generation system is now online. You can start
-                  creating custom reporting for any documents available on your
-                  account.
-                </p>
-                <a href="#!">Get Started</a>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
