@@ -28,6 +28,10 @@ export const EnvContextProvider = ({ children }) => {
         errsetting: state.errsetting,
         errorlogs: state.errorlogs,
         sidebarid: state.sidebarid,
+        pjdata: state.pjdata,
+        pjm: state.pjm,
+        dvdata: state.dvdata,
+        dvm: state.dvm,
         envDispatch,
       }}
     >

@@ -37,8 +37,6 @@ export default function BarChartSetting() {
           (data) => data.xAxis != arr[0]
         );
       }
-      // console.log(arr[0]);
-      // console.log(barchart.dataset);
       envDispatch({ type: "SET_BARCHART", payload: barchart });
     } else {
       alert(

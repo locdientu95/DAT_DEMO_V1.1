@@ -2,19 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./Automation.scss";
 import DeviceManager from "../Manager/DeviceManager";
 import ProjectManager from "../Manager/ProjectManager";
-import pjm from "../Context/ProjectManager.json";
-import pjdata from "../Context/Projects.json";
-import dvm from "../Context/DeviceManager.json";
-import dvdata from "../Context/Devices.json";
 import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
 
 export default function Automation(props) {
-  const { sidebarid, login } = useContext(EnvContext);
+  const { sidebarid,pjdata,pjm,dvdata,dvm, login } = useContext(EnvContext);
   const [project, setProject] = useState([]);
   const [device, setDevice] = useState([]);
-
-
+  const [change, setChange] = useState(false);
 
   // PROJECTS
   useEffect(() => {
@@ -52,6 +47,10 @@ export default function Automation(props) {
 
   }, []);
 
+  const handleChangeData = (e) => {
+    
+  }
+
   return (
     <div className="DAT_Content">
       <div className="DAT_Content-Header">
@@ -83,11 +82,21 @@ export default function Automation(props) {
 
       <div className="Automation_Content-Container">
         <div className="Automation_Content-Container-Group">
+          <div className="Automation_Content-Container-Group-UpdateBox" >
+          </div>
           <div className="Automation_Content-Container-Group-Head">
             Danh sách dự án
           </div>
           <div className="Automation_Content-Container-Group-Body">
-            <ProjectManager list={project}></ProjectManager>
+            <ProjectManager list={project} custom={change}></ProjectManager>
+            <form
+              className="DAT_ErrorSetting-Main-Content-Config-Group"
+              style={{ display: change ? "block" : "none" }}
+              onSubmit={(e) => handleChangeData(e)}
+            >
+              <input type="text" required ></input>
+              <button>Lưu</button>
+            </form>
           </div>
         </div>
         <div className="Automation_Content-Container-Group">
