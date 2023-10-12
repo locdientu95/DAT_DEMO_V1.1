@@ -2,18 +2,13 @@ import React from "react";
 import DataTable from "react-data-table-component";
 import { useEffect } from "react";
 import { useState } from "react";
-// import data from "../Context/Projects.json";
-// import { EnvContext } from "../Context/EnvContext";
 import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
-// import { useRef } from "react";
 
 export default function ProjectManager(props) {
-  const { pjdata } = useContext(EnvContext);
+  const { projectfilter, envDispatch} = useContext(EnvContext);
   const [record, setRecord] = useState([]);
   const [show, setShow] = useState(false);
-  // const { sidebarid ,login } = useContext(EnvContext);
-  // const filter = useRef("");
 
   const handleDelete = (e, row) => {
     var newData = record;
@@ -42,6 +37,7 @@ export default function ProjectManager(props) {
   };
 
   useEffect(() => {
+    console.log("hello")
     var newData = props.list;
     newData.map((data, index) => {
       data["id"] = index + 1;
@@ -50,10 +46,12 @@ export default function ProjectManager(props) {
     // console.log(newData)
 
     setRecord(newData);
-  }, [props.list]);
+  }, [props]);
 
   const handleChange = (e) => {
-    console.log(e.currentTarget.id)
+    projectfilter.detail = e.currentTarget.id
+    envDispatch({type: "SET_PROJECTFILTER", payload: projectfilter})
+    console.log(projectfilter.detail)    
   }
 
   const paginationComponentOptions = {
@@ -76,7 +74,7 @@ export default function ProjectManager(props) {
       selector: (row) => (
         <>
           <div
-            id={"name_" + row.name}
+            id={"name_" + row.id}
             onClick={(e) => handleChange(e)}
             style={{ cursor: "pointer" }}
           >
@@ -93,7 +91,7 @@ export default function ProjectManager(props) {
       selector: (row) => (
         <>
           <div
-            id={"company" + row.company}
+            id={"company_" + row.id}
             onClick={(e) => handleChange(e)}
             style={{ cursor: "pointer" }}
           >
@@ -110,7 +108,7 @@ export default function ProjectManager(props) {
       selector: (row) => (
         <>
           <div
-            id={"info" + row.info}
+            id={"info_" + row.id}
             onClick={(e) => handleChange(e)}
             style={{ cursor: "pointer" }}
           >
@@ -127,7 +125,7 @@ export default function ProjectManager(props) {
       selector: (row) => (
         <>
           <div
-            id={"statement" + row.statement}
+            id={"statement_" + row.id}
             onClick={(e) => handleChange(e)}
             style={{ cursor: "pointer" }}
           >

@@ -629,6 +629,10 @@ export const INITSTATE = {
       code: "SOLAR",
     },
   ],
+  
+  projectfilter: {
+    detail: "",
+  },
 };
 
 const EnvReducer = (state, action) => {
@@ -746,6 +750,11 @@ const EnvReducer = (state, action) => {
         ...state,
         errorlogs: action.payload,
       };
+    case "SET_PROJECTFILTER":
+      return {
+        ...state,
+        projectfilter: action.payload,
+      }
     default:
       throw new Error("Unexpected action");
   }
