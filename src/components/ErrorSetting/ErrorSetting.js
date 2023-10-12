@@ -6,16 +6,6 @@ import { useContext } from "react";
 import { useRef } from "react";
 
 export default function ErrorSetting(props) {
-  const addressCode = useRef("");
-  const addressState = useRef("");
-  const value = useRef("");
-  const id = useRef("");
-  const Errcode = useRef("");
-  const Errname = useRef("");
-  const Errtype = useRef("");
-  const Info = useRef("");
-  const Solution = useRef("")
-  const Errid = useRef("")
   const datainrow = useRef("")
   const datainaddressrow = useRef("")
   const [pop, setPop] = useState(false)
@@ -219,45 +209,45 @@ export default function ErrorSetting(props) {
     });
   }
 
-  const handleSave = (e) => {
-    const STT = id.current.value;
-    var newData = errsetting.adddata;
-    const index = newData.findIndex((newData) => newData.id == STT);
-    newData[index].addressCode = addressCode.current.value;
-    newData[index].addressState = addressState.current.value;
-    newData[index].value = value.current.value;
-    envDispatch({
-      type: "SET_ERR",
-      payload: {
-        ...errsetting,
-        adddata: newData,
-      },
-    });
-  };
+  // const handleSave = (e) => {
+  //   const STT = id.current.value;
+  //   var newData = errsetting.adddata;
+  //   const index = newData.findIndex((newData) => newData.id == STT);
+  //   newData[index].addressCode = addressCode.current.value;
+  //   newData[index].addressState = addressState.current.value;
+  //   newData[index].value = value.current.value;
+  //   envDispatch({
+  //     type: "SET_ERR",
+  //     payload: {
+  //       ...errsetting,
+  //       adddata: newData,
+  //     },
+  //   });
+  // };
 
-  const handleSaveInfo = (e) => {
-    var newData = errsetting.infodata
-    const index = errsetting.infodata.findIndex((newData) => newData.id == Errid.current.value);
-    for (let i = 0; i < newData.length; i++) {
-      if (newData[i].ErrCode != Errcode.current.value) {
-        newData[index].ErrCode = Errcode.current.value;
-        newData[index].ErrName = Errname.current.value;
-        newData[index].ErrType = Errtype.current.value;
-        newData[index].info = Info.current.value;
-        newData[index].solution = Solution.current.value;
-        break;
-      }
-      alert("Trùng mã lỗi, vui lòng thử lại")
-      break;
-    }
-    envDispatch({
-      type: "SET_ERR",
-      payload: {
-        ...errsetting,
-        infodata: newData,
-      },
-    });
-  }
+  // const handleSaveInfo = (e) => {
+  //   var newData = errsetting.infodata
+  //   const index = errsetting.infodata.findIndex((newData) => newData.id == Errid.current.value);
+  //   for (let i = 0; i < newData.length; i++) {
+  //     if (newData[i].ErrCode != Errcode.current.value) {
+  //       newData[index].ErrCode = Errcode.current.value;
+  //       newData[index].ErrName = Errname.current.value;
+  //       newData[index].ErrType = Errtype.current.value;
+  //       newData[index].info = Info.current.value;
+  //       newData[index].solution = Solution.current.value;
+  //       break;
+  //     }
+  //     alert("Trùng mã lỗi, vui lòng thử lại")
+  //     break;
+  //   }
+  //   envDispatch({
+  //     type: "SET_ERR",
+  //     payload: {
+  //       ...errsetting,
+  //       infodata: newData,
+  //     },
+  //   });
+  // }
 
   const handleSaveAddressRow = (e) => {
     e.preventDefault()
@@ -345,34 +335,6 @@ export default function ErrorSetting(props) {
             />
             <button onClick={(e) => handleAdd(e)}>Thêm</button>
           </div>
-          <div className="DAT_ErrorSetting-Main-Address-Setting">
-            <div className="DAT_ErrorSetting-Main-Address-Setting-Table">
-              <select ref={id}>
-                {errsetting.adddata.map((data, index) => {
-                  return (
-                    <option key={index} value={data.id}>
-                      STT {data.id}
-                    </option>
-                  );
-                })}
-              </select>
-              <div className="DAT_ErrorSetting-Main-Address-Setting-Table-Input1">
-                Địa chỉ mã lỗi:
-                <input placeholder="DCML" ref={addressCode} />
-              </div>
-              <div className="DAT_ErrorSetting-Main-Address-Setting-Table-Input2">
-                Địa chỉ:
-                <input placeholder="Địa chỉ" ref={addressState} />
-              </div>
-              <div className="DAT_ErrorSetting-Main-Address-Setting-Table-Input3">
-                Giá trị:
-                <input placeholder="Giá trị" ref={value} />
-              </div>
-              <div className="DAT_ErrorSetting-Main-Address-Setting-Table-Submit">
-                <button onClick={(e) => handleSave(e)}>Lưu</button>
-              </div>
-            </div>
-          </div>
           <div className="DAT_ErrorSetting-Main-Address-Config">
             <form className="DAT_ErrorSetting-Main-Address-Config-Group" style={{ display: (infopop) ? "block" : "none" }}
               onSubmit={(e) => handleSaveAddressRow(e)}>
@@ -380,49 +342,13 @@ export default function ErrorSetting(props) {
               <button>Lưu</button>
             </form>
           </div>
-        </div>
+          </div>
         <div className="DAT_ErrorSetting-Main-Info">
           <div className="DAT_ErrorSetting-Main-Info-Table">
             <DataTable columns={infoCol}
               data={errsetting.infodata}
             />
             <button onClick={(e) => handleAddInfo(e)}>Thêm</button>
-          </div>
-          <div className="DAT_ErrorSetting-Main-Info-Setting">
-            <div className="DAT_ErrorSetting-Main-Info-Setting-Table">
-              <select ref={Errid}>
-                {errsetting.infodata.map((data, index) => {
-                  return (
-                    <option key={index} value={data.id}>
-                      STT {data.id}
-                    </option>
-                  );
-                })}
-              </select>
-              <div className="DAT_ErrorSetting-Main-Info-Setting-Table-Input1">
-                Mã Lỗi:
-                <input placeholder="Mã lỗi" ref={Errcode} />
-              </div>
-              <div className="DAT_ErrorSetting-Main-Info-Setting-Table-Input2">
-                Tên Lỗi:
-                <input placeholder="Tên Lỗi" ref={Errname} />
-              </div>
-              <div className="DAT_ErrorSetting-Main-Info-Setting-Table-Input3">
-                Loại lỗi:
-                <input placeholder="Loại Lỗi" ref={Errtype} />
-              </div>
-              <div className="DAT_ErrorSetting-Main-Info-Setting-Table-Input4">
-                Nguyên Nhân:
-                <input placeholder="Nguyên Nhân" ref={Info} />
-              </div>
-              <div className="DAT_ErrorSetting-Main-Info-Setting-Table-Input5">
-                Biện Pháp:
-                <input placeholder="Biện Pháp" ref={Solution} />
-              </div>
-              <div className="DAT_ErrorSetting-Main-Info-Setting-Table-Submit">
-                <button onClick={(e) => handleSaveInfo(e)}>Lưu</button>
-              </div>
-            </div>
           </div>
           <div className="DAT_ErrorSetting-Main-Info-Config">
             <form className="DAT_ErrorSetting-Main-Info-Config-Group" style={{ display: (pop) ? "block" : "none" }}
@@ -434,8 +360,6 @@ export default function ErrorSetting(props) {
 
         </div>
       </div>
-
-
     </div>
   );
 }
