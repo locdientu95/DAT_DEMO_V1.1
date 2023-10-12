@@ -2,19 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./Automation.scss";
 import DeviceManager from "../Manager/DeviceManager";
 import ProjectManager from "../Manager/ProjectManager";
-import pjm from "../Context/ProjectManager.json";
-import pjdata from "../Context/Projects.json";
-import dvm from "../Context/DeviceManager.json";
-import dvdata from "../Context/Devices.json";
 import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
 
 export default function Automation(props) {
-  const { sidebarid, login } = useContext(EnvContext);
+  const { sidebarid,pjdata,pjm,dvdata,dvm, login } = useContext(EnvContext);
   const [project, setProject] = useState([]);
   const [device, setDevice] = useState([]);
-
-
 
   // PROJECTS
   useEffect(() => {

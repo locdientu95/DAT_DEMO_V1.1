@@ -452,10 +452,150 @@ export const INITSTATE = {
     ],
 
     addDataRow: 2,
-    infoDataRow: 2
+    infoDataRow: 2,
   },
 
   sidebarid: "AUTO",
+
+  pjdata: [
+    {
+      projectid: "P01",
+      name: "GREEN GROWTH SHOW 2023",
+      company: "Công ty Cổ phần Tập đoàn DAT",
+      info: "Phố đi bộ Nguyễn Huệ, quận 1, Hình Chí Mô",
+      statement: 0,
+    },
+    {
+      projectid: "P02",
+      name: "YASUO EVENT",
+      company: "Công ty TNHH Một Mình Tôi",
+      info: "Ngoài rìa thành phố Thủ Đức",
+      statement: 1,
+    },
+    {
+      projectid: "P03",
+      name: "PIZZA HUT THUOC LA",
+      company: "Công ty Mai Tài Phến - MTP Entertainment",
+      info: "Phía bên kia dãy Bạch Mã",
+      statement: 1,
+    },
+    {
+      projectid: "P04",
+      name: "CHO ĐI ĐỂ VÀO ĐẦU MÀY 1 CÁI BÂY CHỪ",
+      company: "Công ty đòi nợ Đất Bắc",
+      info: "Hiện diện trong Nam, xuất thân gốc Bắc",
+      statement: 2,
+    },
+    {
+      projectid: "P05",
+      name: "Cucurella",
+      company: "ChelseaFC",
+      info: "Nguời cùng khổ",
+      statement: 1,
+    },
+    {
+      projectid: "P06",
+      name: "Mãi mãi mất em",
+      company: "Manchester United",
+      info: "Không DeGea, không top4",
+      statement: 2,
+    },
+    {
+      projectid: "P07",
+      name: "Van Djik",
+      company: "Liverpoop",
+      info: "You have to walk alone",
+      statement: 0,
+    },
+  ],
+
+  pjm: [
+    {
+      projectid: "P01",
+      username: "taingo",
+      code: "AUTO",
+    },
+    {
+      projectid: "P02",
+      username: "taingo",
+      code: "AUTO",
+    },
+    {
+      projectid: "P03",
+      username: "taingo",
+      code: "UPS",
+    },
+    {
+      projectid: "P04",
+      username: "phunguyen",
+      code: "SOLAR",
+    },
+    {
+      projectid: "P05",
+      username: "huuhuynh",
+      code: "AUTO",
+    },
+    {
+      projectid: "P06",
+      username: "taingo",
+      code: "ELEV",
+    },
+    {
+      projectid: "P07",
+      username: "taingo",
+      code: "SOLAR",
+    },
+  ],
+
+  dvdata: [
+    {
+      name: "Solar Power",
+      description: "",
+      statement: 2,
+      gateway: "I0622B066940",
+    },
+    {
+      name: "Eletric Valve",
+      description: "",
+      statement: 1,
+      gateway: "IOT323195643",
+    },
+    {
+      name: "Pump",
+      description: "",
+      statement: 1,
+      gateway: "LY283409228",
+    },
+    {
+      name: "Microwave",
+      description: "",
+      statement: 0,
+      gateway: "I0222195940",
+    },
+  ],
+
+  dvm: [
+    {
+      deviceid: "I0622B066940",
+      username: "taingo",
+      code: "AUTO",
+    },
+    {
+      deviceid: "IOT323195643",
+      username: "taingo",
+      code: "ELEV",
+    },
+    {
+      deviceid: "LY283409228",
+      username: "taingo",
+      code: "UPS",
+    },
+    {
+      deviceid: "I0222195940",
+      username: "phunguyen",
+      code: "SOLAR",
+    },
+  ],
 };
 
 const EnvReducer = (state, action) => {
@@ -546,10 +686,28 @@ const EnvReducer = (state, action) => {
         register: action.payload,
       };
     case "SET_SIDEBARID":
-      return{
+      return {
         ...state,
-        sidebarid: action.payload
-      }
+        sidebarid: action.payload,
+      };
+    case "SET_PJDATA":
+      return {
+        ...state,
+        pjdata: action.payload,
+      };
+    case "SET_PJM":
+      return {
+        ...state,
+        pjm: action.payload,
+      };
+    case "SET_DVDATA":
+      return {
+        dvdata: action.payload,
+      };
+    case "SET_DVM":
+      return {
+        dvm: action.payload,
+      };
     default:
       throw new Error("Unexpected action");
   }
