@@ -9,33 +9,48 @@ import { EnvContext } from "../Context/EnvContext";
 // import { useRef } from "react";
 
 export default function ProjectManager(props) {
-  const {pjdata} = useContext(EnvContext)
+  const { pjdata } = useContext(EnvContext);
   const [record, setRecord] = useState([]);
+  const [update, setUpdate] = useState(false);
   // const { sidebarid ,login } = useContext(EnvContext);
   // const filter = useRef("");
 
-  const handleDelete = (e,row) => {
-    var newData = record
-    newData = newData.filter((data) => data.projectid != e.target.value )
-    newData.map((data,index)=>{
-      data['id']=index+1
-    })
-    setRecord(newData)
-    // console.log(e.target.value)
-  }
+  const handleDelete = (e, row) => {
+    var newData = record;
+    newData = newData.filter((data) => data.projectid != e.target.value);
+    newData.map((data, index) => {
+      data["id"] = index + 1;
+    });
+    setRecord(newData);
+    console.log(e.target.value);
+  };
+
+  const handleRaiseChangeBox = (e) => {
+    return (
+      <div
+        style={{
+          backgroundColor: "white",
+          border: "solid 1px gray",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        asasdas
+      </div>
+    );
+  };
 
   useEffect(() => {
-    var newData = props.list
-    newData.map((data,index)=>{
-      data['id']=index+1
-    })
+    var newData = props.list;
+    newData.map((data, index) => {
+      data["id"] = index + 1;
+    });
 
     // console.log(newData)
 
     setRecord(newData);
   }, [props.list]);
-
-  
 
   const paginationComponentOptions = {
     rowsPerPageText: "Số hàng",
@@ -82,10 +97,20 @@ export default function ProjectManager(props) {
     {
       name: "Tùy chỉnh",
       selector: (row) => (
-        <select style={{ border: "none", backgroundColor: "transparent" }} onChange={(e, row)=>handleDelete(e,row)}>
+        <select
+          style={{
+            borderRadius: "0px",
+            backgroundColor: "transparent",
+            border: "1px solid transparent",
+            cursor: "pointer"
+          }}
+          onChange={(e, row) => handleDelete(e, row)}
+        >
           <option defaultValue={0}>...</option>
           <option value={row.projectid}>Xóa</option>
-          <option>Sửa</option>
+          <option value={update} onClick={handleRaiseChangeBox()}>
+            Sửa
+          </option>
         </select>
       ),
       width: "100px",
