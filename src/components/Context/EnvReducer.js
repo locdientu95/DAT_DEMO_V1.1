@@ -708,6 +708,11 @@ const EnvReducer = (state, action) => {
       return {
         dvm: action.payload,
       };
+    case "SET_ERRORLOGS":
+      return {
+        ...state,
+        errorlogs: action.payload,
+      };
     default:
       throw new Error("Unexpected action");
   }
