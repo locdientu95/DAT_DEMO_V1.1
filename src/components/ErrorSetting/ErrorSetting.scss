@@ -4,7 +4,6 @@
     background-color: #f2f6fc;
     flex: 1;
     overflow-y: scroll;
-    // margin-bottom: 400px;
 
     &-Header {
         background-color: #0061f2;
@@ -36,6 +35,22 @@
                 color: rgba(255, 255, 255, 0.5);
                 margin-top: 4px;
             }
+        }
+    }
+
+    &-Main {
+        // margin-bottom: 100px;
+        margin-top: -96px;
+
+        &-Content {
+            gap: 10px;
+            width: 95%;
+            margin: auto;
+            background-color: white;
+            margin-bottom: 20px;
+            border-radius: 7px;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
     }
 }
