@@ -8,3 +8,12 @@ Tai Upload  27/9/2023 bar, button, Home, Content, select lib, rowbar
 import { BarChart } from '@mui/x-charts/BarChart';
 import { axisClasses } from '@mui/x-charts';
 
+4-5-6-7-8-9-10-11-12/10/2023:
+
+Lam function: display data, quan ly projects, devices.
+
+Them xoa sua device.
+
+The hien data theo người quản lý. Ví dụ: Danh sách dự án: 20, filter 
+từng dự án của Tài (3 Solar, 2 Auto, 3 Elev, 2 UPS)
+

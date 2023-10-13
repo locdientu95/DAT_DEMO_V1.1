@@ -1,7 +1,12 @@
 Huu 27/9 Slider @mui/material @react-csv @react-data-table-component 
-
 Huu 28/9 react-spreadsheet react-spreadsheet-import ExportReport
-
 Huu 29/9 TablePro/TableProSettings
-
+Huu 4/10 Xong TablePro/TableProsettings
+Huu 5/10 Tim hieu thu vien Xlsx-populate
+Huu 6/10 Tiep tuc tim hieu thu vien
+Huu 8/10 Lam component Error Report 
 Huu 9/10 ErrorReport/Error Settings
+Huu 10/10 ErrorReport/Error Settings
+Huu 11/10 Xong ErrorReport/Error Settings
+Huu 12/10 Tiep tuc tim hieu thu vien Xlsx-populate
+Huu 13/10 Tiep tuc tim hieu thu vien Xlsx-populate
