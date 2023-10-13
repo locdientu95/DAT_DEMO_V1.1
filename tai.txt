@@ -17,3 +17,4 @@ Them xoa sua device.
 The hien data theo người quản lý. Ví dụ: Danh sách dự án: 20, filter 
 từng dự án của Tài (3 Solar, 2 Auto, 3 Elev, 2 UPS)
 
+13/10/2023  sửa data BU, update lên reducer

@@ -632,6 +632,7 @@ export const INITSTATE = {
   
   projectfilter: {
     detail: "",
+    displayarray: [],
   },
 };
 

@@ -6,31 +6,32 @@ import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
 
 export default function Automation(props) {
-  const { sidebarid, pjdata, pjm, dvdata, dvm, projectfilter } = useContext(EnvContext);
+  const { sidebarid, pjdata, pjm, dvdata, dvm, projectfilter, envDispatch } =
+    useContext(EnvContext);
   const [project, setProject] = useState([]);
   const [device, setDevice] = useState([]);
   const [change, setChange] = useState(false);
   const dataIncome = useRef("");
-  const [newproject, setNewproject]= useState(project)
+  const [newproject, setNewproject] = useState(project);
   // PROJECTS
   useEffect(() => {
-    var project = pjm;
-
-    console.log(sidebarid);
-    project = project.filter((pjdata) => pjdata.code == sidebarid);
-
-    console.log(project);
-
-    project = project.filter(
+    var projectm = pjm;
+    projectm = projectm.filter((pjdata) => pjdata.code == sidebarid);
+    projectm = projectm.filter(
       (pjdata) => pjdata.code == sidebarid && pjdata.username == props.name
     );
-    // console.log(project);
     setProject([]);
-    project.map((p) => {
+    projectm.map((p) => {
       var d = pjdata;
       d = d.filter((d) => d.projectid == p.projectid);
       return setProject((pre) => [...pre, d[0]]);
     });
+    projectfilter.displayarray = project;
+    envDispatch({
+      type: "SET_PROJECTFILTER",
+      payload: { ...projectfilter, displayarray: project },
+    });
+    
   }, []);
 
   // DEVICES
@@ -52,15 +53,16 @@ export default function Automation(props) {
   const handleChangeData = (e) => {
     e.preventDefault();
     const data = dataIncome.current.value;
-    console.log(data)
     const temp = projectfilter.detail.split("_"); //['company', '1']
-    var newData = project;//data
-    const index = newData.findIndex((newData)=>newData.id == temp[1]);
-    // console.log(index)
+    var newData = projectfilter.displayarray; //data
+    const index = newData.findIndex((newData) => newData.id == temp[1]);
     newData[index][temp[0]] = data;
-    console.log(newData)
-    setProject(newData)
-
+    console.log(newData);
+    setProject(newData);
+    envDispatch({
+      type: "SET_PROJECTFILTER",
+      payload: { ...projectfilter, displayarray: newData },
+    });
   };
 
   return (
@@ -117,7 +119,7 @@ export default function Automation(props) {
                 </div>
               </div>
               <input type="text" required ref={dataIncome}></input>
-              <button onClick={(e)=>handleChangeData(e)}>Lưu</button>
+              <button onClick={(e) => handleChangeData(e)}>Lưu</button>
             </form>
           </div>
         </div>

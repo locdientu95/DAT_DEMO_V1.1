@@ -18,7 +18,7 @@ export default function InfoSetting() {
   };
 
   const handleSaveRow = (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
     const data = datainrow.current.value;
     const t = idrow.split("_");
     var newData = errsetting.infodata;

@@ -7,7 +7,7 @@ import { EnvContext } from "../Context/EnvContext";
 
 export default function ProjectManager(props) {
   const { projectfilter, envDispatch} = useContext(EnvContext);
-  const [record, setRecord] = useState([]);
+  const [record, setRecord] = useState(projectfilter.displayarray);
   const [show, setShow] = useState(false);
 
   const handleDelete = (e, row) => {
@@ -20,33 +20,19 @@ export default function ProjectManager(props) {
     console.log(e.target.value);
   };
 
-  const handleRaiseChangeBox = (e) => {
-    return (
-      <div
-        style={{
-          backgroundColor: "white",
-          border: "solid 1px gray",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        asasdas
-      </div>
-    );
-  };
 
   useEffect(() => {
-    console.log("hello")
+    // console.log("hello")
     var newData = props.list;
     newData.map((data, index) => {
       data["id"] = index + 1;
     });
-
     // console.log(newData)
+    //projectfilter.displayarray=newData
+    envDispatch({type: "SET_PROJECTFILTER",payload: {...projectfilter,displayarray: newData} })
+    setRecord(projectfilter.displayarray);
 
-    setRecord(newData);
-  }, [props]);
+  }, [projectfilter.displayarray]);
 
   const handleChange = (e) => {
     projectfilter.detail = e.currentTarget.id

@@ -27,7 +27,7 @@ export default function Sidebar(props) {
   };
 
   useEffect(()=>{
-    console.log(sidebarid)
+    // console.log(sidebarid)
   },[sidebarid])
 
   const handlePushID = (e) => {
