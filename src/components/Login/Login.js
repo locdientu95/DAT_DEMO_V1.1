@@ -51,7 +51,7 @@ export default function Login() {
             <input
               type="text"
               placeholder="Username"
-              defaultValue="phunguyen"
+              defaultValue="taingo"
               ref={userName}
               required
             />
@@ -64,7 +64,7 @@ export default function Login() {
             <input
               type="password"
               placeholder="Password"
-              defaultValue="phu123"
+              defaultValue="tai123"
               ref={password}
               required
             />

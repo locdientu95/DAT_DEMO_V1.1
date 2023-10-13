@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
 
 export default function Project() {
-  const { project, envDispatch } = useContext(EnvContext);
+  const { pjdata, envDispatch } = useContext(EnvContext);
 
   const projectid = useRef();
   const name = useRef();
@@ -17,14 +17,14 @@ export default function Project() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    var data = project;
+    var data = pjdata;
 
     data = data.filter((data) => data.projectid === projectid.current.value);
 
     if (data.length) {
       alert("Mã dự án đã tồn tại");
     } else {
-      var dataPush = project;
+      var dataPush = pjdata;
       dataPush.push({
         projectid: projectid.current.value,
         name: name.current.value,
@@ -43,7 +43,7 @@ export default function Project() {
 
       alert("Thêm thành công");
 
-      console.log(project);
+      console.log(pjdata);
     }
   };
 

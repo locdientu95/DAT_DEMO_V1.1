@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { EnvContext } from "../Context/EnvContext";
 
 export default function Devices() {
-  const { device, project, envDispatch } = useContext(EnvContext);
+  const { dvdata, pjdata, envDispatch } = useContext(EnvContext);
 
   const name = useRef();
   const info = useRef();
@@ -14,10 +14,10 @@ export default function Devices() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    var data = device;
+    var data = dvdata;
 
     data.push({
-      deviceid: device.length + 1,
+      deviceid: dvdata.length + 1,
       name: name.current.value,
       description: info.current.value,
       statement: 0,
@@ -28,12 +28,12 @@ export default function Devices() {
 
     envDispatch({
       type: "SET_DEVICE",
-      payload: device,
+      payload: dvdata,
     });
 
     alert("Thêm thành công");
 
-    console.log(device);
+    console.log(dvdata);
   };
 
   return (
@@ -77,7 +77,7 @@ export default function Devices() {
                     </div>
                     <select ref={projectid}>
                       <option value={"None"}>None</option>
-                      {project.map((data, index) => {
+                      {pjdata.map((data, index) => {
                         return (
                           <option key={index} value={data.projectid}>
                             {data.projectid}
