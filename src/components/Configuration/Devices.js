@@ -3,37 +3,39 @@ import "./Configuration.scss";
 import { useRef } from "react";
 import { EnvContext } from "../Context/EnvContext";
 
-export default function Devices() {
-  const { dvdata, pjdata, envDispatch } = useContext(EnvContext);
-
-  const name = useRef();
-  const info = useRef();
-  const projectid = useRef();
+export default function Devices(props) {
+  const { dvdata, dvm, envDispatch } = useContext(EnvContext);
   const gateway = useRef();
+  const buid = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     var data = dvdata;
+    data = data.filter((data) => data.gateway === gateway.current.value);
 
-    data.push({
-      deviceid: dvdata.length + 1,
-      name: name.current.value,
-      description: info.current.value,
-      statement: 0,
-      gateway: gateway.current.value,
-      projectid: projectid.current.value,
-      custome: "",
-    });
-
-    envDispatch({
-      type: "SET_DEVICE",
-      payload: dvdata,
-    });
-
-    alert("Thêm thành công");
-
-    console.log(dvdata);
+    if (data.length) {
+      var data2 = dvm;
+      data2 = data2.filter((data2) => data2.deviceid === gateway.current.value);
+      if (data2.length) {
+        alert("Thiết bị đã được sử dụng");
+      } else {
+        var dvmPush = dvm;
+        dvmPush.push({
+          deviceid: gateway.current.value,
+          username: props.username,
+          code: buid.current.value,
+        });
+        envDispatch({
+          type: "SET_DVM",
+          payload: dvmPush,
+        });
+        alert("Thêm thành công");
+        console.log(dvm);
+      }
+    } else {
+      alert("Thiết bị không tồn tại trong hệ thống");
+    }
   };
 
   return (
@@ -55,45 +57,23 @@ export default function Devices() {
                 <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item_Label">
-                      Tên Thiết Bị
-                    </div>
-                    <input type="text" ref={name} required />
-                  </div>
-                </div>
-
-                <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row">
-                  <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item">
-                    <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item_Label">
-                      Mô Tả
-                    </div>
-                    <input type="text" ref={info} required />
-                  </div>
-                </div>
-
-                <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row">
-                  <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item">
-                    <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item_Label">
-                      Mã Dự Án
-                    </div>
-                    <select ref={projectid}>
-                      <option value={"None"}>None</option>
-                      {pjdata.map((data, index) => {
-                        return (
-                          <option key={index} value={data.projectid}>
-                            {data.projectid}
-                          </option>
-                        );
-                      })}
-                    </select>
-                  </div>
-                </div>
-
-                <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row">
-                  <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item">
-                    <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item_Label">
                       Gateway
                     </div>
                     <input type="text" ref={gateway} required />
+                  </div>
+                </div>
+
+                <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row">
+                  <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item">
+                    <div className="DAT_Devices_Main_Content_Detail_Content_Form_Row_Item_Label">
+                      Mã BU
+                    </div>
+                    <select ref={buid}>
+                      <option value={"AUTO"}>AUTO</option>
+                      <option value={"SOLAR"}>SOLAR</option>
+                      <option value={"ELEV"}>ELEV</option>
+                      <option value={"UPS"}>UPS</option>
+                    </select>
                   </div>
                 </div>
 

@@ -10,3 +10,4 @@ Phu upload 9/10/2023 hoàn thiện trang Login, làm trang Cấu Hình - Dự Á
 Phu upload 10/10/2023 làm trang AddUser và UserList
 Phu upload 11/10/2023 hoàn thiện trang Cấu Hình - Dự Án và Thiết Bị
 Phu upload 12/10/2023 hoàn thiện ErrorReport(Reducer, Filter, Delete) và ErrorSetting(css)
+Phu upload 13/10/2023 chỉnh sửa trang Cấu Hình - Dự Án và Thiết Bị, làm giao diện trang DATGroup

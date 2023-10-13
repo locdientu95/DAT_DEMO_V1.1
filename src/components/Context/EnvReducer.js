@@ -213,88 +213,6 @@ export const INITSTATE = {
     },
   ],
 
-  // project: [
-  //   {
-  //     projectid: "P01",
-  //     name: "GREEN GROWTH SHOW 2023",
-  //     company: "Công ty Cổ phần Tập đoàn DAT",
-  //     info: "Phố đi bộ Nguyễn Huệ, quận 1, Hình Chí Mô",
-  //     statement: 0, //0: Bật 1:Tắt 2:Bảo trì
-  //     custom: "",
-  //     long: "",
-  //     lat: "",
-  //   },
-  //   {
-  //     projectid: "P02",
-  //     name: "YASUO EVENT",
-  //     company: "Công ty TNHH Một Mình Tôi",
-  //     info: "Ngoài rìa thành phố Thủ Đức",
-  //     statement: 1,
-  //     custom: "",
-  //     long: "",
-  //     lat: "",
-  //   },
-  //   {
-  //     projectid: "P03",
-  //     name: "PIZZA HUT THUOC LA",
-  //     company: "Công ty Mai Tài Phến - MTP Entertainment",
-  //     info: "Phía bên kia dãy Bạch Mã",
-  //     statement: 1, //0: Bật 1:Tắt 2:Bảo trì
-  //     custom: "",
-  //     long: "",
-  //     lat: "",
-  //   },
-  //   {
-  //     projectid: "P04",
-  //     name: "CHO ĐI ĐỂ VÀO ĐẦU MÀY 1 CÁI BÂY CHỪ",
-  //     company: "Công ty đòi nợ Đất Bắc",
-  //     info: "Hiện diện trong Nam, xuất thân gốc Bắc",
-  //     statement: 2, //0: Bật 1:Tắt 2:Bảo trì
-  //     custom: "",
-  //     long: "",
-  //     lat: "",
-  //   },
-  // ],
-
-  // device: [
-  //   {
-  //     deviceid: 1,
-  //     name: "Solar Power",
-  //     description: "",
-  //     statement: 2,
-  //     gateway: "I0622B066940",
-  //     projectid: "P01",
-  //     custom: "",
-  //   },
-  //   {
-  //     deviceid: 2,
-  //     name: "Eletric Valve",
-  //     description: "",
-  //     statement: 1,
-  //     gateway: "IOT323195643",
-  //     projectid: "P02",
-  //     custom: "",
-  //   },
-  //   {
-  //     deviceid: 3,
-  //     name: "Pump",
-  //     description: "",
-  //     statement: 1,
-  //     gateway: "LY283409228",
-  //     projectid: "P03",
-  //     custom: "",
-  //   },
-  //   {
-  //     deviceid: 4,
-  //     name: "Microwave",
-  //     description: "",
-  //     statement: 0,
-  //     gateway: "I0222195940",
-  //     projectid: "P04",
-  //     custom: "",
-  //   },
-  // ],
-
   errorlogs: [
     {
       id: 1,
@@ -570,47 +488,109 @@ export const INITSTATE = {
 
   dvdata: [
     {
-      projectid: "P01",
-      custom: "",
-      deviceid: 1,
       name: "Solar Power",
       description: "",
+      custom: "",
       statement: 2,
       gateway: "I0622B066940",
     },
     {
       name: "Eletric Valve",
       description: "",
+      custom: "",
       statement: 1,
       gateway: "IOT323195643",
-      projectid: "P01",
-      custom: "",
-      deviceid: 1,
     },
     {
       name: "Pump",
       description: "",
+      custom: "",
       statement: 1,
       gateway: "LY283409228",
-      projectid: "P01",
-      custom: "",
-      deviceid: 1,
     },
     {
       name: "Microwave",
       description: "",
+      custom: "",
       statement: 0,
       gateway: "I0222195940",
-      projectid: "P01",
+    },
+    {
+      name: "CP",
+      description: "",
       custom: "",
-      deviceid: 1,
+      statement: 0,
+      gateway: "I0123456789",
+    },
+    {
+      name: "A",
+      description: "",
+      custom: "",
+      statement: 0,
+      gateway: "I0111111111",
+    },
+    {
+      name: "B",
+      description: "",
+      custom: "",
+      statement: 0,
+      gateway: "I0222222222",
+    },
+    {
+      name: "C",
+      description: "",
+      custom: "",
+      statement: 0,
+      gateway: "I0333333333",
+    },
+    {
+      name: "D",
+      description: "",
+      custom: "",
+      statement: 0,
+      gateway: "I044444444",
+    },
+    {
+      name: "E",
+      description: "",
+      custom: "",
+      statement: 0,
+      gateway: "I0555555555",
+    },
+    {
+      name: "F",
+      description: "",
+      custom: "",
+      statement: 0,
+      gateway: "I0666666666",
+    },
+    {
+      name: "G",
+      description: "",
+      custom: "",
+      statement: 0,
+      gateway: "I0777777777",
+    },
+    {
+      name: "H",
+      description: "",
+      custom: "",
+      statement: 0,
+      gateway: "I0888888888",
+    },
+    {
+      name: "I",
+      description: "",
+      custom: "",
+      statement: 0,
+      gateway: "I0999999999",
     },
   ],
 
   dvm: [
     {
       deviceid: "I0622B066940",
-      username: "taingo",
+      username: "huuhuynh",
       code: "AUTO",
     },
     {
@@ -735,10 +715,12 @@ const EnvReducer = (state, action) => {
       };
     case "SET_DVDATA":
       return {
+        ...state,
         dvdata: action.payload,
       };
     case "SET_DVM":
       return {
+        ...state,
         dvm: action.payload,
       };
     case "SET_ERRORLOGS":

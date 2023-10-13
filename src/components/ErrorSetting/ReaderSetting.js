@@ -102,7 +102,7 @@ export default function ReaderSetting() {
     leng++;
     console.log(leng);
     newData.map((data, index) => {
-      data.id = index + 1;
+      return (data.id = index + 1);
     });
     envDispatch({
       type: "SET_ERR",
@@ -119,7 +119,7 @@ export default function ReaderSetting() {
     const data = datainaddressrow.current.value;
     const t = addrow.split("_");
     var newData = errsetting.adddata;
-    const index = newData.findIndex((newData) => newData.id == t[1]);
+    const index = newData.findIndex((newData) => newData.id === t[1]);
     newData[index][t[0]] = data;
     setInfoPop(false);
     envDispatch({
