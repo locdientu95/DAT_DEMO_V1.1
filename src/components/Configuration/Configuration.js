@@ -3,7 +3,7 @@ import "./Configuration.scss";
 import Project from "./Project";
 import Devices from "./Devices";
 
-export default function Configuration() {
+export default function Configuration(props) {
   const tit = {
     project: "Dự Án",
     device: "Thiết Bị",
@@ -85,13 +85,13 @@ export default function Configuration() {
               case "project":
                 return (
                   <>
-                    <Project></Project>
+                    <Project username={props.name}></Project>
                   </>
                 );
               case "device":
                 return (
                   <>
-                    <Devices></Devices>
+                    <Devices username={props.name}></Devices>
                   </>
                 );
               default:
