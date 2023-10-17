@@ -118,8 +118,10 @@ export default function ReaderSetting() {
     e.preventDefault();
     const data = datainaddressrow.current.value;
     const t = addrow.split("_");
+    console.log(data);
+    console.log(t[0]);
     var newData = errsetting.adddata;
-    const index = newData.findIndex((newData) => newData.id === t[1]);
+    const index = newData.findIndex((newData) => newData.id == t[1]);
     newData[index][t[0]] = data;
     setInfoPop(false);
     envDispatch({

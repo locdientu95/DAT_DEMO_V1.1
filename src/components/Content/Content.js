@@ -1,36 +1,79 @@
 import React from "react";
 import "./Content.scss";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export default function Content() {
+  const [date, setDate] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDate(new Date());
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  console.log(date);
+
   return (
     <div className="DAT_Content">
       <div className="DAT_Content-Header">
-        <div className="DAT_Content-Header-Dashboard">
-          <div className="DAT_Content-Header-Dashboard-Heading">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="feather feather-activity"
-              color="rgba(255, 255, 255, 0.5)"
-              style={{paddingRight: "10px"}}
-            >
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-            </svg>
-            Dashboard
+        <div className="DAT_Content-Header-Main">
+          <div className="DAT_Content-Header-Main-Dashboard">
+            <div className="DAT_Content-Header-Main-Dashboard-Heading">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-activity"
+                color="rgba(255, 255, 255, 0.5)"
+                style={{ paddingRight: "10px" }}
+              >
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+              Dashboard
+            </div>
+            <div className="DAT_Content-Header-Main-Dashboard-SubHead">
+              Example dashboard overview and content summary
+            </div>
           </div>
-          <div className="DAT_Content-Header-Dashboard-SubHead">
-            Example dashboard overview and content summary
+
+          <div className="DAT_Content-Header-Main_Right">
+            <div className="DAT_Content-Header-Main_Right_Icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-calendar"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+            <div className="DAT_Content-Header-Main_Right_Text">
+              {date.toDateString()}
+            </div>
           </div>
         </div>
       </div>
-      
+
       <div className="DAT_Content-Container">
         <div className="DAT_Content-Container-Group">
           <div className="DAT_Content-Container-Group-ListTag">
@@ -124,7 +167,7 @@ export default function Content() {
             </div>
           </div>
         </div>
-        
+
         <div className="DAT_Content-Container-Card">
           <div className="DAT_Content-Container-Card-Body">
             <div className="DAT_Content-Container-Card-Body-Center">
@@ -143,6 +186,8 @@ export default function Content() {
             </div>
           </div>
         </div>
+
+        <div className="DAT_Content-Container-Card">hello</div>
       </div>
     </div>
   );

@@ -70,15 +70,19 @@
                 padding: 20px;
                 z-index: 2;
 
-                & table,td,th{
+                & table,
+                td,
+                th {
                     border-collapse: collapse;
                     border: 1px solid black;
                 }
-                & table{
+
+                & table {
                     margin: 20px 0;
                     width: 100%;
                 }
             }
+
             &-UpdateBox {
                 position: absolute;
                 top: 0;
@@ -111,11 +115,13 @@
                 }
             }
 
+
         }
     }
 }
 
-.rdt_TableCell{
+
+.rdt_TableCell {
     display: flex;
     justify-content: center;
     align-items: center;

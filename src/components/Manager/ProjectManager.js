@@ -6,9 +6,10 @@ import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
 
 export default function ProjectManager(props) {
-  const { projectfilter, envDispatch} = useContext(EnvContext);
+  const { projectfilter, envDispatch } = useContext(EnvContext);
   const [record, setRecord] = useState(projectfilter.displayarray);
   const [show, setShow] = useState(false);
+  const [change, setChange] = useState(false);
 
   const handleDelete = (e, row) => {
     var newData = record;
@@ -16,12 +17,11 @@ export default function ProjectManager(props) {
     newData.map((data, index) => {
       data["id"] = index + 1;
     });
-    projectfilter.display(true)
-    envDispatch({type: "SET_PROJECTFILTER", payload: projectfilter})
+    projectfilter.display(true);
+    envDispatch({ type: "SET_PROJECTFILTER", payload: projectfilter });
     setRecord(newData);
     console.log(e.target.value);
   };
-
 
   useEffect(() => {
     // console.log("hello")
@@ -31,17 +31,19 @@ export default function ProjectManager(props) {
     });
     // console.log(newData)
     //projectfilter.displayarray=newData
-    envDispatch({type: "SET_PROJECTFILTER",payload: {...projectfilter,displayarray: newData} })
+    envDispatch({
+      type: "SET_PROJECTFILTER",
+      payload: { ...projectfilter, displayarray: newData },
+    });
     setRecord(projectfilter.displayarray);
-
   }, [projectfilter.displayarray]);
 
   const handleChange = (e) => {
-    projectfilter.detail = e.currentTarget.id
-    projectfilter.display = true ; 
-    envDispatch({type: "SET_PROJECTFILTER", payload: projectfilter})
-    console.log(projectfilter.detail)    
-  }
+    projectfilter.detail = e.currentTarget.id;
+    projectfilter.display = true;
+    envDispatch({ type: "SET_PROJECTFILTER", payload: projectfilter });
+    console.log(projectfilter.detail);
+  };
 
   const paginationComponentOptions = {
     rowsPerPageText: "Số hàng",
