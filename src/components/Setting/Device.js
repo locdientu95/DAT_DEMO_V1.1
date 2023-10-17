@@ -21,6 +21,8 @@ import BarChartHorizontal from "../Lib/BarChartHorizontal";
 import BarChartHorizontalSetting from "../Lib/BarChartHorizontalSetting";
 import NumberH from "../Lib/NumberH";
 import NumberHSetting from "../Lib/NumberHSetting";
+import LineChartSetting from "../Lib/LineChartSetting";
+import LineChartLib from "../Lib/LineChartLib";
 
 export default function Device() {
   const {
@@ -36,6 +38,7 @@ export default function Device() {
     numberh,
     switchtoggle,
     envDispatch,
+    linechart,
   } = useContext(EnvContext);
   const handleChangeLib = (e) => {
     var temp = e.currentTarget.value;
@@ -53,6 +56,7 @@ export default function Device() {
     Lamp: <Lamp setting={lamp}></Lamp>,
     BarChart: <BarChartHorizontal setting={barchart}></BarChartHorizontal>,
     NumberH: <NumberH setting={numberh}></NumberH>,
+    LineChartLib: <LineChartLib setting= {linechart}></LineChartLib>,
   };
 
   const setting = {
@@ -66,6 +70,7 @@ export default function Device() {
     Lamp: <LampSetting />,
     BarChart: <BarChartHorizontalSetting />,
     NumberH: <NumberHSetting/>,
+    LineChartLib: <LineChartSetting/>,
   };
 
   return (
@@ -109,6 +114,7 @@ export default function Device() {
             <option value={"Lamp"}>Lamp</option>
             <option value={"BarChart"}>BarChart</option>
             <option value={"NumberH"}>NumberH</option>
+            <option value={"LineChartLib"}>LineChart</option>
           </select>
         </div>
         <div className="Device_Content-Container-Group">

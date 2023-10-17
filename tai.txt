@@ -21,4 +21,5 @@ từng dự án của Tài (3 Solar, 2 Auto, 3 Elev, 2 UPS)
 
 16/10 Update thêm phần update box cho 4 bảng BU, link thẻ báo lỗi, filter lỗi
 
-17/10 Tiep tuc Update box.
+17/10 Tiep tuc Update box. Them thu vien LineChart: https://www.chartjs.org/docs/latest/charts/line.html
+va setting.

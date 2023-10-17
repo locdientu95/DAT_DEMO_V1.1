@@ -1,4 +1,5 @@
 .DAT_Setting {
+    position: relative;
     &-Button {
         &-Row {
             display: flex;
@@ -1089,6 +1090,125 @@
         }
     }
 
+    &-LineChart {
+ 
+        margin-bottom: 10px;
+        padding: 10px;
+        //overflow: hidden;
+        // position: relative;
+        
+        &-Row {
+            display: flex;
+            margin-bottom: 10px;
+            gap: 5px;
+
+            // height: 27px;
+
+
+            & label {
+                width: 100%;
+            }
+
+            & input {
+                width: 100%;
+                background-color: #d0f0ff;
+                border-style: none;
+                border-radius: 7px;
+            }
+
+            &-BackgroundColor {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                & input {
+                    width: 27px;
+                }
+            }
+
+            & button {
+                height: 27px;
+            }
+
+            &-ValueColor {
+                width: 100%;
+                align-items: center;
+                gap: 10px;
+                display: flex;
+
+                & input {
+                    width: 27px;
+                }
+            }
+
+            & select {
+                width: 100%;
+                background-color: #d0f0ff;
+                border-radius: 7px;
+                border-style: none;
+            }
+
+            &-Confirm {
+                width: 100px;
+
+            }
+
+            table,
+            td,
+            th {
+                border: 1px solid black;
+                text-align: center;
+            }
+
+            table {
+                // display: flex;
+                border-collapse: collapse;
+                width: 100%;
+                height: 100%;
+            }
+
+            th,
+            td {
+                padding: 8px;
+            }
+        }
+        &-UpdateBox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(0, 0, 0, 0.5);
+
+            &-Group {
+                padding: 8px;
+                width: 220px;
+                // margin-top: 20px;
+                position: absolute;
+                top: 30%;
+                left: 40%;
+                margin: auto;
+                background-color: #f2f6fc;
+                margin-top: 110px;
+                border-radius: 10px;
+
+                &-Tit {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 8px;
+
+                    &-Close {
+                        cursor: pointer;
+                    }
+                }
+
+                & button {
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
 }
 
 .DAT_Gauge {
