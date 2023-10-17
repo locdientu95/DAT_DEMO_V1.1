@@ -47,7 +47,12 @@ export default function DATGroup() {
                   trường Việt Nam trong lĩnh vực tự động hóa và năng lượng tái
                   tạo.
                 </div>
-                <button>Bắt Đầu</button>
+                <Link
+                  to={"/"}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <button>Bắt Đầu</button>
+                </Link>
               </div>
               <div className="DAT_DATGroup-Container-Card-Body-Center-Img">
                 <img alt="" src="/DAT_Pictures/statistics.svg" />
@@ -77,7 +82,7 @@ export default function DATGroup() {
                     Tự Động Hóa
                   </div>
                   <div className="DAT_DATGroup-Container-Group-ListTag-Tag-Info-Sub">
-                    To create informative visual elements on your pages
+                    Biến Tần - Servo<br></br>Giám Sát - Điều Khiển
                   </div>
                 </div>
               </div>
@@ -104,7 +109,10 @@ export default function DATGroup() {
                     Năng Lượng Mặt Trời
                   </div>
                   <div className="DAT_DATGroup-Container-Group-ListTag-Tag-Info-Sub">
-                    To create informative visual elements on your pages
+                    Hệ thống điện năng lượng mặt trời hòa lưới<br></br>
+                    Hệ thống điện năng lượng mặt trời cho bơm nước<br></br>
+                    Hệ thống điện mặt trời Hybrid<br></br>
+                    Hệ thống lưu trữ điện mặt trời ESS
                   </div>
                 </div>
               </div>
@@ -131,7 +139,9 @@ export default function DATGroup() {
                     Thang Máy
                   </div>
                   <div className="DAT_DATGroup-Container-Group-ListTag-Tag-Info-Sub">
-                    To create informative visual elements on your pages
+                    Hệ thống điều khiển thang máy tích hợp EC3000<br></br>
+                    Biến tần cửa thang máy EC20<br></br>
+                    Board và các linh kiện
                   </div>
                 </div>
               </div>
@@ -155,7 +165,7 @@ export default function DATGroup() {
                     UPS
                   </div>
                   <div className="DAT_DATGroup-Container-Group-ListTag-Tag-Info-Sub">
-                    To create informative visual elements on your pages
+                    Single Phase UPS - 3:3 Standalone UPS - Modular UPS
                   </div>
                 </div>
               </div>

@@ -36,8 +36,12 @@
     }
 
     &-Left {
-        width: 192px;
-        height: 34px;
+        & img {
+
+            width: 100px;
+            height: 34px;
+        }
+
         margin: 5px 16px 5px 8px;
         display: flex;
         align-items: center;

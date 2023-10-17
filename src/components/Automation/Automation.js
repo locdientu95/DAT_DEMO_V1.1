@@ -31,7 +31,6 @@ export default function Automation(props) {
       type: "SET_PROJECTFILTER",
       payload: { ...projectfilter, displayarray: project },
     });
-    
   }, []);
 
   // DEVICES
@@ -65,6 +64,10 @@ export default function Automation(props) {
     });
   };
 
+  const handleClose = (e) => {
+    setChange(false);
+  };
+
   return (
     <div className="DAT_Content">
       <div className="DAT_Content-Header">
@@ -96,24 +99,26 @@ export default function Automation(props) {
 
       <div className="Automation_Content-Container">
         <div className="Automation_Content-Container-Group">
-          <div className="Automation_Content-Container-Group-UpdateBox"></div>
           <div className="Automation_Content-Container-Group-Head">
             Danh sách dự án
           </div>
           <div className="Automation_Content-Container-Group-Body">
             <ProjectManager list={project}></ProjectManager>
-
-            {/* UPDATE DATA */}
-
+          </div>
+          {/* UPDATE DATA */}
+          <div
+            className="Automation_Content-Container-Group-UpdateBox"
+            // style={{ display: change ? "block" : "none" }}
+          >
             <form
-              className="DAT_InfoSetting-Main-Content-Config-Group"
+              className="Automation_Content-Container-Group-UpdateBox-Group"
               // onSubmit={(e) => handleSaveRow(e)}
             >
-              <div className="DAT_InfoSetting-Main-Content-Config-Group-Tit">
+              <div className="Automation_Content-Container-Group-UpdateBox-Group-Tit">
                 <div>Chỉnh Sửa</div>
                 <div
-                  className="DAT_InfoSetting-Main-Content-Config-Group-Tit-Close"
-                  // onClick={(e) => handleClose2(e)}
+                  className="Automation_Content-Container-Group-UpdateBox-Group-Tit-Close"
+                  onClick={(e) => handleClose(e)}
                 >
                   x
                 </div>
@@ -123,6 +128,7 @@ export default function Automation(props) {
             </form>
           </div>
         </div>
+
         <div className="Automation_Content-Container-Group">
           <div className="Automation_Content-Container-Group-Head">
             Danh sách thiết bị

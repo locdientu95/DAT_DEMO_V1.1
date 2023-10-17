@@ -97,11 +97,17 @@ export default function ErrorReport() {
       const newData = errorlogs.filter((row) => {
         return (
           row.id === parseInt(e.target.value) ||
+          row.DeviceID.includes(e.target.value) ||
           row.DeviceID.toLowerCase().includes(e.target.value) ||
+          row.ErrCode.includes(e.target.value) ||
           row.ErrCode.toLowerCase().includes(e.target.value) ||
+          row.DeviceType.includes(e.target.value) ||
           row.DeviceType.toLowerCase().includes(e.target.value) ||
+          row.ErrStt.includes(e.target.value) ||
           row.ErrStt.toLowerCase().includes(e.target.value) ||
+          row.ErrType.includes(e.target.value) ||
           row.ErrType.toLowerCase().includes(e.target.value) ||
+          row.ProjectName.includes(e.target.value) ||
           row.ProjectName.toLowerCase().includes(e.target.value) ||
           row.Datetime.includes(e.target.value)
         );

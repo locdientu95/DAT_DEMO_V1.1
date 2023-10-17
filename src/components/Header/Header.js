@@ -100,7 +100,9 @@ export default function Header(props) {
         </div>
 
         {/* Left */}
-        <div className="DAT_Header-Left">DAT Group</div>
+        <div className="DAT_Header-Left">
+          <img alt="" src="/DAT_Pictures/logo_DAT.png" />
+        </div>
 
         {/* Search */}
         <form className="DAT_Header-Center">
