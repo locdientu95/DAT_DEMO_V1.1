@@ -79,7 +79,37 @@
                     width: 100%;
                 }
             }
+            &-UpdateBox {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: rgb(0, 0, 0, 0.5);
 
+                &-Group {
+                    padding: 8px;
+                    width: 220px;
+                    margin: auto;
+                    background-color: #f2f6fc;
+                    margin-top: 110px;
+                    border-radius: 10px;
+
+                    &-Tit {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 8px;
+
+                        &-Close {
+                            cursor: pointer;
+                        }
+                    }
+
+                    & button {
+                        margin-left: 8px;
+                    }
+                }
+            }
 
         }
     }

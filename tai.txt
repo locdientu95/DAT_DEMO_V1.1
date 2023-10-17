@@ -18,3 +18,7 @@ The hien data theo người quản lý. Ví dụ: Danh sách dự án: 20, filte
 từng dự án của Tài (3 Solar, 2 Auto, 3 Elev, 2 UPS)
 
 13/10/2023  sửa data BU, update lên reducer
+
+16/10 Update thêm phần update box cho 4 bảng BU, link thẻ báo lỗi, filter lỗi
+
+17/10 Tiep tuc Update box.

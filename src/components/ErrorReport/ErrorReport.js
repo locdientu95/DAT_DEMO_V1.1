@@ -1,14 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./ErrorReport.scss";
 import DataTable from "react-data-table-component";
 import { CSVLink } from "react-csv";
 import { EnvContext } from "../Context/EnvContext";
 
 export default function ErrorReport() {
-  const { errorlogs, envDispatch } = useContext(EnvContext);
+  const { errorlogs, errornoti, envDispatch } = useContext(EnvContext);
   const [data, setRecord] = useState([]);
+  const [err,setErr] = useState('');
+  const fill = useRef(errornoti.ErrCode)
+
 
   useEffect(() => {
+  
     var newData = errorlogs;
     newData.map((data, index) => {
       return (data["id"] = index + 1);
@@ -17,6 +21,49 @@ export default function ErrorReport() {
     console.log(newData);
     setRecord(errorlogs);
   }, [errorlogs]);
+
+
+  useEffect(()=>{
+    console.log(errornoti.ErrCode)
+    fill.current = errornoti.ErrCode
+    // var newdb = errorlogs;
+    // var input = errornoti.ErrCode;
+    // if (errornoti.ErrCode === "") {
+    //   setRecord(newdb);
+    // } else {
+    //   const newData = errorlogs.filter((row) => {
+    //     return (
+    //       // row.id === parseInt(input) ||   
+    //       // row.DeviceID.includes(input) ||
+    //       row.ErrCode.includes(input) ||
+    //       // row.DeviceType.includes(input) ||
+    //       // row.ErrStt.includes(input) ||
+    //       // row.ErrType.toLowerCase().includes(input) ||
+    //       // row.ProjectName.includes(input) ||
+    //       // row.DeviceID.toLowerCase().includes(input) ||
+    //       row.ErrCode.toLowerCase().includes(input)
+    //       // row.DeviceType.toLowerCase().includes(input) ||
+    //       // row.ErrStt.toLowerCase().includes(input) ||
+    //       // row.ErrType.toLowerCase().includes(input) ||
+    //       // row.ProjectName.toLowerCase().includes(input) ||
+    //       // row.Datetime.includes(input)
+    //     );
+    //   });
+
+    //   setRecord(newData);
+    // }
+    
+    var newData = errorlogs.filter((row) => {
+      
+      return (
+        row.ErrCode.includes(errornoti.ErrCode) ||
+        row.ErrCode.toLowerCase().includes(errornoti.ErrCode)
+      )
+    })
+    console.log(newData)
+    setRecord(newData)
+    
+  },[errornoti.ErrCode])
 
   const paginationComponentOptions = {
     rowsPerPageText: "Số hàng",
@@ -87,29 +134,38 @@ export default function ErrorReport() {
   ];
 
   const handleInput = (e) => {
+    fill.current = e.target.value 
     var newdb = errorlogs;
-
-    console.log(e.target.value);
-
+    var input = e.target.value;
     if (e.target.value === "") {
       setRecord(newdb);
     } else {
       const newData = errorlogs.filter((row) => {
         return (
-          row.id === parseInt(e.target.value) ||
-          row.DeviceID.toLowerCase().includes(e.target.value) ||
-          row.ErrCode.toLowerCase().includes(e.target.value) ||
-          row.DeviceType.toLowerCase().includes(e.target.value) ||
-          row.ErrStt.toLowerCase().includes(e.target.value) ||
-          row.ErrType.toLowerCase().includes(e.target.value) ||
-          row.ProjectName.toLowerCase().includes(e.target.value) ||
-          row.Datetime.includes(e.target.value)
+          row.id === parseInt(input) ||   
+          row.DeviceID.includes(input) ||
+          row.ErrCode.includes(input) ||
+          row.DeviceType.includes(input) ||
+          row.ErrStt.includes(input) ||
+          row.ErrType.toLowerCase().includes(input) ||
+          row.ProjectName.includes(input) ||
+          row.DeviceID.toLowerCase().includes(input) ||
+          row.ErrCode.toLowerCase().includes(input) ||
+          row.DeviceType.toLowerCase().includes(input) ||
+          row.ErrStt.toLowerCase().includes(input) ||
+          row.ErrType.toLowerCase().includes(input) ||
+          row.ProjectName.toLowerCase().includes(input) ||
+          row.Datetime.includes(input)
         );
       });
 
       setRecord(newData);
     }
   };
+
+
+
+
 
   const handleDelete = (e) => {
     var newData = errorlogs;
@@ -163,6 +219,7 @@ export default function ErrorReport() {
               <input
                 type="text"
                 placeholder="Tìm kiếm"
+                value={fill.current}
                 onChange={(e) => handleInput(e)}
               />
             </div>

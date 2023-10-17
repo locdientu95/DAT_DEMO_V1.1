@@ -16,6 +16,8 @@ export default function ProjectManager(props) {
     newData.map((data, index) => {
       data["id"] = index + 1;
     });
+    projectfilter.display(true)
+    envDispatch({type: "SET_PROJECTFILTER", payload: projectfilter})
     setRecord(newData);
     console.log(e.target.value);
   };
@@ -36,6 +38,7 @@ export default function ProjectManager(props) {
 
   const handleChange = (e) => {
     projectfilter.detail = e.currentTarget.id
+    projectfilter.display = true ; 
     envDispatch({type: "SET_PROJECTFILTER", payload: projectfilter})
     console.log(projectfilter.detail)    
   }

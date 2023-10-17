@@ -33,6 +33,7 @@ export const EnvContextProvider = ({ children }) => {
         dvdata: state.dvdata,
         dvm: state.dvm,
         projectfilter:state.projectfilter,
+        errornoti: state.errornoti,
         envDispatch,
       }}
     >
