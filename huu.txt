@@ -10,3 +10,4 @@ Huu 10/10 ErrorReport/Error Settings
 Huu 11/10 Xong ErrorReport/Error Settings
 Huu 12/10 Tiep tuc tim hieu thu vien Xlsx-populate
 Huu 13/10 Tiep tuc tim hieu thu vien Xlsx-populate
+Huu 17/10 Tim hieu ve setInterval va thao tac voi file txt   install axios@0.24.0
