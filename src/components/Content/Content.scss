@@ -4,51 +4,67 @@
     background-color: #f2f6fc;
     flex: 1;
     overflow-y: scroll;
-    // margin-bottom: 400px;
 
     &-Header {
         background-color: #0061f2;
         width: 100%;
         height: 259.6px;
 
-        &-Dashboard {
+        &-Main {
             display: flex;
-            height: 91.6px;
-            width: 95%;
-            flex-direction: column;
-            margin: auto;
-            padding-top: 48px;
+            padding: 32px;
 
-            &-Heading {
-                display: flex;
-                align-items: center;
-                font-size: 36px;
-                font-weight: 500px;
-                color: white;
-                width: 459px;
-                height: 36px;
+            &-Dashboard {
+                width: 95%;
+                flex: 5;
+                margin: auto;
+
+                &-Heading {
+                    display: flex;
+                    align-items: center;
+                    font-size: 36px;
+                    font-weight: 500px;
+                    color: white;
+                    height: 36px;
+                }
+
+                &-SubHead {
+                    height: 27px;
+                    font-size: 18.4px;
+                    color: rgba(255, 255, 255, 0.5);
+                    margin-top: 4px;
+                }
             }
 
-            &-SubHead {
-                width: 459px;
-                height: 27px;
-                font-size: 18.4px;
-                color: rgba(255, 255, 255, 0.5);
-                margin-top: 4px;
+            &_Right {
+                display: flex;
+                align-items: center;
+                background-color: white;
+                padding-right: 12px;
+                border-radius: 7px;
+
+                &_Icon {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 40px;
+                    height: 40px;
+                }
             }
         }
     }
 
     &-Container {
         margin-bottom: 100px;
-        margin-top: -96px;
+        margin-top: -100px;
+
         &-Group {
             display: flex;
             gap: 10px;
             width: 95%;
             margin: auto;
             // height: 100vh;
-            
+
 
             // background-color: white;
             &-ListTag {
@@ -116,7 +132,7 @@
         &-Card {
             width: 95%;
             margin: auto;
-            height: 412px;
+            // height: 412px;
             background-color: white;
             margin-bottom: 24px;
             box-shadow: 4px 4px 4px 4px rgb(136, 136, 136, 0.2);
@@ -142,7 +158,6 @@
 
                     &-Text {
                         text-align: center;
-                        height: 100&;
                         padding: 0px 40px;
 
                         & h5 {

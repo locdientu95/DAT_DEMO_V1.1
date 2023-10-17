@@ -1,13 +1,18 @@
 Phu upload 27/09/2023 route, sửa tên trong Setting.scss, gộp source, fix trang Content.js
 Phu upload 28/09/2023 chỉnh trang Gauge, chỉnh trang Account, chỉnh trang Device, làm trang SliderBar
 Phu upload 29/09/2023 hoàn thiện trang SliderBar, làm trang Number
+
 Phu upload 2/10/2023 hoàn thiện trang Number, làm trang Lamp
 Phu upload 3/10/2023 hoàn thiện trang Lamp
 Phu upload 4/10/2023 fix các lỗi của trang Gauge, Slider, Number, Lamp, làm trang NumberH
 Phu upload 5/10/2023 chỉnh sửa các trang Setting
 Phu upload 6/10/2023 làm trang Login, tạo data
+
 Phu upload 9/10/2023 hoàn thiện trang Login, làm trang Cấu Hình - Dự Án và Thiết Bị
 Phu upload 10/10/2023 làm trang AddUser và UserList
 Phu upload 11/10/2023 hoàn thiện trang Cấu Hình - Dự Án và Thiết Bị
 Phu upload 12/10/2023 hoàn thiện ErrorReport(Reducer, Filter, Delete) và ErrorSetting(css)
 Phu upload 13/10/2023 chỉnh sửa trang Cấu Hình - Dự Án và Thiết Bị, làm giao diện trang DATGroup
+
+Phu upload 16/10/2023 hoàn thiện trang DATGroup, chỉnh sửa trang Automation
+Phu upload 17/10/2023
