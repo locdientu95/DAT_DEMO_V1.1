@@ -3,25 +3,82 @@ import "./ErrorReport.scss";
 import DataTable from "react-data-table-component";
 import { CSVLink } from "react-csv";
 import { EnvContext } from "../Context/EnvContext";
+import axios from "axios";
 
 export default function ErrorReport() {
   const { errorlogs, errornoti, envDispatch } = useContext(EnvContext);
   const [data, setRecord] = useState([]);
   const [err, setErr] = useState("");
   const fill = useRef(errornoti.ErrCode);
+  const test = useRef([{ "100-1": "E923", "1-1": 0 }]); // do not change here
+  const test_stt = useRef("0"); // do not change here
+
+  const key = useRef(""); // do not change here
+  const value = useRef(""); // do not change here
+
+  // do not change here
+  const handletest = () => {
+    //console.log(key.current.value, value.current.value)
+    var newData = test.current;
+
+    if (key.current.value === "1-1") {
+      newData[0][key.current.value] = value.current.value;
+      if (test.current[0]["1-1"] === "0") {
+        test_stt.current = "0";
+      }
+      if (test.current[0]["1-1"] !== "0") {
+        test_stt.current = "1";
+      }
+    } else {
+      if (test.current[0]["100-1"] !== value.current.value) {
+        newData[0][key.current.value] = value.current.value;
+        test_stt.current = "1";
+      }
+    }
+    test.current.value = newData;
+  };
+
+  // do not change here
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (test_stt.current === "1") {
+        if (test.current[0]["1-1"] !== "0") {
+          test_stt.current = "2";
+          console.log("sos", test.current[0]);
+          //your turn--------------- thõa sức sáng tạo
+
+          //-------------------------
+        }
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const fetchData = async () => {
+    let final;
+    const add = "100-1";
+    const val = "-1";
+    var newData = errorlogs;
+    final.map((data, index) => {
+      if (final[index][index + 1 + val] == 1) {
+        console.log(final[index], "Hello mng");
+      }
+      //console.log(final[index][add])
+    });
+    console.log(final);
+  };
+
+  const addnewData = () => {};
 
   useEffect(() => {
     var newData = errorlogs;
     newData.map((data, index) => {
       return (data["id"] = index + 1);
     });
-
-    console.log(newData);
     setRecord(errorlogs);
   }, [errorlogs]);
 
   useEffect(() => {
-    console.log(errornoti.ErrCode);
     fill.current = errornoti.ErrCode;
     // var newdb = errorlogs;
     // var input = errornoti.ErrCode;
@@ -56,7 +113,6 @@ export default function ErrorReport() {
         row.ErrCode.toLowerCase().includes(errornoti.ErrCode)
       );
     });
-    console.log(newData);
     setRecord(newData);
   }, [errornoti.ErrCode]);
 
@@ -161,7 +217,6 @@ export default function ErrorReport() {
   const handleDelete = (e) => {
     var newData = errorlogs;
     newData = newData.filter((data) => data.id !== parseInt(e.target.id));
-    console.log(newData);
     envDispatch({
       type: "SET_ERRORLOGS",
       payload: newData,
@@ -215,6 +270,12 @@ export default function ErrorReport() {
                 value={fill.current}
                 onChange={(e) => handleInput(e)}
               />
+
+              <div>
+                <input ref={key}></input>
+                <input ref={value}></input>
+                <button onClick={handletest}>save</button>
+              </div>
             </div>
 
             <div className="DAT_Content-Container-Group-Table-Content">
