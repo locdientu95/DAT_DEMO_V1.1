@@ -5,7 +5,7 @@ import { EnvContext } from "../Context/EnvContext";
 
 export default function Header(props) {
   const [arrow, setArrow] = useState(false); //hook
-  const { envDispatch } = useContext(EnvContext);
+  const { errorlogs, errornoti, envDispatch } = useContext(EnvContext);
 
   const getDrop = (id) => {
     //function
@@ -39,6 +39,15 @@ export default function Header(props) {
       getDrop(id);
       setState(true);
     }
+  };
+
+  const handleShowError = (e) => {
+    let id = e.currentTarget.id
+    let arr = id.split("_");
+    // console.log(arr[0]); // ['E999', 'errorlogs']
+    errornoti.ErrCode = arr[0];
+    envDispatch({ type : "SET_ERRORNOTI", payload: errornoti})
+    // console.log(errornoti)
   };
 
   const search = useRef("");
@@ -358,126 +367,66 @@ export default function Header(props) {
                     </svg>
                     Alerts Center
                   </div>
-                  {/* Item 2 */}
-                  <div className="DAT_Header_Alert_Item2">
-                    <div className="DAT_Header_Alert_Item2-Icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="feather feather-activity"
-                      >
-                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                      </svg>
+                  {/* Item */}
+                  <Link
+                    to="/ErrorReport"
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    {Object.entries(errorlogs).map(([key]) => {
+                      return (
+                        <div
+                          key={key}
+                          className="DAT_Header_Alert_Item4"
+                          id={errorlogs[key].ErrCode + "_errorlogs"}
+                          onClick={(e) => handleShowError(e)}
+                        >
+                          <div
+                            key={key}
+                            className="DAT_Header_Alert_Item4-Icon"
+                          >
+                            <svg
+                              key={key}
+                              className="svg-inline--fa fa-triangle-exclamation"
+                              width="16"
+                              height="16"
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="triangle-exclamation"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 512 512"
+                              data-fa-i2svg=""
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"
+                              ></path>
+                            </svg>
+                          </div>
+                          <div className="DAT_Header_Alert_Item4-Content">
+                            <div style={{ color: "grey", fontSize: "12px" }}>
+                              {errorlogs[key].Datetime}
+                            </div>
+                            <div className="DAT_Header_Alert_Item4-Content-bottom">
+                              {errorlogs[key].DeviceID +
+                                " Lỗi " +
+                                errorlogs[key].ErrCode}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </Link>
+
+                  <Link
+                    to="/ErrorReport"
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <div className="DAT_Header_Alert_Item6">
+                      View All Alerts
                     </div>
-                    <div className="DAT_Header_Alert_Item2-Content">
-                      <div style={{ color: "grey", fontSize: "12px" }}>
-                        December 29, 2021
-                      </div>
-                      <div className="DAT_Header_Alert_Item2-Content-bottom">
-                        This is an alert message. It's nothing serious, but it
-                        requires your attention.
-                      </div>
-                    </div>
-                  </div>
-                  {/* Item 3 */}
-                  <div className="DAT_Header_Alert_Item3">
-                    <div className="DAT_Header_Alert_Item3-Icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="feather feather-bar-chart"
-                      >
-                        <line x1="12" y1="20" x2="12" y2="10"></line>
-                        <line x1="18" y1="20" x2="18" y2="4"></line>
-                        <line x1="6" y1="20" x2="6" y2="16"></line>
-                      </svg>
-                    </div>
-                    <div className="DAT_Header_Alert_Item3-Content">
-                      <div style={{ color: "grey", fontSize: "12px" }}>
-                        December 22, 2021
-                      </div>
-                      <div className="DAT_Header_Alert_Item3-Content-bottom">
-                        A new monthly report is ready. Click here to view!
-                      </div>
-                    </div>
-                  </div>
-                  {/* Item 4 */}
-                  <div className="DAT_Header_Alert_Item4">
-                    <div className="DAT_Header_Alert_Item4-Icon">
-                      <svg
-                        className="svg-inline--fa fa-triangle-exclamation"
-                        width="16"
-                        height="16"
-                        aria-hidden="true"
-                        focusable="false"
-                        data-prefix="fas"
-                        data-icon="triangle-exclamation"
-                        role="img"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 512 512"
-                        data-fa-i2svg=""
-                      >
-                        <path
-                          fill="currentColor"
-                          d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"
-                        ></path>
-                      </svg>
-                    </div>
-                    <div className="DAT_Header_Alert_Item4-Content">
-                      <div style={{ color: "grey", fontSize: "12px" }}>
-                        December 29, 2021
-                      </div>
-                      <div className="DAT_Header_Alert_Item4-Content-bottom">
-                        A new monthly report is ready. Click here to view!
-                      </div>
-                    </div>
-                  </div>
-                  {/* Item 5 */}
-                  <div className="DAT_Header_Alert_Item5">
-                    <div className="DAT_Header_Alert_Item5-Icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="feather feather-user-plus"
-                      >
-                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="8.5" cy="7" r="4"></circle>
-                        <line x1="20" y1="8" x2="20" y2="14"></line>
-                        <line x1="23" y1="11" x2="17" y2="11"></line>
-                      </svg>
-                    </div>
-                    <div className="DAT_Header_Alert_Item5-Content">
-                      <div style={{ color: "grey", fontSize: "12px" }}>
-                        December 29, 2021
-                      </div>
-                      <div className="DAT_Header_Alert_Item5-Content-bottom">
-                        A new monthly report is ready. Click here to view!
-                      </div>
-                    </div>
-                  </div>
-                  {/* Item 6 */}
-                  <div className="DAT_Header_Alert_Item6">View All Alerts</div>
+                  </Link>
                 </div>
               </>
             );

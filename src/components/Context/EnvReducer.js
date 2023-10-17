@@ -609,10 +609,15 @@ export const INITSTATE = {
       code: "SOLAR",
     },
   ],
-  
+
   projectfilter: {
     detail: "",
     displayarray: [],
+    display: false,
+  },
+
+  errornoti: {
+    ErrCode: [],
   },
 };
 
@@ -737,7 +742,12 @@ const EnvReducer = (state, action) => {
       return {
         ...state,
         projectfilter: action.payload,
-      }
+      };
+    case "SET_ERRORNOTI":
+      return {
+        ...state,
+        errornoti: action.payload,
+      };
     default:
       throw new Error("Unexpected action");
   }

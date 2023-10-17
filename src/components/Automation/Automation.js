@@ -10,7 +10,7 @@ export default function Automation(props) {
     useContext(EnvContext);
   const [project, setProject] = useState([]);
   const [device, setDevice] = useState([]);
-  const [change, setChange] = useState(false);
+  const [display, setDisplay] = useState(projectfilter.detail);
   const dataIncome = useRef("");
   const [newproject, setNewproject] = useState(project);
   // PROJECTS
@@ -33,6 +33,11 @@ export default function Automation(props) {
     });
   }, []);
 
+  useEffect(() => {
+    setDisplay(projectfilter.display);
+    console.log(display);
+  }, [projectfilter.display]);
+
   // DEVICES
   useEffect(() => {
     //console.log(dvm);
@@ -50,6 +55,8 @@ export default function Automation(props) {
   }, []);
 
   const handleChangeData = (e) => {
+    projectfilter.display = false;
+    setDisplay(projectfilter.filter);
     e.preventDefault();
     const data = dataIncome.current.value;
     const temp = projectfilter.detail.split("_"); //['company', '1']
@@ -65,7 +72,8 @@ export default function Automation(props) {
   };
 
   const handleClose = (e) => {
-    setChange(false);
+    projectfilter.display = false;
+    setDisplay(projectfilter.filter);
   };
 
   return (
@@ -106,27 +114,31 @@ export default function Automation(props) {
             <ProjectManager list={project}></ProjectManager>
           </div>
           {/* UPDATE DATA */}
-          <div
-            className="Automation_Content-Container-Group-UpdateBox"
-            // style={{ display: change ? "block" : "none" }}
-          >
-            <form
-              className="Automation_Content-Container-Group-UpdateBox-Group"
-              // onSubmit={(e) => handleSaveRow(e)}
+          {projectfilter.display ? (
+            <div
+              className="Automation_Content-Container-Group-UpdateBox"
+              // style={{ display: change ? "block" : "none" }}
             >
-              <div className="Automation_Content-Container-Group-UpdateBox-Group-Tit">
-                <div>Chỉnh Sửa</div>
-                <div
-                  className="Automation_Content-Container-Group-UpdateBox-Group-Tit-Close"
-                  onClick={(e) => handleClose(e)}
-                >
-                  x
+              <form
+                className="Automation_Content-Container-Group-UpdateBox-Group"
+                // onSubmit={(e) => handleSaveRow(e)}
+              >
+                <div className="Automation_Content-Container-Group-UpdateBox-Group-Tit">
+                  <div>Chỉnh Sửa</div>
+                  <div
+                    className="Automation_Content-Container-Group-UpdateBox-Group-Tit-Close"
+                    onClick={(e) => handleClose(e)}
+                  >
+                    x
+                  </div>
                 </div>
-              </div>
-              <input type="text" required ref={dataIncome}></input>
-              <button onClick={(e) => handleChangeData(e)}>Lưu</button>
-            </form>
-          </div>
+                <input type="text" required ref={dataIncome}></input>
+                <button onClick={(e) => handleChangeData(e)}>Lưu</button>
+              </form>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
 
         <div className="Automation_Content-Container-Group">
