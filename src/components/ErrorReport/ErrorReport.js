@@ -3,18 +3,21 @@ import "./ErrorReport.scss";
 import DataTable from "react-data-table-component";
 import { CSVLink } from "react-csv";
 import { EnvContext } from "../Context/EnvContext";
+import { TimeAxisBreakDescriptionModule, dateGetDate, dateGetMonth, dateNow } from "igniteui-react-core";
+import { dataBound } from "@syncfusion/ej2-react-spreadsheet";
 // import axios from "axios";
 
 export default function ErrorReport() {
   const { errorlogs, errornoti, envDispatch } = useContext(EnvContext);
-  const [data, setRecord] = useState([]);
+  const [data, setRecord] = useState(errorlogs);
   const [err, setErr] = useState("");
   const fill = useRef(errornoti.ErrCode);
-  const test = useRef([{ "100-1": "E923", "1-1": 0 }]); // do not change here
+  const test = useRef([{ "100-1": "E923", "1-1": '0' }]); // do not change here
   const test_stt = useRef("0"); // do not change here
 
   const key = useRef(""); // do not change here
   const value = useRef(""); // do not change here
+  
 
   // do not change here
   const handletest = () => {
@@ -31,8 +34,10 @@ export default function ErrorReport() {
       }
     } else {
       if (test.current[0]["100-1"] !== value.current.value) {
-        newData[0][key.current.value] = value.current.value;
-        test_stt.current = "1";
+        if(test.current[0]["1-1"] !== '0'){
+          newData[0][key.current.value] = value.current.value;
+          test_stt.current = "1";
+        }
       }
     }
     test.current.value = newData;
@@ -46,13 +51,31 @@ export default function ErrorReport() {
           test_stt.current = "2";
           console.log("sos", test.current[0]);
           //your turn--------------- thõa sức sáng tạo
+          const date = new Date()
+          const today = date.getDate()+"/" + (date.getMonth()+1)+"/"+date.getFullYear()+" "+ date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()
+          var newDevID = test.current[0]["100-1"]
+          var newType = "Error"
+          var newDate = today
+          var newData = errorlogs
+          errorlogs.unshift({id:newData.length+1,ErrCode:newDevID,ErrType:newType,Datetime:newDate})
+          console.log(newData)   
+          newData.map((data, index) => {
+            return (data.id = index + 1);
+          });     
+          envDispatch({
+            type: "SET_ERRORLOGS",
+            payload: newData,
+          }); 
 
+          setRecord(errorlogs)
           //-------------------------
         }
+        
       }
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
 
   const fetchData = async () => {
     let final;
