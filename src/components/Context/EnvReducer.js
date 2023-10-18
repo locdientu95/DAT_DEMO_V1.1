@@ -621,12 +621,12 @@ export const INITSTATE = {
   },
 
   linechart: {
-    w_r:"500px",
-    h_r:"500px",
-    chartname_r:"Line Chart",
+    w_r: "500px",
+    h_r: "500px",
+    chartname_r: "Line Chart",
 
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-    datasets:[
+    datasets: [
       {
         label: "First dataset",
         data: [33, 53, 85, 41, 44, 65],
@@ -787,10 +787,15 @@ const EnvReducer = (state, action) => {
         errornoti: action.payload,
       };
     case "SET_LINECHART":
-    return {
-      ...state,
-      linechart: action.payload,
-    }
+      return {
+        ...state,
+        linechart: action.payload,
+      };
+    case "SET_DASHBOARDCHART":
+      return {
+        ...state,
+        dashboardbarchart: action.payload,
+      };
     default:
       throw new Error("Unexpected action");
   }
