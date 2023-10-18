@@ -32,9 +32,10 @@ export const EnvContextProvider = ({ children }) => {
         pjm: state.pjm,
         dvdata: state.dvdata,
         dvm: state.dvm,
-        projectfilter:state.projectfilter,
+        projectfilter: state.projectfilter,
         errornoti: state.errornoti,
         linechart: state.linechart,
+        dashboardbarchart: state.dashboardbarchart,
         envDispatch,
       }}
     >
