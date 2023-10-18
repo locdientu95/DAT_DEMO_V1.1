@@ -3,7 +3,7 @@ import "./ErrorReport.scss";
 import DataTable from "react-data-table-component";
 import { CSVLink } from "react-csv";
 import { EnvContext } from "../Context/EnvContext";
-import axios from "axios";
+// import axios from "axios";
 
 export default function ErrorReport() {
   const { errorlogs, errornoti, envDispatch } = useContext(EnvContext);

@@ -14,11 +14,8 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.24.0",
     "bootstrap": "^5.3.1",
-<<<<<<< HEAD
     "faker": "^6.6.6",
-=======
     "chart.js": "^4.4.0",
->>>>>>> bb308a54a1c20d568eb93fffc164ba78a6fac74e
     "file-saver": "^2.0.5",
     "igniteui-react-core": "^18.2.1",
     "igniteui-react-gauges": "^18.2.1",
