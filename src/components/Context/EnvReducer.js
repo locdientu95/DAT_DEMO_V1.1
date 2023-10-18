@@ -637,19 +637,22 @@ export const INITSTATE = {
       {
         label: "Second dataset",
         data: [33, 25, 35, 51, 54, 76],
-        fill: false,
+        fill: true,
+        backgroundColor: "rgba(75,192,192,0.2)",
         borderColor: "#742774"
       },
       {
         label: "Third dataset",
         data: [40, 35, 25, 71, 94, 106],
-        fill: false,
+        fill: true,
+        backgroundColor: "rgba(75,192,192,0.2)",
         borderColor: "#742821"
       },
       {
         label: "Fourth dataset",
         data: [22, 33, 55, 77, 44, 36],
-        fill: false,
+        fill: true,
+        backgroundColor: "rgba(75,192,192,0.2)",
         borderColor: "#742821"
       }
     ],
