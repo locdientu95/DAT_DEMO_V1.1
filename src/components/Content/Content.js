@@ -2,9 +2,16 @@ import React from "react";
 import "./Content.scss";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Bar } from "react-chartjs-2";
+import { useContext } from "react";
+import { EnvContext } from "../Context/EnvContext";
+import { useRef } from "react";
 
 export default function Content() {
   const [date, setDate] = useState(new Date());
+  const { dashboardbarchart, envDispatch } = useContext(EnvContext);
+  const [pop, setPop] = useState(false);
+  const label = useRef();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -16,7 +23,66 @@ export default function Content() {
     };
   }, []);
 
-  console.log(date);
+  // console.log(date);
+
+  const handlePop = (e) => {
+    setPop(true);
+  };
+
+  const handleClose = (e) => {
+    setPop(false);
+  };
+
+  const handleSave = (e) => {
+    e.preventDefault();
+
+    // envDispatch({
+    //   type: "SET_DASHBOARDCHART",
+    //   payload: {
+    //     ...dashboardbarchart,
+    //     datasets: [
+    //       ...dashboardbarchart.datasets,
+    //       {
+    //         data: dashboardbarchart.datasets[0].data,
+    //         label: label.current.value,
+    //       },
+    //     ],
+    //   },
+    // });
+    setPop(false);
+  };
+
+  const handleAdd = (e) => {
+    e.preventDefault();
+
+    var newData = dashboardbarchart.datasets;
+
+    newData.push({
+      label: label.current.value,
+      data: [10, 10, 10, 10, 10, 10],
+    });
+
+    envDispatch({
+      type: "SET_DASHBOARDCHART",
+      payload: {
+        ...dashboardbarchart,
+        datasets: [
+          ...dashboardbarchart.datasets,
+          {
+            label: label.current.value,
+            data: [10, 10, 10, 10, 10, 10],
+          },
+        ],
+      },
+    });
+    setPop(false);
+    console.log(dashboardbarchart.datasets);
+  };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    setPop(false);
+  };
 
   return (
     <div className="DAT_Content">
@@ -187,7 +253,52 @@ export default function Content() {
           </div>
         </div>
 
-        <div className="DAT_Content-Container-Card">hello</div>
+        <div className="DAT_Content-Container-Card">
+          <div className="DAT_Content-Container-Card-Header">
+            <div className="DAT_Content-Container-Card-Header-Text">
+              Bar Chart
+            </div>
+            <div
+              className="DAT_Content-Container-Card-Header-Icon"
+              onClick={(e) => handlePop(e)}
+            >
+              ...
+            </div>
+          </div>
+          <Bar
+            data={dashboardbarchart}
+            style={{ width: "100%", padding: "16px" }}
+          />
+          <div
+            className="DAT_Content-Container-Card-Edit"
+            style={{ display: pop ? "block" : "none" }}
+          >
+            <form className="DAT_Content-Container-Card-Edit-Group">
+              <div className="DAT_Content-Container-Card-Edit-Group-Tit">
+                <div>Chỉnh Sửa</div>
+                <div
+                  className="DAT_Content-Container-Card-Edit-Group-Tit-Close"
+                  onClick={(e) => handleClose(e)}
+                >
+                  x
+                </div>
+              </div>
+              {/* <select>
+                <option></option>
+              </select> */}
+              <input
+                type="text"
+                defaultValue={dashboardbarchart.datasets[0].label}
+                ref={label}
+              />
+              <div className="DAT_Content-Container-Card-Edit-Group-Buttons">
+                <button onClick={(e) => handleSave(e)}>Lưu</button>
+                <button onClick={(e) => handleAdd(e)}>Thêm</button>
+                <button onClick={(e) => handleDelete(e)}>Xóa</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   );

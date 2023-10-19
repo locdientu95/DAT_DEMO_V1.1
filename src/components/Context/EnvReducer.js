@@ -621,12 +621,12 @@ export const INITSTATE = {
   },
 
   linechart: {
-    w_r:"500px",
-    h_r:"500px",
-    chartname_r:"Line Chart",
+    w_r: "500px",
+    h_r: "500px",
+    chartname_r: "Line Chart",
 
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-    datasets:[
+    datasets: [
       {
         label: "First dataset",
         data: [33, 53, 85, 41, 44, 65],
@@ -637,21 +637,34 @@ export const INITSTATE = {
       {
         label: "Second dataset",
         data: [33, 25, 35, 51, 54, 76],
-        fill: false,
-        borderColor: "#742774"
+        fill: true,
+        backgroundColor: "rgba(75,192,192,0.2)",
+        borderColor: "#742774",
       },
       {
         label: "Third dataset",
         data: [40, 35, 25, 71, 94, 106],
-        fill: false,
-        borderColor: "#742821"
+        fill: true,
+        backgroundColor: "rgba(75,192,192,0.2)",
+        borderColor: "#742821",
       },
       {
         label: "Fourth dataset",
         data: [22, 33, 55, 77, 44, 36],
-        fill: false,
-        borderColor: "#742821"
-      }
+        fill: true,
+        backgroundColor: "rgba(75,192,192,0.2)",
+        borderColor: "#742821",
+      },
+    ],
+  },
+
+  dashboardbarchart: {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    datasets: [
+      {
+        label: "First dataset",
+        data: [33, 53, 85, 41, 44, 65],
+      },
     ],
   },
 };
@@ -784,10 +797,15 @@ const EnvReducer = (state, action) => {
         errornoti: action.payload,
       };
     case "SET_LINECHART":
-    return {
-      ...state,
-      linechart: action.payload,
-    }
+      return {
+        ...state,
+        linechart: action.payload,
+      };
+    case "SET_DASHBOARDCHART":
+      return {
+        ...state,
+        dashboardbarchart: action.payload,
+      };
     default:
       throw new Error("Unexpected action");
   }

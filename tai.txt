@@ -23,3 +23,5 @@ từng dự án của Tài (3 Solar, 2 Auto, 3 Elev, 2 UPS)
 
 17/10 Tiep tuc Update box. Them thu vien LineChart: https://www.chartjs.org/docs/latest/charts/line.html
 va setting.
+
+18/10 Map data, them xoa sua data. (Object entries...) add row add attribute
