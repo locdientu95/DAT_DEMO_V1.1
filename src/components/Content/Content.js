@@ -23,7 +23,7 @@ export default function Content() {
     };
   }, []);
 
-  console.log(date);
+  // console.log(date);
 
   const handlePop = (e) => {
     setPop(true);
@@ -36,23 +36,31 @@ export default function Content() {
   const handleSave = (e) => {
     e.preventDefault();
 
-    envDispatch({
-      type: "SET_DASHBOARDCHART",
-      payload: {
-        ...dashboardbarchart,
-        datasets: [
-          {
-            ...dashboardbarchart.datasets[0],
-            label: label.current.value,
-          },
-        ],
-      },
-    });
+    // envDispatch({
+    //   type: "SET_DASHBOARDCHART",
+    //   payload: {
+    //     ...dashboardbarchart,
+    //     datasets: [
+    //       ...dashboardbarchart.datasets,
+    //       {
+    //         data: dashboardbarchart.datasets[0].data,
+    //         label: label.current.value,
+    //       },
+    //     ],
+    //   },
+    // });
     setPop(false);
   };
 
   const handleAdd = (e) => {
     e.preventDefault();
+
+    var newData = dashboardbarchart.datasets;
+
+    newData.push({
+      label: label.current.value,
+      data: [10, 10, 10, 10, 10, 10],
+    });
 
     envDispatch({
       type: "SET_DASHBOARDCHART",
@@ -62,13 +70,13 @@ export default function Content() {
           ...dashboardbarchart.datasets,
           {
             label: label.current.value,
-            maxBarThickness: 50,
-            data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+            data: [10, 10, 10, 10, 10, 10],
           },
         ],
       },
     });
     setPop(false);
+    console.log(dashboardbarchart.datasets);
   };
 
   const handleDelete = (e) => {
