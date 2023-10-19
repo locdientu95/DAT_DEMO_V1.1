@@ -17,4 +17,4 @@ Phu upload 13/10/2023 chỉnh sửa trang Cấu Hình - Dự Án và Thiết B�
 Phu upload 16/10/2023 hoàn thiện trang DATGroup, chỉnh sửa trang Automation
 Phu upload 17/10/2023 hoàn thiện trang Automation, làm trang Trang Chủ (Bar Chart)
 Phu upload 18/10/2023 làm trang Trang Chủ (Bar Chart)
-Phu upload 19/10/2023 
+Phu upload 19/10/2023 làm trang Trang Chủ (Bar Chart)(add và delete)

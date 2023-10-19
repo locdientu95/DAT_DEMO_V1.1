@@ -13,6 +13,15 @@ export default function Content() {
   const [pop, setPop] = useState(false);
   const label = useRef();
 
+  const data = {
+    labels: dashboardbarchart.labels,
+    datasets: dashboardbarchart.datasets,
+  };
+
+  useEffect(() => {
+    console.log(dashboardbarchart.datasets);
+  }, [dashboardbarchart.datasets]);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setDate(new Date());
@@ -22,8 +31,6 @@ export default function Content() {
       clearInterval(timer);
     };
   }, []);
-
-  // console.log(date);
 
   const handlePop = (e) => {
     setPop(true);
@@ -55,12 +62,11 @@ export default function Content() {
   const handleAdd = (e) => {
     e.preventDefault();
 
-    var newData = dashboardbarchart.datasets;
+    console.log(label.current.value);
 
-    newData.push({
-      label: label.current.value,
-      data: [10, 10, 10, 10, 10, 10],
-    });
+    // if (label.current.value === dashboardbarchart.datasets.label) {
+    //   alert("Label đã tồn tại");
+    // }
 
     envDispatch({
       type: "SET_DASHBOARDCHART",
@@ -68,19 +74,30 @@ export default function Content() {
         ...dashboardbarchart,
         datasets: [
           ...dashboardbarchart.datasets,
-          {
-            label: label.current.value,
-            data: [10, 10, 10, 10, 10, 10],
-          },
+          { label: label.current.value, data: [10, 10, 10, 10, 10, 10] },
         ],
       },
     });
     setPop(false);
-    console.log(dashboardbarchart.datasets);
   };
 
   const handleDelete = (e) => {
     e.preventDefault();
+
+    var newData = dashboardbarchart.datasets;
+    newData = newData.filter(
+      (newData) => newData.label !== label.current.value
+    );
+    console.log(newData.length);
+
+    envDispatch({
+      type: "SET_DASHBOARDCHART",
+      payload: {
+        ...dashboardbarchart,
+        datasets: newData,
+      },
+    });
+
     setPop(false);
   };
 
@@ -265,10 +282,7 @@ export default function Content() {
               ...
             </div>
           </div>
-          <Bar
-            data={dashboardbarchart}
-            style={{ width: "100%", padding: "16px" }}
-          />
+          <Bar data={data} style={{ width: "100%", padding: "16px" }} />
           <div
             className="DAT_Content-Container-Card-Edit"
             style={{ display: pop ? "block" : "none" }}
@@ -288,7 +302,7 @@ export default function Content() {
               </select> */}
               <input
                 type="text"
-                defaultValue={dashboardbarchart.datasets[0].label}
+                // defaultValue={data.datasets[0].label}
                 ref={label}
               />
               <div className="DAT_Content-Container-Card-Edit-Group-Buttons">

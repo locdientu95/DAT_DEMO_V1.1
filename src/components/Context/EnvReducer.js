@@ -660,12 +660,7 @@ export const INITSTATE = {
 
   dashboardbarchart: {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-    datasets: [
-      {
-        label: "First dataset",
-        data: [33, 53, 85, 41, 44, 65],
-      },
-    ],
+    datasets: [{ label: "First dataset", data: [33, 53, 85, 41, 44, 65] }],
   },
 };
 
