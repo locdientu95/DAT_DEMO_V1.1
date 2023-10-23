@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useEffect } from "react";
 import "./Device.scss";
 import { EnvContext } from "../Context/EnvContext";
 import Button from "../Lib/Button";
@@ -56,8 +56,11 @@ export default function Device() {
     Lamp: <Lamp setting={lamp}></Lamp>,
     BarChart: <BarChartHorizontal setting={barchart}></BarChartHorizontal>,
     NumberH: <NumberH setting={numberh}></NumberH>,
-    LineChartLib: <LineChartLib setting= {linechart}></LineChartLib>,
+    LineChartLib: <LineChartLib setting= {linechart} ></LineChartLib>,
   };
+
+
+  
 
   const setting = {
     Button: <ButtonSetting />,
@@ -72,6 +75,12 @@ export default function Device() {
     NumberH: <NumberHSetting/>,
     LineChartLib: <LineChartSetting/>,
   };
+
+
+  // useEffect(() => {
+  //     console.log(linechart)
+  // }, [linechart])
+  
 
   return (
     <div className="Device_Content">
