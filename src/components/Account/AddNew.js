@@ -23,6 +23,8 @@ export default function AddNew() {
         newData.email === email.current.value
     );
 
+    console.log(newData.length);
+
     if (password.current.value === repassword.current.value) {
       if (newData.length) {
         alert("Tài khoản hoặc email đã tồn tại");
