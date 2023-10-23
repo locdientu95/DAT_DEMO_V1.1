@@ -12,6 +12,7 @@ export default function Content() {
   const { dashboardbarchart, envDispatch } = useContext(EnvContext);
   const [pop, setPop] = useState(false);
   const label = useRef();
+  const lables = useRef();
 
   const data = {
     labels: dashboardbarchart.labels,
@@ -99,6 +100,23 @@ export default function Content() {
     });
 
     setPop(false);
+  };
+
+  const handleAddLabels = (e) => {
+    e.preventDefault();
+
+    var input = lables.current.value;
+    if (input !== "") {
+      dashboardbarchart.labels.push(input);
+    } else {
+      alert("Ten k hop le");
+    }
+    envDispatch({
+      type: "SET_DASHBOARDCHART",
+      payload: dashboardbarchart,
+    });
+
+    console.log(dashboardbarchart.labels);
   };
 
   return (
@@ -305,6 +323,21 @@ export default function Content() {
                 // defaultValue={data.datasets[0].label}
                 ref={label}
               />
+              <div className="DAT_Content-Container-Card-Edit-Group-Labels">
+                <table>
+                  <tbody>
+                    {Object.entries(dashboardbarchart.labels).map(([key]) => {
+                      return (
+                        <th key={key}>
+                          <tr>{dashboardbarchart.labels[key]}</tr>
+                        </th>
+                      );
+                    })}
+                    <input ref={lables} />
+                  </tbody>
+                </table>
+                <button onClick={(e) => handleAddLabels(e)}>Them Labels</button>
+              </div>
               <div className="DAT_Content-Container-Card-Edit-Group-Buttons">
                 <button onClick={(e) => handleSave(e)}>Lưu</button>
                 <button onClick={(e) => handleAdd(e)}>Thêm</button>
