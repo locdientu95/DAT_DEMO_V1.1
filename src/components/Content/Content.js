@@ -189,12 +189,27 @@ export default function Content() {
     const index2 = newLabels.findIndex((newLabels) => newLabels === to);
     console.log(index2);
 
-    // var newData = dashboardbarchart.datasets;
     var newData = dashboardbarchart.datasets;
-    newData.filter((data, index) => {
-      return data.data[index1] >= index && data.data[index2] <= index;
+    var lastData = [];
+    for (let i = index1; i <= index2; i++) {
+      lastData.push(newData[0].data[i]);
+    }
+
+    envDispatch({
+      type: "SET_DASHBOARDCHART",
+      payload: {
+        labels: dashboardbarchart.labels.slice(index1, index2 + 1),
+        datasets: [
+          {
+            label: dashboardbarchart.datasets[0].label,
+            data: lastData,
+          },
+        ],
+      },
     });
-    //console.log(newData);
+
+    console.log(lastData);
+
     setPop(false);
   };
 
@@ -549,10 +564,6 @@ export default function Content() {
                 </div>
               </div>
 
-              {/* <select>
-                <option></option>
-              </select> */}
-
               <div className="DAT_Content-Container-Card-Edit-Group-Row1">
                 <div>Chỉnh sửa DataSet</div>
                 <input type="text" ref={dataset} />
@@ -569,9 +580,9 @@ export default function Content() {
               </div>
 
               <div className="DAT_Content-Container-Card-Edit-Group-Buttons">
-                <div>Tu ngay</div>
+                <div>Từ ngày</div>
                 <input type="date" ref={fromDate} />
-                <div>Den ngay</div>
+                <div>Đến ngày</div>
                 <input type="date" ref={toDate} />
                 <button onClick={(e) => handleSave(e)}>Lưu</button>
               </div>
