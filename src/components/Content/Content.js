@@ -2,22 +2,140 @@ import React from "react";
 import "./Content.scss";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Bar } from "react-chartjs-2";
 import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
 import { useRef } from "react";
+import { Bar } from "react-chartjs-2";
+import zoomPlugin from "chartjs-plugin-zoom";
+import Chart from "chart.js/auto";
+import DataTable from "react-data-table-component";
 
+Chart.register(zoomPlugin);
 export default function Content() {
   const [date, setDate] = useState(new Date());
   const { dashboardbarchart, envDispatch } = useContext(EnvContext);
   const [pop, setPop] = useState(false);
-  const label = useRef();
+  const [data1, setData1] = useState([]);
+  // const [data2, setData2] = useState([]);
+  const dataset = useRef();
   const lables = useRef();
+
+  useEffect(() => {
+    var newData = dashboardbarchart.datasets;
+    newData.map((data, index) => {
+      return (data["id"] = index + 1);
+    });
+    console.log(newData);
+    setData1(dashboardbarchart.datasets);
+  }, [dashboardbarchart.datasets]);
+
+  // useEffect(() => {
+  //   var newData = dashboardbarchart.labels;
+  //   newData.map((data, index) => {
+  //     // return (data["id"] = index + 1);
+  //     console.log(data);
+  //   });
+  //   console.log(newData);
+  //   setData2(dashboardbarchart.labels);
+  // }, [dashboardbarchart.labels]);
+
+  const config = {
+    type: "bar",
+    // scales: {
+    //   x: {
+    //     title: {
+    //       display: true,
+    //       text: "Thời gian",
+    //     },
+    //   },
+    //   y: {
+    //     title: {
+    //       display: true,
+    //       text: "Giá trị",
+    //     },
+    //   },
+    // },
+    plugins: {
+      zoom: {
+        limits: {
+          y: { min: 0, max: 100 },
+          y2: { min: -5, max: 5 },
+        },
+        zoom: {
+          wheel: {
+            enabled: true,
+          },
+          pinch: {
+            enabled: true,
+          },
+          mode: "xy",
+        },
+      },
+    },
+  };
 
   const data = {
     labels: dashboardbarchart.labels,
     datasets: dashboardbarchart.datasets,
   };
+
+  const datasets = [
+    {
+      name: "STT",
+      selector: (row) => row.id,
+      sortable: true,
+      width: "60px",
+      center: true,
+    },
+    {
+      name: "Tên",
+      selector: (row) => row.label,
+      center: true,
+    },
+    {
+      name: "",
+      selector: (row) => (
+        <div
+          id={row.label}
+          onClick={(e) => handleDeleteDataset(e)}
+          style={{ cursor: "pointer", color: "red" }}
+        >
+          xóa
+        </div>
+      ),
+      width: "70px",
+      center: true,
+    },
+  ];
+
+  // const labelsdata = [
+  //   {
+  //     name: "STT",
+  //     selector: (row) => row.id,
+  //     sortable: true,
+  //     width: "60px",
+  //     center: true,
+  //   },
+  //   {
+  //     name: "Tên",
+  //     selector: (row) => row.labels,
+  //     center: true,
+  //   },
+  //   {
+  //     name: "",
+  //     selector: (row) => (
+  //       <div
+  //         id={row.labels}
+  //         onClick={(e) => handleDeleteLabels(e)}
+  //         style={{ cursor: "pointer", color: "red" }}
+  //       >
+  //         xóa
+  //       </div>
+  //     ),
+  //     width: "70px",
+  //     center: true,
+  //   },
+  // ];
 
   useEffect(() => {
     console.log(dashboardbarchart.datasets);
@@ -41,56 +159,114 @@ export default function Content() {
     setPop(false);
   };
 
+  const fromDate = useRef();
+  const toDate = useRef();
   const handleSave = (e) => {
     e.preventDefault();
 
-    // envDispatch({
-    //   type: "SET_DASHBOARDCHART",
-    //   payload: {
-    //     ...dashboardbarchart,
-    //     datasets: [
-    //       ...dashboardbarchart.datasets,
-    //       {
-    //         data: dashboardbarchart.datasets[0].data,
-    //         label: label.current.value,
-    //       },
-    //     ],
-    //   },
-    // });
-    setPop(false);
-  };
+    var date = new Date(fromDate.current.value);
+    var from =
+      date.getDate() +
+      "/" +
+      parseInt(date.getMonth() + 1) +
+      "/" +
+      date.getFullYear();
+    console.log(from);
 
-  const handleAdd = (e) => {
-    e.preventDefault();
+    var date1 = new Date(toDate.current.value);
+    var to =
+      date1.getDate() +
+      "/" +
+      parseInt(date1.getMonth() + 1) +
+      "/" +
+      date1.getFullYear();
+    console.log(to);
 
-    console.log(label.current.value);
+    var newLabels = dashboardbarchart.labels;
+    const index1 = newLabels.findIndex((newLabels) => newLabels === from);
+    console.log(index1);
 
-    // if (label.current.value === dashboardbarchart.datasets.label) {
-    //   alert("Label đã tồn tại");
-    // }
+    const index2 = newLabels.findIndex((newLabels) => newLabels === to);
+    console.log(index2);
+
+    var newData = dashboardbarchart.datasets;
+    var lastData = [];
+    for (let i = index1; i <= index2; i++) {
+      lastData.push(newData[0].data[i]);
+    }
 
     envDispatch({
       type: "SET_DASHBOARDCHART",
       payload: {
-        ...dashboardbarchart,
+        labels: dashboardbarchart.labels.slice(index1, index2 + 1),
         datasets: [
-          ...dashboardbarchart.datasets,
-          { label: label.current.value, data: [10, 10, 10, 10, 10, 10] },
+          {
+            label: dashboardbarchart.datasets[0].label,
+            data: lastData,
+          },
         ],
       },
     });
+
+    console.log(lastData);
+
     setPop(false);
   };
 
-  const handleDelete = (e) => {
+  const handleAddDataset = (e) => {
     e.preventDefault();
 
     var newData = dashboardbarchart.datasets;
+
     newData = newData.filter(
-      (newData) => newData.label !== label.current.value
+      (newData) => newData.label === dataset.current.value
     );
+
     console.log(newData.length);
 
+    if (dataset.current.value === "") {
+      alert("Tên không hợp lệ");
+    } else {
+      if (newData.length) {
+        alert("Tên đã tồn tại");
+      } else {
+        var pushData = dashboardbarchart.datasets;
+        pushData = [
+          ...pushData,
+          {
+            label: dataset.current.value,
+            data: [
+              10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+              10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+            ],
+          },
+        ];
+
+        console.log(pushData);
+
+        envDispatch({
+          type: "SET_DASHBOARDCHART",
+          payload: {
+            ...dashboardbarchart,
+            datasets: pushData,
+          },
+        });
+
+        alert("Thêm thành công");
+      }
+    }
+
+    dataset.current.value = "";
+
+    setPop(false);
+  };
+
+  const handleDeleteDataset = (e) => {
+    e.preventDefault();
+
+    var newData = dashboardbarchart.datasets;
+    newData = newData.filter((newData) => newData.label !== e.target.id);
+    console.log(newData);
     envDispatch({
       type: "SET_DASHBOARDCHART",
       payload: {
@@ -99,24 +275,85 @@ export default function Content() {
       },
     });
 
+    alert("Xóa thành công");
+
+    dataset.current.value = "";
+
     setPop(false);
   };
 
   const handleAddLabels = (e) => {
     e.preventDefault();
 
-    var input = lables.current.value;
-    if (input !== "") {
-      dashboardbarchart.labels.push(input);
+    var newData = dashboardbarchart.labels;
+
+    newData = newData.filter((newData) => newData === lables.current.value);
+
+    console.log(newData.length);
+
+    if (lables.current.value === "") {
+      alert("Tên không hợp lệ");
     } else {
-      alert("Ten k hop le");
+      if (newData.length) {
+        alert("Tên đã tồn tại");
+      } else {
+        var pushData = dashboardbarchart.labels;
+        pushData = [...pushData, lables.current.value];
+
+        console.log(pushData);
+
+        envDispatch({
+          type: "SET_DASHBOARDCHART",
+          payload: {
+            ...dashboardbarchart,
+            labels: pushData,
+          },
+        });
+
+        alert("Thêm thành công");
+      }
     }
+
+    // var input = lables.current.value;
+    // if (input !== "") {
+    //   dashboardbarchart.labels.push(input);
+    // } else {
+    //   alert("Ten k hop le");
+    // }
+    // envDispatch({
+    //   type: "SET_DASHBOARDCHART",
+    //   payload: dashboardbarchart,
+    // });
+
+    lables.current.value = "";
+
+    setPop(false);
+  };
+
+  const handleDeleteLabels = (e) => {
+    e.preventDefault();
+
+    var newData = dashboardbarchart.labels;
+    newData = newData.filter((NewData) => NewData !== lables.current.value);
+    console.log(newData);
     envDispatch({
       type: "SET_DASHBOARDCHART",
-      payload: dashboardbarchart,
+      payload: {
+        ...dashboardbarchart,
+        labels: newData,
+      },
     });
 
-    console.log(dashboardbarchart.labels);
+    lables.current.value = "";
+
+    setPop(false);
+  };
+
+  const BarRef = useRef();
+  const handleResetZoom = () => {
+    if (BarRef && BarRef.current) {
+      BarRef.current.resetZoom();
+    }
   };
 
   return (
@@ -300,7 +537,18 @@ export default function Content() {
               ...
             </div>
           </div>
-          <Bar data={data} style={{ width: "100%", padding: "16px" }} />
+          <button
+            className="DAT_Content-Container-Card-Reset"
+            onClick={handleResetZoom}
+          >
+            Reset
+          </button>
+          <Bar
+            data={data}
+            options={config}
+            ref={BarRef}
+            style={{ width: "100%", padding: "16px" }}
+          />
           <div
             className="DAT_Content-Container-Card-Edit"
             style={{ display: pop ? "block" : "none" }}
@@ -315,33 +563,28 @@ export default function Content() {
                   x
                 </div>
               </div>
-              {/* <select>
-                <option></option>
-              </select> */}
-              <input
-                type="text"
-                // defaultValue={data.datasets[0].label}
-                ref={label}
-              />
-              <div className="DAT_Content-Container-Card-Edit-Group-Labels">
-                <table>
-                  <tbody>
-                    {Object.entries(dashboardbarchart.labels).map(([key]) => {
-                      return (
-                        <th key={key}>
-                          <tr>{dashboardbarchart.labels[key]}</tr>
-                        </th>
-                      );
-                    })}
-                    <input ref={lables} />
-                  </tbody>
-                </table>
-                <button onClick={(e) => handleAddLabels(e)}>Them Labels</button>
+
+              <div className="DAT_Content-Container-Card-Edit-Group-Row1">
+                <div>Chỉnh sửa DataSet</div>
+                <input type="text" ref={dataset} />
+                <button onClick={(e) => handleAddDataset(e)}>Thêm</button>
+                <DataTable columns={datasets} data={data1} />
               </div>
+
+              <div className="DAT_Content-Container-Card-Edit-Group-Row2">
+                <div>Chỉnh sửa Labels</div>
+                <input type="text" ref={lables} />
+                <button onClick={(e) => handleAddLabels(e)}>Thêm</button>
+                <button onClick={(e) => handleDeleteLabels(e)}>Xóa</button>
+                {/* <DataTable columns={labelsdata} data={data2} /> */}
+              </div>
+
               <div className="DAT_Content-Container-Card-Edit-Group-Buttons">
+                <div>Từ ngày</div>
+                <input type="date" ref={fromDate} />
+                <div>Đến ngày</div>
+                <input type="date" ref={toDate} />
                 <button onClick={(e) => handleSave(e)}>Lưu</button>
-                <button onClick={(e) => handleAdd(e)}>Thêm</button>
-                <button onClick={(e) => handleDelete(e)}>Xóa</button>
               </div>
             </form>
           </div>

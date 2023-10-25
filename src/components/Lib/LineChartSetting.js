@@ -14,6 +14,12 @@ export default function LineChartSetting() {
   const h = useRef();
   const chartname = useRef();
   const temp = [];
+  const xAxis = useRef(linechart.xAxis_r);
+  const yAxis = useRef(linechart.yAxis_r);
+  const datachange = useRef("");
+  const [index, setIndex] = useState();
+  const newlabel = useRef("")
+
 
   const [cur, setCur] = useState(() => {
     let y = {};
@@ -24,11 +30,15 @@ export default function LineChartSetting() {
   });
 
   useEffect(() => {
-    // console.log(linechart.datasets[1].data)
+    envDispatch({ type: "SET_LINECHART", payload: linechart });
   }, [linechart.datasets]);
 
   useEffect(() => {
-    console.log(cur);
+    console.log(linechart.datasets);
+  }, [linechart.datasets]);
+
+  useEffect(() => {
+    // setCur[]
   }, [cur]);
 
   const handleClose = (e) => {
@@ -37,6 +47,14 @@ export default function LineChartSetting() {
 
   const handleSaveLabel = (e) => {
     setDisplay(false);
+    console.log(datachange.current.value);
+    const input = datachange.current.value;
+    linechart.datasets[index].label = input;
+    envDispatch({ type: "SET_LINECHART", payload: {
+      ...linechart,
+      datasets: linechart.datasets
+
+ } });
   };
 
   const handleChangeLable = (e) => {
@@ -59,7 +77,11 @@ export default function LineChartSetting() {
     if (chartname.current.value !== "") {
       linechart.chartname_r = chartname.current.value;
     }
-    envDispatch({ type: "SET_LINECHART", payload: linechart });
+    envDispatch({ type: "SET_LINECHART", payload: {
+         ...linechart,
+         datasets: linechart.datasets
+
+    } });
   };
 
   const handlePushData = (e) => {
@@ -71,43 +93,71 @@ export default function LineChartSetting() {
       // console.log(d);
       // y[data[0]] = d.value;
 
-      // console.log(linechart.datasets[data[0]].data)
-      if (d.value !== "") {
+      if (d.value !== "" && d.value !== null) {
         y[data[0]] = parseFloat(d.value);
-      } else {
+      } else if (d.value === "") {
         y[data[0]] = 0;
       }
+      console.log(data[0]);
       linechart.datasets[data[0]].data.push(y[data[0]]);
-      envDispatch({type: "SET_LINECHART",payload: linechart})
+      envDispatch({ type: "SET_LINECHART", payload: linechart });
       console.log(linechart.datasets);
       setCur(y);
     });
-    // envDispatch({type: "SET_LINECHART",payload: linechart.datasets})
-    // console.log(linechart.datasets)
-
-    //console.log(x)
-    // setCur(x);
-
-    //console.log(inputindex, datapush, inputid);
-
-    // if (datapush.current.value === "") {
-    //   alert("Không được để trống data");
-    // } else if (isNaN(parseFloat(datapush.current.value))) {
-    //   alert("Giá trị không hợp lệ.");
-    // }
   };
 
   const handleAddLable = (e) => {
-    const input = label.current.value
-    if(input !== ""){
-      linechart.labels.push(input)
+    const input = label.current.value;
+    if (input !== "") {
+      linechart.labels.push(input);
     } else {
-      alert('Label đéo hợp lệ')
-    } 
-    envDispatch({type: "SET_LINECHART",payload: linechart})
-    console.log(linechart.labels)
+      alert("Label đéo hợp lệ");
+    }
+    envDispatch({ type: "SET_LINECHART", payload: linechart });
+    console.log(linechart.labels);
   };
 
+  const handleDelete = (e) => {
+    const temp = e.currentTarget.id.split("_");
+    // var newData = linechart.datasets;
+    if (linechart.datasets.length > 1) {
+      linechart.datasets = linechart.datasets.filter(
+        (data) => data.label != temp[0]
+      );
+    } else {
+      alert("Đéo cho xóa mày");
+    }
+    // console.log(newData)
+    envDispatch({ type: "SET_LINECHART", payload: linechart });
+  };
+
+  const handleChangeAxisName = (e) => {
+    if (xAxis.current.value !== "") {
+      linechart.xAxis_r = xAxis.current.value;
+    }
+    if (yAxis.current.value !== "") {
+      linechart.yAxis_r = yAxis.current.value;
+    }
+    envDispatch({ type: "SET_LINECHART", payload: linechart });
+  };
+
+  const handleTakeIndex = (e) => {
+    setDisplay(true);
+    setIndex(e.currentTarget.id);
+  };
+
+  const AddNewData = (e) => {
+    const newData = {
+      label: newlabel.current.value,
+      data:[13],
+    }
+    linechart.datasets.push(newData)
+    console.log(linechart.datasets)
+  }
+
+  useEffect(()=>{
+    console.log(temp)
+  },[])
   return (
     <div className="DAT_Setting-LineChart">
       {display ? (
@@ -125,15 +175,8 @@ export default function LineChartSetting() {
                 x
               </div>
             </div>
-            <input
-              type="text"
-              // required ref={dataIncome}
-            ></input>
-            <button
-            //  onClick={(e) => handleChangeData(e)}
-            >
-              Lưu
-            </button>
+            <input type="text" required ref={datachange}></input>
+            <button onClick={(e) => handleSaveLabel(e)}>Lưu</button>
           </form>
         </div>
       ) : (
@@ -182,7 +225,7 @@ export default function LineChartSetting() {
             ></input>
           </tbody>
         </table>
-        <button onClick={(e)=>handleAddLable(e)}>Add</button>
+        <button onClick={(e) => handleAddLable(e)}>Add</button>
       </div>
       <label>Datasets: </label>
       <div className="DAT_Setting-LineChart-Row" id="3">
@@ -196,7 +239,13 @@ export default function LineChartSetting() {
               );
               return (
                 <tr key={key}>
-                  <th>{linechart.datasets[key].label}</th>
+                  <th
+                    id={key}
+                    onClick={(e) => handleTakeIndex(e)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {linechart.datasets[key].label}
+                  </th>
                   {Object.entries(linechart.datasets[key].data).map(
                     ([datakey]) => {
                       return <td>{linechart.datasets[key].data[datakey]}</td>;
@@ -205,9 +254,9 @@ export default function LineChartSetting() {
 
                   <td>
                     <input
-                      id={key + "_linechart"}
                       style={{ all: "inherit" }}
                       defaultValue={cur[key]}
+                      id={key + "_linechart"}
                       // onClick={(e) => handleSaveData(e)}
                       //onChange={(e) => handleSaveData(e)}
                     ></input>
@@ -217,6 +266,12 @@ export default function LineChartSetting() {
                       type="color"
                       defaultValue={linechart.datasets[key].borderColor}
                     ></input>
+                    <button
+                      id={linechart.datasets[key].label + "_linechart"}
+                      onClick={(e) => handleDelete(e)}
+                    >
+                      Xóa
+                    </button>
                   </td>
                 </tr>
               );
@@ -227,6 +282,18 @@ export default function LineChartSetting() {
 
       <div className="DAT_Setting-LineChart-Row" id="4">
         <button onClick={(e) => handlePushData(e)}>Thêm dữ liệu </button>
+      </div>
+
+      <div className="DAT_Setting-LineChart-Row" id="5">
+        <input placeholder={"xAxis: " + linechart.xAxis_r} ref={xAxis}></input>
+        <input placeholder={"yAxis: " + linechart.yAxis_r} ref={yAxis}></input>
+        <button onClick={(e) => handleChangeAxisName(e)}>Chọn</button>
+      </div>
+      <label>Thêm dữ liệu</label>
+      <div className="DAT_Setting-LineChart-Row" id="6">
+        <input placeholder={"Add label: "} ref={newlabel}></input>
+        <input placeholder={"Data"}></input>
+        <button onClick={(e)=>AddNewData(e)}>Add</button>
       </div>
     </div>
   );
