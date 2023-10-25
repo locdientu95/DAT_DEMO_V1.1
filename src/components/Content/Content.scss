@@ -209,6 +209,34 @@
                 margin-top: 16px;
             }
 
+            &-Chart {
+                display: flex;
+                position: relative;
+
+                &-Ylabel {
+                    position: absolute;
+                    top: 220px;
+                    // bottom: 100px;
+                    // left: -40px;
+                    // right: 100px;
+                    // display: flex;
+                    // align-items: center;
+                    // justify-content: center;
+                    transform: rotate(-90deg);
+                }
+
+                &-Barchart {
+                    padding: 0px 16px 0px 40px;
+                    flex: 1;
+                }
+            }
+
+            &-Xlabel {
+                display: flex;
+                justify-content: center;
+                padding-bottom: 16px;
+            }
+
             &-Edit {
                 display: none;
                 position: absolute;
@@ -267,6 +295,7 @@
                     &-Buttons {
                         display: flex;
                         gap: 8px;
+                        margin-bottom: 8px;
                     }
                 }
             }

@@ -356,6 +356,40 @@ export default function Content() {
     }
   };
 
+  const xlabel = useRef();
+  const handleXlabel = (e) => {
+    e.preventDefault();
+
+    envDispatch({
+      type: "SET_DASHBOARDCHART",
+      payload: {
+        ...dashboardbarchart,
+        xlabel: xlabel.current.value,
+      },
+    });
+
+    xlabel.current.value = "";
+
+    setPop(false);
+  };
+
+  const ylabel = useRef();
+  const handleYlabel = (e) => {
+    e.preventDefault();
+
+    envDispatch({
+      type: "SET_DASHBOARDCHART",
+      payload: {
+        ...dashboardbarchart,
+        ylabel: ylabel.current.value,
+      },
+    });
+
+    ylabel.current.value = "";
+
+    setPop(false);
+  };
+
   return (
     <div className="DAT_Content">
       <div className="DAT_Content-Header">
@@ -525,6 +559,7 @@ export default function Content() {
           </div>
         </div>
 
+        {/* Barchart Card */}
         <div className="DAT_Content-Container-Card">
           <div className="DAT_Content-Container-Card-Header">
             <div className="DAT_Content-Container-Card-Header-Text">
@@ -537,18 +572,32 @@ export default function Content() {
               ...
             </div>
           </div>
+
+          {/* Reset Button */}
           <button
             className="DAT_Content-Container-Card-Reset"
             onClick={handleResetZoom}
           >
             Reset
           </button>
-          <Bar
-            data={data}
-            options={config}
-            ref={BarRef}
-            style={{ width: "100%", padding: "16px" }}
-          />
+
+          {/* Bar Chart */}
+          <div className="DAT_Content-Container-Card-Chart">
+            <div className="DAT_Content-Container-Card-Chart-Ylabel">
+              {dashboardbarchart.xlabel}
+            </div>
+            <Bar
+              className="DAT_Content-Container-Card-Chart-Barchart"
+              data={data}
+              options={config}
+              ref={BarRef}
+            />
+          </div>
+          <div className="DAT_Content-Container-Card-Xlabel">
+            {dashboardbarchart.ylabel}
+          </div>
+
+          {/* Edit Form */}
           <div
             className="DAT_Content-Container-Card-Edit"
             style={{ display: pop ? "block" : "none" }}
@@ -564,6 +613,7 @@ export default function Content() {
                 </div>
               </div>
 
+              {/* Chỉnh sửa Datasets */}
               <div className="DAT_Content-Container-Card-Edit-Group-Row1">
                 <div>Chỉnh sửa DataSet</div>
                 <input type="text" ref={dataset} />
@@ -571,6 +621,7 @@ export default function Content() {
                 <DataTable columns={datasets} data={data1} />
               </div>
 
+              {/* Chỉnh sửa Labels */}
               <div className="DAT_Content-Container-Card-Edit-Group-Row2">
                 <div>Chỉnh sửa Labels</div>
                 <input type="text" ref={lables} />
@@ -579,12 +630,27 @@ export default function Content() {
                 {/* <DataTable columns={labelsdata} data={data2} /> */}
               </div>
 
+              {/* From Date to Date */}
               <div className="DAT_Content-Container-Card-Edit-Group-Buttons">
                 <div>Từ ngày</div>
                 <input type="date" ref={fromDate} />
                 <div>Đến ngày</div>
                 <input type="date" ref={toDate} />
                 <button onClick={(e) => handleSave(e)}>Lưu</button>
+              </div>
+
+              {/* x label */}
+              <div className="DAT_Content-Container-Card-Edit-Group-Row2">
+                <div>Chỉnh sửa X Label</div>
+                <input type="text" ref={xlabel} />
+                <button onClick={(e) => handleXlabel(e)}>Lưu</button>
+              </div>
+
+              {/* y label */}
+              <div className="DAT_Content-Container-Card-Edit-Group-Row2">
+                <div>Chỉnh sửa Y Label</div>
+                <input type="text" ref={ylabel} />
+                <button onClick={(e) => handleYlabel(e)}>Lưu</button>
               </div>
             </form>
           </div>
