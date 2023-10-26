@@ -23,3 +23,4 @@ Phu upload 20/10/2023 làm trang Trang Chủ (Bar Chart)(add và delete Labels)
 Phu upload 23/10/2023 làm trang Trang Chủ (Bar Chart)(from date to date)
 Phu upload 24/10/2023 làm trang Trang Chủ (Bar Chart)(from date to date)
 Phu upload 25/10/2023 làm trang Trang Chủ (Bar Chart)(x_label, y_label)
+Phu upload 26/10/2023 

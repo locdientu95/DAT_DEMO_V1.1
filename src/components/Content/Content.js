@@ -16,7 +16,6 @@ export default function Content() {
   const { dashboardbarchart, envDispatch } = useContext(EnvContext);
   const [pop, setPop] = useState(false);
   const [data1, setData1] = useState([]);
-  // const [data2, setData2] = useState([]);
   const dataset = useRef();
   const lables = useRef();
 
@@ -28,16 +27,6 @@ export default function Content() {
     console.log(newData);
     setData1(dashboardbarchart.datasets);
   }, [dashboardbarchart.datasets]);
-
-  // useEffect(() => {
-  //   var newData = dashboardbarchart.labels;
-  //   newData.map((data, index) => {
-  //     // return (data["id"] = index + 1);
-  //     console.log(data);
-  //   });
-  //   console.log(newData);
-  //   setData2(dashboardbarchart.labels);
-  // }, [dashboardbarchart.labels]);
 
   const config = {
     type: "bar",
@@ -107,35 +96,6 @@ export default function Content() {
       center: true,
     },
   ];
-
-  // const labelsdata = [
-  //   {
-  //     name: "STT",
-  //     selector: (row) => row.id,
-  //     sortable: true,
-  //     width: "60px",
-  //     center: true,
-  //   },
-  //   {
-  //     name: "Tên",
-  //     selector: (row) => row.labels,
-  //     center: true,
-  //   },
-  //   {
-  //     name: "",
-  //     selector: (row) => (
-  //       <div
-  //         id={row.labels}
-  //         onClick={(e) => handleDeleteLabels(e)}
-  //         style={{ cursor: "pointer", color: "red" }}
-  //       >
-  //         xóa
-  //       </div>
-  //     ),
-  //     width: "70px",
-  //     center: true,
-  //   },
-  // ];
 
   useEffect(() => {
     console.log(dashboardbarchart.datasets);
@@ -615,42 +575,49 @@ export default function Content() {
 
               {/* Chỉnh sửa Datasets */}
               <div className="DAT_Content-Container-Card-Edit-Group-Row1">
-                <div>Chỉnh sửa DataSet</div>
-                <input type="text" ref={dataset} />
-                <button onClick={(e) => handleAddDataset(e)}>Thêm</button>
+                <div style={{ marginBottom: "8px" }}>Chỉnh sửa DataSet</div>
+                <div style={{ display: "flex", gap: "8px" }}>
+                  <input type="text" ref={dataset} />
+                  <button onClick={(e) => handleAddDataset(e)}>Thêm</button>
+                </div>
                 <DataTable columns={datasets} data={data1} />
               </div>
 
               {/* Chỉnh sửa Labels */}
               <div className="DAT_Content-Container-Card-Edit-Group-Row2">
-                <div>Chỉnh sửa Labels</div>
-                <input type="text" ref={lables} />
-                <button onClick={(e) => handleAddLabels(e)}>Thêm</button>
-                <button onClick={(e) => handleDeleteLabels(e)}>Xóa</button>
-                {/* <DataTable columns={labelsdata} data={data2} /> */}
+                <div style={{ marginBottom: "8px" }}>Chỉnh sửa Labels</div>
+                <div style={{ display: "flex", gap: "8px" }}>
+                  <input type="text" ref={lables} />
+                  <button onClick={(e) => handleAddLabels(e)}>Thêm</button>
+                  <button onClick={(e) => handleDeleteLabels(e)}>Xóa</button>
+                </div>
               </div>
 
               {/* From Date to Date */}
               <div className="DAT_Content-Container-Card-Edit-Group-Buttons">
-                <div>Từ ngày</div>
+                <span>Từ ngày</span>
                 <input type="date" ref={fromDate} />
-                <div>Đến ngày</div>
+                <span>Đến ngày</span>
                 <input type="date" ref={toDate} />
                 <button onClick={(e) => handleSave(e)}>Lưu</button>
               </div>
 
               {/* x label */}
               <div className="DAT_Content-Container-Card-Edit-Group-Row2">
-                <div>Chỉnh sửa X Label</div>
-                <input type="text" ref={xlabel} />
-                <button onClick={(e) => handleXlabel(e)}>Lưu</button>
+                <div style={{ marginBottom: "8px" }}>Chỉnh sửa X Label</div>
+                <div style={{ display: "flex", gap: "8px" }}>
+                  <input type="text" ref={xlabel} />
+                  <button onClick={(e) => handleXlabel(e)}>Lưu</button>
+                </div>
               </div>
 
               {/* y label */}
               <div className="DAT_Content-Container-Card-Edit-Group-Row2">
-                <div>Chỉnh sửa Y Label</div>
-                <input type="text" ref={ylabel} />
-                <button onClick={(e) => handleYlabel(e)}>Lưu</button>
+                <div style={{ marginBottom: "8px" }}>Chỉnh sửa Y Label</div>
+                <div style={{ display: "flex", gap: "8px" }}>
+                  <input type="text" ref={ylabel} />
+                  <button onClick={(e) => handleYlabel(e)}>Lưu</button>
+                </div>
               </div>
             </form>
           </div>
