@@ -640,6 +640,8 @@ export const INITSTATE = {
   },
 
   dashboardbarchart: {
+    xlabel: "x label",
+    ylabel: "y label",
     labels: [
       "15/9/2023",
       "16/9/2023",
