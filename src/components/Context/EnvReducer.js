@@ -689,6 +689,41 @@ export const INITSTATE = {
       // },
     ],
   },
+
+
+  projectchanges: [
+    {
+      Date: "28/9/2023",
+      Time:"08:54:00",
+      projectid: "P01",
+      name: "GREEN GROWTH SHOW 2023",
+      company: "Công ty Cổ phần Tập đoàn DAT",
+      account: "Taingo",
+    },
+    {
+      Date: "28/9/2023",
+      Time:"09:54:21",
+      projectid: "P02",
+      name: "YASUO EVENT",
+      company: "Công ty TNHH Một Mình Tôi",
+      account: "Taingo",
+    },
+    {
+      Date: "30/9/2023",
+      Time:"13:24:21",
+      projectid: "P01",
+      name: "GREEN GROWTH SHOW 2023",
+      company: "Công ty Cổ phần Tập đoàn DAT",
+      account: "Taingo",
+    },
+    {
+      Date: "30/9/2023",
+      Time:"15:54:36",
+      projectid: "P03",
+      name: "PIZZA HUT THUOC LA",
+      company: "Công ty Mai Tài Phến - MTP Entertainment",
+    }
+  ]
 };
 
 const EnvReducer = (state, action) => {
@@ -828,6 +863,11 @@ const EnvReducer = (state, action) => {
         ...state,
         dashboardbarchart: action.payload,
       };
+    case "SET_PROJECTCHANGES":
+    return {
+      ...state,
+      projectchanges: action.payload
+    }
     default:
       throw new Error("Unexpected action");
   }

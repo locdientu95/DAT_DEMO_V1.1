@@ -36,6 +36,7 @@ export const EnvContextProvider = ({ children }) => {
         errornoti: state.errornoti,
         linechart: state.linechart,
         dashboardbarchart: state.dashboardbarchart,
+        projectchanges: state.projectchanges,
         envDispatch,
       }}
     >
