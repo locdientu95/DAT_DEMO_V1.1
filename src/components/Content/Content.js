@@ -16,7 +16,6 @@ export default function Content() {
   const { dashboardbarchart, envDispatch } = useContext(EnvContext);
   const [pop, setPop] = useState(false);
   const [data1, setData1] = useState([]);
-  // const [data2, setData2] = useState([]);
   const dataset = useRef();
   const lables = useRef();
 
@@ -28,16 +27,6 @@ export default function Content() {
     console.log(newData);
     setData1(dashboardbarchart.datasets);
   }, [dashboardbarchart.datasets]);
-
-  // useEffect(() => {
-  //   var newData = dashboardbarchart.labels;
-  //   newData.map((data, index) => {
-  //     // return (data["id"] = index + 1);
-  //     console.log(data);
-  //   });
-  //   console.log(newData);
-  //   setData2(dashboardbarchart.labels);
-  // }, [dashboardbarchart.labels]);
 
   const config = {
     type: "bar",
@@ -108,35 +97,6 @@ export default function Content() {
     },
   ];
 
-  // const labelsdata = [
-  //   {
-  //     name: "STT",
-  //     selector: (row) => row.id,
-  //     sortable: true,
-  //     width: "60px",
-  //     center: true,
-  //   },
-  //   {
-  //     name: "Tên",
-  //     selector: (row) => row.labels,
-  //     center: true,
-  //   },
-  //   {
-  //     name: "",
-  //     selector: (row) => (
-  //       <div
-  //         id={row.labels}
-  //         onClick={(e) => handleDeleteLabels(e)}
-  //         style={{ cursor: "pointer", color: "red" }}
-  //       >
-  //         xóa
-  //       </div>
-  //     ),
-  //     width: "70px",
-  //     center: true,
-  //   },
-  // ];
-
   useEffect(() => {
     console.log(dashboardbarchart.datasets);
   }, [dashboardbarchart.datasets]);
@@ -189,12 +149,27 @@ export default function Content() {
     const index2 = newLabels.findIndex((newLabels) => newLabels === to);
     console.log(index2);
 
-    // var newData = dashboardbarchart.datasets;
     var newData = dashboardbarchart.datasets;
-    newData.filter((data, index) => {
-      return data.data[index1] >= index && data.data[index2] <= index;
+    var lastData = [];
+    for (let i = index1; i <= index2; i++) {
+      lastData.push(newData[0].data[i]);
+    }
+
+    envDispatch({
+      type: "SET_DASHBOARDCHART",
+      payload: {
+        labels: dashboardbarchart.labels.slice(index1, index2 + 1),
+        datasets: [
+          {
+            label: dashboardbarchart.datasets[0].label,
+            data: lastData,
+          },
+        ],
+      },
     });
-    //console.log(newData);
+
+    console.log(lastData);
+
     setPop(false);
   };
 
@@ -339,6 +314,40 @@ export default function Content() {
     if (BarRef && BarRef.current) {
       BarRef.current.resetZoom();
     }
+  };
+
+  const xlabel = useRef();
+  const handleXlabel = (e) => {
+    e.preventDefault();
+
+    envDispatch({
+      type: "SET_DASHBOARDCHART",
+      payload: {
+        ...dashboardbarchart,
+        xlabel: xlabel.current.value,
+      },
+    });
+
+    xlabel.current.value = "";
+
+    setPop(false);
+  };
+
+  const ylabel = useRef();
+  const handleYlabel = (e) => {
+    e.preventDefault();
+
+    envDispatch({
+      type: "SET_DASHBOARDCHART",
+      payload: {
+        ...dashboardbarchart,
+        ylabel: ylabel.current.value,
+      },
+    });
+
+    ylabel.current.value = "";
+
+    setPop(false);
   };
 
   return (
@@ -510,6 +519,7 @@ export default function Content() {
           </div>
         </div>
 
+        {/* Barchart Card */}
         <div className="DAT_Content-Container-Card">
           <div className="DAT_Content-Container-Card-Header">
             <div className="DAT_Content-Container-Card-Header-Text">
@@ -522,18 +532,32 @@ export default function Content() {
               ...
             </div>
           </div>
+
+          {/* Reset Button */}
           <button
             className="DAT_Content-Container-Card-Reset"
             onClick={handleResetZoom}
           >
             Reset
           </button>
-          <Bar
-            data={data}
-            options={config}
-            ref={BarRef}
-            style={{ width: "100%", padding: "16px" }}
-          />
+
+          {/* Bar Chart */}
+          <div className="DAT_Content-Container-Card-Chart">
+            <div className="DAT_Content-Container-Card-Chart-Ylabel">
+              {dashboardbarchart.xlabel}
+            </div>
+            <Bar
+              className="DAT_Content-Container-Card-Chart-Barchart"
+              data={data}
+              options={config}
+              ref={BarRef}
+            />
+          </div>
+          <div className="DAT_Content-Container-Card-Xlabel">
+            {dashboardbarchart.ylabel}
+          </div>
+
+          {/* Edit Form */}
           <div
             className="DAT_Content-Container-Card-Edit"
             style={{ display: pop ? "block" : "none" }}
@@ -549,31 +573,51 @@ export default function Content() {
                 </div>
               </div>
 
-              {/* <select>
-                <option></option>
-              </select> */}
-
+              {/* Chỉnh sửa Datasets */}
               <div className="DAT_Content-Container-Card-Edit-Group-Row1">
-                <div>Chỉnh sửa DataSet</div>
-                <input type="text" ref={dataset} />
-                <button onClick={(e) => handleAddDataset(e)}>Thêm</button>
+                <div style={{ marginBottom: "8px" }}>Chỉnh sửa DataSet</div>
+                <div style={{ display: "flex", gap: "8px" }}>
+                  <input type="text" ref={dataset} />
+                  <button onClick={(e) => handleAddDataset(e)}>Thêm</button>
+                </div>
                 <DataTable columns={datasets} data={data1} />
               </div>
 
+              {/* Chỉnh sửa Labels */}
               <div className="DAT_Content-Container-Card-Edit-Group-Row2">
-                <div>Chỉnh sửa Labels</div>
-                <input type="text" ref={lables} />
-                <button onClick={(e) => handleAddLabels(e)}>Thêm</button>
-                <button onClick={(e) => handleDeleteLabels(e)}>Xóa</button>
-                {/* <DataTable columns={labelsdata} data={data2} /> */}
+                <div style={{ marginBottom: "8px" }}>Chỉnh sửa Labels</div>
+                <div style={{ display: "flex", gap: "8px" }}>
+                  <input type="text" ref={lables} />
+                  <button onClick={(e) => handleAddLabels(e)}>Thêm</button>
+                  <button onClick={(e) => handleDeleteLabels(e)}>Xóa</button>
+                </div>
               </div>
 
+              {/* From Date to Date */}
               <div className="DAT_Content-Container-Card-Edit-Group-Buttons">
-                <div>Tu ngay</div>
+                <span>Từ ngày</span>
                 <input type="date" ref={fromDate} />
-                <div>Den ngay</div>
+                <span>Đến ngày</span>
                 <input type="date" ref={toDate} />
                 <button onClick={(e) => handleSave(e)}>Lưu</button>
+              </div>
+
+              {/* x label */}
+              <div className="DAT_Content-Container-Card-Edit-Group-Row2">
+                <div style={{ marginBottom: "8px" }}>Chỉnh sửa X Label</div>
+                <div style={{ display: "flex", gap: "8px" }}>
+                  <input type="text" ref={xlabel} />
+                  <button onClick={(e) => handleXlabel(e)}>Lưu</button>
+                </div>
+              </div>
+
+              {/* y label */}
+              <div className="DAT_Content-Container-Card-Edit-Group-Row2">
+                <div style={{ marginBottom: "8px" }}>Chỉnh sửa Y Label</div>
+                <div style={{ display: "flex", gap: "8px" }}>
+                  <input type="text" ref={ylabel} />
+                  <button onClick={(e) => handleYlabel(e)}>Lưu</button>
+                </div>
               </div>
             </form>
           </div>

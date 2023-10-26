@@ -132,7 +132,6 @@
         &-Card {
             width: 95%;
             margin: auto;
-            // height: 412px;
             background-color: white;
             margin-bottom: 24px;
             box-shadow: 4px 4px 4px 4px rgb(136, 136, 136, 0.2);
@@ -209,6 +208,28 @@
                 margin-top: 16px;
             }
 
+            &-Chart {
+                display: flex;
+                position: relative;
+
+                &-Ylabel {
+                    position: absolute;
+                    top: 220px;
+                    transform: rotate(-90deg);
+                }
+
+                &-Barchart {
+                    padding: 0px 16px 0px 40px;
+                    flex: 1;
+                }
+            }
+
+            &-Xlabel {
+                display: flex;
+                justify-content: center;
+                padding-bottom: 16px;
+            }
+
             &-Edit {
                 display: none;
                 position: absolute;
@@ -220,7 +241,6 @@
                 overflow-y: scroll;
 
                 &-Group {
-                    padding: 8px;
                     width: 500px;
                     margin: auto;
                     background-color: #f2f6fc;
@@ -230,7 +250,16 @@
                     &-Tit {
                         display: flex;
                         justify-content: space-between;
-                        margin-bottom: 8px;
+                        align-items: center;
+                        padding-left: 16px;
+                        padding-right: 16px;
+                        height: 40px;
+                        color: blue;
+                        background-color: whitesmoke;
+                        border-top-right-radius: 5px;
+                        border-top-left-radius: 5px;
+                        border-bottom: solid 1px rgb(156, 155, 155, 0.2);
+                        font-weight: 500;
 
                         &-Close {
                             cursor: pointer;
@@ -238,35 +267,94 @@
                     }
 
                     &-Row1 {
+                        padding: 8px 8px 0px 8px;
+
                         & input {
+                            outline: none;
+                            border: none;
+                            border-radius: 10px;
+                            padding: 8px;
+                            width: 100%;
                             box-sizing: border-box;
                             -webkit-box-sizing: border-box;
                             -moz-box-sizing: border-box;
+
+                            &:focus-within {
+                                box-shadow: 0px 0px 0px 4px rgb(66, 100, 255, 0.5);
+                            }
                         }
 
                         & button {
-                            margin-left: 4px;
+                            border: none;
+                            padding: 8px;
+                            border-radius: 10px;
+                            background-color: rgb(66, 100, 255);
+                            color: white;
                         }
                     }
 
                     &-Row2 {
-                        margin-bottom: 8px;
+                        padding: 0px 8px 24px 8px;
 
                         & input {
+                            outline: none;
+                            border: none;
+                            border-radius: 10px;
+                            padding: 8px;
+                            width: 100%;
                             box-sizing: border-box;
                             -webkit-box-sizing: border-box;
                             -moz-box-sizing: border-box;
+
+                            &:focus-within {
+                                box-shadow: 0px 0px 0px 4px rgb(66, 100, 255, 0.5);
+                            }
                         }
 
                         & button {
-                            margin-left: 4px;
+                            border: none;
+                            padding: 8px;
+                            border-radius: 10px;
+                            background-color: rgb(66, 100, 255);
+                            color: white;
                         }
                     }
-
 
                     &-Buttons {
                         display: flex;
                         gap: 8px;
+                        padding: 24px 8px 24px 8px;
+
+                        & input {
+                            outline: none;
+                            border: none;
+                            border-radius: 10px;
+                            padding: 8px;
+                            width: 100%;
+                            box-sizing: border-box;
+                            -webkit-box-sizing: border-box;
+                            -moz-box-sizing: border-box;
+
+                            &:focus-within {
+                                box-shadow: 0px 0px 0px 4px rgb(66, 100, 255, 0.5);
+                            }
+                        }
+
+                        & span {
+                            // padding-left: 8px;
+                            width: 280px;
+                            display: flex;
+                            align-items: center;
+                            // background-color: #d0f0ff;
+                        }
+
+                        & button {
+                            border: none;
+                            padding: 8px;
+                            border-radius: 10px;
+                            background-color: rgb(66, 100, 255);
+                            color: white;
+                        }
                     }
                 }
             }

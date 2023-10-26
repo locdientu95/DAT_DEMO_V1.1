@@ -1,6 +1,23 @@
-import React from "react";
-
+import React, { useRef } from "react";
+import "./SMS.scss";
 export default function SMS() {
+  const phone = useRef()
+  const GW = useRef()
+  const ErrCode = useRef()
+  const ErrType = useRef()
+  const Info = useRef()
+  const Solve = useRef()
+
+
+  const send=()=>{
+    console.log(phone.current.value)
+    console.log(GW.current.value)
+    console.log(ErrCode.current.value)
+    console.log(ErrType.current.value)
+    console.log(Info.current.value)
+    console.log(Solve.current.value)
+    
+  }
   return (
     <div className="DAT_Content">
       <div className="DAT_Content-Header">
@@ -31,6 +48,49 @@ export default function SMS() {
           </div>
         </div>
       </div>
+
+      <div className="DAT_Content-Main">
+          <div className="DAT_Content-Main-Col1">
+            <div className="DAT_Content-Main-Col1-Item">
+              <div className="DAT_Content-Main-Col1-Item-Tit">Số điện thoại</div>
+              <input ref={phone}  placeholder="Số điện thoại"/>
+            </div>
+
+            <div className="DAT_Content-Main-Col1-Item">
+              <div className="DAT_Content-Main-Col1-Item-Tit">GateWay</div>
+              <input ref={GW} placeholder="GateWay"/>
+            </div>
+          </div>
+
+          <div className="DAT_Content-Main-Col1">
+            <div className="DAT_Content-Main-Col1-Item">
+              <div className="DAT_Content-Main-Col1-Item-Tit">Mã Lỗi</div>
+              <input ref={ErrCode} placeholder="Mã Lỗi"/>
+            </div>
+
+            <div className="DAT_Content-Main-Col1-Item">
+              <div className="DAT_Content-Main-Col1-Item-Tit">Loại Lỗi</div>
+              <input ref={ErrType} placeholder="Loại Lỗi"/>
+            </div>
+          </div>
+
+          <div className="DAT_Content-Main-Col2">
+            <div className="DAT_Content-Main-Col2-Item">
+              <div className="DAT_Content-Main-Col2-Item-Tit">Nguyên Nhân</div>
+              <input ref={Info} placeholder="Nguyên Nhân"/>
+            </div>
+
+            <div className="DAT_Content-Main-Col2-Item">
+              <div className="DAT_Content-Main-Col2-Item-Tit">Biện Pháp</div>
+              <input ref={Solve} placeholder="Biện Pháp"/>
+            </div>
+          </div>
+
+          <div className="DAT_Content-Main-Button">
+            <button onClick={send}>Gửi</button>
+          </div>
+      </div>
+
     </div>
   );
 }
