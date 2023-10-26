@@ -31,6 +31,10 @@ export default function SMS() {
           </div>
         </div>
       </div>
+      
+      <div className="DAT_Content-Container">
+        
+      </div>
     </div>
   );
 }

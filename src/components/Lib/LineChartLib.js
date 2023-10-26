@@ -89,17 +89,11 @@ export default function LineChartLib(props) {
      
       const date = new Date()
       const today = date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()
-      setDateTime(today)
-      setNewLabel(pre=>[...pre,today])
-      setLastData(pre=>[...pre,10])
+      
     }, 1000);
     return () => clearInterval(interval);
   }, []);
 
-
-  useEffect(()=>{
-    console.log(newLabel,lastData)
-  },[newLabel,lastData])
  
   return (
     <div>
