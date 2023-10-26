@@ -84,6 +84,17 @@ export default function LineChartLib(props) {
     }
   };
 
+  useEffect(() => { 
+    const interval = setInterval(() => {
+     
+      const date = new Date()
+      const today = date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()
+      
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+ 
   return (
     <div>
       <div>
