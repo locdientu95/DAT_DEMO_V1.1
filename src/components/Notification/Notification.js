@@ -12,14 +12,15 @@ export default function Notification() {
   const [year, setYear] = useState();
   const datefill = useRef();
 
-  useEffect(() => {
-    
-    const temp = datefill.current.value; // ['2023', '10', '18']
-    const arr = temp.split("-");
-    setDay(arr[2]);
-    setMonth(arr[1]);
-    setYear(arr[0]);
-  }, [datefill]);
+  // useEffect(() => {
+  //   const temp = datefill.current.value; // ['2023', '10', '18']
+  //   console.log(datefill.current.value);
+  //   const arr = temp.split("-");
+  //   setDay(arr[2]);
+  //   setMonth(arr[1]);
+  //   setYear(arr[0]);
+  //   console.log(day + "/" + month + "/" + year);
+  // }, [datefill]);
 
   useEffect(() => {
     var newData = projectchanges;
@@ -71,8 +72,14 @@ export default function Notification() {
   ];
 
   const handleInput = (e) => {
-    
-  }
+    var arr = e.target.value.split("-");
+    const dateformat = arr[2] + "/" + arr[1] + "/" + arr[0];
+    console.log(dateformat);
+    var newData = projectchanges.filter((row) => {
+      
+    })
+
+  };
 
   return (
     <div className="DAT_Content">
@@ -112,7 +119,12 @@ export default function Notification() {
               Projects Changes History
             </label>
           </div>
-          <input type="date" ref={datefill} onChange={(e)=>handleInput(e)}></input>
+          <input
+            type="date"
+            // value={datefill.current}
+            //ref={datefill}
+            onChange={(e) => handleInput(e)}
+          ></input>
           <div className="Notification_Content-Container-Group-Body">
             <DataTable
               columns={column}
