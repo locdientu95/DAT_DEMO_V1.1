@@ -174,10 +174,19 @@ export const INITSTATE = {
   },
 
   numberh: {
-    data: {
-      0: { label: "Gia tri 0", value: "0", unit: "unit" },
-      1: { label: "Gia tri 1", value: "0", unit: "unit" },
-    },
+    row: 2,
+    data: [
+      {
+        label: "Gia tri 0",
+        value: "0",
+        unit: "unit",
+      },
+      {
+        label: "Gia tri 1",
+        value: "0",
+        unit: "unit",
+      },
+    ],
   },
 
   login: { username: "unknown", mail: "unknown@gmail.com", status: false },
@@ -729,7 +738,6 @@ export const INITSTATE = {
     ],
   },
 
-
   projectchanges: [
     {
       Date: "28/09/2023",
@@ -904,10 +912,10 @@ const EnvReducer = (state, action) => {
         dashboardbarchart: action.payload,
       };
     case "SET_PROJECTCHANGES":
-    return {
-      ...state,
-      projectchanges: action.payload
-    }
+      return {
+        ...state,
+        projectchanges: action.payload,
+      };
     default:
       throw new Error("Unexpected action");
   }

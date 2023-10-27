@@ -1,4 +1,4 @@
-import React, { useContext,useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import "./Device.scss";
 import { EnvContext } from "../Context/EnvContext";
 import Button from "../Lib/Button";
@@ -56,11 +56,8 @@ export default function Device() {
     Lamp: <Lamp setting={lamp}></Lamp>,
     BarChart: <BarChartHorizontal setting={barchart}></BarChartHorizontal>,
     NumberH: <NumberH setting={numberh}></NumberH>,
-    LineChartLib: <LineChartLib setting= {linechart} ></LineChartLib>,
+    LineChartLib: <LineChartLib setting={linechart}></LineChartLib>,
   };
-
-
-  
 
   const setting = {
     Button: <ButtonSetting />,
@@ -72,15 +69,13 @@ export default function Device() {
     Number: <NumberSetting />,
     Lamp: <LampSetting />,
     BarChart: <BarChartHorizontalSetting />,
-    NumberH: <NumberHSetting/>,
-    LineChartLib: <LineChartSetting/>,
+    NumberH: <NumberHSetting />,
+    LineChartLib: <LineChartSetting />,
   };
-
 
   // useEffect(() => {
   //     console.log(linechart)
   // }, [linechart])
-  
 
   return (
     <div className="Device_Content">
@@ -126,12 +121,14 @@ export default function Device() {
             <option value={"LineChartLib"}>LineChart</option>
           </select>
         </div>
+
         <div className="Device_Content-Container-Group">
           <div className="Device_Content-Container-Group-Head">Giao diện</div>
           <div className="Device_Content-Container-Group-Body">
             {data[type]}
           </div>
         </div>
+
         <div className="Device_Content-Container-Group">
           <div className="Device_Content-Container-Group-Head">Cài Đặt</div>
           <div className="Device_Content-Container-Group-Body">

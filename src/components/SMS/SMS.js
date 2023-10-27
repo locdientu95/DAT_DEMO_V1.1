@@ -50,39 +50,42 @@ export default function SMS() {
       </div>
 
       <div className="DAT_Content-Main">
+        <div className="DAT_Content-Main-Tit">
+          SMS
+        </div>
           <div className="DAT_Content-Main-Col1">
             <div className="DAT_Content-Main-Col1-Item">
               <div className="DAT_Content-Main-Col1-Item-Tit">Số điện thoại</div>
-              <input ref={phone}  placeholder="Số điện thoại"/>
+              <input ref={phone}  />
             </div>
 
             <div className="DAT_Content-Main-Col1-Item">
               <div className="DAT_Content-Main-Col1-Item-Tit">GateWay</div>
-              <input ref={GW} placeholder="GateWay"/>
+              <input ref={GW} />
             </div>
           </div>
 
           <div className="DAT_Content-Main-Col1">
             <div className="DAT_Content-Main-Col1-Item">
               <div className="DAT_Content-Main-Col1-Item-Tit">Mã Lỗi</div>
-              <input ref={ErrCode} placeholder="Mã Lỗi"/>
+              <input ref={ErrCode} />
             </div>
 
             <div className="DAT_Content-Main-Col1-Item">
               <div className="DAT_Content-Main-Col1-Item-Tit">Loại Lỗi</div>
-              <input ref={ErrType} placeholder="Loại Lỗi"/>
+              <input ref={ErrType} />
             </div>
           </div>
 
           <div className="DAT_Content-Main-Col2">
             <div className="DAT_Content-Main-Col2-Item">
               <div className="DAT_Content-Main-Col2-Item-Tit">Nguyên Nhân</div>
-              <input ref={Info} placeholder="Nguyên Nhân"/>
+              <input ref={Info} />
             </div>
 
             <div className="DAT_Content-Main-Col2-Item">
               <div className="DAT_Content-Main-Col2-Item-Tit">Biện Pháp</div>
-              <input ref={Solve} placeholder="Biện Pháp"/>
+              <input ref={Solve} />
             </div>
           </div>
 

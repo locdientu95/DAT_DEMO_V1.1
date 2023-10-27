@@ -281,7 +281,8 @@
                     width: 500px;
                     margin: auto;
                     background-color: #f2f6fc;
-                    margin-top: 110px;
+                    margin-top: calc(100vh/6);
+                    margin-bottom: 100px;
                     border-radius: 10px;
 
                     &-Tit {
