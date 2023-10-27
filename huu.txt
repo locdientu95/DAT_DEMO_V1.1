@@ -18,3 +18,4 @@ Huu 23/10 Hoan thien thu vien linechart va bar chart
 Huu 24/10 Tiep tuc hoan thien thu vien linechart va bar chart
 Huu 25/10 Thiet ke ban mau cho giao dien cua trang SMS
 Huu 26/10 Thiet ke giao dien trang sms
+Huu 27/10 Thiet ke giao dien trang sms
