@@ -174,10 +174,19 @@ export const INITSTATE = {
   },
 
   numberh: {
-    data: {
-      0: { label: "Gia tri 0", value: "0", unit: "unit" },
-      1: { label: "Gia tri 1", value: "0", unit: "unit" },
-    },
+    row: 2,
+    data: [
+      {
+        label: "Gia tri 0",
+        value: "0",
+        unit: "unit",
+      },
+      {
+        label: "Gia tri 1",
+        value: "0",
+        unit: "unit",
+      },
+    ],
   },
 
   login: { username: "unknown", mail: "unknown@gmail.com", status: false },
@@ -710,11 +719,10 @@ export const INITSTATE = {
     ],
   },
 
-
   projectchanges: [
     {
       Date: "28/9/2023",
-      Time:"08:54:00",
+      Time: "08:54:00",
       projectid: "P01",
       name: "GREEN GROWTH SHOW 2023",
       company: "Công ty Cổ phần Tập đoàn DAT",
@@ -722,7 +730,7 @@ export const INITSTATE = {
     },
     {
       Date: "28/9/2023",
-      Time:"09:54:21",
+      Time: "09:54:21",
       projectid: "P02",
       name: "YASUO EVENT",
       company: "Công ty TNHH Một Mình Tôi",
@@ -730,7 +738,7 @@ export const INITSTATE = {
     },
     {
       Date: "30/9/2023",
-      Time:"13:24:21",
+      Time: "13:24:21",
       projectid: "P01",
       name: "GREEN GROWTH SHOW 2023",
       company: "Công ty Cổ phần Tập đoàn DAT",
@@ -738,12 +746,12 @@ export const INITSTATE = {
     },
     {
       Date: "30/9/2023",
-      Time:"15:54:36",
+      Time: "15:54:36",
       projectid: "P03",
       name: "PIZZA HUT THUOC LA",
       company: "Công ty Mai Tài Phến - MTP Entertainment",
-    }
-  ]
+    },
+  ],
 };
 
 const EnvReducer = (state, action) => {
@@ -884,10 +892,10 @@ const EnvReducer = (state, action) => {
         dashboardbarchart: action.payload,
       };
     case "SET_PROJECTCHANGES":
-    return {
-      ...state,
-      projectchanges: action.payload
-    }
+      return {
+        ...state,
+        projectchanges: action.payload,
+      };
     default:
       throw new Error("Unexpected action");
   }
