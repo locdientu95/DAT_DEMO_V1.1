@@ -1,5 +1,7 @@
 import React, { useRef } from "react";
 import "./SMS.scss";
+import Status from "./StatusSMS.js"
+import Config from "./Config.js"
 export default function SMS() {
   const phone = useRef()
   const GW = useRef()
@@ -53,7 +55,7 @@ export default function SMS() {
         <div className="DAT_Content-Main-Tit">
           SMS
         </div>
-          <div className="DAT_Content-Main-Col1">
+          {/* <div className="DAT_Content-Main-Col1">
             <div className="DAT_Content-Main-Col1-Item">
               <div className="DAT_Content-Main-Col1-Item-Tit">Số điện thoại</div>
               <input ref={phone}  />
@@ -91,7 +93,11 @@ export default function SMS() {
 
           <div className="DAT_Content-Main-Button">
             <button onClick={send}>Gửi</button>
-          </div>
+          </div> */}
+
+          <Status></Status>
+
+          {/* <Config></Config> */}
       </div>
 
     </div>
