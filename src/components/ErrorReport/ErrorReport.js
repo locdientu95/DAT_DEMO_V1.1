@@ -103,33 +103,6 @@ export default function ErrorReport() {
 
   useEffect(() => {
     fill.current = errornoti.ErrCode;
-    // var newdb = errorlogs;
-    // var input = errornoti.ErrCode;
-    // if (errornoti.ErrCode === "") {
-    //   setRecord(newdb);
-    // } else {
-    //   const newData = errorlogs.filter((row) => {
-    //     return (
-    //       // row.id === parseInt(input) ||
-    //       // row.DeviceID.includes(input) ||
-    //       row.ErrCode.includes(input) ||
-    //       // row.DeviceType.includes(input) ||
-    //       // row.ErrStt.includes(input) ||
-    //       // row.ErrType.toLowerCase().includes(input) ||
-    //       // row.ProjectName.includes(input) ||
-    //       // row.DeviceID.toLowerCase().includes(input) ||
-    //       row.ErrCode.toLowerCase().includes(input)
-    //       // row.DeviceType.toLowerCase().includes(input) ||
-    //       // row.ErrStt.toLowerCase().includes(input) ||
-    //       // row.ErrType.toLowerCase().includes(input) ||
-    //       // row.ProjectName.toLowerCase().includes(input) ||
-    //       // row.Datetime.includes(input)
-    //     );
-    //   });
-
-    //   setRecord(newData);
-    // }
-
     var newData = errorlogs.filter((row) => {
       return (
         row.ErrCode.includes(errornoti.ErrCode) ||

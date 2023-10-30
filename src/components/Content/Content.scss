@@ -58,13 +58,50 @@
         margin-bottom: 100px;
         margin-top: -100px;
 
+        &-ProjectHistory {
+            position: relative;
+            gap: 10px;
+            width: 95%;
+            margin: auto;
+            background-color: white;
+            margin-bottom: 20px;
+            border-radius: 7px;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            &-Head {
+                background-color: rgb(219, 219, 219);
+                border-bottom: solid 1px rgb(186, 186, 186);
+                height: 50px;
+                display: flex;
+                align-items: center;
+                padding-left: 10px;
+                z-index: 2;
+            }
+
+            &-Body {
+                padding: 20px;
+                z-index: 2;
+
+                & table,
+                td,
+                th {
+                    border-collapse: collapse;
+                    border: 1px solid black;
+                }
+
+                & table {
+                    margin: 20px 0;
+                    width: 100%;
+                }
+            }
+        }
+
         &-Group {
             display: flex;
             gap: 10px;
             width: 95%;
             margin: auto;
             // height: 100vh;
-
 
             // background-color: white;
             &-ListTag {
@@ -244,7 +281,8 @@
                     width: 500px;
                     margin: auto;
                     background-color: #f2f6fc;
-                    margin-top: 110px;
+                    margin-top: calc(100vh/6);
+                    margin-bottom: 100px;
                     border-radius: 10px;
 
                     &-Tit {

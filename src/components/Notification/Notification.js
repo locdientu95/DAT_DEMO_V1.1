@@ -1,33 +1,19 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import "./Notification.scss";
 import DataTable from "react-data-table-component";
-import { CSVLink } from "react-csv";
 import { EnvContext } from "../Context/EnvContext";
 
 export default function Notification() {
-  const { projectchanges, envDispatch } = useContext(EnvContext);
-  const [data, setData] = useState(projectchanges);
-  const [day, setDay] = useState();
-  const [month, setMonth] = useState();
-  const [year, setYear] = useState();
-  const datefill = useRef();
+  const { projectchanges, register, envDispatch } = useContext(EnvContext);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    
-    const temp = datefill.current.value; // ['2023', '10', '18']
-    const arr = temp.split("-");
-    setDay(arr[2]);
-    setMonth(arr[1]);
-    setYear(arr[0]);
-  }, [datefill]);
-
-  useEffect(() => {
-    var newData = projectchanges;
+    var newData = data;
     newData.map((data, index) => {
       return (data["id"] = index + 1);
     });
     setData(newData);
-  }, [projectchanges]);
+  }, [data]);
 
   const paginationComponentOptions = {
     rowsPerPageText: "Số hàng",
@@ -60,23 +46,37 @@ export default function Notification() {
       name: "Date",
       code: "Date",
       selector: (row) => row.Date,
-      // width: "100px",
     },
     {
       name: "Time",
       code: "Time",
       selector: (row) => row.Time,
-      // width: "100px",
+    },
+    {
+      name: "Company",
+      code: "company",
+      selector: (row) => row.company,
+    },
+    {
+      name: "Account",
+      code: "account",
+      selector: (row) => row.account,
     },
   ];
 
   const handleInput = (e) => {
-    
-  }
+    var arr = e.target.value.split("-");
+    const dateformat = String(arr[2] + "/" + arr[1] + "/" + arr[0]);
+    var newData = projectchanges;
+    newData = newData.filter((data, index) => {
+      return data.Date === dateformat;
+    });
+    setData(newData);
+  };
 
   return (
-    <div className="DAT_Content">
-      <div className="DAT_Content-Header">
+    <div className="DAT_Notification">
+      <div className="DAT_Notification-Header">
         <div className="DAT_Content-Header-Main">
           <div className="DAT_Content-Header-Main-Dashboard">
             <div className="DAT_Content-Header-Main-Dashboard-Heading">
@@ -105,62 +105,47 @@ export default function Notification() {
         </div>
       </div>
 
-      <div className="Notification_Content-Container">
-        <div className="Notification_Content-Container-Group">
-          <div className="Notification_Content-Container-Group-Head">
+      <div className="DAT_Notification-Container">
+        <div className="DAT_Notification-Container-ProjectHistory">
+          <div className="DAT_Notification-Container-ProjectHistory-Head">
             <label style={{ color: "#0061F2", fontWeight: "600" }}>
               Projects Changes History
             </label>
           </div>
-          <input type="date" ref={datefill} onChange={(e)=>handleInput(e)}></input>
-          <div className="Notification_Content-Container-Group-Body">
-            <DataTable
-              columns={column}
-              data={data}
-              pagination
-              paginationComponentOptions={paginationComponentOptions}
-            />
-          </div>
-        </div>
-        <div className="Notification_Content-Container-Group">
-          <div className="Notification_Content-Container-Group-Head">
-            ádasd{" "}
-          </div>
-          <div className="Notification_Content-Container-Group-Body">ádab</div>
-        </div>
-        <div className="DAT_Content-Container-Group">
-          <div className="DAT_Content-Container-Group-ListTag">
-            <div className="DAT_Content-Container-Group-ListTag-Tag">
-              <div className="DAT_Content-Container-Group-ListTag-Tag-Info">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="feather feather-package feather-xl text-primary mb-3"
-                  color="#0061f2"
-                >
-                  <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
-                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                </svg>
-                <div className="DAT_Content-Container-Group-ListTag-Tag-Info-Head">
-                  Powerful Components
-                </div>
-                <div className="DAT_Content-Container-Group-ListTag-Tag-Info-Sub">
-                  To create informative visual elements on your pages
-                </div>
-              </div>
-              <img alt="" src="/DAT_Pictures/browser-stats.svg"></img>
+          <input
+            type="date"
+            style={{ margin: "20px 0 0 20px" }}
+            onChange={(e) => handleInput(e)}
+          ></input>
+          <div className="DAT_Notification-Container-ProjectHistory-Body">
+            <div>
+              <DataTable
+                columns={column}
+                data={data}
+                pagination
+                paginationComponentOptions={paginationComponentOptions}
+              />
             </div>
           </div>
-          <div className="DAT_Content-Container-Group-ListTag">
+        </div>
+        <div className="DAT_Notification-Container-Group">
+          <div className="DAT_Notification-Container-Group-ListTag">
+            <div className="DAT_Content-Container-Group-ListTag-Body">
+              {Object.entries(register).map(([key]) => {
+                return (
+                  <div>
+                    <div>{register[key].username}</div>
+                    {register[key].status === true ? (
+                      <div>Online</div>
+                    ) : (
+                      <div>Offline</div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="DAT_Notification-Container-Group-ListTag">
             <div className="DAT_Content-Container-Group-ListTag-Tag">
               <div className="DAT_Content-Container-Group-ListTag-Tag-Info">
                 <svg
@@ -187,36 +172,6 @@ export default function Notification() {
                 </div>
               </div>
               <img alt="" src="/DAT_Pictures/processing.svg"></img>
-            </div>
-          </div>
-          <div className="DAT_Content-Container-Group-ListTag">
-            <div className="DAT_Content-Container-Group-ListTag-Tag">
-              <div className="DAT_Content-Container-Group-ListTag-Tag-Info">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  color="#00ac69"
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="feather feather-layout feather-xl text-green mb-3"
-                >
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="3" y1="9" x2="21" y2="9"></line>
-                  <line x1="9" y1="21" x2="9" y2="9"></line>
-                </svg>
-                <div className="DAT_Content-Container-Group-ListTag-Tag-Info-Head">
-                  Pages & Layouts{" "}
-                </div>
-                <div className="DAT_Content-Container-Group-ListTag-Tag-Info-Sub">
-                  To help get you started when building your new UI{" "}
-                </div>
-              </div>
-              <img alt="" src="/DAT_Pictures/windows.svg"></img>
             </div>
           </div>
         </div>

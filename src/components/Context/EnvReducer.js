@@ -174,10 +174,19 @@ export const INITSTATE = {
   },
 
   numberh: {
-    data: {
-      0: { label: "Gia tri 0", value: "0", unit: "unit" },
-      1: { label: "Gia tri 1", value: "0", unit: "unit" },
-    },
+    row: 2,
+    data: [
+      {
+        label: "Gia tri 0",
+        value: "0",
+        unit: "unit",
+      },
+      {
+        label: "Gia tri 1",
+        value: "0",
+        unit: "unit",
+      },
+    ],
   },
 
   login: { username: "unknown", mail: "unknown@gmail.com", status: false },
@@ -196,6 +205,7 @@ export const INITSTATE = {
       email: "huuhuynh@gmail.com",
       name: "Huynh Huu",
       role: "user",
+      status: false,
     },
     {
       username: "phunguyen",
@@ -203,6 +213,7 @@ export const INITSTATE = {
       email: "phunguyen@gmail.com",
       name: "Nguyen Thanh Phu",
       role: "user",
+      status: false,
     },
     {
       username: "taingo",
@@ -210,6 +221,23 @@ export const INITSTATE = {
       email: "taingo@gmail.com",
       name: "Ngo Dinh Tan Tai",
       role: "user",
+      status: true,
+    },
+    {
+      username: "anhkhoi",
+      password: "anhkhoi",
+      email: "anhkhoi@gmail.com",
+      name: "anhkhoi",
+      role: "user",
+      status: false,
+    },
+    {
+      username: "phuocloc",
+      password: "phuocloc",
+      email: "phuocloc@gmail.com",
+      name: "Loc Tran",
+      role: "user",
+      status: false,
     },
   ],
 
@@ -710,10 +738,9 @@ export const INITSTATE = {
     ],
   },
 
-
   projectchanges: [
     {
-      Date: "28/9/2023",
+      Date: "28/09/2023",
       Time:"08:54:00",
       projectid: "P01",
       name: "GREEN GROWTH SHOW 2023",
@@ -721,7 +748,7 @@ export const INITSTATE = {
       account: "Taingo",
     },
     {
-      Date: "28/9/2023",
+      Date: "28/09/2023",
       Time:"09:54:21",
       projectid: "P02",
       name: "YASUO EVENT",
@@ -729,7 +756,7 @@ export const INITSTATE = {
       account: "Taingo",
     },
     {
-      Date: "30/9/2023",
+      Date: "30/09/2023",
       Time:"13:24:21",
       projectid: "P01",
       name: "GREEN GROWTH SHOW 2023",
@@ -737,11 +764,12 @@ export const INITSTATE = {
       account: "Taingo",
     },
     {
-      Date: "30/9/2023",
+      Date: "30/09/2023",
       Time:"15:54:36",
       projectid: "P03",
       name: "PIZZA HUT THUOC LA",
       company: "Công ty Mai Tài Phến - MTP Entertainment",
+      account: "Taingo",
     }
   ]
 };
@@ -884,10 +912,10 @@ const EnvReducer = (state, action) => {
         dashboardbarchart: action.payload,
       };
     case "SET_PROJECTCHANGES":
-    return {
-      ...state,
-      projectchanges: action.payload
-    }
+      return {
+        ...state,
+        projectchanges: action.payload,
+      };
     default:
       throw new Error("Unexpected action");
   }
