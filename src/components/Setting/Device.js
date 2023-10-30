@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "./Device.scss";
 import { EnvContext } from "../Context/EnvContext";
 import Button from "../Lib/Button";
@@ -23,6 +23,9 @@ import NumberH from "../Lib/NumberH";
 import NumberHSetting from "../Lib/NumberHSetting";
 import LineChartSetting from "../Lib/LineChartSetting";
 import LineChartLib from "../Lib/LineChartLib";
+import View32bit from "../Lib/View32bit";
+import View32bitSetting from "../Lib/View32bitSetting";
+
 
 export default function Device() {
   const {
@@ -39,6 +42,7 @@ export default function Device() {
     switchtoggle,
     envDispatch,
     linechart,
+    view32bit
   } = useContext(EnvContext);
   const handleChangeLib = (e) => {
     var temp = e.currentTarget.value;
@@ -57,6 +61,7 @@ export default function Device() {
     BarChart: <BarChartHorizontal setting={barchart}></BarChartHorizontal>,
     NumberH: <NumberH setting={numberh}></NumberH>,
     LineChartLib: <LineChartLib setting={linechart}></LineChartLib>,
+    View32bit: <View32bit setting={view32bit}/>,
   };
 
   const setting = {
@@ -71,6 +76,7 @@ export default function Device() {
     BarChart: <BarChartHorizontalSetting />,
     NumberH: <NumberHSetting />,
     LineChartLib: <LineChartSetting />,
+    View32bit: <View32bitSetting />,
   };
 
   // useEffect(() => {
@@ -119,6 +125,7 @@ export default function Device() {
             <option value={"BarChart"}>BarChart</option>
             <option value={"NumberH"}>NumberH</option>
             <option value={"LineChartLib"}>LineChart</option>
+            <option value={"View32bit"}>View32bit</option>
           </select>
         </div>
 

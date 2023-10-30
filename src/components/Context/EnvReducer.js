@@ -66,7 +66,6 @@ export const INITSTATE = {
     h: "400px",
     bgcolor: "#808080",
     realdatacolor: "#0000ff",
-    type: "vertical",
   },
 
   switchtoggle: {
@@ -741,7 +740,7 @@ export const INITSTATE = {
   projectchanges: [
     {
       Date: "28/09/2023",
-      Time:"08:54:00",
+      Time: "08:54:00",
       projectid: "P01",
       name: "GREEN GROWTH SHOW 2023",
       company: "Công ty Cổ phần Tập đoàn DAT",
@@ -749,7 +748,7 @@ export const INITSTATE = {
     },
     {
       Date: "28/09/2023",
-      Time:"09:54:21",
+      Time: "09:54:21",
       projectid: "P02",
       name: "YASUO EVENT",
       company: "Công ty TNHH Một Mình Tôi",
@@ -757,7 +756,7 @@ export const INITSTATE = {
     },
     {
       Date: "30/09/2023",
-      Time:"13:24:21",
+      Time: "13:24:21",
       projectid: "P01",
       name: "GREEN GROWTH SHOW 2023",
       company: "Công ty Cổ phần Tập đoàn DAT",
@@ -765,13 +764,28 @@ export const INITSTATE = {
     },
     {
       Date: "30/09/2023",
-      Time:"15:54:36",
+      Time: "15:54:36",
       projectid: "P03",
       name: "PIZZA HUT THUOC LA",
       company: "Công ty Mai Tài Phến - MTP Entertainment",
       account: "Taingo",
-    }
-  ]
+    },
+  ],
+
+  view32bit: {
+    fontSize: "20px",
+    color: "#ffffff",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100px",
+    height: "40px",
+    borderRadius: "10px",
+    backgroundColor: "#ff0000",
+    borderColor: "#000000",
+    display: "Int",
+    val1: 0,
+    val2: 0,
+  },
 };
 
 const EnvReducer = (state, action) => {
@@ -915,6 +929,11 @@ const EnvReducer = (state, action) => {
       return {
         ...state,
         projectchanges: action.payload,
+      };
+    case "SET_VIEW32BIT":
+      return {
+        ...state,
+        view32bit: action.payload,
       };
     default:
       throw new Error("Unexpected action");

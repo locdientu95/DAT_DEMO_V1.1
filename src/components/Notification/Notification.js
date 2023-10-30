@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Notification.scss";
 import DataTable from "react-data-table-component";
 import { EnvContext } from "../Context/EnvContext";
 
 export default function Notification() {
-  const { projectchanges, register, envDispatch } = useContext(EnvContext);
+  const { projectchanges, register } = useContext(EnvContext);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -130,15 +130,31 @@ export default function Notification() {
         </div>
         <div className="DAT_Notification-Container-Group">
           <div className="DAT_Notification-Container-Group-ListTag">
+            <div className="DAT_Notification-Container-Group-ListTag-Head">
+              <label style={{ color: "#0061F2", fontWeight: "600" }}>
+                Users Status
+              </label>
+            </div>
             <div className="DAT_Content-Container-Group-ListTag-Body">
               {Object.entries(register).map(([key]) => {
                 return (
-                  <div>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      padding: "10px",
+                    }}
+                  >
                     <div>{register[key].username}</div>
                     {register[key].status === true ? (
-                      <div>Online</div>
+                      <div style={{ color: "green", fontWeight: "bold" }}>
+                        Online
+                      </div>
                     ) : (
-                      <div>Offline</div>
+                      <div style={{ color: "red", fontWeight: "bold" }}>
+                        Offline
+                      </div>
                     )}
                   </div>
                 );
@@ -146,6 +162,11 @@ export default function Notification() {
             </div>
           </div>
           <div className="DAT_Notification-Container-Group-ListTag">
+            <div className="DAT_Notification-Container-Group-ListTag-Head">
+              <label style={{ color: "#0061F2", fontWeight: "600" }}>
+                Users Status
+              </label>
+            </div>
             <div className="DAT_Content-Container-Group-ListTag-Tag">
               <div className="DAT_Content-Container-Group-ListTag-Tag-Info">
                 <svg
