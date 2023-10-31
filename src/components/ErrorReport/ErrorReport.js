@@ -3,7 +3,7 @@ import "./ErrorReport.scss";
 import DataTable from "react-data-table-component";
 import { CSVLink } from "react-csv";
 import { EnvContext } from "../Context/EnvContext";
-import { TimeAxisBreakDescriptionModule, dateGetDate, dateGetMonth, dateNow } from "igniteui-react-core";
+//import { TimeAxisBreakDescriptionModule, dateGetDate, dateGetMonth, dateNow } from "igniteui-react-core";
 import { dataBound } from "@syncfusion/ej2-react-spreadsheet";
 // import axios from "axios";
 
