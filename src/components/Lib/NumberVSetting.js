@@ -11,29 +11,29 @@ export default function NumberVSetting() {
     const sum = parseInt(leng) + parseInt(col.current.value);
     const newHeader = numberv.header;
     for (var i = leng; i < sum; i++) {
-        newHeader.push({
-            name: "...",
-            code: "label_" + i,
-        });
+      newHeader.push({
+        name: "...",
+        code: "label_" + i,
+      });
     }
 
     const newData = [];
     numberv.data.map((data, index) => {
-        var x = data;
-        for (var i = leng; i < sum; i++) {
-            x["label_" + i] = "...";
-        }
-        newData.push(x);
+      var x = data;
+      for (var i = leng; i < sum; i++) {
+        x["label_" + i] = "...";
+      }
+      newData.push(x);
     });
 
     envDispatch({
-        type: "SET_NUMBERV",
-        payload: {
-            ...numberv,
-            header: newHeader,
-            data: newData,
-            col: sum,
-        },
+      type: "SET_NUMBERV",
+      payload: {
+        ...numberv,
+        header: newHeader,
+        data: newData,
+        col: sum,
+      },
     });
 
     col.current.value = "";
@@ -49,24 +49,24 @@ export default function NumberVSetting() {
 
     var newHeader = numberv.header;
     for (var i = from.current.value; i <= to.current.value; i++) {
-        newHeader = newHeader.filter((newHeader) => newHeader.code != label + i);
+      newHeader = newHeader.filter((newHeader) => newHeader.code != label + i);
     }
 
     const newData = numberv.data;
     newData.map((data, index) => {
-        for (var i = from.current.value; i <= to.current.value; i++) {
-            delete data["label_" + i];
-        }
+      for (var i = from.current.value; i <= to.current.value; i++) {
+        delete data["label_" + i];
+      }
     });
 
     envDispatch({
-        type: "SET_NUMBERV",
-        payload: {
-            ...numberv,
-            header: newHeader,
-            data: newData,
-            col: num,
-        },
+      type: "SET_NUMBERV",
+      payload: {
+        ...numberv,
+        header: newHeader,
+        data: newData,
+        col: num,
+      },
     });
 
     from.current.value = "";
@@ -74,14 +74,42 @@ export default function NumberVSetting() {
   };
 
   const selID = useRef();
-  const name = useRef();
+  const tit = useRef();
+  const handleChangeTit = (e) => {
+    var newHead = numberv.header;
+    newHead.map((data, index) => {
+      if (index == parseInt(selID.current.value)) {
+        data.name = tit.current.value;
+      }
+    });
+
+    console.log(newHead);
+
+    envDispatch({
+      type: "SET_NUMBERV",
+      payload: {
+        ...numberv,
+        header: newHead,
+      },
+    });
+
+    tit.current.value = "";
+  };
+
+  const selHead = useRef();
+  const selVal = useRef();
   const value = useRef();
-  const unit = useRef();
   const handleSave = (e) => {
-    // var newData = numberv.data;
-    // const index = newData.findIndex(
-    //   (newData) => newData.id == selID.current.value
-    // );
+    var newData = numberv.data;
+    const index = newData.findIndex(
+      (newData) => newData.label === selVal.current.value
+    );
+
+    console.log(index);
+
+    newData[index][selHead.current.value] = value.current.value;
+
+    console.log(newData);
 
     // if (name.current.value !== "") {
     //   newData[index].label = name.current.value;
@@ -95,17 +123,15 @@ export default function NumberVSetting() {
     //   newData[index].unit = unit.current.value;
     // }
 
-    // envDispatch({
-    //   type: "SET_NumberV",
-    //   payload: {
-    //     ...numberv,
-    //     data: newData,
-    //   },
-    // });
+    envDispatch({
+      type: "SET_NUMBERV",
+      payload: {
+        ...numberv,
+        data: newData,
+      },
+    });
 
-    name.current.value = "";
     value.current.value = "";
-    unit.current.value = "";
   };
 
   return (
@@ -134,20 +160,16 @@ export default function NumberVSetting() {
       </div>
 
       <div className="DAT_Setting-NumberV-Row">
-        <span
-          className="DAT_Setting-NumberV-Row-Item1"
-        >
-          Chọn id cần thay đổi:
+        <span className="DAT_Setting-NumberV-Row-Item1">
+          Chọn cột cần thay đổi:
         </span>
         <select ref={selID}>
-          {numberv.data.map((data, index) => {
-            return (
-              <option key={index} value={data.id}>
-                {data.id}
-              </option>
-            );
+          {numberv.header.map((data, index) => {
+            return <option key={index}>{index}</option>;
           })}
         </select>
+        <input type="text" ref={tit} />
+        <button onClick={(e) => handleChangeTit(e)}>Lưu</button>
       </div>
 
       <div className="DAT_Setting-NumberV-Row">
@@ -155,13 +177,24 @@ export default function NumberVSetting() {
           className="DAT_Setting-NumberV-Row-Item1"
           style={{ width: "100%" }}
         >
-          Tên:
+          Chọn nội dung cần thay đổi:
         </span>
-        <input type="text" placeholder="Nhập tên" ref={name} />
-        <span style={{ width: "100%" }}>Giá trị:</span>
+        <select ref={selVal}>
+          {numberv.data.map((data, index) => {
+            return (
+              <option key={index} value={data.label}>{data.label}</option>
+            )
+          })}
+        </select>
+        <span style={{ width: "100%" }}>Chọn cột cần thay đổi:</span>
+        <select ref={selHead}>
+          {numberv.header.map((data, index) => {
+            return (
+              <option key={index} value={data.code}>{index}</option>
+            )
+          })}
+        </select>
         <input type="text" placeholder="Nhập giá trị" ref={value} />
-        <span style={{ width: "100%" }}>Đơn vị:</span>
-        <input type="text" placeholder="Nhập đơn vị" ref={unit} />
         <button onClick={(e) => handleSave(e)}>Lưu</button>
       </div>
     </div>
