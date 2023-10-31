@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import "./Setting.scss";
 import { EnvContext } from "../Context/EnvContext";
 import DataTable from "react-data-table-component";
-import { useEffect } from "react";
 
 export default function NumberH() {
   const { numberh } = useContext(EnvContext);
@@ -11,7 +10,22 @@ export default function NumberH() {
     {
       name: "Tên",
       code: "label",
-      selector: (row) => row.label,
+      selector: (row) => (
+        <div>
+          {row.label}
+          <div
+            style={{
+              color: "gray",
+              fontSize: "10px",
+              position: "absolute",
+              bottom: "0",
+              right: "3px",
+            }}
+          >
+            {row.id}
+          </div>
+        </div>
+      ),
       center: true,
     },
     {
@@ -27,8 +41,6 @@ export default function NumberH() {
       center: true,
     },
   ];
-
-  useEffect(() => {}, []);
 
   return (
     <div className="DAT_NumberH">

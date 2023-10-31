@@ -174,14 +174,16 @@ export const INITSTATE = {
   },
 
   numberh: {
-    row: 2,
+    row: 3,
     data: [
       {
+        id: 1,
         label: "Gia tri 0",
         value: "0",
         unit: "unit",
       },
       {
+        id: 2,
         label: "Gia tri 1",
         value: "0",
         unit: "unit",
