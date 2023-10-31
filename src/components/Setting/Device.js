@@ -25,6 +25,8 @@ import LineChartSetting from "../Lib/LineChartSetting";
 import LineChartLib from "../Lib/LineChartLib";
 import View32bit from "../Lib/View32bit";
 import View32bitSetting from "../Lib/View32bitSetting";
+import NumberV from "../Lib/NumberV"
+import NumberVSetting from "../Lib/NumberVSetting"
 
 
 export default function Device() {
@@ -42,7 +44,8 @@ export default function Device() {
     switchtoggle,
     envDispatch,
     linechart,
-    view32bit
+    view32bit,
+    numberv
   } = useContext(EnvContext);
   const handleChangeLib = (e) => {
     var temp = e.currentTarget.value;
@@ -70,6 +73,7 @@ export default function Device() {
     NumberH: <NumberH setting={numberh}></NumberH>,
     LineChartLib: <LineChartLib setting={linechart}></LineChartLib>,
     View32bit: <View32bit setting={view32bit}/>,
+    NumberV: <NumberV setting={numberv}/>
   };
 
   const setting = {
@@ -85,6 +89,7 @@ export default function Device() {
     NumberH: <NumberHSetting />,
     LineChartLib: <LineChartSetting />,
     View32bit: <View32bitSetting />,
+    NumberV: <NumberVSetting/>
   };
 
   // useEffect(() => {
@@ -134,6 +139,7 @@ export default function Device() {
             <option value={"NumberH"}>NumberH</option>
             <option value={"LineChartLib"}>LineChart</option>
             <option value={"View32bit"}>View32bit</option>
+            <option value={"NumberV"}>NumberV</option>
           </select>
         </div>
 

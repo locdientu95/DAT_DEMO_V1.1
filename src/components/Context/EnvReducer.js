@@ -788,6 +788,33 @@ export const INITSTATE = {
     val1: 0,
     val2: 0,
   },
+
+  numberv: {
+    row: 3,
+    col: 2,
+    header: [
+      {
+        name: "Tên",
+        code: "label",
+      },
+      {
+        name: "Nhiệt độ",
+        code: "label_1",
+      }
+    ],
+    data: [
+      {
+        id: 1,
+        label: "Gia tri",
+        label_1: 0,
+      },
+      {
+        id: 2,
+        label: "Don vi",
+        label_1: "unit",
+      },
+    ],
+  },
 };
 
 const EnvReducer = (state, action) => {
@@ -936,6 +963,11 @@ const EnvReducer = (state, action) => {
       return {
         ...state,
         view32bit: action.payload,
+      };
+    case "SET_NUMBERV":
+      return {
+        ...state,
+        numberv: action.payload,
       };
     default:
       throw new Error("Unexpected action");
