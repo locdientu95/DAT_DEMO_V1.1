@@ -805,12 +805,12 @@ export const INITSTATE = {
     data: [
       {
         id: 1,
-        label: "Gia tri",
+        label: "Giá trị",
         label_1: 0,
       },
       {
         id: 2,
-        label: "Don vi",
+        label: "Đơn vị",
         label_1: "unit",
       },
     ],

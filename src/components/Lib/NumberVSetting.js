@@ -43,31 +43,47 @@ export default function NumberVSetting() {
   const to = useRef();
   const handleDelete = (e) => {
     const label = "label_";
-    var num =
-      parseInt(numberv.col) -
-      parseInt(parseInt(to.current.value) - parseInt(from.current.value));
+    // var num =
+    //   parseInt(numberv.col) -
+    //   parseInt(parseInt(to.current.value) - parseInt(from.current.value));
+    const condition = numberv.col - to.current.value;
 
-    var newHeader = numberv.header;
-    for (var i = from.current.value; i <= to.current.value; i++) {
-      newHeader = newHeader.filter((newHeader) => newHeader.code != label + i);
-    }
+    if (numberv.col <= 2) {
+      alert("Số cột tối thiểu là 2");
+    } else {
+      if (from.current.value <= 0 || to.current.value <= 0) {
+        alert("Nhập sai, vui lòng nhập lại");
+      } else if (from.current.value > to.current.value) {
+        alert("Nhập sai, vui lòng nhập lại");
+      } else if (from.current.value == "" || to.current.value == "") {
+        alert("Nhập sai, vui lòng nhập lại");
+      } else if (condition >= 2 ) {
+        var newHeader = numberv.header;
+        for (var i = from.current.value; i <= to.current.value; i++) {
+          newHeader = newHeader.filter(
+            (newHeader) => newHeader.code != label + i
+          );
+        }
 
-    const newData = numberv.data;
-    newData.map((data, index) => {
-      for (var i = from.current.value; i <= to.current.value; i++) {
-        delete data["label_" + i];
+        const newData = numberv.data;
+        newData.map((data, index) => {
+          for (var i = from.current.value; i <= to.current.value; i++) {
+            delete data["label_" + i];
+          }
+        });
+
+        envDispatch({
+          type: "SET_NUMBERV",
+          payload: {
+            ...numberv,
+            header: newHeader,
+            data: newData,
+          },
+        });
+      } else {
+        alert("Số cột tối thiểu là 2");
       }
-    });
-
-    envDispatch({
-      type: "SET_NUMBERV",
-      payload: {
-        ...numberv,
-        header: newHeader,
-        data: newData,
-        col: num,
-      },
-    });
+    }
 
     from.current.value = "";
     to.current.value = "";
@@ -170,16 +186,20 @@ export default function NumberVSetting() {
         <select ref={selVal}>
           {numberv.data.map((data, index) => {
             return (
-              <option key={index} value={data.label}>{data.label}</option>
-            )
+              <option key={index} value={data.label}>
+                {data.label}
+              </option>
+            );
           })}
         </select>
         <span style={{ width: "100%" }}>Chọn cột cần thay đổi:</span>
         <select ref={selHead}>
           {numberv.header.map((data, index) => {
             return (
-              <option key={index} value={data.code}>{index}</option>
-            )
+              <option key={index} value={data.code}>
+                {index}
+              </option>
+            );
           })}
         </select>
         <input type="text" placeholder="Nhập giá trị" ref={value} />
