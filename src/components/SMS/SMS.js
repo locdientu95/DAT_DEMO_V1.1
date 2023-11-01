@@ -1,31 +1,33 @@
 import React, { useRef } from "react";
 import "./SMS.scss";
-import Status from "./StatusSMS.js"
-import Config from "./Config.js"
+import Mess from "./Mess.js";
+import Status from "./StatusSMS.js";
+import Config from "./Config.js";
+import { useState } from "react";
 export default function SMS() {
-  const phone = useRef()
-  const GW = useRef()
-  const ErrCode = useRef()
-  const ErrType = useRef()
-  const Info = useRef()
-  const Solve = useRef()
 
+  const tit = {
+    mess: "Mess",
+    config: "Cấu Hình",
+    status: "Thống Kê",
+  };
 
-  const send=()=>{
-    console.log(phone.current.value)
-    console.log(GW.current.value)
-    console.log(ErrCode.current.value)
-    console.log(ErrType.current.value)
-    console.log(Info.current.value)
-    console.log(Solve.current.value)
-    
+  const color = {
+    cur: "blue",
+    pre: "black",
+  };
+
+  const [ nav, setNav ] = useState("mess");
+  const handleNav = (e) => {
+    var id = e.currentTarget.id;
+    setNav(id);
   }
+
   return (
-    <div className="DAT_Content">
-      <div className="DAT_Content-Header">
-        <div className="DAT_Content-Header-Main">
-          <div className="DAT_Content-Header-Main-Dashboard">
-            <div className="DAT_Content-Header-Main-Dashboard-Heading">
+    <div className="DAT_SMS">
+      <div className="DAT_SMS-Header">
+          <div className="DAT_SMS-Header-Dashboard">
+            <div className="DAT_SMS-Header-Dashboard-Heading">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="28"
@@ -42,64 +44,71 @@ export default function SMS() {
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
-              SMS
+              SMS - {tit[nav]}
             </div>
-            <div className="DAT_Content-Header-Main-Dashboard-SubHead">
+            <div className="DAT_SMS-Header-Dashboard-SubHead">
               Example dashboard overview and content summary
             </div>
-          </div>
         </div>
       </div>
 
-      <div className="DAT_Content-Main">
-        <div className="DAT_Content-Main-Tit">
-          SMS
+      <div className="DAT_SMS-Main">
+        <div className="DAT_SMS-Main-Nav">
+          <div
+            className="DAT_SMS-Main-Nav-Item"
+            id="mess"
+            style={{ color: nav === "mess" ? color.cur : color.pre }}
+            onClick={(e) => handleNav(e)}
+          >
+            SMS
+          </div>
+
+          <div
+            className="DAT_SMS-Main-Nav-Item"
+            id="config"
+            style={{ color: nav === "config" ? color.cur : color.pre }}
+            onClick={(e) => handleNav(e)}
+          >
+            Cấu Hình
+          </div>
+
+          <div
+            className="DAT_SMS-Main-Nav-Item"
+            id="status"
+            style={{ color: nav === "status" ? color.cur : color.pre }}
+            onClick={(e) => handleNav(e)}
+          >
+            Thống Kê
+          </div>
         </div>
-          {/* <div className="DAT_Content-Main-Col1">
-            <div className="DAT_Content-Main-Col1-Item">
-              <div className="DAT_Content-Main-Col1-Item-Tit">Số điện thoại</div>
-              <input ref={phone}  />
-            </div>
 
-            <div className="DAT_Content-Main-Col1-Item">
-              <div className="DAT_Content-Main-Col1-Item-Tit">GateWay</div>
-              <input ref={GW} />
-            </div>
-          </div>
-
-          <div className="DAT_Content-Main-Col1">
-            <div className="DAT_Content-Main-Col1-Item">
-              <div className="DAT_Content-Main-Col1-Item-Tit">Mã Lỗi</div>
-              <input ref={ErrCode} />
-            </div>
-
-            <div className="DAT_Content-Main-Col1-Item">
-              <div className="DAT_Content-Main-Col1-Item-Tit">Loại Lỗi</div>
-              <input ref={ErrType} />
-            </div>
-          </div>
-
-          <div className="DAT_Content-Main-Col2">
-            <div className="DAT_Content-Main-Col2-Item">
-              <div className="DAT_Content-Main-Col2-Item-Tit">Nguyên Nhân</div>
-              <input ref={Info} />
-            </div>
-
-            <div className="DAT_Content-Main-Col2-Item">
-              <div className="DAT_Content-Main-Col2-Item-Tit">Biện Pháp</div>
-              <input ref={Solve} />
-            </div>
-          </div>
-
-          <div className="DAT_Content-Main-Button">
-            <button onClick={send}>Gửi</button>
-          </div> */}
-
-          <Status></Status>
-
-          {/* <Config></Config> */}
+        <div className="DAT_SMS-Main-Content">
+          {(() => {
+            switch (nav) {
+              case "mess":
+                return (
+                  <>
+                    <Mess></Mess>
+                  </>
+                );
+              case "config":
+                return (
+                  <>
+                    <Config></Config>
+                  </>
+                );
+              case "status":
+                return (
+                  <>
+                    <Status></Status>
+                  </>
+                );
+              default:
+                <></>;
+            }
+          })()}
+        </div>
       </div>
-
     </div>
   );
 }
