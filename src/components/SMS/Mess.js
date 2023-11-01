@@ -20,7 +20,7 @@ export default function Mess(props) {
       </div>
 
       <div className="DAT_Mess-Button">
-        <button>Gửi</button>
+        <button>Lưu</button>
       </div>
     </div>
   );

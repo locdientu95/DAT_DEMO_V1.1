@@ -3,6 +3,7 @@ import "./SMS.scss";
 import Mess from "./Mess.js";
 import Status from "./StatusSMS.js";
 import Config from "./Config.js";
+import Project from "./Project.js";
 import { useState } from "react";
 export default function SMS() {
 
@@ -10,6 +11,7 @@ export default function SMS() {
     mess: "Mess",
     config: "Cấu Hình",
     status: "Thống Kê",
+    project: "Dự án"
   };
 
   const color = {
@@ -80,6 +82,15 @@ export default function SMS() {
           >
             Thống Kê
           </div>
+
+          {/* <div
+            className="DAT_SMS-Main-Nav-Item"
+            id="project"
+            style={{ color: nav === "project" ? color.cur : color.pre }}
+            onClick={(e) => handleNav(e)}
+          >
+            Dự án
+          </div> */}
         </div>
 
         <div className="DAT_SMS-Main-Content">
@@ -103,6 +114,12 @@ export default function SMS() {
                     <Status></Status>
                   </>
                 );
+                // case "project":
+                // return (
+                //   <>
+                //     <Project></Project>
+                //   </>
+                // );
               default:
                 <></>;
             }
