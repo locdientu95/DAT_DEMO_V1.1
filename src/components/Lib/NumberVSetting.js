@@ -111,18 +111,6 @@ export default function NumberVSetting() {
 
     console.log(newData);
 
-    // if (name.current.value !== "") {
-    //   newData[index].label = name.current.value;
-    // }
-
-    // if (value.current.value !== "") {
-    //   newData[index].value = value.current.value;
-    // }
-
-    // if (unit.current.value !== "") {
-    //   newData[index].unit = unit.current.value;
-    // }
-
     envDispatch({
       type: "SET_NUMBERV",
       payload: {
