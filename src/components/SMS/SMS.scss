@@ -67,9 +67,9 @@
 
 .DAT_Mess {
     &-Row {
-        display: flex;  
-        margin-bottom: 16px; 
-        
+        display: flex;
+        margin-bottom: 16px;
+
         &-Label {
             width: 100px;
         }
@@ -115,62 +115,48 @@
 .DAT_Config {
     &-Row {
         display: flex;
-        // margin-bottom: 100px;
 
         &-Item {
             display: flex;
             flex: 5;
-            // height: 30px;
 
             &-Label {
-                padding-right: 16px;
+                padding: 20px 16px 0px 0px;
                 display: flex;
-                // align-items: center;
             }
 
-            & select {
+            &-Content {
+                display: flex;
+                gap: 16px;
                 height: 40px;
-                width: 200px;
-                border-radius: 7px;
-                padding: 8px;
-            }
-        }
-    }
+                padding: 20px 0px 0px 0px;
 
-    &-Row2 {
-        &-Label {
-            margin-bottom: 8px;
-        }
+                & input {
+                    border-radius: 5px;
+                    border: solid 1px rgb(156, 155, 155, 0.3);
+                    outline: none;
+                    padding: 14px 18px;
+                    box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
 
-        &-Content {
-            display: flex;
-            gap: 16px;
-
-            & input {
-                border-radius: 5px;
-                border: solid 1px rgb(156, 155, 155, 0.3);
-                outline: none;
-                padding: 14px 18px;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-    
-                &:focus-within {
-                    border: solid 4px rgb(66, 100, 255, 0.5);
+                    &:focus-within {
+                        border: solid 4px rgb(66, 100, 255, 0.5);
+                    }
                 }
-            }
 
-            & button {
-                width: 60px;
-                border: none;
-                color: white;
-                background-color: #0061f2;
-                font-weight: 400;
-                border-radius: 5px;
-                cursor: pointer;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                & button {
+                    width: 60px;
+                    border: none;
+                    color: white;
+                    background-color: #0061f2;
+                    font-weight: 400;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
             }
         }
     }
