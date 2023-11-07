@@ -129,16 +129,17 @@ export default function TableProSetting() {
   const handleDeleteCol = (e) => {
     const start = fromCol.current.value;
     const end = toCol.current.value;
+    const cond = tablepro.col - parseInt(end)
     if (tablepro.col <= 2) {
       alert("Số cột tối thiểu là 2");
     } else {
-      if (start <= 0 || end <= 0) {
-        alert("Nhập sai, vui lòng nhập lại");
-      } else if (start > end) {
-        alert("Nhập sai, vui lòng nhập lại");
+      if (start <= 0  || end <= 0 ) {
+        alert("Nhập sai, vui lòng nhập lại ");
+      } else if (parseInt(start) > parseInt(end) ) {
+        alert("Nhập sai, vui lòng nhập lại ");
       } else if (start == "" || end == "") {
-        alert("Nhập sai, vui lòng nhập lại");
-      } else {
+        alert("Nhập sai, vui lòng nhập lại ");
+      } else if(cond >= 2){
         const label = "val_";
         var num =
           parseInt(tablepro.col) - parseInt(parseInt(end) - parseInt(start));
@@ -167,6 +168,8 @@ export default function TableProSetting() {
             data: newData,
           },
         });
+      }else{
+        alert("Số cột tối thiểu là 2")
       }
     }
   };

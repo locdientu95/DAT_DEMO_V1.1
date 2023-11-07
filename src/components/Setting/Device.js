@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Device.scss";
 import { EnvContext } from "../Context/EnvContext";
 import Button from "../Lib/Button";
@@ -25,7 +25,8 @@ import LineChartSetting from "../Lib/LineChartSetting";
 import LineChartLib from "../Lib/LineChartLib";
 import View32bit from "../Lib/View32bit";
 import View32bitSetting from "../Lib/View32bitSetting";
-
+import NumberV from "../Lib/NumberV";
+import NumberVSetting from "../Lib/NumberVSetting";
 
 export default function Device() {
   const {
@@ -42,11 +43,20 @@ export default function Device() {
     switchtoggle,
     envDispatch,
     linechart,
-    view32bit
+    view32bit,
+    numberv,
   } = useContext(EnvContext);
   const handleChangeLib = (e) => {
     var temp = e.currentTarget.value;
     envDispatch({ type: "SET_TYPE", payload: temp });
+  };
+  const [pop, setPop] = useState(false);
+  const handlePop = (e) => {
+    setPop(true);
+  };
+
+  const handleClose = (e) => {
+    setPop(false);
   };
 
   const data = {
@@ -61,7 +71,8 @@ export default function Device() {
     BarChart: <BarChartHorizontal setting={barchart}></BarChartHorizontal>,
     NumberH: <NumberH setting={numberh}></NumberH>,
     LineChartLib: <LineChartLib setting={linechart}></LineChartLib>,
-    View32bit: <View32bit setting={view32bit}/>,
+    View32bit: <View32bit setting={view32bit} />,
+    NumberV: <NumberV setting={numberv} />,
   };
 
   const setting = {
@@ -77,6 +88,7 @@ export default function Device() {
     NumberH: <NumberHSetting />,
     LineChartLib: <LineChartSetting />,
     View32bit: <View32bitSetting />,
+    NumberV: <NumberVSetting />,
   };
 
   // useEffect(() => {
@@ -126,20 +138,39 @@ export default function Device() {
             <option value={"NumberH"}>NumberH</option>
             <option value={"LineChartLib"}>LineChart</option>
             <option value={"View32bit"}>View32bit</option>
+            <option value={"NumberV"}>NumberV</option>
           </select>
         </div>
 
         <div className="Device_Content-Container-Group">
-          <div className="Device_Content-Container-Group-Head">Giao diện</div>
+          <div className="Device_Content-Container-Group-Head">
+            Giao diện
+            <div style={{ cursor: "pointer" }} onClick={(e) => handlePop(e)}>
+              ...
+            </div>
+          </div>
           <div className="Device_Content-Container-Group-Body">
             {data[type]}
           </div>
         </div>
 
-        <div className="Device_Content-Container-Group">
-          <div className="Device_Content-Container-Group-Head">Cài Đặt</div>
-          <div className="Device_Content-Container-Group-Body">
-            {setting[type]}
+        <div
+          className="Device_Content-Container-Setting"
+          style={{ display: pop ? "block" : "none" }}
+        >
+          <div className="Device_Content-Container-Setting-Group">
+            <div className="Device_Content-Container-Setting-Group-Head">
+              Cài Đặt
+              <div
+                style={{ cursor: "pointer" }}
+                onClick={(e) => handleClose(e)}
+              >
+                x
+              </div>
+            </div>
+            <div className="Device_Content-Container-Setting-Group-Body">
+              {setting[type]}
+            </div>
           </div>
         </div>
       </div>

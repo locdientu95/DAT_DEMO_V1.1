@@ -173,14 +173,16 @@ export const INITSTATE = {
   },
 
   numberh: {
-    row: 2,
+    row: 3,
     data: [
       {
+        id: 1,
         label: "Gia tri 0",
         value: "0",
         unit: "unit",
       },
       {
+        id: 2,
         label: "Gia tri 1",
         value: "0",
         unit: "unit",
@@ -800,6 +802,7 @@ export const INITSTATE = {
     val2: 0,
   },
 
+<<<<<<< HEAD
   iconnoti: [
     {
       name: "ERR1",
@@ -834,6 +837,34 @@ export const INITSTATE = {
       bgcolor: "green",
     }
   ]
+=======
+  numberv: {
+    row: 3,
+    col: 2,
+    header: [
+      {
+        name: "Tên",
+        code: "label",
+      },
+      {
+        name: "Nhiệt độ",
+        code: "label_1",
+      }
+    ],
+    data: [
+      {
+        id: 1,
+        label: "Giá trị",
+        label_1: 0,
+      },
+      {
+        id: 2,
+        label: "Đơn vị",
+        label_1: "unit",
+      },
+    ],
+  },
+>>>>>>> 5870e84a693c2dc147fc6f7ec438a0ce4cbfa038
 };
 
 const EnvReducer = (state, action) => {
@@ -983,11 +1014,19 @@ const EnvReducer = (state, action) => {
         ...state,
         view32bit: action.payload,
       };
+<<<<<<< HEAD
     case "SET_ICONNOTI":
       return {
         ...state,
         iconnoti: action.payload,
       }
+=======
+    case "SET_NUMBERV":
+      return {
+        ...state,
+        numberv: action.payload,
+      };
+>>>>>>> 5870e84a693c2dc147fc6f7ec438a0ce4cbfa038
     default:
       throw new Error("Unexpected action");
   }
