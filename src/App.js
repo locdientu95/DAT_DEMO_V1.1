@@ -21,9 +21,40 @@ import ErrorSetting from "./components/ErrorSetting/ErrorSetting";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useContext } from "react";
 import { EnvContext } from "./components/Context/EnvContext";
+import { useEffect } from "react";
+import { type } from "@testing-library/user-event/dist/type";
 
 export default function App() {
-  const { login } = useContext(EnvContext);
+  const { register, login, envDispatch } = useContext(EnvContext);
+
+  
+  useEffect(() => {
+
+    var newInfo = register;
+    var data = JSON.parse(localStorage.getItem("data"))
+    if(data !== null){
+      newInfo = newInfo.filter(
+        (newInfo) =>
+          newInfo.username === data.user &&
+          newInfo.password === data.pwd
+      );
+      console.log(localStorage.getItem("data"), newInfo)
+  
+      if (newInfo.length) {
+        envDispatch({
+          type: "SET_LOGIN",
+          payload: {
+            username: newInfo[0].username,
+            mail: newInfo[0].email,
+            status: true,
+          },
+        });
+      }
+    }
+
+
+      
+  },[])
 
   return (
     <Router>

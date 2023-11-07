@@ -38,6 +38,7 @@ export const EnvContextProvider = ({ children }) => {
         dashboardbarchart: state.dashboardbarchart,
         projectchanges: state.projectchanges,
         view32bit: state.view32bit,
+        iconnoti: state.iconnoti,
         envDispatch,
       }}
     >

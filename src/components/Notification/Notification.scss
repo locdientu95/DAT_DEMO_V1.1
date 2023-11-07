@@ -108,7 +108,12 @@
                 border-radius: 10px;
                 box-shadow: 4px 4px 4px 4px rgb(136, 136, 136, 0.1);
                 overflow: hidden;
-            
+                height: 400px;
+
+                &:hover {
+                    overflow-y: scroll;
+                }
+
                 &-Head {
                     background-color: rgb(219, 219, 219);
                     border-bottom: solid 1px rgb(186, 186, 186);
@@ -161,6 +166,145 @@
                             overflow: hidden;
                             text-overflow: ellipsis;
                         }
+                    }
+                }
+            }
+        }
+
+        &-SettingNoti {
+            position: relative;
+            gap: 10px;
+            width: 95%;
+            margin: auto;
+            background-color: white;
+            margin-bottom: 20px;
+            border-radius: 7px;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            // height: 500px;
+
+            &-Head {
+                background-color: rgb(219, 219, 219);
+                border-bottom: solid 1px rgb(186, 186, 186);
+                height: 50px;
+                display: flex;
+                align-items: center;
+                padding-left: 10px;
+                z-index: 2;
+            }
+
+            &-Body {
+                padding: 20px;
+                z-index: 2;
+                margin: 20px;
+
+                &-IconStorage {
+                    box-shadow:
+                        5px 5px 10px rgb(136, 136, 136, 0.2),
+                        -5px -5px 10px rgb(136, 136, 136, 0.2);
+                    border-radius: 7px;
+                    width: 250px;
+                    height: 200px;
+                    margin-left: 320px;
+                    margin-top: -15px;
+                    overflow: hidden;
+                    overflow-y: scroll;
+                    &-Item {
+                        display: flex;
+                        align-items: center;
+                        padding: 10px;
+                        border-bottom: solid 1px grey;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: rgb(128, 128, 128, 0.3);
+                        }
+
+                        
+
+                        &-Icon {
+                            width: 40px;
+                            height: 40px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            margin-right: 20px;
+                            border-radius: 50%;
+                            background-color: red;
+                            color: white;
+                        }
+                    }
+                }
+
+                &-Row {
+                    display: flex;
+                    margin-bottom: 10px;
+                    gap: 5px;
+                    align-items: center;
+                    justify-content: center;
+
+                    & label {
+                        // width: 100%;
+                    }
+
+                    & input {
+                        width: 120px;
+                        background-color:  rgb(0, 97, 242, 0.3);
+                        border-style: none;
+                        border-radius: 7px;
+                    }
+
+                    &-BackgroundColor {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+
+                        & input {
+                            width: 27px;
+                        }
+                    }
+
+                    & button {
+                        // height: 30px;
+                        // width: 60px;
+                        padding: 10px 20px;
+                        background-color:  #0061F2;
+                        color: white;
+                        border: none;
+                        justify-content: flex-end;
+                        border-radius: 5px;
+                        cursor: pointer;
+
+                        &:hover{
+                            background-color: #0054d2;
+                        }
+                    }
+
+                    & select {
+                        display: flex;
+                        justify-content: center;
+                        margin: 10px 30px;
+                        width: 120px;
+                        background-color: rgb(0, 97, 242, 0.3);
+                        padding: 7px;
+                        border-radius: 7px;
+                        border: 2px solid rgb(0, 97, 242);
+                        height: 38.8px;
+
+                    }
+
+                    &-IconDrop {
+                        display: flex;
+                        justify-content: center;
+                        margin: 0 30px;
+                        width: 120px;
+                        background-color: rgb(0, 97, 242, 0.3);
+                        padding: 7px;
+                        border-radius: 7px;
+                        border: 2px solid rgb(0, 97, 242);
+                        font-weight: 600;
+                        cursor: pointer;
                     }
                 }
             }

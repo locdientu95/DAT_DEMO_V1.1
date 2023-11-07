@@ -25,3 +25,24 @@ từng dự án của Tài (3 Solar, 2 Auto, 3 Elev, 2 UPS)
 va setting.
 
 18/10 Map data, them xoa sua data. (Object entries...) add row add attribute
+
+19/10 Phat trien chart, research thu vien
+
+20/10 Xay dung giao dien chinh, đổ data
+
+23/10 Hoàn thành đổ data, chuyển sang setting.
+
+24/10 Hoàn thành setting cho chart, nhận requirements mới - livedata
+
+25/10 Research setInterval, đã lấy được realtime data cho xAxis
+
+26/10 Hoàn thành đổ data cho 1 set dữ liệu, gặp vấn đề với thêm xóa sửa. Đẩy code cho mentor
+
+27/10 Nhận requirements để phát triển trang notification
+
+30/10 Lên hình vẽ giao diện, UX UI cho trang noti
+
+31/10 Hoàn thành filter và map data từ dữ liệu
+
+1/11 Hoàn thành Users Status và Noti history, thay đổi theo góp ý của khách hàng (sửa
+lại filter Project Changes History), bổ sung thêm noti setting.

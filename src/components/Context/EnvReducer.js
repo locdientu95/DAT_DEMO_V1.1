@@ -250,6 +250,7 @@ export const INITSTATE = {
       ErrType: "Error",
       ProjectName: "Dự Án 1",
       Datetime: "28/9/2023 08:54:00",
+      read: false,
     },
     {
       id: 2,
@@ -260,6 +261,7 @@ export const INITSTATE = {
       ErrType: "Error",
       ProjectName: "Dự Án 1",
       Datetime: "22/9/2021 18:54:00",
+      read: false,
     },
     {
       id: 3,
@@ -270,6 +272,7 @@ export const INITSTATE = {
       ErrType: "Error",
       ProjectName: "Dự Án 1",
       Datetime: "28/8/2023 10:54:00",
+      read: false,
     },
     {
       id: 4,
@@ -280,6 +283,7 @@ export const INITSTATE = {
       ErrType: "Error",
       ProjectName: "Dự Án 1",
       Datetime: "21/3/2020 07:45:00",
+      read: true,
     },
     {
       id: 5,
@@ -290,6 +294,7 @@ export const INITSTATE = {
       ErrType: "Error",
       ProjectName: "Dự Án 1",
       Datetime: "10/3/2023 17:54:00",
+      read: true,
     },
     {
       id: 6,
@@ -300,6 +305,7 @@ export const INITSTATE = {
       ErrType: "Error",
       ProjectName: "Dự Án 1",
       Datetime: "2/9/2023 00:00:00",
+      read: true,
     },
     {
       id: 7,
@@ -310,6 +316,7 @@ export const INITSTATE = {
       ErrType: "Error",
       ProjectName: "Dự Án 1",
       Datetime: "30/1/2020 9:00:00",
+      read: true,
     },
     {
       id: 8,
@@ -320,6 +327,7 @@ export const INITSTATE = {
       ErrType: "Error",
       ProjectName: "Dự Án 1",
       Datetime: "17/3/2019 20:54:00",
+      read: true,
     },
     {
       id: 9,
@@ -330,6 +338,7 @@ export const INITSTATE = {
       ErrType: "Error",
       ProjectName: "Dự Án 1",
       Datetime: "1/4/2023 12:54:00",
+      read: true,
     },
     {
       id: 10,
@@ -340,6 +349,7 @@ export const INITSTATE = {
       ErrType: "Error",
       ProjectName: "Dự Án 1",
       Datetime: "20/5/2023 13:30:00",
+      read: true,
     },
     {
       id: 11,
@@ -350,6 +360,7 @@ export const INITSTATE = {
       ErrType: "Error",
       ProjectName: "Dự Án 1",
       Datetime: "7/5/2023 15:15:00",
+      read: true,
     },
     {
       id: 12,
@@ -360,6 +371,7 @@ export const INITSTATE = {
       ErrType: "Error",
       ProjectName: "Dự Án 1",
       Datetime: "10/10/2021 10:13:00",
+      read: true,
     },
     {
       id: 13,
@@ -370,6 +382,7 @@ export const INITSTATE = {
       ErrType: "Error",
       ProjectName: "Dự Án 1",
       Datetime: "9/8/2023 19:20:00",
+      read: true,
     },
   ],
 
@@ -786,6 +799,41 @@ export const INITSTATE = {
     val1: 0,
     val2: 0,
   },
+
+  iconnoti: [
+    {
+      name: "ERR1",
+      bgcolor: "red",
+    },
+    {
+      name:"ERR2",
+      bgcolor: "red",
+    },
+    {
+      name: "WARN1",
+      bgcolor: "yellow",
+    },
+    {
+      name: "WARN2",
+      bgcolor: "yellow",
+    },
+    {
+      name: "INFO1",
+      bgcolor: "blue",
+    },
+    {
+      name: "INFO2",
+      bgcolor: "blue",
+    },
+    {
+      name: "SUCCESS1",
+      bgcolor: "green",
+    },
+    {
+      name: "SUCCESS2",
+      bgcolor: "green",
+    }
+  ]
 };
 
 const EnvReducer = (state, action) => {
@@ -935,6 +983,11 @@ const EnvReducer = (state, action) => {
         ...state,
         view32bit: action.payload,
       };
+    case "SET_ICONNOTI":
+      return {
+        ...state,
+        iconnoti: action.payload,
+      }
     default:
       throw new Error("Unexpected action");
   }
