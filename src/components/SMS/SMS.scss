@@ -114,27 +114,27 @@
 
 .DAT_Config {
     &-Row {
-        display: flex;
+        //display: flex;
         // margin-bottom: 100px;
 
-        &-Item {
-            display: flex;
-            flex: 5;
-            // height: 30px;
+        // &-Item {
+        //     display: flex;
+        //     flex: 5;
+        //     // height: 30px;
 
-            &-Label {
-                padding-right: 16px;
-                display: flex;
-                // align-items: center;
-            }
+        //     &-Label {
+        //         padding-right: 16px;
+        //         display: flex;
+        //         // align-items: center;
+        //     }
 
-            & select {
-                height: 40px;
-                width: 200px;
-                border-radius: 7px;
-                padding: 8px;
-            }
-        }
+        //     & select {
+        //         height: 40px;
+        //         width: 200px;
+        //         border-radius: 7px;
+        //         padding: 8px;
+        //     }
+        // }
     }
 
     &-Row2 {
