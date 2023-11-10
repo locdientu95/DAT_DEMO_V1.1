@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.scss";
 import Header from "./components/Header/Header";
 import Content from "./components/Content/Content";
@@ -21,9 +21,18 @@ import ErrorSetting from "./components/ErrorSetting/ErrorSetting";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useContext } from "react";
 import { EnvContext } from "./components/Context/EnvContext";
+import axios from "axios";
 
 export default function App() {
   const { login } = useContext(EnvContext);
+
+  useEffect(()=>{
+        axios.get("http://172.16.0.169:3000/",{credential:true}).then(
+          (res)=>{
+             console.log(res.data.data)
+          }
+        )
+  },[])
 
   return (
     <Router>
