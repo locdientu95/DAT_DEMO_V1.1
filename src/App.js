@@ -28,13 +28,13 @@ import axios from "axios";
 export default function App() {
   const { register, login, envDispatch } = useContext(EnvContext);
 
-  useEffect(() => {
-    axios
-      .get("http://172.16.0.204:3000/gauge/", { credential: true })
-      .then((res) => {
-        console.log(res.data.data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://172.16.0.204:3000/gauge", { credential: true })
+  //     .then((res) => {
+  //       console.log(res.data.data);
+  //     });
+  // }, []);
 
   useEffect(() => {
     var newInfo = register;

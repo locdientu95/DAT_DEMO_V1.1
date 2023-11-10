@@ -27,6 +27,7 @@ import View32bit from "../Lib/View32bit";
 import View32bitSetting from "../Lib/View32bitSetting";
 import NumberV from "../Lib/NumberV";
 import NumberVSetting from "../Lib/NumberVSetting";
+import axios from "axios";
 
 export default function Device() {
   const {
@@ -94,6 +95,12 @@ export default function Device() {
   // useEffect(() => {
   //     console.log(linechart)
   // }, [linechart])
+
+  useEffect(() => {
+    axios.get("http://172.16.0.204:3000/", { credential: true }).then((res) => {
+      console.log(res.data.data);
+    });
+  }, []);
 
   return (
     <div className="Device_Content">
@@ -165,7 +172,7 @@ export default function Device() {
                 style={{ cursor: "pointer" }}
                 onClick={(e) => handleClose(e)}
               >
-                x
+                <ion-icon name="ellipsis-vertical-circle-outline"></ion-icon>
               </div>
             </div>
             <div className="Device_Content-Container-Setting-Group-Body">
