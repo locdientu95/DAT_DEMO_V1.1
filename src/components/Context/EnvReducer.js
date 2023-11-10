@@ -56,7 +56,7 @@ export const INITSTATE = {
     color: "blue",
     scale: 5,
     realdata: 30,
-    type: "bar",
+    type: "vertical",
     w: "100px",
     h: "400px",
     bgcolor: "#808080",
@@ -797,6 +797,44 @@ export const INITSTATE = {
     val2: 0,
   },
 
+<<<<<<< HEAD
+  iconnoti: [
+    {
+      name: "ERR1",
+      bgcolor: "red",
+    },
+    {
+      name:"ERR2",
+      bgcolor: "red",
+    },
+    {
+      name: "WARN1",
+      bgcolor: "yellow",
+    },
+    {
+      name: "WARN2",
+      bgcolor: "yellow",
+    },
+    {
+      name: "INFO1",
+      bgcolor: "blue",
+    },
+    {
+      name: "INFO2",
+      bgcolor: "blue",
+    },
+    {
+      name: "SUCCESS1",
+      bgcolor: "green",
+    },
+    {
+      name: "SUCCESS2",
+      bgcolor: "green",
+    }
+  ],
+  
+=======
+>>>>>>> 7a8b9708ee60de8ed760e720c5dab2fcf325ebb3
   numberv: {
     row: 3,
     col: 2,
@@ -972,6 +1010,14 @@ const EnvReducer = (state, action) => {
         ...state,
         view32bit: action.payload,
       };
+<<<<<<< HEAD
+    case "SET_ICONNOTI":
+      return {
+        ...state,
+        iconnoti: action.payload,
+      }
+=======
+>>>>>>> 7a8b9708ee60de8ed760e720c5dab2fcf325ebb3
     case "SET_NUMBERV":
       return {
         ...state,

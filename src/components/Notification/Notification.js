@@ -125,12 +125,12 @@ export default function Notification() {
               value={fill.current}
               onChange={(e) => handleInput(e)}
             ></input>
-              <DataTable
-                columns={column}
-                data={data}
-                pagination
-                paginationComponentOptions={paginationComponentOptions}
-              />
+            <DataTable
+              columns={column}
+              data={data}
+              pagination
+              paginationComponentOptions={paginationComponentOptions}
+            />
           </div>
         </div>
         <div className="DAT_Notification-Container-SettingNoti">
@@ -201,10 +201,10 @@ export default function Notification() {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="feather feather-activity"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-activity"
                     >
                       <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
                     </svg>
@@ -227,10 +227,10 @@ export default function Notification() {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="feather feather-bar-chart"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-bar-chart"
                     >
                       <line x1="12" y1="20" x2="12" y2="10"></line>
                       <line x1="18" y1="20" x2="18" y2="4"></line>
@@ -255,10 +255,10 @@ export default function Notification() {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="feather feather-user-plus"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-user-plus"
                     >
                       <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                       <circle cx="8.5" cy="7" r="4"></circle>
@@ -308,6 +308,7 @@ export default function Notification() {
               {Object.entries(register).map(([key]) => {
                 return (
                   <div
+                    key={key}
                     style={{
                       display: "flex",
                       alignItems: "center",
