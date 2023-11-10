@@ -61,7 +61,7 @@ export const INITSTATE = {
     color: "blue",
     scale: 5,
     realdata: 30,
-    type: "bar",
+    type: "vertical",
     w: "100px",
     h: "400px",
     bgcolor: "#808080",
@@ -802,7 +802,6 @@ export const INITSTATE = {
     val2: 0,
   },
 
-<<<<<<< HEAD
   iconnoti: [
     {
       name: "ERR1",
@@ -836,8 +835,8 @@ export const INITSTATE = {
       name: "SUCCESS2",
       bgcolor: "green",
     }
-  ]
-=======
+  ],
+  
   numberv: {
     row: 3,
     col: 2,
@@ -864,7 +863,6 @@ export const INITSTATE = {
       },
     ],
   },
->>>>>>> 5870e84a693c2dc147fc6f7ec438a0ce4cbfa038
 };
 
 const EnvReducer = (state, action) => {
@@ -1014,19 +1012,16 @@ const EnvReducer = (state, action) => {
         ...state,
         view32bit: action.payload,
       };
-<<<<<<< HEAD
     case "SET_ICONNOTI":
       return {
         ...state,
         iconnoti: action.payload,
       }
-=======
     case "SET_NUMBERV":
       return {
         ...state,
         numberv: action.payload,
       };
->>>>>>> 5870e84a693c2dc147fc6f7ec438a0ce4cbfa038
     default:
       throw new Error("Unexpected action");
   }

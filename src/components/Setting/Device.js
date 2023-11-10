@@ -91,10 +91,6 @@ export default function Device() {
     NumberV: <NumberVSetting />,
   };
 
-  // useEffect(() => {
-  //     console.log(linechart)
-  // }, [linechart])
-
   return (
     <div className="Device_Content">
       <div className="Device_Content-Header">

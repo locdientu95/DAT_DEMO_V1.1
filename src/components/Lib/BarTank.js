@@ -5,8 +5,6 @@ import { IgrLinearGauge } from "igniteui-react-gauges";
 import { IgrLinearGraphRange } from "igniteui-react-gauges";
 IgrLinearGaugeModule.register();
 
-//import { Bar } from "react-chartjs-2";
-
 export default function BarTank(props) {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
