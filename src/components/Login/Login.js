@@ -11,7 +11,13 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-
+    localStorage.setItem(
+      "data",
+      JSON.stringify({
+        user: userName.current.value,
+        pwd: password.current.value,
+      })
+    );
     var newInfo = register;
     newInfo = newInfo.filter(
       (newInfo) =>
@@ -64,7 +70,6 @@ export default function Login() {
             <input
               type="password"
               placeholder="Password"
-              defaultValue="tai123"
               ref={password}
               required
             />

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import { EnvContext } from "../Context/EnvContext";
@@ -6,6 +6,7 @@ import { EnvContext } from "../Context/EnvContext";
 export default function Header(props) {
   const [arrow, setArrow] = useState(false); //hook
   const { errorlogs, errornoti, envDispatch } = useContext(EnvContext);
+  const [ readnoti, setReadnoti ] = useState();
 
   const getDrop = (id) => {
     //function
@@ -41,13 +42,23 @@ export default function Header(props) {
     }
   };
 
+  useEffect(() => {
+    let newData = errorlogs;
+    newData = newData.filter((data) => data.read === false);
+    let temp = newData.length;
+    console.log(temp);
+    setReadnoti(temp);
+  }, [errorlogs]);
+
   const handleShowError = (e) => {
-    let id = e.currentTarget.id
+    let id = e.currentTarget.id;
     let arr = id.split("_");
-    // console.log(arr[0]); // ['E999', 'errorlogs']
     errornoti.ErrCode = arr[0];
-    envDispatch({ type : "SET_ERRORNOTI", payload: errornoti})
-    // console.log(errornoti)
+    let index = errorlogs.findIndex((newData)=> newData.id == arr[1]);
+    errorlogs[index].read = true;
+    // console.log(e.currentTarget);
+    envDispatch({ type: "SET_ERRORLOGS", payload: errorlogs });
+    envDispatch({ type: "SET_ERRORNOTI", payload: errornoti });
   };
 
   const search = useRef("");
@@ -67,6 +78,7 @@ export default function Header(props) {
   };
 
   const handleLogout = () => {
+    localStorage.clear();
     envDispatch({
       type: "SET_LOGIN",
       payload: {
@@ -207,6 +219,21 @@ export default function Header(props) {
                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                 <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
               </svg>
+              <span
+                style={{
+                  backgroundColor: "red",
+                  borderRadius: "50%",
+                  width: "15px",
+                  height: "15px",
+                  fontSize: "12px",
+                  color: "white",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {readnoti}
+              </span>
             </button>
           </div>
 
@@ -377,8 +404,13 @@ export default function Header(props) {
                         <div
                           key={key}
                           className="DAT_Header_Alert_Item4"
-                          id={errorlogs[key].ErrCode + "_errorlogs"}
+                          id={errorlogs[key].ErrCode +"_"+ errorlogs[key].id}
                           onClick={(e) => handleShowError(e)}
+                          style={{
+                            backgroundColor: errorlogs[key].read
+                              ? "rgb(128, 128, 128, 0.2)"
+                              : "white",
+                          }}
                         >
                           <div
                             key={key}
@@ -420,7 +452,7 @@ export default function Header(props) {
                   </Link>
 
                   <Link
-                    to="/ErrorReport"
+                    to="/Notification"
                     style={{ textDecoration: "none", color: "black" }}
                   >
                     <div className="DAT_Header_Alert_Item6">

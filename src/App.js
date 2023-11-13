@@ -24,7 +24,36 @@ import { EnvContext } from "./components/Context/EnvContext";
 import axios from "axios";
 
 export default function App() {
-  const { login } = useContext(EnvContext);
+  const { register, login, envDispatch } = useContext(EnvContext);
+
+  
+  useEffect(() => {
+
+    var newInfo = register;
+    var data = JSON.parse(localStorage.getItem("data"))
+    if(data !== null){
+      newInfo = newInfo.filter(
+        (newInfo) =>
+          newInfo.username === data.user &&
+          newInfo.password === data.pwd
+      );
+      console.log(localStorage.getItem("data"), newInfo)
+  
+      if (newInfo.length) {
+        envDispatch({
+          type: "SET_LOGIN",
+          payload: {
+            username: newInfo[0].username,
+            mail: newInfo[0].email,
+            status: true,
+          },
+        });
+      }
+    }
+
+
+      
+  },[])
 
   useEffect(()=>{
         axios.get("http://172.16.0.169:3000/",{credential:true}).then(

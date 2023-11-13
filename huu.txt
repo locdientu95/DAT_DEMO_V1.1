@@ -23,3 +23,10 @@ Huu 30/10 Tiep tuc thiet ke giao dien sms
 Huu 31/10 Thiet ke giao dien sms
 Huu 1/11 Tiep tuc thiet ke
 Huu 2/11 Tiep tuc thiet ke
+Huu 3/11 Tim hieu mongoDB
+Huu 6/11 Ket noi MongoDB voi Nodejs
+Huu 7/11 Viet API don gian voi Nodejs xuong MongoDB
+Huu 8/11 Viet API 
+Huu 9/11 Hoan thien API them xoa sua doc
+Huu 10/11 Tim hieu cach dua file xuong mongoDB
+Huu 13/11 Dua file tu React xuong Nodejs

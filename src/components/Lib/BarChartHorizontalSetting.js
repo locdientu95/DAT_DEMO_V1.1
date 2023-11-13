@@ -14,19 +14,9 @@ export default function BarChartSetting() {
   const yName = useRef(barchart.labelname);
   const valcolor = useRef(barchart.valuecolor);
   const series = useRef(barchart.series);
-  // const detail = useRef(barchart.valuetitle);
   const namefsize = useRef(barchart.chartnamefsize);
-  // const val2 = useRef("");
   const xAxisName = useRef("");
 
-  // const mapData = () => {
-  //   var newData = barchart.dataset;
-  //   newData.map((data, index)=>{
-  //     if(index==0){
-  //       console.log(data.xAxis);
-  //     }
-  //   })
-  // }
 
   const handleDeleteData = (e) => {
     var id = e.currentTarget.id;
@@ -43,20 +33,6 @@ export default function BarChartSetting() {
         "ERROR127 :Can't delete data, bar chart need atleast 1 atribute to display !"
       );
     }
-
-    //   var newData ={}
-    //  barchart.dataset.filter((data,index)=>{
-    //   if (parseInt(key)!=index){
-    //     newData = data
-    //   }
-    // })
-    // console.log(newData)
-
-    // barchart.dataset = barchart.dataset.filter(data=>data.xAxis != "seriesD")
-    // console.log(barchart.dataset)
-    // envDispatch({ type: "SET_BARCHART", payload: barchart });
-
-    // console.log(e);
   };
 
   const handleSaveChange1 = (e) => {

@@ -29,3 +29,8 @@ Phu upload 27/10/2023 làm trang NumberH
 Phu upload 30/10/2023 làm trang NumberH
 Phu upload 31/10/2023 làm trang NumberV, giao diện trang SMS
 Phu upload 1/11/2023 hoàn thiện trang NumberV
+Phu upload 2/11/2023 hoàn thiện trang SMS
+Phu upload 3/11/2023 tìm hiểu về MongoDB
+
+
+Phu upload 7/11/2023 viết API (getAll, find, addNew, update, delete)

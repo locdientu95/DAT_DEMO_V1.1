@@ -41,8 +41,6 @@ export default function BarTankSetting() {
   const handlePushData = (e) => {
     bardata.realdata = value.current.value;
     envDispatch({ type: "SET_BARDATA", payload: bardata });
-    console.log("minvalue", bardata);
-    console.log(type);
   };
 
   const handleSaveChange1 = (e) => {

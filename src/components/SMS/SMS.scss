@@ -67,9 +67,9 @@
 
 .DAT_Mess {
     &-Row {
-        display: flex;  
-        margin-bottom: 16px; 
-        
+        display: flex;
+        margin-bottom: 16px;
+
         &-Label {
             width: 100px;
         }
@@ -114,6 +114,7 @@
 
 .DAT_Config {
     &-Row {
+<<<<<<< HEAD
         //display: flex;
         // margin-bottom: 100px;
 
@@ -136,41 +137,51 @@
         //     }
         // }
     }
+=======
+        display: flex;
 
-    &-Row2 {
-        &-Label {
-            margin-bottom: 8px;
-        }
-
-        &-Content {
+        &-Item {
             display: flex;
-            gap: 16px;
+            flex: 5;
 
-            & input {
-                border-radius: 5px;
-                border: solid 1px rgb(156, 155, 155, 0.3);
-                outline: none;
-                padding: 14px 18px;
-                box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-    
-                &:focus-within {
-                    border: solid 4px rgb(66, 100, 255, 0.5);
-                }
+            &-Label {
+                padding: 20px 16px 0px 0px;
+                display: flex;
             }
 
-            & button {
-                width: 60px;
-                border: none;
-                color: white;
-                background-color: #0061f2;
-                font-weight: 400;
-                border-radius: 5px;
-                cursor: pointer;
+            &-Content {
                 display: flex;
-                justify-content: center;
-                align-items: center;
+                gap: 16px;
+                height: 40px;
+                padding: 20px 0px 0px 0px;
+>>>>>>> cfaa364b77f5feade1c9844fc0e141a1d2d952dc
+
+                & input {
+                    border-radius: 5px;
+                    border: solid 1px rgb(156, 155, 155, 0.3);
+                    outline: none;
+                    padding: 14px 18px;
+                    box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+
+                    &:focus-within {
+                        border: solid 4px rgb(66, 100, 255, 0.5);
+                    }
+                }
+
+                & button {
+                    width: 60px;
+                    border: none;
+                    color: white;
+                    background-color: #0061f2;
+                    font-weight: 400;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
             }
         }
     }

@@ -193,7 +193,7 @@ export default function LineChartSetting() {
         <button onClick={(e) => handleSaveChange1(e)}>Chọn</button>
       </div>
       <div className="DAT_Setting-LineChart-Row" id="2">
-        <table>
+        {/* <table>
           <tbody>
             {Object.entries(linechart.labels).map(([key]) => {
               return (
@@ -224,12 +224,12 @@ export default function LineChartSetting() {
               ref={label}
             ></input>
           </tbody>
-        </table>
+        </table> */}
         <button onClick={(e) => handleAddLable(e)}>Add</button>
       </div>
       <label>Datasets: </label>
       <div className="DAT_Setting-LineChart-Row" id="3">
-        <table>
+        {/* <table>
           <tbody>
             {Object.entries(linechart.datasets).map(([key]) => {
               temp.push(
@@ -277,7 +277,7 @@ export default function LineChartSetting() {
               );
             })}
           </tbody>
-        </table>
+        </table> */}
       </div>
 
       <div className="DAT_Setting-LineChart-Row" id="4">
