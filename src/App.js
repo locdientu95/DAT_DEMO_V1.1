@@ -21,11 +21,6 @@ import ErrorSetting from "./components/ErrorSetting/ErrorSetting";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useContext } from "react";
 import { EnvContext } from "./components/Context/EnvContext";
-<<<<<<< HEAD
-=======
-import { useEffect } from "react";
-import { type } from "@testing-library/user-event/dist/type";
->>>>>>> 484a7649e41f80ebc0b8bbbccde463fdc0beb239
 import axios from "axios";
 
 export default function App() {

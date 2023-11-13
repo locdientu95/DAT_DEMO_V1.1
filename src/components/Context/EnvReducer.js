@@ -831,11 +831,7 @@ export const INITSTATE = {
       bgcolor: "green",
     },
   ],
-<<<<<<< HEAD
   
-=======
-
->>>>>>> 484a7649e41f80ebc0b8bbbccde463fdc0beb239
   numberv: {
     row: 3,
     col: 2,
@@ -1015,11 +1011,7 @@ const EnvReducer = (state, action) => {
       return {
         ...state,
         iconnoti: action.payload,
-<<<<<<< HEAD
       }
-=======
-      };
->>>>>>> 484a7649e41f80ebc0b8bbbccde463fdc0beb239
     case "SET_NUMBERV":
       return {
         ...state,
