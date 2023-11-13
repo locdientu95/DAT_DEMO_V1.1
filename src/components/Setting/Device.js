@@ -27,6 +27,8 @@ import View32bit from "../Lib/View32bit";
 import View32bitSetting from "../Lib/View32bitSetting";
 import NumberV from "../Lib/NumberV";
 import NumberVSetting from "../Lib/NumberVSetting";
+import axios from "axios";
+import { IoClose, IoEllipsisVertical } from "react-icons/io5";
 
 export default function Device() {
   const {
@@ -91,6 +93,16 @@ export default function Device() {
     NumberV: <NumberVSetting />,
   };
 
+  // useEffect(() => {
+  //     console.log(linechart)
+  // }, [linechart])
+
+  useEffect(() => {
+    axios.get("http://172.16.0.204:3000/", { credential: true }).then((res) => {
+      console.log(res.data.data);
+    });
+  }, []);
+
   return (
     <div className="Device_Content">
       <div className="Device_Content-Header">
@@ -142,7 +154,7 @@ export default function Device() {
           <div className="Device_Content-Container-Group-Head">
             Giao diện
             <div style={{ cursor: "pointer" }} onClick={(e) => handlePop(e)}>
-              ...
+              <IoEllipsisVertical />
             </div>
           </div>
           <div className="Device_Content-Container-Group-Body">
@@ -158,10 +170,11 @@ export default function Device() {
             <div className="Device_Content-Container-Setting-Group-Head">
               Cài Đặt
               <div
+                className="Device_Content-Container-Setting-Group-Head-Close"
                 style={{ cursor: "pointer" }}
                 onClick={(e) => handleClose(e)}
               >
-                x
+                <IoClose />
               </div>
             </div>
             <div className="Device_Content-Container-Setting-Group-Body">

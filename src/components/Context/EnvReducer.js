@@ -4,22 +4,17 @@ export const INITSTATE = {
     label: "text",
     labelsize: "20px",
     labelcolor: "black",
-
     unit: "hz",
     valuesize: "20px",
     valuecolor: "black",
-
     min: 0,
     max: 100,
-
     width: "500px",
     height: "300px",
     segment: 10,
-
     needlecolor: "#ff0000",
     startcolor: "#60d277",
     endcolor: "#dc0909",
-
     cal: "30",
   },
 
@@ -808,7 +803,7 @@ export const INITSTATE = {
       bgcolor: "red",
     },
     {
-      name:"ERR2",
+      name: "ERR2",
       bgcolor: "red",
     },
     {
@@ -834,9 +829,13 @@ export const INITSTATE = {
     {
       name: "SUCCESS2",
       bgcolor: "green",
-    }
+    },
   ],
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 484a7649e41f80ebc0b8bbbccde463fdc0beb239
   numberv: {
     row: 3,
     col: 2,
@@ -1016,7 +1015,11 @@ const EnvReducer = (state, action) => {
       return {
         ...state,
         iconnoti: action.payload,
+<<<<<<< HEAD
       }
+=======
+      };
+>>>>>>> 484a7649e41f80ebc0b8bbbccde463fdc0beb239
     case "SET_NUMBERV":
       return {
         ...state,

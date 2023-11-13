@@ -21,24 +21,34 @@ import ErrorSetting from "./components/ErrorSetting/ErrorSetting";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useContext } from "react";
 import { EnvContext } from "./components/Context/EnvContext";
+<<<<<<< HEAD
+=======
+import { useEffect } from "react";
+import { type } from "@testing-library/user-event/dist/type";
+>>>>>>> 484a7649e41f80ebc0b8bbbccde463fdc0beb239
 import axios from "axios";
 
 export default function App() {
   const { register, login, envDispatch } = useContext(EnvContext);
 
-  
-  useEffect(() => {
+  // useEffect(() => {
+  //   axios
+  //     .get("http://172.16.0.204:3000/gauge", { credential: true })
+  //     .then((res) => {
+  //       console.log(res.data.data);
+  //     });
+  // }, []);
 
+  useEffect(() => {
     var newInfo = register;
-    var data = JSON.parse(localStorage.getItem("data"))
-    if(data !== null){
+    var data = JSON.parse(localStorage.getItem("data"));
+    if (data !== null) {
       newInfo = newInfo.filter(
         (newInfo) =>
-          newInfo.username === data.user &&
-          newInfo.password === data.pwd
+          newInfo.username === data.user && newInfo.password === data.pwd
       );
-      console.log(localStorage.getItem("data"), newInfo)
-  
+      console.log(localStorage.getItem("data"), newInfo);
+
       if (newInfo.length) {
         envDispatch({
           type: "SET_LOGIN",
@@ -50,10 +60,7 @@ export default function App() {
         });
       }
     }
-
-
-      
-  },[])
+  }, []);
 
   useEffect(()=>{
         axios.get("http://172.16.0.169:3000/",{credential:true}).then(

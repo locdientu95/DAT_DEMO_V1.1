@@ -103,7 +103,7 @@
                 margin-top: calc(100vh/6);
                 margin-bottom: 100px;
                 border-radius: 10px;
-    
+
                 &-Head {
                     background-color: rgb(219, 219, 219);
                     border-bottom: solid 1px rgb(186, 186, 186);
@@ -114,8 +114,24 @@
                     justify-content: space-between;
                     border-top-right-radius: 7px;
                     border-top-left-radius: 7px;
+
+                    &-Close {
+                        height: 30px;
+                        width: 30px;
+                        background-color: white;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: rgb(156, 155, 155, 0.2);
+                        }
+                    }
                 }
-    
+
                 &-Body {
                     padding: 20px;
                 }

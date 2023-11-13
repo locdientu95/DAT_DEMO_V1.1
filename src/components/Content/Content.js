@@ -9,6 +9,7 @@ import { Bar } from "react-chartjs-2";
 import zoomPlugin from "chartjs-plugin-zoom";
 import Chart from "chart.js/auto";
 import DataTable from "react-data-table-component";
+import { IoClose, IoEllipsisVertical } from "react-icons/io5";
 
 Chart.register(zoomPlugin);
 export default function Content() {
@@ -30,20 +31,6 @@ export default function Content() {
 
   const config = {
     type: "bar",
-    // scales: {
-    //   x: {
-    //     title: {
-    //       display: true,
-    //       text: "Thời gian",
-    //     },
-    //   },
-    //   y: {
-    //     title: {
-    //       display: true,
-    //       text: "Giá trị",
-    //     },
-    //   },
-    // },
     plugins: {
       zoom: {
         limits: {
@@ -273,17 +260,6 @@ export default function Content() {
         alert("Thêm thành công");
       }
     }
-
-    // var input = lables.current.value;
-    // if (input !== "") {
-    //   dashboardbarchart.labels.push(input);
-    // } else {
-    //   alert("Ten k hop le");
-    // }
-    // envDispatch({
-    //   type: "SET_DASHBOARDCHART",
-    //   payload: dashboardbarchart,
-    // });
 
     lables.current.value = "";
 
@@ -529,7 +505,7 @@ export default function Content() {
               className="DAT_Content-Container-Card-Header-Icon"
               onClick={(e) => handlePop(e)}
             >
-              ...
+              <IoEllipsisVertical />
             </div>
           </div>
 
@@ -569,7 +545,7 @@ export default function Content() {
                   className="DAT_Content-Container-Card-Edit-Group-Tit-Close"
                   onClick={(e) => handleClose(e)}
                 >
-                  x
+                  <IoClose />
                 </div>
               </div>
 
