@@ -6,18 +6,18 @@ import { EnvContext } from "../Context/EnvContext";
 //import { TimeAxisBreakDescriptionModule, dateGetDate, dateGetMonth, dateNow } from "igniteui-react-core";
 import { dataBound } from "@syncfusion/ej2-react-spreadsheet";
 // import axios from "axios";
+import { IoTrashOutline } from "react-icons/io5";
 
 export default function ErrorReport() {
   const { errorlogs, errornoti, envDispatch } = useContext(EnvContext);
   const [data, setRecord] = useState(errorlogs);
   const [err, setErr] = useState("");
   const fill = useRef(errornoti.ErrCode);
-  const test = useRef([{ "100-1": "E923", "1-1": '0' }]); // do not change here
+  const test = useRef([{ "100-1": "E923", "1-1": "0" }]); // do not change here
   const test_stt = useRef("0"); // do not change here
 
   const key = useRef(""); // do not change here
   const value = useRef(""); // do not change here
-  
 
   // do not change here
   const handletest = () => {
@@ -34,7 +34,7 @@ export default function ErrorReport() {
       }
     } else {
       if (test.current[0]["100-1"] !== value.current.value) {
-        if(test.current[0]["1-1"] !== '0'){
+        if (test.current[0]["1-1"] !== "0") {
           newData[0][key.current.value] = value.current.value;
           test_stt.current = "1";
         }
@@ -51,31 +51,45 @@ export default function ErrorReport() {
           test_stt.current = "2";
           console.log("sos", test.current[0]);
           //your turn--------------- thõa sức sáng tạo
-          const date = new Date()
-          const today = date.getDate()+"/" + (date.getMonth()+1)+"/"+date.getFullYear()+" "+ date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()
-          var newDevID = test.current[0]["100-1"]
-          var newType = "Error"
-          var newDate = today
-          var newData = errorlogs
-          errorlogs.unshift({id:newData.length+1,ErrCode:newDevID,ErrType:newType,Datetime:newDate})
-          console.log(newData)   
+          const date = new Date();
+          const today =
+            date.getDate() +
+            "/" +
+            (date.getMonth() + 1) +
+            "/" +
+            date.getFullYear() +
+            " " +
+            date.getHours() +
+            ":" +
+            date.getMinutes() +
+            ":" +
+            date.getSeconds();
+          var newDevID = test.current[0]["100-1"];
+          var newType = "Error";
+          var newDate = today;
+          var newData = errorlogs;
+          errorlogs.unshift({
+            id: newData.length + 1,
+            ErrCode: newDevID,
+            ErrType: newType,
+            Datetime: newDate,
+          });
+          console.log(newData);
           newData.map((data, index) => {
             return (data.id = index + 1);
-          });     
+          });
           envDispatch({
             type: "SET_ERRORLOGS",
             payload: newData,
-          }); 
+          });
 
-          setRecord(errorlogs)
+          setRecord(errorlogs);
           //-------------------------
         }
-        
       }
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-
 
   const fetchData = async () => {
     let final;
@@ -172,7 +186,7 @@ export default function ErrorReport() {
           onClick={(e) => handleDelete(e)}
           style={{ cursor: "pointer", color: "red" }}
         >
-          xóa
+          <IoTrashOutline />
         </div>
       ),
       width: "70px",
@@ -255,28 +269,28 @@ export default function ErrorReport() {
       <div className="DAT_Content-Container">
         <div className="DAT_Content-Container-Group">
           <div className="DAT_Content-Container-Group-Table">
-            <div className="DAT_Content-Container-Group-Table-head">
-              <CSVLink data={data}>
-                <button>Xuất Báo Cáo</button>
-              </CSVLink>
-
-              <input
-                type="text"
-                placeholder="Tìm kiếm"
-                value={fill.current}
-                onChange={(e) => handleInput(e)}
-              />
-
-              <div>
-                <input ref={key}></input>
-                <input ref={value}></input>
-                <button onClick={handletest}>save</button>
-              </div>
-            </div>
-
             <div className="DAT_Content-Container-Group-Table-Content">
               <div className="DAT_Content-Container-Group-Table-Content-tit">
                 Danh Sách Lỗi
+              </div>
+
+              <div className="DAT_Content-Container-Group-Table-Content-Func">
+                <input
+                  type="text"
+                  placeholder="Tìm kiếm"
+                  value={fill.current}
+                  onChange={(e) => handleInput(e)}
+                />
+
+                <div className="DAT_Content-Container-Group-Table-Content-Func-form">
+                  <input ref={key}></input>
+                  <input ref={value}></input>
+                  <button onClick={handletest}>Lưu</button>
+                </div>
+
+                <CSVLink data={data}>
+                  <button>Xuất Báo Cáo</button>
+                </CSVLink>
               </div>
 
               <div className="DAT_Content-Container-Group-Table-Content-tb">

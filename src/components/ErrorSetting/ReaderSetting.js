@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
+import { IoClose, IoTrashOutline } from "react-icons/io5";
 
 export default function ReaderSetting() {
   const datainaddressrow = useRef("");
@@ -78,7 +79,7 @@ export default function ReaderSetting() {
             onClick={(e) => handleDeleAddressRow(e)}
             style={{ cursor: "pointer", color: "red" }}
           >
-            Xóa
+            <IoTrashOutline />
           </div>
         </>
       ),
@@ -177,7 +178,7 @@ export default function ReaderSetting() {
               className="DAT_ReaderSetting-Main-Content-Config-Group-Tit-Close"
               onClick={(e) => handleClose(e)}
             >
-              x
+              <IoClose />
             </div>
           </div>
           <input type="text" required ref={datainaddressrow}></input>

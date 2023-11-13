@@ -100,6 +100,14 @@
                 padding-left: 16px;
                 padding-right: 16px;
                 margin-bottom: 16px;
+
+                & button {
+                    border: none;
+                    padding: 8px;
+                    border-radius: 5px;
+                    background-color: rgb(66, 100, 255);
+                    color: white;
+                }
             }
 
             &-Config {
@@ -112,7 +120,7 @@
 
                 &-Group {
                     padding: 8px;
-                    width: 220px;
+                    width: 230px;
                     margin: auto;
                     background-color: #f2f6fc;
                     margin-top: 110px;
@@ -124,12 +132,44 @@
                         margin-bottom: 8px;
 
                         &-Close {
+                            height: 30px;
+                            width: 30px;
+                            background-color: white;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
                             cursor: pointer;
+
+                            &:hover {
+                                background-color: rgb(156, 155, 155, 0.2);
+                            }
+                        }
+                    }
+
+                    & input {
+                        outline: none;
+                        border: none;
+                        border-radius: 5px;
+                        padding: 8px;
+                        box-sizing: border-box;
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+
+                        &:focus-within {
+                            box-shadow: 0px 0px 0px 4px rgb(66, 100, 255, 0.5);
                         }
                     }
 
                     & button {
                         margin-left: 8px;
+                        border: none;
+                        padding: 8px;
+                        border-radius: 5px;
+                        background-color: rgb(66, 100, 255);
+                        color: white;
+
                     }
                 }
             }
@@ -172,6 +212,14 @@
                 padding-left: 16px;
                 padding-right: 16px;
                 margin-bottom: 16px;
+
+                & button {
+                    border: none;
+                    padding: 8px;
+                    border-radius: 5px;
+                    background-color: rgb(66, 100, 255);
+                    color: white;
+                }
             }
 
             &-Config {
@@ -184,7 +232,7 @@
 
                 &-Group {
                     padding: 8px;
-                    width: 220px;
+                    width: 230px;
                     margin: auto;
                     background-color: #f2f6fc;
                     margin-top: 110px;
@@ -196,12 +244,43 @@
                         margin-bottom: 8px;
 
                         &-Close {
+                            height: 30px;
+                            width: 30px;
+                            background-color: white;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
                             cursor: pointer;
+
+                            &:hover {
+                                background-color: rgb(156, 155, 155, 0.2);
+                            }
+                        }
+                    }
+
+                    & input {
+                        outline: none;
+                        border: none;
+                        border-radius: 5px;
+                        padding: 8px;
+                        box-sizing: border-box;
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+
+                        &:focus-within {
+                            box-shadow: 0px 0px 0px 4px rgb(66, 100, 255, 0.5);
                         }
                     }
 
                     & button {
                         margin-left: 8px;
+                        border: none;
+                        padding: 8px;
+                        border-radius: 5px;
+                        background-color: rgb(66, 100, 255);
+                        color: white;
                     }
                 }
             }

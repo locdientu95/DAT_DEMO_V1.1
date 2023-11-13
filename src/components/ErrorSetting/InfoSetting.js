@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
+import { IoClose, IoTrashOutline } from "react-icons/io5";
 
 export default function InfoSetting() {
   const datainrow = useRef("");
@@ -18,7 +19,7 @@ export default function InfoSetting() {
   };
 
   const handleSaveRow = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     const data = datainrow.current.value;
     const t = idrow.split("_");
     var newData = errsetting.infodata;
@@ -145,7 +146,7 @@ export default function InfoSetting() {
             onClick={(e) => handleDeleInfoRow(e)}
             style={{ cursor: "pointer", color: "red" }}
           >
-            Xóa
+            <IoTrashOutline />
           </div>
         </>
       ),
@@ -225,7 +226,7 @@ export default function InfoSetting() {
               className="DAT_InfoSetting-Main-Content-Config-Group-Tit-Close"
               onClick={(e) => handleClose2(e)}
             >
-              x
+              <IoClose />
             </div>
           </div>
           <input type="text" required ref={datainrow}></input>

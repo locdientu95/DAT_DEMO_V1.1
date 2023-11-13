@@ -23,8 +23,6 @@ export default function Account() {
   const [nav, setNav] = useState("info");
   const handleNav = (e) => {
     var id = e.currentTarget.id;
-
-    console.log(id);
     setNav(id);
   };
 

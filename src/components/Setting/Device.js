@@ -28,6 +28,7 @@ import View32bitSetting from "../Lib/View32bitSetting";
 import NumberV from "../Lib/NumberV";
 import NumberVSetting from "../Lib/NumberVSetting";
 import axios from "axios";
+import { IoClose, IoEllipsisVertical } from "react-icons/io5";
 
 export default function Device() {
   const {
@@ -153,7 +154,7 @@ export default function Device() {
           <div className="Device_Content-Container-Group-Head">
             Giao diện
             <div style={{ cursor: "pointer" }} onClick={(e) => handlePop(e)}>
-              ...
+              <IoEllipsisVertical />
             </div>
           </div>
           <div className="Device_Content-Container-Group-Body">
@@ -169,10 +170,11 @@ export default function Device() {
             <div className="Device_Content-Container-Setting-Group-Head">
               Cài Đặt
               <div
+                className="Device_Content-Container-Setting-Group-Head-Close"
                 style={{ cursor: "pointer" }}
                 onClick={(e) => handleClose(e)}
               >
-                <ion-icon name="ellipsis-vertical-circle-outline"></ion-icon>
+                <IoClose />
               </div>
             </div>
             <div className="Device_Content-Container-Setting-Group-Body">

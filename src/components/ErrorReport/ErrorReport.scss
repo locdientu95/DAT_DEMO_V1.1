@@ -4,22 +4,6 @@
             &-Table {
                 width: 100%;
 
-                &-head {
-                    margin-bottom: 20px;
-
-                    & button {
-                        height: 40px;
-                        border-radius: 10px;
-                        margin-right: 10px
-                    }
-
-                    & input {
-                        height: 35px;
-                        border-radius: 10px;
-                        padding-left: 10px;
-                    }
-                }
-
                 &-Content {
                     width: 100%;
                     border-radius: 10px;
@@ -36,8 +20,37 @@
                         align-items: center;
                     }
 
+                    &-Func {
+                        margin-top: 16px;
+                        margin-left: 16px;
+
+                        & button {
+                            height: 30px;
+                            border-radius: 5px;
+                            border: none;
+                            background-color: rgb(66, 100, 255);
+                            color: white;
+                        }
+
+                        & input {
+                            height: 30px;
+                            margin-bottom: 8px;
+                            border: solid 2px rgba(0, 0, 0, 0.4);
+                            outline: none;
+                            border-radius: 5px;
+                            box-sizing: border-box;
+                            -webkit-box-sizing: border-box;
+                            -moz-box-sizing: border-box;
+                        }
+
+                        &-form {
+                            display: flex;
+                            gap: 4px
+                        }
+                    }
+
                     &-tb {
-                        padding: 20px;
+                        padding: 0px 16px 16px 16px;
                     }
                 }
             }

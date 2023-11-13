@@ -3,6 +3,7 @@ import "./Account.scss";
 import { EnvContext } from "../Context/EnvContext";
 import DataTable from "react-data-table-component";
 import { useState } from "react";
+import { IoTrashOutline } from "react-icons/io5";
 
 export default function UserList() {
   const { register, envDispatch } = useContext(EnvContext);
@@ -48,7 +49,7 @@ export default function UserList() {
           onClick={(e) => handleDelete(e)}
           style={{ cursor: "pointer", color: "red" }}
         >
-          xóa
+          <IoTrashOutline />
         </div>
       ),
       width: "70px",

@@ -16,14 +16,11 @@ export default function AddNew() {
     e.preventDefault();
 
     var newData = register;
-
     newData = newData.filter(
       (newData) =>
         newData.username === username.current.value ||
         newData.email === email.current.value
     );
-
-    console.log(newData.length);
 
     if (password.current.value === repassword.current.value) {
       if (newData.length) {
@@ -40,8 +37,6 @@ export default function AddNew() {
             role: "user",
           },
         ];
-
-        console.log(pushData);
 
         envDispatch({
           type: "SET_REGISTER",
