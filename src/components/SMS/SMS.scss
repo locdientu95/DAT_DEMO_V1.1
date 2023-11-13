@@ -114,7 +114,6 @@
 
 .DAT_Config {
     &-Row {
-<<<<<<< HEAD
         //display: flex;
         // margin-bottom: 100px;
 
@@ -137,24 +136,6 @@
         //     }
         // }
     }
-=======
-        display: flex;
-
-        &-Item {
-            display: flex;
-            flex: 5;
-
-            &-Label {
-                padding: 20px 16px 0px 0px;
-                display: flex;
-            }
-
-            &-Content {
-                display: flex;
-                gap: 16px;
-                height: 40px;
-                padding: 20px 0px 0px 0px;
->>>>>>> cfaa364b77f5feade1c9844fc0e141a1d2d952dc
 
                 & input {
                     border-radius: 5px;
@@ -182,7 +163,4 @@
                     justify-content: center;
                     align-items: center;
                 }
-            }
-        }
-    }
 }
