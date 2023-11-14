@@ -98,9 +98,14 @@ export default function Device() {
   // }, [linechart])
 
   useEffect(() => {
-    axios.get("http://172.16.0.204:3000/", { credential: true }).then((res) => {
-      console.log(res.data.data);
-    });
+    axios
+      .get("http://172.16.0.204:3000/gauge", { credential: true })
+      .then((res) => {
+        console.log(res.data.data);
+        envDispatch({ type: "SET_GAUGE", payload: res.data.data[0] });
+      });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

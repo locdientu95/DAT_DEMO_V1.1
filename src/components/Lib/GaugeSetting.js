@@ -3,6 +3,7 @@ import "./Setting.scss";
 import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
 import { Box, Button, Input, InputFist, Span } from "./FunctionElement";
+import axios from "axios";
 
 export default function GaugeSetting() {
   const base = [
@@ -131,10 +132,25 @@ export default function GaugeSetting() {
       gauge.segment = segment.current.value;
     }
 
-    envDispatch({
-      type: "SET_GAUGE",
-      payload: gauge,
-    });
+    // axios.method(url, body, ...)
+    axios
+      .put(
+        "http://172.16.0.204:3000/gauge/custom",
+        {
+          width: gauge.width,
+          height: gauge.height,
+          segment: gauge.segment,
+        },
+        { credential: true }
+      )
+      .then((res) => {
+        console.log(res.data);
+        envDispatch({
+          type: "SET_GAUGE",
+          payload: gauge,
+        });
+      });
+    ///.....
 
     width.current.value = "";
     height.current.value = "";

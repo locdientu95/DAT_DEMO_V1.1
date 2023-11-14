@@ -1,21 +1,21 @@
 export const INITSTATE = {
   status: false,
   gauge: {
-    label: "text",
-    labelsize: "20px",
-    labelcolor: "black",
-    unit: "hz",
-    valuesize: "20px",
-    valuecolor: "black",
-    min: 0,
-    max: 100,
-    width: "500px",
-    height: "300px",
-    segment: 10,
-    needlecolor: "#ff0000",
-    startcolor: "#60d277",
-    endcolor: "#dc0909",
-    cal: "30",
+    // label: "text",
+    // labelsize: "20px",
+    // labelcolor: "black",
+    // unit: "hz",
+    // valuesize: "20px",
+    // valuecolor: "black",
+    // min: 0,
+    // max: 100,
+    // width: "500px",
+    // height: "300px",
+    // segment: 10,
+    // needlecolor: "#ff0000",
+    // startcolor: "#60d277",
+    // endcolor: "#dc0909",
+    // cal: "30",
   },
 
   slider: {
@@ -831,7 +831,7 @@ export const INITSTATE = {
       bgcolor: "green",
     },
   ],
-  
+
   numberv: {
     row: 3,
     col: 2,
@@ -1011,7 +1011,7 @@ const EnvReducer = (state, action) => {
       return {
         ...state,
         iconnoti: action.payload,
-      }
+      };
     case "SET_NUMBERV":
       return {
         ...state,
