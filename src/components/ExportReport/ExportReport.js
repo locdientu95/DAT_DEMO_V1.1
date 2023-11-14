@@ -9,17 +9,6 @@ export default function ExportReport() {
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-<<<<<<< HEAD
-    formData.append("file",filename)
-    const result = await axios.post("http://172.16.0.169:3000/file/upload",
-    formData,
-    {
-      headers:{"Content-Type":"multipart/form-data"}
-    }
-    )
-    alert("File uploaded!")
-  }
-=======
     formData.append("file", filename);
     // const result = await axios.post(
     //   "http://172.16.0.204:3000/file/upload",
@@ -29,7 +18,6 @@ export default function ExportReport() {
     //   }
     // );
   };
->>>>>>> dd50f8b7068b5e2574e220bf556c28cad589f092
   const onInputChange = (e) => {
     setFilename(e.target.files[0]);
   };
