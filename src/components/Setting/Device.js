@@ -98,7 +98,7 @@ export default function Device() {
   // }, [linechart])
 
   useEffect(() => {
-    axios.get("http://172.16.0.204:3000/", { credential: true }).then((res) => {
+    axios.get("http://172.16.0.169:3000/", { credential: true }).then((res) => {
       console.log(res.data.data);
     });
   }, []);

@@ -17,6 +17,7 @@ export default function ExportReport() {
       headers:{"Content-Type":"multipart/form-data"}
     }
     )
+    alert("File uploaded!")
   }
   const onInputChange = (e) => {
     setFilename(e.target.files[0]);
