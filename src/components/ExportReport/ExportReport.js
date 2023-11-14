@@ -4,12 +4,12 @@ import "./ExportReport.scss";
 import axios from "axios";
 
 export default function ExportReport() {
-
   const [filename, setFilename] = useState(null);
 
-  const onSubmit=async(e)=>{
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
+<<<<<<< HEAD
     formData.append("file",filename)
     const result = await axios.post("http://172.16.0.169:3000/file/upload",
     formData,
@@ -19,6 +19,17 @@ export default function ExportReport() {
     )
     alert("File uploaded!")
   }
+=======
+    formData.append("file", filename);
+    // const result = await axios.post(
+    //   "http://172.16.0.204:3000/file/upload",
+    //   formData,
+    //   {
+    //     headers: { "Content-Type": "multipart/form-data" },
+    //   }
+    // );
+  };
+>>>>>>> dd50f8b7068b5e2574e220bf556c28cad589f092
   const onInputChange = (e) => {
     setFilename(e.target.files[0]);
   };
@@ -65,14 +76,12 @@ export default function ExportReport() {
 
         <div className="DAT_Content-Container-Group-head">
           <form onSubmit={onSubmit}>
-            <input type="file"  onChange={onInputChange}/>
-            <input type="submit" value="Submit"/>
+            <input type="file" onChange={onInputChange} />
+            <input type="submit" value="Submit" />
           </form>
         </div>
 
-        <div className="DAT_Content-Container-Group-Table">
-          
-        </div>
+        <div className="DAT_Content-Container-Group-Table"></div>
       </div>
     </div>
   );

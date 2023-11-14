@@ -57,13 +57,13 @@ export default function App() {
     }
   }, []);
 
-  useEffect(()=>{
-        axios.get("http://172.16.0.169:3000/",{credential:true}).then(
-          (res)=>{
-             console.log(res.data.data)
-          }
-        )
-  },[])
+  // useEffect(()=>{
+  //       axios.get("http://172.16.0.169:3000/",{credential:true}).then(
+  //         (res)=>{
+  //            console.log(res.data.data)
+  //         }
+  //       )
+  // },[])
 
   return (
     <Router>

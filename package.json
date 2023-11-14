@@ -2,7 +2,10 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+<<<<<<< HEAD
   
+=======
+>>>>>>> dd50f8b7068b5e2574e220bf556c28cad589f092
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
