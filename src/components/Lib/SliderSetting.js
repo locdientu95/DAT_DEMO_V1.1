@@ -121,55 +121,22 @@ export default function SliderSetting() {
   };
 
   const handleOri = (e) => {
-    // console.log("1", e.currentTarget.value);
-    // if (e.currentTarget.value === "horizontal") {
-    //   axios
-    //     .put(
-    //       "http://172.16.0.204:3000/slider/ori",
-    //       { ori: e.currentTarget.value },
-    //       { credential: true }
-    //     )
-    //     .then((res) => {
-    //       envDispatch({
-    //         type: "SET_SLIDER",
-    //         payload: {
-    //           ...slider,
-    //           ori: e.currentTarget.value,
-    //         },
-    //       });
-    //     });
-    //   // envDispatch({
-    //   //   type: "SET_SLIDER",
-    //   //   payload: {
-    //   //     ...slider,
-    //   //     ori: e.currentTarget.value,
-    //   //   },
-    //   // });
-    //   console.log("2", e.currentTarget.value);
-    // } else {
-    //   // envDispatch({
-    //   //   type: "SET_SLIDER",
-    //   //   payload: {
-    //   //     ...slider,
-    //   //     ori: e.currentTarget.value,
-    //   //   },
-    //   // });
-    //   axios
-    //     .put(
-    //       "http://172.16.0.204:3000/slider/ori",
-    //       { ori: e.currentTarget.value },
-    //       { credential: true }
-    //     )
-    //     .then((res) => {
-    //       envDispatch({
-    //         type: "SET_SLIDER",
-    //         payload: {
-    //           ...slider,
-    //           ori: e.currentTarget.value,
-    //         },
-    //       });
-    //     });
-    // }
+    var ori = e.currentTarget.value;
+    axios
+      .put(
+        "http://172.16.0.204:3000/slider/ori",
+        { ori: ori },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_SLIDER",
+          payload: {
+            ...slider,
+            ori: ori,
+          },
+        });
+      });
   };
 
   const thumbborder = useRef();
@@ -185,24 +152,43 @@ export default function SliderSetting() {
     if (trackborder.current.value !== "") {
       slider.track.border = trackborder.current.value;
     }
-
-    envDispatch({
-      type: "SET_SLIDER",
-      payload: {
-        ...slider,
-        thumb: {
-          border: thumbborder.current.value,
-          bgcolor: thumbcolor.current.value,
+    axios
+      .put(
+        "http://172.16.0.204:3000/slider/color",
+        {
+          thumb: {
+            border: slider.thumb.border,
+            bgcolor: thumbcolor.current.value,
+          },
+          track: {
+            border: slider.track.border,
+            bgcolor: trackcolor.current.value,
+          },
+          rail: {
+            bgcolor: railcolor.current.value,
+          },
         },
-        track: {
-          border: trackborder.current.value,
-          bgcolor: trackcolor.current.value,
-        },
-        rail: {
-          bgcolor: railcolor.current.value,
-        },
-      },
-    });
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_SLIDER",
+          payload: {
+            ...slider,
+            thumb: {
+              border: thumbborder.current.value,
+              bgcolor: thumbcolor.current.value,
+            },
+            track: {
+              border: trackborder.current.value,
+              bgcolor: trackcolor.current.value,
+            },
+            rail: {
+              bgcolor: railcolor.current.value,
+            },
+          },
+        });
+      });
 
     thumbborder.current.value = "";
     trackborder.current.value = "";

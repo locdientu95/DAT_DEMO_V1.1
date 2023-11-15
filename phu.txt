@@ -40,3 +40,4 @@ Phu upload 10/11/2023 chuyển Reducer sang MongoDB
 
 Phu upload 13/11/2023 chỉnh sửa giao diện, chuyển Reducer sang MongoDB
 Phu upload 14/11/2023 chuyển Reducer sang MongoDB (Gauge)
+Phu upload 15/11/2023 chuyển Reducer sang MongoDB (Slider)
