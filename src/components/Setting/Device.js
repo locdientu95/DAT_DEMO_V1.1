@@ -108,6 +108,17 @@ export default function Device() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    axios
+      .get("http://172.16.0.204:3000/slider", { credential: true })
+      .then((res) => {
+        console.log(res.data.data);
+        envDispatch({ type: "SET_SLIDER", payload: res.data.data[0] });
+      });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="Device_Content">
       <div className="Device_Content-Header">
