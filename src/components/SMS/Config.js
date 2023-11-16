@@ -55,6 +55,7 @@ export default function Config(props) {
   const handleAdd = () => {
     console.log("Add " + num.current.value + " successful");
   };
+
   return (
     <div className="DAT_Config">
       <div className="DAT_Config-Row">
