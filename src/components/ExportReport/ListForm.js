@@ -122,6 +122,11 @@ export default function ListForm() {
           </div>
         </form>
 
+        <form className="DAT_ListForm-Head-File">
+          <input type="file" />
+          <input type="submit" value="Submit" />
+        </form>
+
         <form className="DAT_ListForm-Head-Add">
           <div className="DAT_ListForm-Head-Add-Form">
             <input type="search" placeholder="Thêm" />
