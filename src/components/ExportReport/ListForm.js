@@ -3,8 +3,6 @@ import "./ExportReport.scss";
 import DataTable from "react-data-table-component";
 import { IoTrashOutline, IoAddCircleOutline } from "react-icons/io5";
 import { FiEdit } from "react-icons/fi";
-import { useState } from "react";
-import axios from "axios";
 
 export default function ListForm() {
   const paginationComponentOptions = {
@@ -22,7 +20,7 @@ export default function ListForm() {
       center: true,
     },
     {
-      name: "Tên",
+      name: "Tên Form",
       selector: (row) => row.name,
     },
     {
@@ -98,25 +96,6 @@ export default function ListForm() {
     },
   ];
 
-  const [filename, setFilename] = useState(null);
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("file", filename);
-    const result = await axios.post(
-      "http://172.16.0.169:5000/upload",
-      formData,
-      {
-        headers: { "Content-Type": "multipart/form-data" },
-      }
-    );
-    alert("upload success");
-  };
-
-  const onInputChange = (e) => {
-    setFilename(e.target.files[0]);
-  };
-
   return (
     <div className="DAT_ListForm">
       <div className="DAT_ListForm-Head">
@@ -143,13 +122,8 @@ export default function ListForm() {
           </div>
         </form>
 
-        <form className="DAT_ListForm-Head-File" onSubmit={onSubmit}>
-          <input type="file" id="file" onChange={onInputChange} />
-          <input type="submit" value="Submit" />
-        </form>
-
         <form className="DAT_ListForm-Head-Add">
-          <button>luu</button>
+          <button>Lưu</button>
           <div className="DAT_ListForm-Head-Add-Form">
             <input type="search" placeholder="Thêm" />
             <div className="DAT_ListForm-Head-Add-Form-Icon">
