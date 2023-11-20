@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ExportReport.scss";
 import DataTable from "react-data-table-component";
 import { IoTrashOutline, IoAddCircleOutline, IoClose } from "react-icons/io5";
@@ -11,7 +11,14 @@ import { useRef } from "react";
 export default function ListForm() {
   const { listform } = useContext(EnvContext);
   const [data, setData] = React.useState(listform);
-  const [edit, setEdit] = React.useState('');
+  const fill = useRef(data);
+  const [edit, setEdit] = useState(data);
+  const [display, setDisplay] = useState(false);
+  const [config, setConfig] = useState([]);
+
+  // useEffect(() => {
+  //   console.log(display);
+  // });
 
   useEffect(() => {
     var newData = data;
@@ -61,7 +68,10 @@ export default function ListForm() {
                 id={[key]}
               >
                 <div> {row.config[key]} </div>
-                <button id={[key] + "_" + row.config[key]} onClick={(event) => handleEditConfig(event)}>
+                <button
+                  id={[key] + "_" + row.config[key] +"_"+ row.name}
+                  onClick={(event) => handleEditConfig(event)}
+                >
                   <FiEdit style={{ color: "blue" }} />
                 </button>
                 <div
@@ -100,11 +110,17 @@ export default function ListForm() {
     },
   ];
 
+  const handleClose = (e) => {
+    setDisplay(false);
+  };
+
   const handleEditConfig = (event) => {
-    console.log(event.currentTarget.id);
+    setDisplay(true);
+    // console.log(event.currentTarget.id);
     const temp = event.currentTarget.id.split("_");
-    console.log(temp);//(2) ['0', 'a'] (index, attribute)
+    console.log(temp); //(3) ['0', 'a', 'name1'] (index, attribute, name)
     setEdit(temp[1]);
+    setConfig(temp)
   };
 
   const handleDeleteConfig = (e) => {
@@ -120,8 +136,13 @@ export default function ListForm() {
 
   const handleEdit = (e) => {
     setEdit(e.currentTarget.value);
-    console.log(e.currentTarget.value);
-  }
+  };
+
+  const handleSaveEdit = (e) => {
+    setDisplay(false);
+    console.log(edit);
+    console.log(config);
+  };
 
   return (
     <div className="DAT_ListForm">
@@ -168,33 +189,36 @@ export default function ListForm() {
           paginationComponentOptions={paginationComponentOptions}
         />
       </div>
-
-      <div
-        className="DAT_ListForm-Config"
-        // style={{ display: pop ? "block" : "none" }}
-      >
-        <form
-          className="DAT_ListForm-Config-Group"
-          // onSubmit={(e) => handleSaveRow(e)}
+      {display === false ? (
+        <></>
+      ) : (
+        <div
+          className="DAT_ListForm-Config"
+          // style={{ display: pop ? "block" : "none" }}
         >
-          <div className="_ListForm-Config-Group-Tit">
-            <div>Chỉnh Sửa</div>
-            <div
-              className="_ListForm-Config-Group-Tit-Close"
-              // onClick={(e) => handleClose2(e)}
-            >
-              <IoClose />
+          <form
+            className="DAT_ListForm-Config-Group"
+            onSubmit={(e) => handleSaveEdit(e)}
+          >
+            <div className="_ListForm-Config-Group-Tit">
+              <div>Chỉnh Sửa</div>
+              <div
+                className="_ListForm-Config-Group-Tit-Close"
+                // onClick={(e) => handleClose2(e)}
+              >
+                <IoClose onClick={(e) => handleClose(e)} />
+              </div>
             </div>
-          </div>
-          <input
-            type="text"
-            required
-            defaultValue={edit || ""}
-            onChange={(e) => handleEdit(e)}
-          ></input>
-          <button>Lưu</button>
-        </form>
-      </div>
+            <input
+              type="text"
+              required
+              defaultValue={edit || ""}
+              onChange={(e) => handleEdit(e)}
+            ></input>
+            <button onClick={(e) => handleSaveEdit(e)}>Lưu</button>
+          </form>
+        </div>
+      )}
     </div>
   );
 }
