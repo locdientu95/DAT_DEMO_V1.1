@@ -45,7 +45,7 @@ export default function ExportReport() {
               <polyline points="7 23 3 19 7 15"></polyline>
               <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
             </svg>
-            Xuất Báo Cáo - {tit[nav]}
+            Xuất Báo Cáo
           </div>
           <div className="DAT_ExportReport-Header-Dashboard-SubHead">
             Example dashboard overview and content summary
@@ -70,7 +70,7 @@ export default function ExportReport() {
             style={{ color: nav === "upload" ? color.cur : color.pre }}
             onClick={(e) => handleNav(e)}
           >
-            Upload File
+            Upload/ Download File
           </div>
 
           <div

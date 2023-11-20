@@ -1,7 +1,7 @@
 import React from "react";
 import "./ExportReport.scss";
 import DataTable from "react-data-table-component";
-import { IoTrashOutline, IoAddCircleOutline } from "react-icons/io5";
+import { IoTrashOutline, IoAddCircleOutline, IoClose } from "react-icons/io5";
 import { FiEdit } from "react-icons/fi";
 
 export default function ListForm() {
@@ -9,7 +9,7 @@ export default function ListForm() {
     rowsPerPageText: "Số hàng",
     rangeSeparatorText: "đến",
     selectAllRowsItem: true,
-    selectAllRowsItemText: "tất cả",
+    selectAllRowsItemText: "Tất cả",
   };
 
   const columns = [
@@ -18,6 +18,10 @@ export default function ListForm() {
       selector: (row) => row.id,
       width: "100px",
       center: true,
+    },
+    {
+      name: "Mã Form",
+      selector: (row) => row.formId,
     },
     {
       name: "Tên Form",
@@ -45,7 +49,7 @@ export default function ListForm() {
               <IoAddCircleOutline />
             </div>
           </div>
-          <div
+          {/* <div
             style={{
               display: "flex",
               gap: "16px",
@@ -59,10 +63,7 @@ export default function ListForm() {
             <div style={{ cursor: "pointer", color: "red" }}>
               <IoTrashOutline />
             </div>
-            <div style={{ cursor: "pointer" }}>
-              <IoAddCircleOutline />
-            </div>
-          </div>
+          </div> */}
         </>
       ),
     },
@@ -83,16 +84,21 @@ export default function ListForm() {
   const data = [
     {
       id: 1,
+      formId: "1",
       name: "a",
       key: "company",
     },
     {
       id: 2,
+      formId: "2",
       name: "b",
+      key: "company",
     },
     {
       id: 3,
+      formId: "3",
       name: "c",
+      key: "company",
     },
   ];
 
@@ -140,6 +146,32 @@ export default function ListForm() {
           pagination
           paginationComponentOptions={paginationComponentOptions}
         />
+      </div>
+
+      <div
+        className="DAT_ListForm-Config"
+        // style={{ display: pop ? "block" : "none" }}
+      >
+        <form
+          className="DAT_ListForm-Config-Group"
+          // onSubmit={(e) => handleSaveRow(e)}
+        >
+          <div className="_ListForm-Config-Group-Tit">
+            <div>Chỉnh Sửa</div>
+            <div
+              className="_ListForm-Config-Group-Tit-Close"
+              // onClick={(e) => handleClose2(e)}
+            >
+              <IoClose />
+            </div>
+          </div>
+          <input
+            type="text"
+            required
+            // ref={datainrow}
+          ></input>
+          <button>Lưu</button>
+        </form>
       </div>
     </div>
   );
