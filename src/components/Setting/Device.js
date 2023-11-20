@@ -99,10 +99,25 @@ export default function Device() {
 
   useEffect(() => {
     axios
+<<<<<<< HEAD
       .get("http://172.16.0.169:3000/gauge", { credential: true })
+=======
+      .get(process.env.REACT_APP_API_URL + "/gauge", { credential: true })
+>>>>>>> edf987ad8d1eb1740fd04c979704a7b3477feeaa
       .then((res) => {
         console.log(res.data.data);
         envDispatch({ type: "SET_GAUGE", payload: res.data.data[0] });
+      });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/slider", { credential: true })
+      .then((res) => {
+        console.log(res.data.data);
+        envDispatch({ type: "SET_SLIDER", payload: res.data.data[0] });
       });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

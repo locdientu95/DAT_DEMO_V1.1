@@ -16,7 +16,7 @@ export default function Mess(props) {
 
       <div className="DAT_Mess-Row">
         <div className="DAT_Mess-Row-Label">Nội dung</div>
-        <input style={{ height: "150px" }} />
+        <textarea></textarea>
       </div>
 
       <div className="DAT_Mess-Button">

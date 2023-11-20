@@ -33,9 +33,6 @@ export default function GaugeSetting() {
   const fontsize = useRef();
   const color = useRef();
   const handleTit = (e) => {
-    //gauge.label = speed.current.value;
-    //envDispatch({type: 'SET_GAUGE',payload: gauge})
-
     if (speed.current.value !== "") {
       gauge.label = speed.current.value;
     }
@@ -44,18 +41,30 @@ export default function GaugeSetting() {
       gauge.labelsize = fontsize.current.value;
     }
 
-    envDispatch({
-      type: "SET_GAUGE",
-      payload: gauge,
-    });
+    axios
+      .put(
+        "http://172.16.0.204:3000/gauge/tit",
+        {
+          label: gauge.label,
+          labelsize: gauge.labelsize,
+          labelcolor: color.current.value,
+        },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_GAUGE",
+          payload: gauge,
+        });
 
-    envDispatch({
-      type: "SET_GAUGE",
-      payload: {
-        ...gauge,
-        labelcolor: color.current.value,
-      },
-    });
+        envDispatch({
+          type: "SET_GAUGE",
+          payload: {
+            ...gauge,
+            labelcolor: color.current.value,
+          },
+        });
+      });
 
     speed.current.value = "";
     fontsize.current.value = "";
@@ -73,18 +82,30 @@ export default function GaugeSetting() {
       gauge.valuesize = unitsize.current.value;
     }
 
-    envDispatch({
-      type: "SET_GAUGE",
-      payload: gauge,
-    });
+    axios
+      .put(
+        "http://172.16.0.204:3000/gauge/unit",
+        {
+          unit: gauge.unit,
+          valuesize: gauge.valuesize,
+          valuecolor: unitcolor.current.value,
+        },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_GAUGE",
+          payload: gauge,
+        });
 
-    envDispatch({
-      type: "SET_GAUGE",
-      payload: {
-        ...gauge,
-        valuecolor: unitcolor.current.value,
-      },
-    });
+        envDispatch({
+          type: "SET_GAUGE",
+          payload: {
+            ...gauge,
+            valuecolor: unitcolor.current.value,
+          },
+        });
+      });
 
     unit.current.value = "";
     unitsize.current.value = "";
@@ -92,26 +113,44 @@ export default function GaugeSetting() {
 
   const min = useRef();
   const handleMin = (e) => {
-    envDispatch({
-      type: "SET_GAUGE",
-      payload: {
-        ...gauge,
-        min: min.current.value,
-      },
-    });
+    if (min.current.value !== "") {
+      gauge.min = min.current.value;
+    }
+
+    axios
+      .put(
+        "http://172.16.0.204:3000/gauge/min",
+        { min: gauge.min },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_GAUGE",
+          payload: gauge,
+        });
+      });
 
     min.current.value = "";
   };
 
   const max = useRef();
   const handleMax = (e) => {
-    envDispatch({
-      type: "SET_GAUGE",
-      payload: {
-        ...gauge,
-        max: max.current.value,
-      },
-    });
+    if (max.current.value !== "") {
+      gauge.max = max.current.value;
+    }
+
+    axios
+      .put(
+        "http://172.16.0.204:3000/gauge/max",
+        { max: gauge.max },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_GAUGE",
+          payload: gauge,
+        });
+      });
 
     max.current.value = "";
   };
@@ -161,15 +200,27 @@ export default function GaugeSetting() {
   const startcolor = useRef();
   const endcolor = useRef();
   const handleColor = (e) => {
-    envDispatch({
-      type: "SET_GAUGE",
-      payload: {
-        ...gauge,
-        needlecolor: needlecolor.current.value,
-        startcolor: startcolor.current.value,
-        endcolor: endcolor.current.value,
-      },
-    });
+    axios
+      .put(
+        "http://172.16.0.204:3000/gauge/color",
+        {
+          needlecolor: needlecolor.current.value,
+          startcolor: startcolor.current.value,
+          endcolor: endcolor.current.value,
+        },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_GAUGE",
+          payload: {
+            ...gauge,
+            needlecolor: needlecolor.current.value,
+            startcolor: startcolor.current.value,
+            endcolor: endcolor.current.value,
+          },
+        });
+      });
   };
 
   const cal = useRef();

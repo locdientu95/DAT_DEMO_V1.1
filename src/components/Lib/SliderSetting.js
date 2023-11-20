@@ -9,6 +9,7 @@ import {
   InputFist,
   Span,
 } from "./FunctionElement";
+import axios from "axios";
 
 export default function SliderSetting() {
   const { slider, envDispatch } = useContext(EnvContext);
@@ -38,26 +39,44 @@ export default function SliderSetting() {
 
   const min = useRef();
   const handleMin = (e) => {
-    envDispatch({
-      type: "SET_SLIDER",
-      payload: {
-        ...slider,
-        min: min.current.value,
-      },
-    });
+    if (min.current.value !== "") {
+      slider.min = min.current.value;
+    }
+
+    axios
+      .put(
+        "http://172.16.0.204:3000/slider/min",
+        { min: slider.min },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_SLIDER",
+          payload: slider,
+        });
+      });
 
     min.current.value = "";
   };
 
   const max = useRef();
   const handleMax = (e) => {
-    envDispatch({
-      type: "SET_SLIDER",
-      payload: {
-        ...slider,
-        max: max.current.value,
-      },
-    });
+    if (max.current.value !== "") {
+      slider.max = max.current.value;
+    }
+
+    axios
+      .put(
+        "http://172.16.0.204:3000/slider/max",
+        { max: slider.max },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_SLIDER",
+          payload: slider,
+        });
+      });
 
     max.current.value = "";
   };
@@ -78,10 +97,23 @@ export default function SliderSetting() {
       slider.scale = scale.current.value;
     }
 
-    envDispatch({
-      type: "SET_SLIDER",
-      payload: slider,
-    });
+    axios
+      .put(
+        "http://172.16.0.204:3000/slider/custom",
+        {
+          width: slider.width,
+          height: slider.height,
+          scale: slider.scale,
+        },
+        { credential: true }
+      )
+      .then((res) => {
+        console.log(res.data);
+        envDispatch({
+          type: "SET_SLIDER",
+          payload: slider,
+        });
+      });
 
     width.current.value = "";
     height.current.value = "";
@@ -89,23 +121,22 @@ export default function SliderSetting() {
   };
 
   const handleOri = (e) => {
-    if (e.currentTarget.value === "horizontal") {
-      envDispatch({
-        type: "SET_SLIDER",
-        payload: {
-          ...slider,
-          ori: e.currentTarget.value,
-        },
+    var ori = e.currentTarget.value;
+    axios
+      .put(
+        "http://172.16.0.204:3000/slider/ori",
+        { ori: ori },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_SLIDER",
+          payload: {
+            ...slider,
+            ori: ori,
+          },
+        });
       });
-    } else {
-      envDispatch({
-        type: "SET_SLIDER",
-        payload: {
-          ...slider,
-          ori: e.currentTarget.value,
-        },
-      });
-    }
   };
 
   const thumbborder = useRef();
@@ -121,24 +152,43 @@ export default function SliderSetting() {
     if (trackborder.current.value !== "") {
       slider.track.border = trackborder.current.value;
     }
-
-    envDispatch({
-      type: "SET_SLIDER",
-      payload: {
-        ...slider,
-        thumb: {
-          border: thumbborder.current.value,
-          bgcolor: thumbcolor.current.value,
+    axios
+      .put(
+        "http://172.16.0.204:3000/slider/color",
+        {
+          thumb: {
+            border: slider.thumb.border,
+            bgcolor: thumbcolor.current.value,
+          },
+          track: {
+            border: slider.track.border,
+            bgcolor: trackcolor.current.value,
+          },
+          rail: {
+            bgcolor: railcolor.current.value,
+          },
         },
-        track: {
-          border: trackborder.current.value,
-          bgcolor: trackcolor.current.value,
-        },
-        rail: {
-          bgcolor: railcolor.current.value,
-        },
-      },
-    });
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_SLIDER",
+          payload: {
+            ...slider,
+            thumb: {
+              border: thumbborder.current.value,
+              bgcolor: thumbcolor.current.value,
+            },
+            track: {
+              border: trackborder.current.value,
+              bgcolor: trackcolor.current.value,
+            },
+            rail: {
+              bgcolor: railcolor.current.value,
+            },
+          },
+        });
+      });
 
     thumbborder.current.value = "";
     trackborder.current.value = "";

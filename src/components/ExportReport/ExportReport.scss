@@ -1,30 +1,253 @@
-.DAT_Content{
-    &-Container{
-        &-Group{
-            &-head{
-                width:95%;
-                margin: auto;
-                margin-bottom: 20px;
-                & button{
-                    width: 120px;
-                    height:40px;
-                    background-color:rgb(255, 255, 255);
-                    color: black;
-                    border-radius: 10px;
-                    
+.DAT_ExportReport {
+    background-color: rgb(182, 195, 219, 0.2);
+    flex: 1;
+    width: 100%;
+    overflow-y: scroll;
+    margin-top: 58px;
+
+    &-Header {
+        background-color: #0061f2;
+        width: 100%;
+        height: 259.6px;
+
+        &-Dashboard {
+            width: 95%;
+            margin: auto;
+            padding-top: 48px;
+
+            &-Heading {
+                display: flex;
+                align-items: center;
+                font-size: 36px;
+                font-weight: 500px;
+                color: white;
+                height: 36px;
+            }
+
+            &-SubHead {
+                width: 459px;
+                height: 27px;
+                font-size: 18.4px;
+                color: rgba(255, 255, 255, 0.5);
+                margin-top: 4px;
+            }
+        }
+    }
+
+    &-Main {
+        margin: auto;
+        margin-top: -96px;
+        padding-bottom: 4px !important;
+        margin-bottom: 100px;
+        background-color: white;
+        width: 95%;
+        border-radius: 10px;
+        box-shadow: 4px 4px 4px 4px rgb(136, 136, 136, 0.2);
+
+        &-Nav {
+            padding-top: 24px;
+            margin-left: 24px;
+            margin-right: 24px;
+            border-bottom: solid 1px rgb(199, 199, 199);
+            display: flex;
+            gap: 24px;
+            margin-bottom: 24px;
+
+            &-Item {
+                padding-bottom: 10px;
+                cursor: pointer;
+            }
+        }
+
+        &-Content {
+            margin: 24px;
+        }
+    }
+}
+
+.DAT_ListForm {
+    &-Head {
+        display: flex;
+
+        &-Center {
+            flex: 4;
+            display: flex;
+            height: 44px;
+
+            &-Form {
+                background-color: whitesmoke;
+                display: flex;
+                width: 240px;
+                align-items: center;
+                border-radius: 7px;
+                border: solid 4px whitesmoke;
+
+                & input {
+                    background-color: whitesmoke;
+                    width: 188px;
+                    height: 35px;
+                    display: flex;
+                    align-items: center;
+                    border: solid 0px whitesmoke;
+                    padding-left: 20px;
+                    border-top-left-radius: 10px;
+                    border-bottom-left-radius: 10px;
+                    outline: none;
+                }
+
+                &-Icon {
+                    width: 52px;
+                    height: 44px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-top-right-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                }
+
+                &:focus-within {
+                    border: solid 4px rgb(66, 100, 255, 0.5);
+                }
+            }
+        }
+
+        &-Add {
+            flex: 4;
+            display: flex;
+            height: 44px;
+            justify-content: flex-end;
+
+            & button {
+                margin-right: 8px;
+                width: 50px;
+                border: none;
+                color: white;
+                background-color: #0061f2;
+                font-weight: 400;
+                border-radius: 5px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            &-Form {
+                background-color: whitesmoke;
+                display: flex;
+                width: 240px;
+                align-items: center;
+                border-radius: 7px;
+                border: solid 4px whitesmoke;
+
+                & input {
+                    background-color: whitesmoke;
+                    width: 188px;
+                    height: 35px;
+                    display: flex;
+                    align-items: center;
+                    border: solid 0px whitesmoke;
+                    padding-left: 20px;
+                    border-top-left-radius: 10px;
+                    border-bottom-left-radius: 10px;
+                    outline: none;
+                }
+
+                &-Icon {
+                    width: 52px;
+                    height: 44px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-top-right-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                }
+
+                &:focus-within {
+                    border: solid 4px rgb(66, 100, 255, 0.5);
                 }
             }
         }
     }
 }
 
-.Spreadsheet_{
-    &_table{
-        width: 100%;
-        & colgroup{
-            & col{
-                width: 40px;
+.DAT_UploadFile {
+    &-Form {}
+
+    &-Select {}
+
+    &-Button {
+        & button {
+            height: 40px;
+            // width: 60px;
+            border: none;
+            color: white;
+            background-color: #0061f2;
+            font-weight: 400;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+.DAT_History {
+    &-Row {
+        display: flex;
+        margin-bottom: 16px;
+
+        &-Label {
+            width: 100px;
+        }
+
+        & input {
+            height: 44px;
+            width: 100%;
+            border-radius: 5px;
+            border: solid 1px rgb(156, 155, 155, 0.3);
+            outline: none;
+            padding: 8px;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+
+            &:focus-within {
+                box-shadow: 0px 0px 0px 4px rgb(66, 100, 255, 0.5);
             }
+        }
+
+        & textarea {
+            width: 100%;
+            height: 150px;
+            padding: 8px;
+            outline: none;
+            border: solid 1px rgb(156, 155, 155, 0.3);
+            border-radius: 5px;
+
+            &:focus-within {
+                box-shadow: 0px 0px 0px 4px rgb(66, 100, 255, 0.5);
+            }
+        }
+
+    }
+
+    &-Button {
+        display: flex;
+        justify-content: flex-end;
+
+        & button {
+            height: 40px;
+            width: 60px;
+            border: none;
+            color: white;
+            background-color: #0061f2;
+            font-weight: 400;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 }
