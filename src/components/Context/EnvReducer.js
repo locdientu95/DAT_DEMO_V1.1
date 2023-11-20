@@ -1,5 +1,25 @@
 export const INITSTATE = {
   status: false,
+
+  listform: [
+    {
+      formid: "ID1",
+      name: "name1",
+      config: ['a', 'b', 'c'],
+    },
+  
+    {
+      formid: "ID2",
+      name: "name2",
+      config: ['c', 's', 'c'],
+    },
+    {
+      formid: "ID3",
+      name: "name3",
+      config: ['k', 'b', 'c','h','j'],
+    }
+  ],
+
   gauge: {
     // label: "text",
     // labelsize: "20px",
@@ -1017,6 +1037,11 @@ const EnvReducer = (state, action) => {
         ...state,
         numberv: action.payload,
       };
+      case "SET_LISTFOR<":
+        return {
+          ...state,
+          lisform: action.payload,
+        };
     default:
       throw new Error("Unexpected action");
   }

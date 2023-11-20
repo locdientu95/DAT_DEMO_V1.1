@@ -3,8 +3,22 @@ import "./ExportReport.scss";
 import DataTable from "react-data-table-component";
 import { IoTrashOutline, IoAddCircleOutline } from "react-icons/io5";
 import { FiEdit } from "react-icons/fi";
+import { useEffect } from "react";
+import { useContext } from "react";
+import { EnvContext } from "../Context/EnvContext";
 
 export default function ListForm() {
+  const { listform } = useContext(EnvContext);
+  const [data, setData] = React.useState(listform);
+
+  useEffect(() => {
+    var newData = data;
+    newData.map((data, index) => {
+      return (data["id"] = index + 1);
+    });
+    setData(newData);
+  }, [data]);
+
   const paginationComponentOptions = {
     rowsPerPageText: "Số hàng",
     rangeSeparatorText: "đến",
@@ -20,6 +34,12 @@ export default function ListForm() {
       center: true,
     },
     {
+      name: "ID",
+      selector: (row) => row.formid,
+      width: "100px",
+      center: true,
+    },
+    {
       name: "Tên Form",
       selector: (row) => row.name,
     },
@@ -27,42 +47,30 @@ export default function ListForm() {
       name: "Cấu hình",
       selector: (row) => (
         <>
-          <div
-            style={{
-              display: "flex",
-              gap: "16px",
-              padding: "8px",
-            }}
-          >
-            <div> {row.key} </div>
-            <div style={{ cursor: "pointer", color: "blue" }}>
-              <FiEdit />
-            </div>
-            <div style={{ cursor: "pointer", color: "red" }}>
-              <IoTrashOutline />
-            </div>
-            <div style={{ cursor: "pointer" }}>
-              <IoAddCircleOutline />
-            </div>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              gap: "16px",
-              padding: "8px",
-            }}
-          >
-            <div> {row.key} </div>
-            <div style={{ cursor: "pointer", color: "blue" }}>
-              <FiEdit />
-            </div>
-            <div style={{ cursor: "pointer", color: "red" }}>
-              <IoTrashOutline />
-            </div>
-            <div style={{ cursor: "pointer" }}>
-              <IoAddCircleOutline />
-            </div>
-          </div>
+          {Object.entries(row.config).map(([key]) => {
+            return (
+              <div
+                style={{
+                  display: "flex",
+                  gap: "16px",
+                  padding: "8px",
+                }}
+                key={key}
+                id={[key]}
+              >
+                <div> {row.config[key]} </div>
+                <button id={key} onClick={(e) => handleDelete(e)}>
+                  <FiEdit style={{  color: "blue" }} />
+                </button>
+                <div style={{ cursor: "pointer", color: "red" }} id={"kkk"} onClick={(e) => handleDelete(e)}>
+                  <IoTrashOutline />
+                </div>
+                <div style={{ cursor: "pointer" }}>
+                  <IoAddCircleOutline />
+                </div>
+              </div>
+            );
+          })}
         </>
       ),
     },
@@ -80,21 +88,9 @@ export default function ListForm() {
     },
   ];
 
-  const data = [
-    {
-      id: 1,
-      name: "a",
-      key: "company",
-    },
-    {
-      id: 2,
-      name: "b",
-    },
-    {
-      id: 3,
-      name: "c",
-    },
-  ];
+  const handleDelete = (e) => {
+    console.log(e.target.id);
+  }
 
   return (
     <div className="DAT_ListForm">
