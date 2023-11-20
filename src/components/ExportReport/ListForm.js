@@ -1,7 +1,7 @@
 import React from "react";
 import "./ExportReport.scss";
 import DataTable from "react-data-table-component";
-import { IoTrashOutline, IoAddCircleOutline } from "react-icons/io5";
+import { IoTrashOutline, IoAddCircleOutline, IoClose } from "react-icons/io5";
 import { FiEdit } from "react-icons/fi";
 import { useEffect } from "react";
 import { useContext } from "react";
@@ -23,7 +23,7 @@ export default function ListForm() {
     rowsPerPageText: "Số hàng",
     rangeSeparatorText: "đến",
     selectAllRowsItem: true,
-    selectAllRowsItemText: "tất cả",
+    selectAllRowsItemText: "Tất cả",
   };
 
   const columns = [
@@ -136,6 +136,32 @@ export default function ListForm() {
           pagination
           paginationComponentOptions={paginationComponentOptions}
         />
+      </div>
+
+      <div
+        className="DAT_ListForm-Config"
+        // style={{ display: pop ? "block" : "none" }}
+      >
+        <form
+          className="DAT_ListForm-Config-Group"
+          // onSubmit={(e) => handleSaveRow(e)}
+        >
+          <div className="_ListForm-Config-Group-Tit">
+            <div>Chỉnh Sửa</div>
+            <div
+              className="_ListForm-Config-Group-Tit-Close"
+              // onClick={(e) => handleClose2(e)}
+            >
+              <IoClose />
+            </div>
+          </div>
+          <input
+            type="text"
+            required
+            // ref={datainrow}
+          ></input>
+          <button>Lưu</button>
+        </form>
       </div>
     </div>
   );

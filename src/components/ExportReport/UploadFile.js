@@ -31,9 +31,10 @@ export default function UploadFile() {
         <input type="submit" value="Submit" />
       </form>
 
-      <div className="DAT_UploadFile-Select">
-        <div>Chon form</div>
-        <select>
+      <div>
+        {/* <div className="DAT_UploadFile-Select-Label">Chọn form</div> */}
+        <select className="DAT_UploadFile-Select">
+          <option>Chọn form</option>
           <option>a</option>
           <option>b</option>
           <option>c</option>
@@ -41,7 +42,7 @@ export default function UploadFile() {
       </div>
 
       <div className="DAT_UploadFile-Button">
-        <button>Download</button>
+        <button disabled>Tải file</button>
       </div>
     </div>
   );
