@@ -46,7 +46,7 @@ export default function TablePro(props) {
   };
 
   return (
-    <div className="DAT_TablePro" style={{ width: props.setting.width + "px" }}>
+    <div className="DAT_TablePro" style={{ width: props.setting.width + "px"}}>
       <DataTable data={props.setting.data} columns={headrow}></DataTable>
     </div>
   );

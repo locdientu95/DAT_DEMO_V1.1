@@ -135,7 +135,7 @@ export default function GaugeSetting() {
     // axios.method(url, body, ...)
     axios
       .put(
-        "http://172.16.0.204:3000/gauge/custom",
+        "http://172.16.0.169:3000/gauge/custom",
         {
           width: gauge.width,
           height: gauge.height,
