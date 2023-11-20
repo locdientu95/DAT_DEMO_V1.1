@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ExportReport.scss";
 import DataTable from "react-data-table-component";
 import { IoTrashOutline, IoAddCircleOutline, IoClose } from "react-icons/io5";
@@ -40,7 +40,7 @@ export default function ListForm() {
           >
             <div> {row.key} </div>
             <div style={{ cursor: "pointer", color: "blue" }}>
-              <FiEdit />
+              <FiEdit onClick={(e) => handleChange(e)} />
             </div>
             <div style={{ cursor: "pointer", color: "red" }}>
               <IoTrashOutline />
@@ -49,21 +49,6 @@ export default function ListForm() {
               <IoAddCircleOutline />
             </div>
           </div>
-          {/* <div
-            style={{
-              display: "flex",
-              gap: "16px",
-              padding: "8px",
-            }}
-          >
-            <div> {row.key} </div>
-            <div style={{ cursor: "pointer", color: "blue" }}>
-              <FiEdit />
-            </div>
-            <div style={{ cursor: "pointer", color: "red" }}>
-              <IoTrashOutline />
-            </div>
-          </div> */}
         </>
       ),
     },
@@ -101,6 +86,15 @@ export default function ListForm() {
       key: "company",
     },
   ];
+
+  const [pop, setPop] = useState(false);
+  const handleChange = (e) => {
+    setPop(true);
+  };
+
+  const handleClose = (e) => {
+    setPop(false);
+  };
 
   return (
     <div className="DAT_ListForm">
@@ -148,31 +142,25 @@ export default function ListForm() {
         />
       </div>
 
-      <div
-        className="DAT_ListForm-Config"
-        // style={{ display: pop ? "block" : "none" }}
-      >
-        <form
-          className="DAT_ListForm-Config-Group"
-          // onSubmit={(e) => handleSaveRow(e)}
-        >
-          <div className="_ListForm-Config-Group-Tit">
-            <div>Chỉnh Sửa</div>
-            <div
-              className="_ListForm-Config-Group-Tit-Close"
-              // onClick={(e) => handleClose2(e)}
-            >
-              <IoClose />
+      {pop ? (
+        <div className="DAT_ListForm-Config">
+          <form className="DAT_ListForm-Config-Group">
+            <div className="DAT_ListForm-Config-Group-Tit">
+              <div>Chỉnh Sửa</div>
+              <div
+                className="DAT_ListForm-Config-Group-Tit-Close"
+                onClick={(e) => handleClose(e)}
+              >
+                <IoClose />
+              </div>
             </div>
-          </div>
-          <input
-            type="text"
-            required
-            // ref={datainrow}
-          ></input>
-          <button>Lưu</button>
-        </form>
-      </div>
+            <input type="text" required></input>
+            <button>Lưu</button>
+          </form>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
