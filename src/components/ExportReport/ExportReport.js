@@ -1,14 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import "./ExportReport.scss";
 import ListForm from "./ListForm.js";
+import UploadFile from "./UploadFile.js";
 import History from "./History.js";
-import axios from "axios";
 
 export default function ExportReport() {
-  const [filename, setFilename] = useState(null);
-
   const tit = {
     listform: "Danh Sách Form",
+    upload: "Upload file",
     history: "Thống Kê",
   };
 
@@ -21,39 +20,6 @@ export default function ExportReport() {
   const handleNav = (e) => {
     var id = e.currentTarget.id;
     setNav(id);
-  };
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("file", filename);
-    // const result = await axios.post(
-    //   "http://172.16.0.204:3000/file/upload",
-    //   formData,
-    //   {
-    //     headers: { "Content-Type": "multipart/form-data" },
-    //   }
-    // );
-  };
-  const onInputChange = (e) => {
-    setFilename(e.target.files[0]);
-
-
-
-    const [file] = e.target.files;
-    const reader = new FileReader();
-    reader.onload = (evt) => {
-      const bstr = evt.target.result;
-      const wb = XLSX.read(bstr, { type: "binary" });
-      const wsname = wb.SheetNames[0];
-      const ws = wb.Sheets[wsname];
-      const data = XLSX.utils.sheet_to_json(ws);
-      setData(data);
-    };
-    reader.readAsBinaryString(file);
-
-
-    
   };
 
   return (
@@ -87,16 +53,6 @@ export default function ExportReport() {
         </div>
       </div>
 
-      {/* <div className="DAT_ExportReport-Container">
-        <div className="DAT_ExportReport-Container-Group-head">
-          <form onSubmit={onSubmit}>
-            <input type="file" onChange={onInputChange} />
-            <input type="submit" value="Submit" />
-          </form>
-        </div>
-        <div className="DAT_ExportReport-Container-Group-Table"></div>
-      </div> */}
-
       <div className="DAT_ExportReport-Main">
         <div className="DAT_ExportReport-Main-Nav">
           <div
@@ -106,6 +62,15 @@ export default function ExportReport() {
             onClick={(e) => handleNav(e)}
           >
             Danh Sách Form
+          </div>
+
+          <div
+            className="DAT_ExportReport-Main-Nav-Item"
+            id="upload"
+            style={{ color: nav === "upload" ? color.cur : color.pre }}
+            onClick={(e) => handleNav(e)}
+          >
+            Upload File
           </div>
 
           <div
@@ -125,6 +90,12 @@ export default function ExportReport() {
                 return (
                   <>
                     <ListForm></ListForm>
+                  </>
+                );
+              case "upload":
+                return (
+                  <>
+                    <UploadFile></UploadFile>
                   </>
                 );
               case "history":

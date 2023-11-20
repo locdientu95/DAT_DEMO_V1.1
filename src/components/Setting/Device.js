@@ -99,7 +99,7 @@ export default function Device() {
 
   useEffect(() => {
     axios
-      .get("http://172.16.0.204:3000/gauge", { credential: true })
+      .get(process.env.REACT_APP_API_URL + "/gauge", { credential: true })
       .then((res) => {
         console.log(res.data.data);
         envDispatch({ type: "SET_GAUGE", payload: res.data.data[0] });
@@ -110,7 +110,7 @@ export default function Device() {
 
   useEffect(() => {
     axios
-      .get("http://172.16.0.204:3000/slider", { credential: true })
+      .get(process.env.REACT_APP_API_URL + "/slider", { credential: true })
       .then((res) => {
         console.log(res.data.data);
         envDispatch({ type: "SET_SLIDER", payload: res.data.data[0] });

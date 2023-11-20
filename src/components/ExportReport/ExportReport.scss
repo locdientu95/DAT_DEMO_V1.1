@@ -73,7 +73,6 @@
             flex: 4;
             display: flex;
             height: 44px;
-            // justify-content: flex-end;
 
             &-Form {
                 background-color: whitesmoke;
@@ -112,13 +111,25 @@
             }
         }
 
-        &-File {}
-
         &-Add {
             flex: 4;
             display: flex;
             height: 44px;
             justify-content: flex-end;
+
+            & button {
+                margin-right: 8px;
+                width: 50px;
+                border: none;
+                color: white;
+                background-color: #0061f2;
+                font-weight: 400;
+                border-radius: 5px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
 
             &-Form {
                 background-color: whitesmoke;
@@ -157,8 +168,28 @@
             }
         }
     }
+}
 
-    &-Row {}
+.DAT_UploadFile {
+    &-Form {}
+
+    &-Select {}
+
+    &-Button {
+        & button {
+            height: 40px;
+            // width: 60px;
+            border: none;
+            color: white;
+            background-color: #0061f2;
+            font-weight: 400;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 }
 
 .DAT_History {

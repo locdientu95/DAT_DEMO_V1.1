@@ -20,7 +20,7 @@ export default function ListForm() {
       center: true,
     },
     {
-      name: "Tên",
+      name: "Tên Form",
       selector: (row) => row.name,
     },
     {
@@ -122,12 +122,8 @@ export default function ListForm() {
           </div>
         </form>
 
-        <form className="DAT_ListForm-Head-File">
-          <input type="file" />
-          <input type="submit" value="Submit" />
-        </form>
-
         <form className="DAT_ListForm-Head-Add">
+          <button>Lưu</button>
           <div className="DAT_ListForm-Head-Add-Form">
             <input type="search" placeholder="Thêm" />
             <div className="DAT_ListForm-Head-Add-Form-Icon">
