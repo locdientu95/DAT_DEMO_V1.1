@@ -142,6 +142,8 @@ export default function ListForm() {
     setDisplay(false);
     console.log(edit);
     console.log(config);
+    const temp = config;
+    
   };
 
   return (
