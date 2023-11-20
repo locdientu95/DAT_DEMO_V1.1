@@ -6,10 +6,12 @@ import { FiEdit } from "react-icons/fi";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
+import { useRef } from "react";
 
 export default function ListForm() {
   const { listform } = useContext(EnvContext);
   const [data, setData] = React.useState(listform);
+  const [edit, setEdit] = React.useState('');
 
   useEffect(() => {
     var newData = data;
@@ -59,10 +61,14 @@ export default function ListForm() {
                 id={[key]}
               >
                 <div> {row.config[key]} </div>
-                <button id={key} onClick={(e) => handleDelete(e)}>
-                  <FiEdit style={{  color: "blue" }} />
+                <button id={[key] + "_" + row.config[key]} onClick={(event) => handleEditConfig(event)}>
+                  <FiEdit style={{ color: "blue" }} />
                 </button>
-                <div style={{ cursor: "pointer", color: "red" }} id={"kkk"} onClick={(e) => handleDelete(e)}>
+                <div
+                  style={{ cursor: "pointer", color: "red" }}
+                  id={"kkk"}
+                  onClick={(e) => handleDeleteConfig(e)}
+                >
                   <IoTrashOutline />
                 </div>
                 <div style={{ cursor: "pointer" }}>
@@ -79,7 +85,13 @@ export default function ListForm() {
       selector: (row) => (
         <>
           <div>
-            <div style={{ cursor: "pointer", color: "red" }}>Xóa</div>
+            <div
+              style={{ cursor: "pointer", color: "red" }}
+              id={row.name}
+              onClick={(e) => handleDelete(e)}
+            >
+              Xóa
+            </div>
           </div>
         </>
       ),
@@ -88,8 +100,27 @@ export default function ListForm() {
     },
   ];
 
+  const handleEditConfig = (event) => {
+    console.log(event.currentTarget.id);
+    const temp = event.currentTarget.id.split("_");
+    console.log(temp);//(2) ['0', 'a'] (index, attribute)
+    setEdit(temp[1]);
+  };
+
+  const handleDeleteConfig = (e) => {
+    console.log(e.currentTarget.id);
+  };
+
   const handleDelete = (e) => {
-    console.log(e.target.id);
+    console.log(e.currentTarget.id);
+    var newData = data.filter((data) => data.name !== e.target.id);
+    console.log(newData);
+    setData(newData);
+  };
+
+  const handleEdit = (e) => {
+    setEdit(e.currentTarget.value);
+    console.log(e.currentTarget.value);
   }
 
   return (
@@ -158,7 +189,8 @@ export default function ListForm() {
           <input
             type="text"
             required
-            // ref={datainrow}
+            defaultValue={edit || ""}
+            onChange={(e) => handleEdit(e)}
           ></input>
           <button>Lưu</button>
         </form>
