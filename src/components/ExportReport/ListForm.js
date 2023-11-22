@@ -84,22 +84,50 @@ export default function ListForm() {
                 key={key}
                 id={[key]}
               >
-                <div> {row.config[key]} </div>
+                <div
+                  style={{
+                    width: "100px",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
+                  {row.config[key]}
+                </div>
                 <button
                   id={[key] + "_" + row.config[key] + "_" + row.name}
                   onClick={(event) => handleEditConfig(event)}
+                  style={{
+                    cursor: "pointer",
+                    border: "none",
+                    background: "none",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
                 >
                   <FiEdit style={{ color: "blue" }} />
                 </button>
                 <div
-                  style={{ cursor: "pointer", color: "red" }}
+                  style={{
+                    cursor: "pointer",
+                    color: "red",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
                   id={row.config[key] + "_" + row.name}
                   onClick={(e) => handleDeleteConfig(e)}
                 >
                   <IoTrashOutline />
                 </div>
                 <div
-                  style={{ cursor: "pointer" }}
+                  style={{
+                    cursor: "pointer",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
                   id={row.formid}
                   onClick={(e) => handleAddConfig(e)}
                 >
@@ -281,10 +309,10 @@ export default function ListForm() {
             className="DAT_ListForm-Config-Group"
             onSubmit={(e) => handleSaveEdit(e)}
           >
-            <div className="_ListForm-Config-Group-Tit">
+            <div className="DAT_ListForm-Config-Group-Tit">
               <div>Chỉnh Sửa</div>
               <div
-                className="_ListForm-Config-Group-Tit-Close"
+                className="DAT_ListForm-Config-Group-Tit-Close"
                 // onClick={(e) => handleClose2(e)}
               >
                 <IoClose onClick={(e) => handleClose(e)} />
