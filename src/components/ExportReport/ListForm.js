@@ -7,18 +7,20 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
 import { useRef } from "react";
+import { Alert } from "bootstrap";
 
 export default function ListForm() {
-  const { listform } = useContext(EnvContext);
+  const { listform, envDispatch } = useContext(EnvContext);
   const [data, setData] = React.useState(listform);
-  const fill = useRef(data);
-  const [edit, setEdit] = useState(data);
+  const [edit, setEdit] = useState();
   const [display, setDisplay] = useState(false);
   const [config, setConfig] = useState([]);
+  const [flag, setFlag] = useState();
 
-  // useEffect(() => {
-  //   console.log(display);
-  // });
+  useEffect(() => {
+    console.log(edit);
+    console.log(config);
+  });
 
   useEffect(() => {
     var newData = data;
@@ -27,6 +29,13 @@ export default function ListForm() {
     });
     setData(newData);
   }, [data]);
+
+  // useEffect(() => {
+  //   envDispatch({
+  //     type: "SET_LISTFORM",
+  //     payload: data,
+  //   })
+  // },[data])
 
   const paginationComponentOptions = {
     rowsPerPageText: "Số hàng",
@@ -50,7 +59,15 @@ export default function ListForm() {
     },
     {
       name: "Tên Form",
-      selector: (row) => row.name,
+      selector: (row) => (
+        <div
+          style={{ cursor: "pointer" }}
+          id={row.name}
+          onClick={(e) => handleEditName(e)}
+        >
+          {row.name}
+        </div>
+      ),
     },
     {
       name: "Cấu hình",
@@ -69,19 +86,23 @@ export default function ListForm() {
               >
                 <div> {row.config[key]} </div>
                 <button
-                  id={[key] + "_" + row.config[key] +"_"+ row.name}
+                  id={[key] + "_" + row.config[key] + "_" + row.name}
                   onClick={(event) => handleEditConfig(event)}
                 >
                   <FiEdit style={{ color: "blue" }} />
                 </button>
                 <div
                   style={{ cursor: "pointer", color: "red" }}
-                  id={"kkk"}
+                  id={row.config[key] + "_" + row.name}
                   onClick={(e) => handleDeleteConfig(e)}
                 >
                   <IoTrashOutline />
                 </div>
-                <div style={{ cursor: "pointer" }}>
+                <div
+                  style={{ cursor: "pointer" }}
+                  id={row.formid}
+                  onClick={(e) => handleAddConfig(e)}
+                >
                   <IoAddCircleOutline />
                 </div>
               </div>
@@ -109,28 +130,52 @@ export default function ListForm() {
       center: true,
     },
   ];
+  const handleAddConfig = (e) => {
+    setDisplay(true);
+    setFlag("addconfig");
+    const temp = e.currentTarget.id;
+    setEdit("");
+    setConfig(temp);
+  };
+
+  const handleEditName = (e) => {
+    setDisplay(true);
+    setFlag("name");
+    const temp = e.currentTarget.id;
+    setEdit(temp);
+    setConfig(temp);
+  };
 
   const handleClose = (e) => {
     setDisplay(false);
   };
 
   const handleEditConfig = (event) => {
+    // Nút sửa
+    setFlag("config");
     setDisplay(true);
-    // console.log(event.currentTarget.id);
     const temp = event.currentTarget.id.split("_");
-    console.log(temp); //(3) ['0', 'a', 'name1'] (index, attribute, name)
     setEdit(temp[1]);
-    setConfig(temp)
+    setConfig(temp);
   };
 
   const handleDeleteConfig = (e) => {
-    console.log(e.currentTarget.id);
+    // Xóa config
+    const arr = e.currentTarget.id.split("_");
+    console.log(arr);
+    var newData = data;
+    const i = newData.findIndex((data) => data.name === arr[1]);
+    if (data[i].config.length === 1) {
+      alert("Ít nhất phải có 1 cấu hình");
+    } else {
+      newData[i].config = newData[i].config.filter((data) => data !== arr[0]);
+      setData([...newData]);
+    }
   };
 
   const handleDelete = (e) => {
-    console.log(e.currentTarget.id);
+    // Xóa 1 dòng trong form
     var newData = data.filter((data) => data.name !== e.target.id);
-    console.log(newData);
     setData(newData);
   };
 
@@ -140,10 +185,44 @@ export default function ListForm() {
 
   const handleSaveEdit = (e) => {
     setDisplay(false);
-    console.log(edit);
-    console.log(config);
-    const temp = config;
-    
+    // console.log(config); //(3) ['0', 'a', 'name1']
+
+    // if (flag === "config") {
+    //   const index = data.findIndex((data) => data.name === config[2]);
+    //   data[index].config[parseInt(config[0])] = edit;
+    // } else if (flag === "name") {
+    //   const index = data.findIndex((data) => data.name === config);
+    //   data[index].name = edit;
+    // } else if (flag === "addconfig") {
+    //   const index = data.findIndex((data) => data.formid === config);
+    //   data[index].config.push(edit);
+    // }
+
+    switch (flag) {
+      case "config": {
+        const index = data.findIndex((data) => data.name === config[2]);
+        data[index].config[parseInt(config[0])] = edit;
+        break;
+      }
+      case "name": {
+        const index = data.findIndex((data) => data.name === config);
+        data[index].name = edit;
+        break;
+      }
+      case "addconfig": {
+        const index = data.findIndex((data) => data.formid === config);
+        if (data[index].config.filter((data) => data === edit).length > 0) {
+          alert("Yêu cầu không trùng cấu hình");
+          break;
+        } else {
+          data[index].config.push(edit);
+          break;
+        }
+      }
+      default: {
+        break;
+      }
+    }
   };
 
   return (

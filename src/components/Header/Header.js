@@ -46,7 +46,7 @@ export default function Header(props) {
     let newData = errorlogs;
     newData = newData.filter((data) => data.read === false);
     let temp = newData.length;
-    console.log(temp);
+    // console.log(temp);
     setReadnoti(temp);
   }, [errorlogs]);
 

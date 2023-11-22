@@ -11,12 +11,12 @@ export const INITSTATE = {
     {
       formid: "ID2",
       name: "name2",
-      config: ['c', 's', 'c'],
+      config: ['d', 'e', 'f'],
     },
     {
       formid: "ID3",
       name: "name3",
-      config: ['k', 'b', 'c','h','j'],
+      config: ['g', 'h', 'j','k','l'],
     }
   ],
 
