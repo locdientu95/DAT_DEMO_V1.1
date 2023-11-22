@@ -105,7 +105,6 @@ export default function ErrorReport() {
     console.log(final);
   };
 
-  const addnewData = () => {};
 
   useEffect(() => {
     var newData = errorlogs;

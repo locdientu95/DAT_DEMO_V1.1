@@ -42,7 +42,7 @@ export default function App() {
         (newInfo) =>
           newInfo.username === data.user && newInfo.password === data.pwd
       );
-      console.log(localStorage.getItem("data"), newInfo);
+      // console.log(localStorage.getItem("data"), newInfo);
 
       if (newInfo.length) {
         envDispatch({
