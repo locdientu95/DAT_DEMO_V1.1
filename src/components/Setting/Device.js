@@ -99,11 +99,7 @@ export default function Device() {
 
   useEffect(() => {
     axios
-<<<<<<< HEAD
-      .get("http://172.16.0.169:3000/gauge", { credential: true })
-=======
       .get(process.env.REACT_APP_API_URL + "/gauge", { credential: true })
->>>>>>> edf987ad8d1eb1740fd04c979704a7b3477feeaa
       .then((res) => {
         console.log(res.data.data);
         envDispatch({ type: "SET_GAUGE", payload: res.data.data[0] });

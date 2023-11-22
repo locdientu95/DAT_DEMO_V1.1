@@ -9,7 +9,7 @@ export default function UploadFile() {
     const formData = new FormData();
     formData.append("file", filename);
     const result = await axios.post(
-      "http://172.16.0.169:5000/upload",
+      "http://172.16.0.169:3000/file/upload",
       formData,
       {
         headers: { "Content-Type": "multipart/form-data" },
