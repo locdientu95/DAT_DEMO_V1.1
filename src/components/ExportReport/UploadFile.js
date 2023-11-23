@@ -21,11 +21,15 @@ export default function UploadFile() {
   };
 
   const onUpload = (e) => {
-    setStep("step2");
+    if (filename === null) {
+      alert("chưa chọn file");
+    } else {
+      setStep("step2");
+    }
   };
 
   const onForm = (e) => {
-    setStep("step3");
+    alert("upload success");
   };
 
   const onDown = (e) => {
@@ -43,6 +47,7 @@ export default function UploadFile() {
   const handleDrop = (e) => {
     e.preventDefault();
     setFilename(e.dataTransfer.files[0]);
+    console.log(e.dataTransfer.files[0]);
   };
 
   return (
@@ -88,10 +93,14 @@ export default function UploadFile() {
                       }}
                     >
                       {filename === null ? (
-                        <>Kéo và thả file vào đây</>
+                        <div style={{ marginBottom: "10px" }}>
+                          Kéo và thả file vào đây
+                        </div>
                       ) : (
-                        <>
-                          {filename.name}
+                        <div style={{ marginBottom: "10px", display: "flex" }}>
+                          <div>
+                            <div>{filename.name}</div>
+                          </div>
                           <div
                             style={{
                               display: "flex",
@@ -103,34 +112,69 @@ export default function UploadFile() {
                           >
                             <IoTrashOutline />
                           </div>
-                        </>
+                        </div>
                       )}
                     </div>
                   </div>
                   {/* <input type="submit" value="Submit" /> */}
+                  <button
+                    onClick={onUpload}
+                    className="DAT_UploadFile-Form-Button"
+                  >
+                    upload
+                  </button>
                 </div>
-                <button onClick={onUpload}>upload</button>
               </>
             );
           case "step2":
             return (
               <>
-                <div className="DAT_UploadFile-Select" id="step2">
-                  <div>Chọn form</div>
-                  <select>
-                    <option>a</option>
-                    <option>b</option>
-                    <option>c</option>
-                  </select>
-                  <button onClick={onForm}>upload</button>
+                <div className="DAT_UploadFile-Form" id="step2">
+                  <div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        marginBottom: "10px",
+                      }}
+                    >
+                      <IoCloudUpload color="#0061f2" size={50} />
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        fontSize: "18px",
+                      }}
+                    >
+                      {filename === null ? (
+                        <div style={{ marginBottom: "10px" }}>
+                          Kéo và thả file vào đây
+                        </div>
+                      ) : (
+                        <div>
+                          <div>
+                            <div>{filename.name}</div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </>
-            );
-          case "step3":
-            return (
-              <>
-                <div className="DAT_UploadFile-Button" id="step3">
-                  <button onClick={onDown}>Tải file</button>
+
+                <div className="DAT_UploadFile-Select" id="step2">
+                  <div className="DAT_UploadFile-Select-Form">
+                    <div>Chọn form</div>
+                    <select>
+                      <option>a</option>
+                      <option>b</option>
+                      <option>c</option>
+                    </select>
+                  </div>
+                  <button onClick={onForm}>Tải xuống</button>
+                  <span onClick={onDown}>Chọn file khác</span>
                 </div>
               </>
             );

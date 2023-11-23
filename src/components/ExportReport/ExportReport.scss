@@ -245,43 +245,20 @@
 }
 
 .DAT_UploadFile {
+    padding-bottom: 16px;
+
     &-Form {
         margin: auto;
         width: 400px;
         padding: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         border: 2px dashed #0061f2;
         border-radius: 10px;
-        // cursor: pointer;
-    }
-
-    &-Select {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 16px;
-        padding-bottom: 16px;
-        margin: auto;
-        width: 400px;
-        gap: 8px;
-
-        & select {
-            border-radius: 5px;
-            height: 30px;
-        }
-    }
-
-    &-Button {
-        padding-bottom: 16px;
 
         & button {
             height: 40px;
             border: none;
             color: white;
             background-color: #0061f2;
-            // background-color: #99bff9;
             font-weight: 400;
             border-radius: 5px;
             cursor: pointer;
@@ -289,6 +266,48 @@
             justify-content: center;
             align-items: center;
             margin: auto;
+        }
+    }
+
+    &-Select {
+        padding-top: 16px;
+        margin: auto;
+        width: 400px;
+
+        &-Form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding-bottom: 16px;
+
+            & select {
+                border-radius: 5px;
+                height: 20px;
+            }
+        }
+
+        & button {
+            height: 40px;
+            border: none;
+            color: white;
+            background-color: #0061f2;
+            font-weight: 400;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
+
+        & span {
+            color: red;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 16px;
         }
     }
 }
