@@ -87,20 +87,35 @@ export default function ListForm() {
                 key={key}
                 id={[key]}
               >
-                <div> {row.config[key]} </div>
+                <span className="DAT_ListForm-Text">{row.config[key]}</span>
                 <button
                   id={[key] + "_" + row.config[key] + "_" + row.name}
                   onClick={(event) => handleEditConfig(event)}
+                  style={{
+                    cursor: "pointer",
+                    border: "none",
+                    background: "none",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
                 >
                   <FiEdit style={{ color: "blue" }} />
                 </button>
                 <div
-                  style={{ cursor: "pointer", color: "red" }}
+                  style={{
+                    cursor: "pointer",
+                    color: "red",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
                   id={row.config[key] + "_" + row.name}
                   onClick={(e) => handleDeleteConfig(e)}
                 >
                   <IoTrashOutline />
                 </div>
+<<<<<<< HEAD
                 {row.config.length === i + 1 ? (
                   <div
                     style={{ cursor: "pointer" }}
@@ -112,6 +127,20 @@ export default function ListForm() {
                 ) : (
                   <></>
                 )}
+=======
+                <div
+                  style={{
+                    cursor: "pointer",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  id={row.formid}
+                  onClick={(e) => handleAddConfig(e)}
+                >
+                  <IoAddCircleOutline />
+                </div>
+>>>>>>> 5698e684161a339e085c75b6e5f8a4f5fe292e57
               </div>
             );
           })}
@@ -137,6 +166,7 @@ export default function ListForm() {
       center: true,
     },
   ];
+
   const handleAddConfig = (e) => {
     setDisplay(true);
     setFlag("addconfig");
@@ -271,23 +301,18 @@ export default function ListForm() {
           paginationComponentOptions={paginationComponentOptions}
         />
       </div>
+
       {display === false ? (
         <></>
       ) : (
-        <div
-          className="DAT_ListForm-Config"
-          // style={{ display: pop ? "block" : "none" }}
-        >
+        <div className="DAT_ListForm-Config">
           <form
             className="DAT_ListForm-Config-Group"
             onSubmit={(e) => handleSaveEdit(e)}
           >
-            <div className="_ListForm-Config-Group-Tit">
+            <div className="DAT_ListForm-Config-Group-Tit">
               <div>Chỉnh Sửa</div>
-              <div
-                className="_ListForm-Config-Group-Tit-Close"
-                // onClick={(e) => handleClose2(e)}
-              >
+              <div className="DAT_ListForm-Config-Group-Tit-Close">
                 <IoClose onClick={(e) => handleClose(e)} />
               </div>
             </div>

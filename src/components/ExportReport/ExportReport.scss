@@ -167,7 +167,13 @@
                 }
             }
         }
+    }
 
+    &-Text {
+        width: 100px;
+        white-space: nowrap !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     &-Config {
@@ -240,16 +246,36 @@
 
 .DAT_UploadFile {
     &-Form {
-        margin-bottom: 16px;
+        margin: auto;
+        width: 400px;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px dashed #0061f2;
+        border-radius: 10px;
+        // cursor: pointer;
     }
 
     &-Select {
-        margin-bottom: 16px;
-        border-radius: 5px;
-        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        margin: auto;
+        width: 400px;
+        gap: 8px;
+
+        & select {
+            border-radius: 5px;
+            height: 30px;
+        }
     }
 
     &-Button {
+        padding-bottom: 16px;
+
         & button {
             height: 40px;
             border: none;
@@ -262,6 +288,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            margin: auto;
         }
     }
 }
