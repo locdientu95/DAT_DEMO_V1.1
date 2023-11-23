@@ -167,7 +167,13 @@
                 }
             }
         }
+    }
 
+    &-Text {
+        width: 100px;
+        white-space: nowrap !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     &-Config {
@@ -248,7 +254,7 @@
         align-items: center;
         border: 2px dashed #0061f2;
         border-radius: 10px;
-        cursor: pointer;
+        // cursor: pointer;
     }
 
     &-Select {

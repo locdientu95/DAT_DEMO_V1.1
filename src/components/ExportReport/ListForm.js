@@ -84,16 +84,7 @@ export default function ListForm() {
                 key={key}
                 id={[key]}
               >
-                <div
-                  style={{
-                    width: "100px",
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                  }}
-                >
-                  {row.config[key]}
-                </div>
+                <span className="DAT_ListForm-Text">{row.config[key]}</span>
                 <button
                   id={[key] + "_" + row.config[key] + "_" + row.name}
                   onClick={(event) => handleEditConfig(event)}
@@ -158,6 +149,7 @@ export default function ListForm() {
       center: true,
     },
   ];
+
   const handleAddConfig = (e) => {
     setDisplay(true);
     setFlag("addconfig");
@@ -298,23 +290,18 @@ export default function ListForm() {
           paginationComponentOptions={paginationComponentOptions}
         />
       </div>
+
       {display === false ? (
         <></>
       ) : (
-        <div
-          className="DAT_ListForm-Config"
-          // style={{ display: pop ? "block" : "none" }}
-        >
+        <div className="DAT_ListForm-Config">
           <form
             className="DAT_ListForm-Config-Group"
             onSubmit={(e) => handleSaveEdit(e)}
           >
             <div className="DAT_ListForm-Config-Group-Tit">
               <div>Chỉnh Sửa</div>
-              <div
-                className="DAT_ListForm-Config-Group-Tit-Close"
-                // onClick={(e) => handleClose2(e)}
-              >
+              <div className="DAT_ListForm-Config-Group-Tit-Close">
                 <IoClose onClick={(e) => handleClose(e)} />
               </div>
             </div>
