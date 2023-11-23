@@ -6,8 +6,6 @@ import { FiEdit } from "react-icons/fi";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
-import { useRef } from "react";
-import { Alert } from "bootstrap";
 
 export default function ListForm() {
   const { listform, envDispatch } = useContext(EnvContext);
@@ -18,9 +16,13 @@ export default function ListForm() {
   const [flag, setFlag] = useState();
 
   useEffect(() => {
-    console.log(edit);
-    console.log(config);
-  });
+    console.log(listform[0].config.length);
+  }, [listform]);
+
+  // useEffect(() => {
+  //   console.log(edit);
+  //   console.log(config);
+  // });
 
   useEffect(() => {
     var newData = data;
@@ -73,7 +75,8 @@ export default function ListForm() {
       name: "Cấu hình",
       selector: (row) => (
         <>
-          {Object.entries(row.config).map(([key]) => {
+          {/* <div>{row.config.length}</div> */}
+          {Object.entries(row.config).map(([key], i) => {
             return (
               <div
                 style={{
@@ -112,6 +115,19 @@ export default function ListForm() {
                 >
                   <IoTrashOutline />
                 </div>
+<<<<<<< HEAD
+                {row.config.length === i + 1 ? (
+                  <div
+                    style={{ cursor: "pointer" }}
+                    id={row.formid}
+                    onClick={(e) => handleAddConfig(e)}
+                  >
+                    <IoAddCircleOutline />
+                  </div>
+                ) : (
+                  <></>
+                )}
+=======
                 <div
                   style={{
                     cursor: "pointer",
@@ -124,6 +140,7 @@ export default function ListForm() {
                 >
                   <IoAddCircleOutline />
                 </div>
+>>>>>>> 5698e684161a339e085c75b6e5f8a4f5fe292e57
               </div>
             );
           })}
@@ -207,22 +224,16 @@ export default function ListForm() {
     setDisplay(false);
     // console.log(config); //(3) ['0', 'a', 'name1']
 
-    // if (flag === "config") {
-    //   const index = data.findIndex((data) => data.name === config[2]);
-    //   data[index].config[parseInt(config[0])] = edit;
-    // } else if (flag === "name") {
-    //   const index = data.findIndex((data) => data.name === config);
-    //   data[index].name = edit;
-    // } else if (flag === "addconfig") {
-    //   const index = data.findIndex((data) => data.formid === config);
-    //   data[index].config.push(edit);
-    // }
-
     switch (flag) {
       case "config": {
         const index = data.findIndex((data) => data.name === config[2]);
-        data[index].config[parseInt(config[0])] = edit;
-        break;
+        if (data[index].config.filter((data) => data === edit).length > 0) {
+          alert("Yêu cầu không trường cấu hình");
+          break;
+        } else {
+          data[index].config[parseInt(config[0])] = edit;
+          break;
+        }
       }
       case "name": {
         const index = data.findIndex((data) => data.name === config);
