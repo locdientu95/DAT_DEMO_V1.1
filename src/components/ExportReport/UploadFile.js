@@ -5,19 +5,19 @@ import axios from "axios";
 export default function UploadFile() {
   const [filename, setFilename] = useState(null);
   const onSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("file", filename);
-    const result = await axios.post(
-      "http://172.16.0.169:3000/file/upload",
-      formData,
-      {
-        headers: { "Content-Type": "multipart/form-data" },
-      }
-    );
-    alert("upload success");
+    // e.preventDefault();
+    // const formData = new FormData();
+    // formData.append("file", filename);
+    // const result = await axios.post(
+    //   process.env.REACT_APP_API_URL+"/file/upload",
+    //   formData,
+    //   {
+    //     headers: { "Content-Type": "multipart/form-data" },
+    //   }
+    // );
+    // alert("upload success");
   };
-
+          
   const onInputChange = (e) => {
     setFilename(e.target.files[0]);
   };
