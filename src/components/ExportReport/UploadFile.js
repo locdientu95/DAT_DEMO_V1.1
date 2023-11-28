@@ -6,20 +6,19 @@ import { IoCloudUpload, IoTrashOutline } from "react-icons/io5";
 export default function UploadFile() {
   const [filename, setFilename] = useState(null);
   const [step, setStep] = useState("step1");
-
-  // const onSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const formData = new FormData();
-  //   formData.append("file", filename);
-  //   const result = await axios.post(
-  //     "http://172.16.0.169:5000/upload",
-  //     formData,
-  //     {
-  //       headers: { "Content-Type": "multipart/form-data" },
-  //     }
-  //   );
-  //   alert("upload success");
-  // };
+  const onSubmit = async (e) => {
+    // e.preventDefault();
+    // const formData = new FormData();
+    // formData.append("file", filename);
+    // const result = await axios.post(
+    //   process.env.REACT_APP_API_URL+"/file/upload",
+    //   formData,
+    //   {
+    //     headers: { "Content-Type": "multipart/form-data" },
+    //   }
+    // );
+    // alert("upload success");
+  };
 
   const onUpload = (e) => {
     if (filename === null) {

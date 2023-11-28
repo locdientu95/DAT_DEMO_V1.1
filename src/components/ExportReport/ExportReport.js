@@ -3,6 +3,7 @@ import "./ExportReport.scss";
 import ListForm from "./ListForm.js";
 import UploadFile from "./UploadFile.js";
 import History from "./History.js";
+import ImageUpload from "./ImageUpload.js";
 
 export default function ExportReport() {
   const tit = {
@@ -95,7 +96,7 @@ export default function ExportReport() {
               case "upload":
                 return (
                   <>
-                    <UploadFile></UploadFile>
+                    <ImageUpload></ImageUpload>
                   </>
                 );
               case "history":
