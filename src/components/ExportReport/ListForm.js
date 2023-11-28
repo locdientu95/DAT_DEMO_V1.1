@@ -8,7 +8,10 @@ import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
 
 export default function ListForm() {
-  const { listform, envDispatch } = useContext(EnvContext);
+  const {
+    listform,
+    // envDispatch
+  } = useContext(EnvContext);
   const [data, setData] = React.useState(listform);
   const [edit, setEdit] = useState();
   const [display, setDisplay] = useState(false);
@@ -115,7 +118,6 @@ export default function ListForm() {
                 >
                   <IoTrashOutline />
                 </div>
-<<<<<<< HEAD
                 {row.config.length === i + 1 ? (
                   <div
                     style={{ cursor: "pointer" }}
@@ -127,20 +129,6 @@ export default function ListForm() {
                 ) : (
                   <></>
                 )}
-=======
-                <div
-                  style={{
-                    cursor: "pointer",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                  id={row.formid}
-                  onClick={(e) => handleAddConfig(e)}
-                >
-                  <IoAddCircleOutline />
-                </div>
->>>>>>> 5698e684161a339e085c75b6e5f8a4f5fe292e57
               </div>
             );
           })}
