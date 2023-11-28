@@ -2,11 +2,22 @@ import React, { useState, useRef, useContext, useEffect } from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import { EnvContext } from "../Context/EnvContext";
+import axios from "axios";
 
 export default function Header(props) {
   const [arrow, setArrow] = useState(false); //hook
   const { errorlogs, errornoti, envDispatch } = useContext(EnvContext);
   const [ readnoti, setReadnoti ] = useState();
+  const [ava, setAva] = useState()
+
+  useEffect(()=>{
+    axios
+    .get(process.env.REACT_APP_API_URL + "/image/getimg", { credential: true })
+    .then((res) => {
+      setAva(res.data.data[0].image)
+      
+    });
+  },[])
 
   const getDrop = (id) => {
     //function
@@ -275,8 +286,8 @@ export default function Header(props) {
             <button className="DAT_Header-Right-Item4-Account">
               <img
                 alt=""
-                src="./DAT_Pictures/user1.png"
-                style={{ height: "36px", borderRadius: "50%" }}
+                src={ava}
+                style={{ height: "36px", width:"50px", borderRadius: "50%" }}
               />
             </button>
           </div>
@@ -576,8 +587,8 @@ export default function Header(props) {
                     <div className="DAT_Header_Account_Header_Profile">
                       <img
                         alt=""
-                        src="./DAT_Pictures/user1.png"
-                        style={{ height: "36px", borderRadius: "50%" }}
+                        src= {ava}
+                        style={{ height: "36px",width:"36px", borderRadius: "50%" }}
                       ></img>
                       <div className="DAT_Header_Account_Header_Profile-Details">
                         <div>{props.name}</div>

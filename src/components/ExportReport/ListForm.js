@@ -115,19 +115,6 @@ export default function ListForm() {
                 >
                   <IoTrashOutline />
                 </div>
-<<<<<<< HEAD
-                {row.config.length === i + 1 ? (
-                  <div
-                    style={{ cursor: "pointer" }}
-                    id={row.formid}
-                    onClick={(e) => handleAddConfig(e)}
-                  >
-                    <IoAddCircleOutline />
-                  </div>
-                ) : (
-                  <></>
-                )}
-=======
                 <div
                   style={{
                     cursor: "pointer",
@@ -140,7 +127,6 @@ export default function ListForm() {
                 >
                   <IoAddCircleOutline />
                 </div>
->>>>>>> 5698e684161a339e085c75b6e5f8a4f5fe292e57
               </div>
             );
           })}
