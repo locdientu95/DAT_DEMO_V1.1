@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Account.scss";
+import axios from "axios";
 
 export default function Info() {
   const userName = useRef("");
@@ -8,7 +9,7 @@ export default function Info() {
   const mail = useRef("");
   const handleMail = () => {};
 
-  const address = useRef("");
+  var address = useRef("");
   const handleAddress = () => {};
 
   const phone = useRef("");
@@ -17,29 +18,90 @@ export default function Info() {
   const birth = useRef("");
   const handleBirth = () => {};
 
-  const handleSave = () => {
-    var data = {
-      username: userName.current.value,
-      mail: mail.current.value,
-      address: address.current.value,
-      phone: phone.current.value,
-      birth: birth.current.value,
-    };
+  // const handleSave = () => {
+  //   var data = {
+  //     username: userName.current.value,
+  //     mail: mail.current.value,
+  //     address: address.current.value,
+  //     phone: phone.current.value,
+  //     birth: birth.current.value,
+  //   };
 
-    if (data.username === "") {
-      console.log("thiếu thông tin");
-    } else if (data.mail === "") {
-      console.log("thiếu thông tin");
-    } else if (data.address === "") {
-      console.log("thiếu thông tin");
-    } else if (data.phone === "") {
-      console.log("thiếu thông tin");
-    } else if (data.birth === "") {
-      console.log("thiếu thông tin");
+  //   if (data.username === "") {
+  //     console.log("thiếu thông tin");
+  //   } else if (data.mail === "") {
+  //     console.log("thiếu thông tin");
+  //   } else if (data.address === "") {
+  //     console.log("thiếu thông tin");
+  //   } else if (data.phone === "") {
+  //     console.log("thiếu thông tin");
+  //   } else if (data.birth === "") {
+  //     console.log("thiếu thông tin");
+  //   } else {
+  //     console.log("data:", data);
+  //   }
+  // };
+
+  const [image, setImage] = useState();
+  const [size, setSize] = useState();
+  const [allImage, setAllImage] = useState();
+  var data = JSON.parse(localStorage.getItem("data"));
+  const [usr, setUsr] = useState(data.user);
+  const convertToBase64 = (e) => {
+    console.log(e.target.files[0].size);
+    var reader = new FileReader();
+    if (e.target.files[0].size < 80000 && e.target.files[0].size > 0) {
+      console.log(e.target.files[0].size);
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = () => {
+        console.log(reader.result);
+        setImage(reader.result);
+        setSize(e.target.files[0].size);
+      };
     } else {
-      console.log("data:", data);
+      console.log(e.target.files[0].size);
+      alert("File nặng quá bồ");
+      setSize(e.target.files[0].size);
+      reader.onerror = (error) => {
+        console.log("Error", error);
+      };
     }
   };
+  const handleUpload = () => {
+    if (size < 80000 && size > 0) {
+      axios.post(
+        process.env.REACT_APP_API_URL + "/UpdateImage",
+        { username: usr, base64: image },
+        { credential: true },
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+      alert("Uploaded");
+    } else {
+      alert("Nặng lắm, không up đâu");
+    }
+  };
+
+  useEffect(() => {
+    console.log("helo", usr);
+    axios
+      .post(
+        process.env.REACT_APP_API_URL + "/getimg",
+        {
+          username: usr,
+        },
+        {
+          credential: true,
+        }
+      )
+      .then((res) => {
+        //console.log(res.data.data.avatar);
+        setAllImage(res.data.data.avatar);
+        address = res.data.data.address;
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="DAT_Info">
@@ -54,17 +116,37 @@ export default function Info() {
               Ảnh Đại Diện
             </div>
             <div className="DAT_Info_Main_Content_Picture_Content">
-              <img
+              {/* <img
                 alt=""
                 src="./DAT_Pictures/user1.png"
                 style={{ height: "160px", borderRadius: "50%" }}
+              /> */}
+              {/* {allImage.map((data) => {
+                return ( */}
+              <img
+                // key={data.image}
+                src={allImage}
+                alt=""
+                style={{ height: "160px", borderRadius: "50%" }}
               />
+              {/* );
+              })} */}
               <div className="DAT_Info_Main_Content_Picture_Content_Text">
-                JPG hoặc PNG, tối đa 5MB
+                JPG hoặc PNG, tối đa 1MB
               </div>
-              <button className="DAT_Info_Main_Content_Picture_Content_Button">
+              <button
+                className="DAT_Info_Main_Content_Picture_Content_Button"
+                onClick={() => document.querySelector(".inputfile").click()}
+              >
                 Chọn ảnh đại diện mới
               </button>
+              <input
+                accept="image/+"
+                type="file"
+                className="inputfile"
+                onChange={convertToBase64}
+                hidden
+              />
             </div>
           </div>
 
@@ -148,7 +230,7 @@ export default function Info() {
 
                 <button
                   className="DAT_Info_Main_Content_Detail_Content_Form_Button"
-                  onClick={() => handleSave()}
+                  onClick={() => handleUpload()}
                 >
                   Lưu thay đổi
                 </button>

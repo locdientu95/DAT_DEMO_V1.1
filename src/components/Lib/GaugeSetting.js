@@ -43,7 +43,7 @@ export default function GaugeSetting() {
 
     axios
       .put(
-        process.env.REACT_APP_API_URL+"/gauge/tit",
+        process.env.REACT_APP_API_URL + "/gauge/tit",
         {
           label: gauge.label,
           labelsize: gauge.labelsize,
@@ -84,7 +84,7 @@ export default function GaugeSetting() {
 
     axios
       .put(
-        process.env.REACT_APP_API_URL+"/gauge/unit",
+        process.env.REACT_APP_API_URL + "/gauge/unit",
         {
           unit: gauge.unit,
           valuesize: gauge.valuesize,
@@ -119,7 +119,7 @@ export default function GaugeSetting() {
 
     axios
       .put(
-        process.env.REACT_APP_API_URL+"/gauge/min",
+        process.env.REACT_APP_API_URL + "/gauge/min",
         { min: gauge.min },
         { credential: true }
       )
@@ -141,7 +141,7 @@ export default function GaugeSetting() {
 
     axios
       .put(
-        process.env.REACT_APP_API_URL+"/gauge/max",
+        process.env.REACT_APP_API_URL + "/gauge/max",
         { max: gauge.max },
         { credential: true }
       )
@@ -174,7 +174,7 @@ export default function GaugeSetting() {
     // axios.method(url, body, ...)
     axios
       .put(
-        process.env.REACT_APP_API_URL+"/gauge/custom",
+        process.env.REACT_APP_API_URL + "/gauge/custom",
         {
           width: gauge.width,
           height: gauge.height,
@@ -202,7 +202,7 @@ export default function GaugeSetting() {
   const handleColor = (e) => {
     axios
       .put(
-        process.env.REACT_APP_API_URL+"/gauge/color",
+        process.env.REACT_APP_API_URL + "/gauge/color",
         {
           needlecolor: needlecolor.current.value,
           startcolor: startcolor.current.value,

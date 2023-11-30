@@ -174,6 +174,7 @@
         white-space: nowrap !important;
         overflow: hidden;
         text-overflow: ellipsis;
+        text-align: right;
     }
 
     &-Config {
@@ -259,7 +260,8 @@
             border: none;
             color: white;
             background-color: #0061f2;
-            font-weight: 400;
+            font-weight: 500;
+            font-size: 14px;
             border-radius: 5px;
             cursor: pointer;
             display: flex;
@@ -269,10 +271,15 @@
         }
     }
 
+    &-Info {
+        padding: 10px;
+        border: 1px solid #0061f2;
+        border-radius: 10px;
+    }
+
     &-Select {
         padding-top: 16px;
         margin: auto;
-        width: 400px;
 
         &-Form {
             display: flex;
@@ -313,61 +320,7 @@
 }
 
 .DAT_History {
-    &-Row {
-        display: flex;
-        margin-bottom: 16px;
-
-        &-Label {
-            width: 100px;
-        }
-
-        & input {
-            height: 44px;
-            width: 100%;
-            border-radius: 5px;
-            border: solid 1px rgb(156, 155, 155, 0.3);
-            outline: none;
-            padding: 8px;
-            box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-
-            &:focus-within {
-                box-shadow: 0px 0px 0px 4px rgb(66, 100, 255, 0.5);
-            }
-        }
-
-        & textarea {
-            width: 100%;
-            height: 150px;
-            padding: 8px;
-            outline: none;
-            border: solid 1px rgb(156, 155, 155, 0.3);
-            border-radius: 5px;
-
-            &:focus-within {
-                box-shadow: 0px 0px 0px 4px rgb(66, 100, 255, 0.5);
-            }
-        }
-
-    }
-
-    &-Button {
-        display: flex;
-        justify-content: flex-end;
-
-        & button {
-            height: 40px;
-            width: 60px;
-            border: none;
-            color: white;
-            background-color: #0061f2;
-            font-weight: 400;
-            border-radius: 5px;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    &-Barchart {
+        padding-bottom: 16px;
     }
 }

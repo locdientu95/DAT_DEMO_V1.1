@@ -26,44 +26,40 @@ import axios from "axios";
 export default function App() {
   const { register, login, envDispatch } = useContext(EnvContext);
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://172.16.0.169:3000/", { credential: true })
-  //     .then((res) => {
-  //       console.log(res.data.data);
-  //     });
-  // }, []);
-
   useEffect(() => {
-    var newInfo = register;
     var data = JSON.parse(localStorage.getItem("data"));
     if (data !== null) {
-      newInfo = newInfo.filter(
-        (newInfo) =>
-          newInfo.username === data.user && newInfo.password === data.pwd
-      );
-      // console.log(localStorage.getItem("data"), newInfo);
-
-      if (newInfo.length) {
-        envDispatch({
-          type: "SET_LOGIN",
-          payload: {
-            username: newInfo[0].username,
-            mail: newInfo[0].email,
-            status: true,
+      axios
+        .post(
+          process.env.REACT_APP_API_URL + "/Login",
+          {
+            username: data.user,
+            password: data.pwd,
           },
+          { credential: true }
+        )
+        .then((res) => {
+          envDispatch({
+            type: "SET_LOGIN",
+            payload: {
+              username: res.data.username,
+              mail: res.data.email,
+              status: true,
+            },
+          });
         });
-      }
+    } else {
+      envDispatch({
+        type: "SET_LOGIN",
+        payload: {
+          username: "",
+          mail: "",
+          status: false,
+        },
+      });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // useEffect(()=>{
-  //       axios.get("http://172.16.0.169:3000/",{credential:true}).then(
-  //         (res)=>{
-  //            console.log(res.data.data)
-  //         }
-  //       )
-  // },[])
 
   return (
     <Router>
