@@ -14,7 +14,8 @@ export default function Gauge(props) {
     } else {
       setArr([...arr, props.setting]);
     }
-  }, [props, arr]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>

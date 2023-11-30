@@ -47,7 +47,6 @@ useEffect(()=>{
         .get(process.env.REACT_APP_API_URL + "/image/getimg", { credential: true })
         .then((res) => {
           setAllImage(res.data.data)
-          
         });
 },[allImage])
      
@@ -64,7 +63,8 @@ useEffect(()=>{
             <br/>
             {allImage.map((data)=>{
                 return(
-                    <img src={data.image}/>
+                    <img style={{width: "225px", height:"225px"}} src={data.image} key={data.image}/>
+                    
                 )
             })}
         </div>
