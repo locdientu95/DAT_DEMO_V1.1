@@ -291,7 +291,7 @@ export default function Header(props) {
               <img
                 alt=""
                 src={ava}
-                style={{ height: "36px", width: "50px", borderRadius: "50%" }}
+                style={{ height: "36px", width: "36px", borderRadius: "50%" }}
               />
             </button>
           </div>
