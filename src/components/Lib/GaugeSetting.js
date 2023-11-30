@@ -43,11 +43,7 @@ export default function GaugeSetting() {
 
     axios
       .put(
-<<<<<<< HEAD
         process.env.REACT_APP_API_URL + "/gauge/tit",
-=======
-        process.env.REACT_APP_API_URL+"/gauge/tit",
->>>>>>> 065220257da749540b320b0fbe11ce5344e9d378
         {
           label: gauge.label,
           labelsize: gauge.labelsize,
@@ -88,11 +84,7 @@ export default function GaugeSetting() {
 
     axios
       .put(
-<<<<<<< HEAD
         process.env.REACT_APP_API_URL + "/gauge/unit",
-=======
-        process.env.REACT_APP_API_URL+"/gauge/unit",
->>>>>>> 065220257da749540b320b0fbe11ce5344e9d378
         {
           unit: gauge.unit,
           valuesize: gauge.valuesize,
@@ -127,11 +119,7 @@ export default function GaugeSetting() {
 
     axios
       .put(
-<<<<<<< HEAD
         process.env.REACT_APP_API_URL + "/gauge/min",
-=======
-        process.env.REACT_APP_API_URL+"/gauge/min",
->>>>>>> 065220257da749540b320b0fbe11ce5344e9d378
         { min: gauge.min },
         { credential: true }
       )
@@ -153,11 +141,7 @@ export default function GaugeSetting() {
 
     axios
       .put(
-<<<<<<< HEAD
         process.env.REACT_APP_API_URL + "/gauge/max",
-=======
-        process.env.REACT_APP_API_URL+"/gauge/max",
->>>>>>> 065220257da749540b320b0fbe11ce5344e9d378
         { max: gauge.max },
         { credential: true }
       )
@@ -190,11 +174,7 @@ export default function GaugeSetting() {
     // axios.method(url, body, ...)
     axios
       .put(
-<<<<<<< HEAD
         process.env.REACT_APP_API_URL + "/gauge/custom",
-=======
-        process.env.REACT_APP_API_URL+"/gauge/custom",
->>>>>>> 065220257da749540b320b0fbe11ce5344e9d378
         {
           width: gauge.width,
           height: gauge.height,
@@ -222,11 +202,7 @@ export default function GaugeSetting() {
   const handleColor = (e) => {
     axios
       .put(
-<<<<<<< HEAD
         process.env.REACT_APP_API_URL + "/gauge/color",
-=======
-        process.env.REACT_APP_API_URL+"/gauge/color",
->>>>>>> 065220257da749540b320b0fbe11ce5344e9d378
         {
           needlecolor: needlecolor.current.value,
           startcolor: startcolor.current.value,
