@@ -1037,7 +1037,7 @@ const EnvReducer = (state, action) => {
         ...state,
         numberv: action.payload,
       };
-      case "SET_LISTFOR<":
+      case "SET_LISTFORM":
         return {
           ...state,
           lisform: action.payload,
