@@ -2,8 +2,8 @@ import React, { useState, useRef, useContext, useEffect } from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import { EnvContext } from "../Context/EnvContext";
-import { signal } from "@preact/signals-react";
-
+import { signal, effect } from "@preact/signals-react";
+import { img, preimg } from "../Account/Info";
 export const test = signal("");
 
 export default function Header(props) {
@@ -11,6 +11,14 @@ export default function Header(props) {
 
   const [arrow, setArrow] = useState(false); //hook
   const [readnoti, setReadnoti] = useState();
+  const [ava, setAva] = useState(login.avatar);
+
+  useEffect(() => {
+    preimg.value = login.avatar;
+    if (img.value != "") {
+      preimg.value = img.value;
+    }
+  }, [preimg.value]);
 
   // useEffect(() => {
   //   axios
@@ -292,7 +300,7 @@ export default function Header(props) {
             <button className="DAT_Header-Right-Item4-Account">
               <img
                 alt=""
-                src={login.avatar}
+                src={preimg.value}
                 style={{ height: "36px", width: "50px", borderRadius: "50%" }}
               />
             </button>
@@ -593,7 +601,7 @@ export default function Header(props) {
                     <div className="DAT_Header_Account_Header_Profile">
                       <img
                         alt=""
-                        src={login.avatar}
+                        src={preimg.value}
                         style={{
                           height: "36px",
                           width: "36px",
