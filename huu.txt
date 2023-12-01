@@ -39,3 +39,4 @@ Huu 21-23/11 Tiep tuc viet API tai file len va down file ve
 Huu 24/11 Viet API base64 hinh va up vao database
 Huu 27-29/11 Tiep tuc viet api
 Huu 30/11 Gan API tao user va upload hinh anh len trang web
+Huu 1/12 Chinh sua function update hinh anh cua user

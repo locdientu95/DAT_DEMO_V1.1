@@ -2,7 +2,10 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import "./Account.scss";
 import axios from "axios";
 import { EnvContext } from "../Context/EnvContext";
+import {signal} from "@preact/signals-react"
 
+export const img = signal("")
+export const preimg = signal("")
 export default function Info() {
   
   
@@ -51,10 +54,8 @@ export default function Info() {
   var data = JSON.parse(localStorage.getItem("data"));
   const [usr, setUsr] = useState(data.user);
   const convertToBase64 = (e) => {
-    console.log(e.target.files[0].size);
     var reader = new FileReader();
     if (e.target.files[0].size < 800000 && e.target.files[0].size > 0) {
-      console.log(e.target.files[0].size);
       reader.readAsDataURL(e.target.files[0]);
       reader.onload = () => {
         setAllImage(reader.result)
@@ -62,7 +63,6 @@ export default function Info() {
         setSize(e.target.files[0].size);
       };
     } else {
-      console.log(e.target.files[0].size);
       alert("File nặng quá");
       setSize(e.target.files[0].size);
       reader.onerror = (error) => {
@@ -81,7 +81,10 @@ export default function Info() {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );     
-      alert("Uploaded");   
+      img.value = image
+      preimg.value =""
+      alert("Uploaded"); 
+
     } else {
       alert("File nặng, không up được");
     }
@@ -106,6 +109,7 @@ export default function Info() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  
   return (
     <div className="DAT_Info">
       <div className="DAT_Info_Main">
