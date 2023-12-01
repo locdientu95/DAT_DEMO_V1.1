@@ -1,16 +1,12 @@
-import React, { useContext, useRef } from "react";
+import React, { useRef } from "react";
 import "./Login.scss";
-import { EnvContext } from "../Context/EnvContext";
-// import Register from "../Context/Register.json";
+import axios from "axios";
 
 export default function Login() {
-  const { register, envDispatch } = useContext(EnvContext);
-
   const userName = useRef();
   const password = useRef();
 
   const handleLogin = (e) => {
-    e.preventDefault();
     localStorage.setItem(
       "data",
       JSON.stringify({
@@ -18,25 +14,16 @@ export default function Login() {
         pwd: password.current.value,
       })
     );
-    var newInfo = register;
-    newInfo = newInfo.filter(
-      (newInfo) =>
-        newInfo.username === userName.current.value &&
-        newInfo.password === password.current.value
-    );
-
-    if (newInfo.length) {
-      envDispatch({
-        type: "SET_LOGIN",
-        payload: {
-          username: newInfo[0].username,
-          mail: newInfo[0].email,
-          status: true,
+    axios
+      .post(
+        process.env.REACT_APP_API_URL + "/Login",
+        {
+          username: userName.current.value,
+          password: password.current.value,
         },
-      });
-    } else {
-      alert("Wrong Username or Password");
-    }
+        { credential: true }
+      )
+      .then((res) => {});
   };
 
   return (
@@ -54,13 +41,7 @@ export default function Login() {
             <div className="DAT_Login-Container-Main-Username-Tit">
               Username
             </div>
-            <input
-              type="text"
-              placeholder="Username"
-              defaultValue="taingo"
-              ref={userName}
-              required
-            />
+            <input type="text" placeholder="Username" ref={userName} required />
           </div>
 
           <div className="DAT_Login-Container-Main-Password">

@@ -2,11 +2,26 @@ import React, { useState, useRef, useContext, useEffect } from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import { EnvContext } from "../Context/EnvContext";
+import axios from "axios";
 
 export default function Header(props) {
   const [arrow, setArrow] = useState(false); //hook
   const { errorlogs, errornoti, envDispatch } = useContext(EnvContext);
-  const [ readnoti, setReadnoti ] = useState();
+  const [readnoti, setReadnoti] = useState();
+  const [ava, setAva] = useState();
+  var data = JSON.parse(localStorage.getItem("data"));
+  const [usr, setUsr] = useState(data.user);
+  useEffect(() => {
+    axios
+      .post(
+        process.env.REACT_APP_API_URL + "/getimg",
+        { username: usr },
+        { credential: true }
+      )
+      .then((res) => {
+        setAva(res.data.data.avatar);
+      });
+  }, []);
 
   const getDrop = (id) => {
     //function
@@ -54,7 +69,7 @@ export default function Header(props) {
     let id = e.currentTarget.id;
     let arr = id.split("_");
     errornoti.ErrCode = arr[0];
-    let index = errorlogs.findIndex((newData)=> newData.id == arr[1]);
+    let index = errorlogs.findIndex((newData) => newData.id == arr[1]);
     errorlogs[index].read = true;
     // console.log(e.currentTarget);
     envDispatch({ type: "SET_ERRORLOGS", payload: errorlogs });
@@ -275,8 +290,8 @@ export default function Header(props) {
             <button className="DAT_Header-Right-Item4-Account">
               <img
                 alt=""
-                src="./DAT_Pictures/user1.png"
-                style={{ height: "36px", borderRadius: "50%" }}
+                src={ava}
+                style={{ height: "36px", width: "36px", borderRadius: "50%" }}
               />
             </button>
           </div>
@@ -404,7 +419,7 @@ export default function Header(props) {
                         <div
                           key={key}
                           className="DAT_Header_Alert_Item4"
-                          id={errorlogs[key].ErrCode +"_"+ errorlogs[key].id}
+                          id={errorlogs[key].ErrCode + "_" + errorlogs[key].id}
                           onClick={(e) => handleShowError(e)}
                           style={{
                             backgroundColor: errorlogs[key].read
@@ -576,8 +591,12 @@ export default function Header(props) {
                     <div className="DAT_Header_Account_Header_Profile">
                       <img
                         alt=""
-                        src="./DAT_Pictures/user1.png"
-                        style={{ height: "36px", borderRadius: "50%" }}
+                        src={ava}
+                        style={{
+                          height: "36px",
+                          width: "36px",
+                          borderRadius: "50%",
+                        }}
                       ></img>
                       <div className="DAT_Header_Account_Header_Profile-Details">
                         <div>{props.name}</div>

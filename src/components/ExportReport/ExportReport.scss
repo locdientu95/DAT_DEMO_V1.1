@@ -174,6 +174,7 @@
         white-space: nowrap !important;
         overflow: hidden;
         text-overflow: ellipsis;
+        text-align: right;
     }
 
     &-Config {
@@ -245,44 +246,22 @@
 }
 
 .DAT_UploadFile {
+    padding-bottom: 16px;
+
     &-Form {
         margin: auto;
         width: 400px;
         padding: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         border: 2px dashed #0061f2;
         border-radius: 10px;
-        // cursor: pointer;
-    }
-
-    &-Select {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 16px;
-        padding-bottom: 16px;
-        margin: auto;
-        width: 400px;
-        gap: 8px;
-
-        & select {
-            border-radius: 5px;
-            height: 30px;
-        }
-    }
-
-    &-Button {
-        padding-bottom: 16px;
 
         & button {
             height: 40px;
             border: none;
             color: white;
             background-color: #0061f2;
-            // background-color: #99bff9;
-            font-weight: 400;
+            font-weight: 500;
+            font-size: 14px;
             border-radius: 5px;
             cursor: pointer;
             display: flex;
@@ -291,55 +270,32 @@
             margin: auto;
         }
     }
-}
 
-.DAT_History {
-    &-Row {
-        display: flex;
-        margin-bottom: 16px;
-
-        &-Label {
-            width: 100px;
-        }
-
-        & input {
-            height: 44px;
-            width: 100%;
-            border-radius: 5px;
-            border: solid 1px rgb(156, 155, 155, 0.3);
-            outline: none;
-            padding: 8px;
-            box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-
-            &:focus-within {
-                box-shadow: 0px 0px 0px 4px rgb(66, 100, 255, 0.5);
-            }
-        }
-
-        & textarea {
-            width: 100%;
-            height: 150px;
-            padding: 8px;
-            outline: none;
-            border: solid 1px rgb(156, 155, 155, 0.3);
-            border-radius: 5px;
-
-            &:focus-within {
-                box-shadow: 0px 0px 0px 4px rgb(66, 100, 255, 0.5);
-            }
-        }
-
+    &-Info {
+        padding: 10px;
+        border: 1px solid #0061f2;
+        border-radius: 10px;
     }
 
-    &-Button {
-        display: flex;
-        justify-content: flex-end;
+    &-Select {
+        padding-top: 16px;
+        margin: auto;
+
+        &-Form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding-bottom: 16px;
+
+            & select {
+                border-radius: 5px;
+                height: 20px;
+            }
+        }
 
         & button {
             height: 40px;
-            width: 60px;
             border: none;
             color: white;
             background-color: #0061f2;
@@ -349,6 +305,22 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            margin: auto;
         }
+
+        & span {
+            color: red;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 16px;
+        }
+    }
+}
+
+.DAT_History {
+    &-Barchart {
+        padding-bottom: 16px;
     }
 }

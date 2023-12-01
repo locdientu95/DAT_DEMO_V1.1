@@ -30,3 +30,11 @@ Huu 8/11 Viet API
 Huu 9/11 Hoan thien API them xoa sua doc
 Huu 10/11 Tim hieu cach dua file xuong mongoDB
 Huu 13/11 Dua file tu React xuong Nodejs
+Huu 14/11 Tiep tuc tìm hieu cách đưa file
+Huu 15/11 Viet API tai file len mongoDB
+Huu 16/11 Tiep tuc viet API
+Huu 17/11 Tim hieu cac doc file tu mongo xuong 
+Huu 20/11 viet API cach doc file xuong
+Huu 21-23/11 Tiep tuc viet API tai file len va down file ve
+Huu 24/11 Viet API base64 hinh va up vao database
+Huu 27-29/11 Tiep tuc viet api

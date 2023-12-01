@@ -3,13 +3,14 @@ import "./ExportReport.scss";
 import ListForm from "./ListForm.js";
 import UploadFile from "./UploadFile.js";
 import History from "./History.js";
+// import ImageUpload from "./ImageUpload.js";
 
 export default function ExportReport() {
-  const tit = {
-    listform: "Danh Sách Form",
-    upload: "Upload file",
-    history: "Thống Kê",
-  };
+  // const tit = {
+  //   listform: "Danh Sách Form",
+  //   upload: "Upload file",
+  //   history: "Thống Kê",
+  // };
 
   const color = {
     cur: "blue",

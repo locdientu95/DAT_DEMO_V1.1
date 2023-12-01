@@ -45,7 +45,7 @@ export default function SliderSetting() {
 
     axios
       .put(
-        "http://172.16.0.204:3000/slider/min",
+        process.env.REACT_APP_API_URL + "/slider/min",
         { min: slider.min },
         { credential: true }
       )
@@ -67,7 +67,7 @@ export default function SliderSetting() {
 
     axios
       .put(
-        "http://172.16.0.204:3000/slider/max",
+        process.env.REACT_APP_API_URL + "/slider/max",
         { max: slider.max },
         { credential: true }
       )
@@ -99,7 +99,7 @@ export default function SliderSetting() {
 
     axios
       .put(
-        "http://172.16.0.204:3000/slider/custom",
+        process.env.REACT_APP_API_URL + "/slider/custom",
         {
           width: slider.width,
           height: slider.height,
@@ -124,7 +124,7 @@ export default function SliderSetting() {
     var ori = e.currentTarget.value;
     axios
       .put(
-        "http://172.16.0.204:3000/slider/ori",
+        process.env.REACT_APP_API_URL + "/slider/ori",
         { ori: ori },
         { credential: true }
       )
@@ -154,7 +154,7 @@ export default function SliderSetting() {
     }
     axios
       .put(
-        "http://172.16.0.204:3000/slider/color",
+        process.env.REACT_APP_API_URL + "/slider/color",
         {
           thumb: {
             border: slider.thumb.border,
