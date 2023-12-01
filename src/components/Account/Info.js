@@ -70,6 +70,7 @@ export default function Info() {
       };
     }
   };
+
   const handleUpload = () => {
     if (size < 800000 && size > 0) {
       axios.post(
@@ -129,7 +130,7 @@ export default function Info() {
                 // key={data.image}
                 src={allImage}
                 alt=""
-                style={{ height: "160px", borderRadius: "50%" }}
+                style={{ height: "160px", width: "160px", borderRadius: "50%" }}
               />
               {/* );
               })} */}
