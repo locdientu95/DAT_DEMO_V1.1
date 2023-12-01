@@ -24,7 +24,7 @@ import { EnvContext } from "./components/Context/EnvContext";
 import axios from "axios";
 
 export default function App() {
-  const { register, login, envDispatch } = useContext(EnvContext);
+  const { login, envDispatch } = useContext(EnvContext);
 
   useEffect(() => {
     var data = JSON.parse(localStorage.getItem("data"));
@@ -44,6 +44,7 @@ export default function App() {
             payload: {
               username: res.data.username,
               mail: res.data.email,
+              avatar: res.data.avatar,
               status: true,
             },
           });
@@ -54,6 +55,7 @@ export default function App() {
         payload: {
           username: "",
           mail: "",
+          avatar: "",
           status: false,
         },
       });

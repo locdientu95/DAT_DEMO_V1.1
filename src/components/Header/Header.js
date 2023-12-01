@@ -2,26 +2,31 @@ import React, { useState, useRef, useContext, useEffect } from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import { EnvContext } from "../Context/EnvContext";
-import axios from "axios";
+import { signal } from "@preact/signals-react";
+
+export const test = signal("")
+
 
 export default function Header(props) {
+  const { errorlogs, errornoti, envDispatch, login } = useContext(EnvContext);
+  
   const [arrow, setArrow] = useState(false); //hook
-  const { errorlogs, errornoti, envDispatch } = useContext(EnvContext);
   const [readnoti, setReadnoti] = useState();
-  const [ava, setAva] = useState();
-  var data = JSON.parse(localStorage.getItem("data"));
-  const [usr, setUsr] = useState(data.user);
-  useEffect(() => {
-    axios
-      .post(
-        process.env.REACT_APP_API_URL + "/getimg",
-        { username: usr },
-        { credential: true }
-      )
-      .then((res) => {
-        setAva(res.data.data.avatar);
-      });
-  }, []);
+
+  
+  
+  
+  // useEffect(() => {
+  //   axios
+  //     .post(
+  //       process.env.REACT_APP_API_URL + "/getimg",
+  //       { username: usr },
+  //       { credential: true }
+  //     )
+  //     .then((res) => {
+  //       setAva(res.data.data.avatar);
+  //     });
+  // }, []);
 
   const getDrop = (id) => {
     //function
@@ -69,7 +74,7 @@ export default function Header(props) {
     let id = e.currentTarget.id;
     let arr = id.split("_");
     errornoti.ErrCode = arr[0];
-    let index = errorlogs.findIndex((newData) => newData.id == arr[1]);
+    let index = errorlogs.findIndex((newData) => newData.id === arr[1]);
     errorlogs[index].read = true;
     // console.log(e.currentTarget);
     envDispatch({ type: "SET_ERRORLOGS", payload: errorlogs });
@@ -290,8 +295,8 @@ export default function Header(props) {
             <button className="DAT_Header-Right-Item4-Account">
               <img
                 alt=""
-                src={ava}
-                style={{ height: "36px", width: "36px", borderRadius: "50%" }}
+                src={login.avatar}
+                style={{ height: "36px", width: "50px", borderRadius: "50%" }}
               />
             </button>
           </div>
@@ -591,7 +596,7 @@ export default function Header(props) {
                     <div className="DAT_Header_Account_Header_Profile">
                       <img
                         alt=""
-                        src={ava}
+                        src={login.avatar}
                         style={{
                           height: "36px",
                           width: "36px",

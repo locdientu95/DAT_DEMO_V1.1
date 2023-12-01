@@ -205,7 +205,7 @@ export const INITSTATE = {
     ],
   },
 
-  login: { username: "unknown", mail: "unknown@gmail.com", status: false },
+  login: { username: "unknown", mail: "unknown@gmail.com", avatar: "" ,status: false },
 
   register: [
     {

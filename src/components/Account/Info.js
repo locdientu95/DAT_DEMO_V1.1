@@ -1,8 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./Account.scss";
 import axios from "axios";
+import { EnvContext } from "../Context/EnvContext";
 
 export default function Info() {
+  
+  
   const userName = useRef("");
   const handleUserName = () => {};
 
@@ -50,17 +53,17 @@ export default function Info() {
   const convertToBase64 = (e) => {
     console.log(e.target.files[0].size);
     var reader = new FileReader();
-    if (e.target.files[0].size < 80000 && e.target.files[0].size > 0) {
+    if (e.target.files[0].size < 800000 && e.target.files[0].size > 0) {
       console.log(e.target.files[0].size);
       reader.readAsDataURL(e.target.files[0]);
       reader.onload = () => {
-        console.log(reader.result);
+        setAllImage(reader.result)
         setImage(reader.result);
         setSize(e.target.files[0].size);
       };
     } else {
       console.log(e.target.files[0].size);
-      alert("File nặng quá bồ");
+      alert("File nặng quá");
       setSize(e.target.files[0].size);
       reader.onerror = (error) => {
         console.log("Error", error);
@@ -69,7 +72,7 @@ export default function Info() {
   };
 
   const handleUpload = () => {
-    if (size < 80000 && size > 0) {
+    if (size < 800000 && size > 0) {
       axios.post(
         process.env.REACT_APP_API_URL + "/UpdateImage",
         { username: usr, base64: image },
@@ -77,15 +80,14 @@ export default function Info() {
         {
           headers: { "Content-Type": "multipart/form-data" },
         }
-      );
-      alert("Uploaded");
+      );     
+      alert("Uploaded");   
     } else {
-      alert("Nặng lắm, không up đâu");
+      alert("File nặng, không up được");
     }
   };
 
   useEffect(() => {
-    console.log("helo", usr);
     axios
       .post(
         process.env.REACT_APP_API_URL + "/getimg",
@@ -99,7 +101,7 @@ export default function Info() {
       .then((res) => {
         //console.log(res.data.data.avatar);
         setAllImage(res.data.data.avatar);
-        address = res.data.data.address;
+        
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
