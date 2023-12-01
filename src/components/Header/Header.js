@@ -4,18 +4,14 @@ import { Link } from "react-router-dom";
 import { EnvContext } from "../Context/EnvContext";
 import { signal } from "@preact/signals-react";
 
-export const test = signal("")
-
+export const test = signal("");
 
 export default function Header(props) {
   const { errorlogs, errornoti, envDispatch, login } = useContext(EnvContext);
-  
+
   const [arrow, setArrow] = useState(false); //hook
   const [readnoti, setReadnoti] = useState();
 
-  
-  
-  
   // useEffect(() => {
   //   axios
   //     .post(
@@ -104,6 +100,7 @@ export default function Header(props) {
       payload: {
         username: "",
         mail: "",
+        avatar: "",
         status: false,
       },
     });
