@@ -12,7 +12,7 @@ export default function Config(props) {
     {
       name: "",
       selector: (row) => (
-        <>
+        <div style={{ display: "flex", gap: "8px" }}>
           <div
             style={{ cursor: "pointer", color: "black" }}
             onClick={handleSelect}
@@ -25,7 +25,7 @@ export default function Config(props) {
           >
             Xóa
           </div>
-        </>
+        </div>
       ),
     },
   ];
