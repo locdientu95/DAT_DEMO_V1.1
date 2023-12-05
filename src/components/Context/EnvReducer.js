@@ -89,26 +89,26 @@ export const INITSTATE = {
   },
 
   tablepro: {
-    width: "400px",
-    height: "250px",
-    data: [
-      {
-        id: 1,
-        val_1: 0,
-      },
-    ],
-    head: [
-      {
-        name: "STT",
-        code: "id",
-      },
-      {
-        name: "Giá Trị 1",
-        code: "val_1",
-      },
-    ],
-    row: 2,
-    col: 2,
+    // width: "400px",
+    // height: "250px",
+    // data: [
+    //   {
+    //     id: 1,
+    //     val_1: 0,
+    //   },
+    // ],
+    // head: [
+    //   {
+    //     name: "STT",
+    //     code: "id",
+    //   },
+    //   {
+    //     name: "Giá Trị 1",
+    //     code: "val_1",
+    //   },
+    // ],
+    // row: 2,
+    // col: 2,
   },
 
   number: {},
@@ -1004,11 +1004,11 @@ const EnvReducer = (state, action) => {
         ...state,
         numberv: action.payload,
       };
-    case "SET_LISTFOR<":
-      return {
-        ...state,
-        lisform: action.payload,
-      };
+      case "SET_LISTFORM":
+        return {
+          ...state,
+          lisform: action.payload,
+        };
     default:
       throw new Error("Unexpected action");
   }

@@ -18,8 +18,15 @@ export default function Header(props) {
     if (img.value != "") {
       preimg.value = img.value;
     }
+<<<<<<< HEAD
   }, [preimg.value]);
 
+=======
+    
+  },[preimg.value])
+  
+  
+>>>>>>> a3c9ab3473bf5d6e1c67776f108f1473cf5d74f8
   // useEffect(() => {
   //   axios
   //     .post(
@@ -79,7 +86,7 @@ export default function Header(props) {
     let arr = id.split("_");
     errornoti.ErrCode = arr[0];
     let index = errorlogs.findIndex((newData) => newData.id === arr[1]);
-    errorlogs[index].read = true;
+    // errorlogs[index].read = true;
     // console.log(e.currentTarget);
     envDispatch({ type: "SET_ERRORLOGS", payload: errorlogs });
     envDispatch({ type: "SET_ERRORNOTI", payload: errornoti });
