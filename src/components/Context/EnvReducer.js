@@ -20,35 +20,9 @@ export const INITSTATE = {
     },
   ],
 
-  gauge: {
-    // label: "text",
-    // labelsize: "20px",
-    // labelcolor: "black",
-    // unit: "hz",
-    // valuesize: "20px",
-    // valuecolor: "black",
-    // min: 0,
-    // max: 100,
-    // width: "500px",
-    // height: "300px",
-    // segment: 10,
-    // needlecolor: "#ff0000",
-    // startcolor: "#60d277",
-    // endcolor: "#dc0909",
-    // cal: "30",
-  },
+  gauge: {},
 
-  slider: {
-    // min: 0,
-    // max: 100,
-    // width: "500",
-    // height: "20",
-    // scale: 5,
-    // ori: "horizontal",
-    // thumb: { bgcolor: "#1976d2", border: "0" },
-    // track: { bgcolor: "#1976d2", border: "0" },
-    // rail: { bgcolor: "#1976d2" },
-  },
+  slider: {},
 
   button: {
     btntype: "Inching",
@@ -137,19 +111,7 @@ export const INITSTATE = {
     col: 2,
   },
 
-  number: {
-    width: "100",
-    height: "30",
-    unit: "Hz",
-    border: "2",
-    bordercolor: "#000000",
-    borderradius: "10",
-    bgcolor: "#ffffff",
-    textcolor: "#000000",
-    fontsize: "20",
-    type: "false",
-    posi: "center",
-  },
+  number: {},
 
   barchart: {
     dataset: [
@@ -205,7 +167,12 @@ export const INITSTATE = {
     ],
   },
 
-  login: { username: "unknown", mail: "unknown@gmail.com", avatar: "" ,status: false },
+  login: {
+    username: "unknown",
+    mail: "unknown@gmail.com",
+    avatar: "",
+    status: false,
+  },
 
   register: [
     {

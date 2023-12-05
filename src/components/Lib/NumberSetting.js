@@ -11,12 +11,13 @@ import {
   InputFist,
   Span,
 } from "./FunctionElement";
+import axios from "axios";
 
 export default function NumberSetting() {
   const { number, envDispatch } = useContext(EnvContext);
 
-  const align = ["center", "left", "right"];
-  const R_W = ["Read", "Write"];
+  const align = ["Center", "Left", "Right"];
+  const R_W = ["Write", "Read"];
   const base = [
     "Cơ số 10",
     "Cơ số 16",
@@ -54,10 +55,22 @@ export default function NumberSetting() {
       number.unit = unit.current.value;
     }
 
-    envDispatch({
-      type: "SET_NUMBER",
-      payload: number,
-    });
+    axios
+      .put(
+        process.env.REACT_APP_API_URL + "/number/custom",
+        {
+          width: number.width,
+          height: number.height,
+          unit: number.unit,
+        },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_NUMBER",
+          payload: number,
+        });
+      });
 
     width.current.value = "";
     height.current.value = "";
@@ -76,18 +89,30 @@ export default function NumberSetting() {
       number.borderradius = borderradius.current.value;
     }
 
-    envDispatch({
-      type: "SET_NUMBER",
-      payload: number,
-    });
+    axios
+      .put(
+        process.env.REACT_APP_API_URL + "/number/border",
+        {
+          border: number.border,
+          borderradius: number.borderradius,
+          bordercolor: bordercolor.current.value,
+        },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_NUMBER",
+          payload: number,
+        });
 
-    envDispatch({
-      type: "SET_NUMBER",
-      payload: {
-        ...number,
-        bordercolor: bordercolor.current.value,
-      },
-    });
+        envDispatch({
+          type: "SET_NUMBER",
+          payload: {
+            ...number,
+            bordercolor: bordercolor.current.value,
+          },
+        });
+      });
 
     border.current.value = "";
     borderradius.current.value = "";
@@ -100,51 +125,80 @@ export default function NumberSetting() {
     if (fontsize.current.value !== "") {
       number.fontsize = fontsize.current.value;
     }
-    envDispatch({
-      type: "SET_NUMBER",
-      payload: number,
-    });
 
-    envDispatch({
-      type: "SET_NUMBER",
-      payload: {
-        ...number,
-        bgcolor: bgcolor.current.value,
-        textcolor: textcolor.current.value,
-      },
-    });
+    axios
+      .put(
+        process.env.REACT_APP_API_URL + "/number/text",
+        {
+          fontsize: number.fontsize,
+          bgcolor: bgcolor.current.value,
+          textcolor: textcolor.current.value,
+        },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_NUMBER",
+          payload: number,
+        });
+
+        envDispatch({
+          type: "SET_NUMBER",
+          payload: {
+            ...number,
+            bgcolor: bgcolor.current.value,
+            textcolor: textcolor.current.value,
+          },
+        });
+      });
 
     fontsize.current.value = "";
   };
 
   const handlePosi = (e) => {
-    console.log(e.currentTarget.value);
-    envDispatch({
-      type: "SET_NUMBER",
-      payload: {
-        ...number,
-        posi: e.currentTarget.value,
-      },
-    });
+    var posi = e.currentTarget.value;
+    axios
+      .put(
+        process.env.REACT_APP_API_URL + "/number/posi",
+        { posi: e.currentTarget.value },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_NUMBER",
+          payload: {
+            ...number,
+            posi: posi,
+          },
+        });
+      });
   };
 
   const handleType = (e) => {
-    console.log(e.currentTarget.value);
-    envDispatch({
-      type: "SET_NUMBER",
-      payload: {
-        ...number,
-        type: e.currentTarget.value,
-      },
-    });
+    var type = e.currentTarget.value;
+    axios
+      .put(
+        process.env.REACT_APP_API_URL + "/number/type",
+        { type: e.currentTarget.value },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_NUMBER",
+          payload: {
+            ...number,
+            type: type,
+          },
+        });
+      });
   };
 
   return (
     <div className="DAT_Setting-Number">
       <div className="DAT_Setting-Number-Row">
-        {InputFist("number", "Width: " + number.width, width)}
-        {Input("number", "Height: " + number.height, height)}
-        {Input("text", "Unit: " + number.unit, unit)}
+        {InputFist("", "Width: " + number.width, width)}
+        {Input("", "Height: " + number.height, height)}
+        {Input("", "Unit: " + number.unit, unit)}
         {Button(handleCustom, "Chọn")}
       </div>
 

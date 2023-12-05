@@ -26,9 +26,9 @@ export default function Sidebar(props) {
     }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     // console.log(sidebarid)
-  },[sidebarid])
+  }, [sidebarid]);
 
   const handlePushID = (e) => {
     // e.preventDefault();
@@ -280,7 +280,7 @@ export default function Sidebar(props) {
           </Link>
 
           {/* SMS */}
-          <Link to="/SMS" style={{ textDecoration: "none", color: "black" }}>
+          {/* <Link to="/SMS" style={{ textDecoration: "none", color: "black" }}>
             <div
               className="DAT_Sidebar_Content_Menu_Item"
               id="SMS"
@@ -307,7 +307,7 @@ export default function Sidebar(props) {
               </div>
               <span>SMS</span>
               <div className="DAT_Sidebar_Content_Menu_Item_Arrow">
-                {/* <svg
+                <svg
                   id="ThongBao_Logo"
                   width="16"
                   height="16"
@@ -326,10 +326,10 @@ export default function Sidebar(props) {
                     fill="currentColor"
                     d="M169.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 274.7 54.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
                   ></path>
-                </svg> */}
+                </svg>
               </div>
             </div>
-          </Link>
+          </Link> */}
 
           {/* Bao cao */}
           <div

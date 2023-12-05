@@ -146,9 +146,11 @@ export default function Header(props) {
         </div>
 
         {/* Left */}
-        <div className="DAT_Header-Left">
-          <img alt="" src="/DAT_Pictures/logo_DAT.png" />
-        </div>
+        <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+          <div className="DAT_Header-Left">
+            <img alt="" src="/DAT_Pictures/logo_DAT.png" />
+          </div>
+        </Link>
 
         {/* Search */}
         <form className="DAT_Header-Center">

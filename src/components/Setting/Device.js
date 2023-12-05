@@ -48,10 +48,12 @@ export default function Device() {
     view32bit,
     numberv,
   } = useContext(EnvContext);
+
   const handleChangeLib = (e) => {
     var temp = e.currentTarget.value;
     envDispatch({ type: "SET_TYPE", payload: temp });
   };
+
   const [pop, setPop] = useState(false);
   const handlePop = (e) => {
     setPop(true);
@@ -93,10 +95,7 @@ export default function Device() {
     NumberV: <NumberVSetting />,
   };
 
-  // useEffect(() => {
-  //     console.log(linechart)
-  // }, [linechart])
-
+  // Get dữ liệu Gauge
   useEffect(() => {
     axios
       .get(process.env.REACT_APP_API_URL + "/gauge", { credential: true })
@@ -108,6 +107,7 @@ export default function Device() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Get dữ liệu Slider
   useEffect(() => {
     axios
       .get(process.env.REACT_APP_API_URL + "/slider", { credential: true })
@@ -118,6 +118,30 @@ export default function Device() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Get dữ liệu Number
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/number", { credential: true })
+      .then((res) => {
+        console.log(res.data.data);
+        envDispatch({ type: "SET_NUMBER", payload: res.data.data[0] });
+      });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // // Get dữ liệu Lamp
+  // useEffect(() => {
+  //   axios
+  //     .get(process.env.REACT_APP_API_URL + "/lamp", { credential: true })
+  //     .then((res) => {
+  //       console.log(res.data.data);
+  //       envDispatch({ type: "SET_LAMP", payload: res.data.data[0] });
+  //     });
+
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   return (
     <div className="Device_Content">
@@ -169,7 +193,10 @@ export default function Device() {
         <div className="Device_Content-Container-Group">
           <div className="Device_Content-Container-Group-Head">
             Giao diện
-            <div style={{ cursor: "pointer" }} onClick={(e) => handlePop(e)}>
+            <div
+              className="Device_Content-Container-Group-Head-Edit"
+              onClick={(e) => handlePop(e)}
+            >
               <IoEllipsisVertical />
             </div>
           </div>
