@@ -3,6 +3,9 @@ import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
 import { useRef } from "react";
 import { Button, Input, InputFist, Span } from "./FunctionElement";
+import { tableproid } from "../Setting/Device";
+import axios from "axios";
+
 export default function TableProSetting() {
   const { tablepro, envDispatch } = useContext(EnvContext);
   const width = useRef();
@@ -56,14 +59,24 @@ export default function TableProSetting() {
       arr.push(newRow);
     }
     const newDataTable = tablepro.data.concat(arr);
-    envDispatch({
-      type: "SET_TABLEPRO",
-      payload: {
-        ...tablepro,
-        row: updateRow,
-        data: newDataTable,
-      },
-    });
+    console.log(newDataTable)
+    axios.post(process.env.REACT_APP_API_URL + "/tablepro/addrow",
+    {id: tableproid,
+    data: newDataTable,
+    row: updateRow
+    },
+    { credential: true })
+      .then((res) => {
+        console.log(res.data.data)
+        envDispatch({
+          type: "SET_TABLEPRO",
+          payload: {
+            ...tablepro,
+            row: updateRow,
+            data: newDataTable,
+          },
+        });
+      });
   };
 
   const handleDeleteRow = (e) => {
@@ -88,6 +101,13 @@ export default function TableProSetting() {
         // newData.map((data,index) =>{
         //   data.id = index+1
         // })
+        axios.post(process.env.REACT_APP_API_URL + "/tablepro/deleterow",
+      {id: tableproid,
+      data: newData,
+      },
+    { credential: true })
+      .then((res) => {
+        console.log(res.data.data)
         envDispatch({
           type: "SET_TABLEPRO",
           payload: {
@@ -96,6 +116,7 @@ export default function TableProSetting() {
             //row: newData.length //Chỉ dùng khi bật tính năng cập nhật
           },
         });
+      });
       }
     }
   };
@@ -105,7 +126,7 @@ export default function TableProSetting() {
     const sum = parseInt(col.current.value) + parseInt(leng);
     const newHead = tablepro.head;
     for (var i = leng + 1; i <= sum; i++) {
-      newHead.push({ name: "Giá Trị " + (i - 1), code: "val_" + (i - 1) });
+      newHead.push({ name: "Cột " + (i - 1), code: "val_" + (i - 1) });
     }
     const newData = [];
     tablepro.data.map((data, index) => {
@@ -115,22 +136,34 @@ export default function TableProSetting() {
       }
       newData.push(x);
     });
-    envDispatch({
-      type: "SET_TABLEPRO",
-      payload: {
-        ...tablepro,
-        data: newData,
-        head: newHead,
-        col: sum,
+    axios.put(process.env.REACT_APP_API_URL + "/tablepro/addcol",
+      {id: tableproid,
+      data: newData,
+      head: newHead,
+      col: sum
       },
-    });
+    { credential: true })
+      .then((res) => {
+        console.log(res.data.data)
+        envDispatch({
+          type: "SET_TABLEPRO",
+          payload: {
+            ...tablepro,
+            data: newData,
+            head: newHead,
+            col: sum,
+          },
+        });
+      });
+
   };
 
   const handleDeleteCol = (e) => {
+    
     const start = fromCol.current.value;
     const end = toCol.current.value;
     const cond = tablepro.col - parseInt(end)
-    if (tablepro.col <= 2) {
+    if (parseInt(tablepro.col) <= 2) {
       alert("Số cột tối thiểu là 2");
     } else {
       if (start <= 0  || end <= 0 ) {
@@ -145,12 +178,12 @@ export default function TableProSetting() {
           parseInt(tablepro.col) - parseInt(parseInt(end) - parseInt(start));
         var newHead = tablepro.head;
         for (var i = start; i <= end; i++) {
-          newHead = newHead.filter((newHead) => newHead.code != label + i);
+          newHead = newHead.filter((newHead) => newHead.code != label+i);
         }
         const newData = tablepro.data;
         newData.map((data, index) => {
           for (var i = start; i <= end; i++) {
-            delete data["val_" + i];
+            delete data["val_"+i];
           }
         });
         // Cập nhật lại các tên trên header
@@ -160,6 +193,14 @@ export default function TableProSetting() {
         //     data.code ="val_"+index
         //   }
         // })
+        axios.post(process.env.REACT_APP_API_URL + "/tablepro/deletecol",
+      {id: tableproid,
+      data: newData,
+      head: newHead
+      },
+    { credential: true })
+      .then((res) => {
+        console.log(res.data.data)
         envDispatch({
           type: "SET_TABLEPRO",
           payload: {
@@ -168,6 +209,7 @@ export default function TableProSetting() {
             data: newData,
           },
         });
+      });
       }else{
         alert("Số cột tối thiểu là 2")
       }
@@ -183,12 +225,20 @@ export default function TableProSetting() {
         data.name = newName;
       }
     });
-    envDispatch({
-      type: "SET_TABLEPRO",
-      payload: {
-        ...tablepro,
-        head: newHead,
-      },
+    axios.post(process.env.REACT_APP_API_URL + "/tablepro/changehead",
+    {id: tableproid,
+    head: newHead
+    },
+  { credential: true })
+    .then((res) => {
+      console.log(res.data.data)
+      envDispatch({
+        type: "SET_TABLEPRO",
+        payload: {
+          ...tablepro,
+          head: newHead,
+        },
+      });
     });
   };
 
@@ -199,12 +249,20 @@ export default function TableProSetting() {
     var newData = tablepro.data;
     const index = newData.findIndex((newData) => newData.id == row);
     newData[index][col] = val;
-    envDispatch({
-      type: "SET_TABLEPRO",
-      payload: {
-        ...tablepro,
-        data: newData,
-      },
+    axios.post(process.env.REACT_APP_API_URL + "/tablepro/changevalue",
+    {id: tableproid,
+    data: newData,
+    },
+    { credential: true })
+    .then((res) => {
+      console.log(res.data.data)
+      envDispatch({
+        type: "SET_TABLEPRO",
+        payload: {
+          ...tablepro,
+          data: newData,
+        },
+      });
     });
   };
 
@@ -280,7 +338,7 @@ export default function TableProSetting() {
           {tablepro.head.map((data, index) => {
             return index !== 0 ? (
               <option key={index} value={data.code}>
-                Cột thứ {index}
+                Cột {data.code}
               </option>
             ) : (
               <Fragment key={index}></Fragment>

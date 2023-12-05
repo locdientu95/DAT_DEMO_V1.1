@@ -18,6 +18,7 @@ export default function Header(props) {
     if (img.value != ""){
       preimg.value = img.value
     }
+    
   },[preimg.value])
   
   

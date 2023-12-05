@@ -29,6 +29,9 @@ import NumberV from "../Lib/NumberV";
 import NumberVSetting from "../Lib/NumberVSetting";
 import axios from "axios";
 import { IoClose, IoEllipsisVertical } from "react-icons/io5";
+import { signal } from "@preact/signals-react";
+
+export const tableproid = signal("")
 
 export default function Device() {
   const {
@@ -101,7 +104,6 @@ export default function Device() {
     axios
       .get(process.env.REACT_APP_API_URL + "/gauge", { credential: true })
       .then((res) => {
-        console.log(res.data.data);
         envDispatch({ type: "SET_GAUGE", payload: res.data.data[0] });
       });
 
@@ -112,8 +114,20 @@ export default function Device() {
     axios
       .get(process.env.REACT_APP_API_URL + "/slider", { credential: true })
       .then((res) => {
-        console.log(res.data.data);
         envDispatch({ type: "SET_SLIDER", payload: res.data.data[0] });
+      });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/tablepro", { credential: true })
+      .then((res) => {
+        console.log(res.data.data)
+        tableproid.value = res.data.data[0]._id
+        console.log(tableproid.value)
+        envDispatch({ type: "SET_TABLEPRO", payload: res.data.data[0] });
       });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

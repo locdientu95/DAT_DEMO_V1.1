@@ -115,26 +115,26 @@ export const INITSTATE = {
   },
 
   tablepro: {
-    width: "400px",
-    height: "250px",
-    data: [
-      {
-        id: 1,
-        val_1: 0,
-      },
-    ],
-    head: [
-      {
-        name: "STT",
-        code: "id",
-      },
-      {
-        name: "Giá Trị 1",
-        code: "val_1",
-      },
-    ],
-    row: 2,
-    col: 2,
+    // width: "400px",
+    // height: "250px",
+    // data: [
+    //   {
+    //     id: 1,
+    //     val_1: 0,
+    //   },
+    // ],
+    // head: [
+    //   {
+    //     name: "STT",
+    //     code: "id",
+    //   },
+    //   {
+    //     name: "Giá Trị 1",
+    //     code: "val_1",
+    //   },
+    // ],
+    // row: 2,
+    // col: 2,
   },
 
   number: {
