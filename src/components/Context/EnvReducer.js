@@ -1037,19 +1037,11 @@ const EnvReducer = (state, action) => {
         ...state,
         numberv: action.payload,
       };
-<<<<<<< HEAD
       case "SET_LISTFORM":
         return {
           ...state,
           lisform: action.payload,
         };
-=======
-    case "SET_LISTFOR<":
-      return {
-        ...state,
-        lisform: action.payload,
-      };
->>>>>>> bee202fedd806d425a82fa529f99934ca9567a28
     default:
       throw new Error("Unexpected action");
   }
