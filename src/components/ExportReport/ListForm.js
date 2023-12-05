@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./ExportReport.scss";
 import DataTable from "react-data-table-component";
 import { IoTrashOutline, IoAddCircleOutline, IoClose } from "react-icons/io5";
@@ -8,6 +8,8 @@ import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
 
 export default function ListForm() {
+const {envDispatch} = useContext(EnvContext)
+
   const {
     listform,
     // envDispatch
@@ -17,15 +19,22 @@ export default function ListForm() {
   const [display, setDisplay] = useState(false);
   const [config, setConfig] = useState([]);
   const [flag, setFlag] = useState();
+  const addIDconfig = useRef();
+
+  useEffect(() => {
+    // console.log(data);
+    // var temp = data;
+    envDispatch({
+      type: "SET_LISTFORM",
+      payload: {
+        listform: data,
+      },
+    })
+  },[data])
 
   useEffect(() => {
     console.log(listform[0].config.length);
   }, [listform]);
-
-  // useEffect(() => {
-  //   console.log(edit);
-  //   console.log(config);
-  // });
 
   useEffect(() => {
     var newData = data;
@@ -34,13 +43,6 @@ export default function ListForm() {
     });
     setData(newData);
   }, [data]);
-
-  // useEffect(() => {
-  //   envDispatch({
-  //     type: "SET_LISTFORM",
-  //     payload: data,
-  //   })
-  // },[data])
 
   const paginationComponentOptions = {
     rowsPerPageText: "Số hàng",
@@ -88,7 +90,6 @@ export default function ListForm() {
                   padding: "8px",
                 }}
                 key={key}
-                id={[key]}
               >
                 <span className="DAT_ListForm-Text">{row.config[key]}</span>
                 <button
@@ -118,18 +119,17 @@ export default function ListForm() {
                 >
                   <IoTrashOutline />
                 </div>
-                <div
-                  style={{
-                    cursor: "pointer",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                  id={row.formid}
-                  onClick={(e) => handleAddConfig(e)}
-                >
-                  <IoAddCircleOutline />
-                </div>
+                {row.config.length === i + 1 ? (
+                  <div
+                    style={{ cursor: "pointer" }}
+                    id={row.formid}
+                    onClick={(e) => handleAddConfig(e)}
+                  >
+                    <IoAddCircleOutline />
+                  </div>
+                ) : (
+                  <></>
+                )}
               </div>
             );
           })}
@@ -217,7 +217,7 @@ export default function ListForm() {
       case "config": {
         const index = data.findIndex((data) => data.name === config[2]);
         if (data[index].config.filter((data) => data === edit).length > 0) {
-          alert("Yêu cầu không trường cấu hình");
+          alert("Yêu cầu không trùng cấu hình");
           break;
         } else {
           data[index].config[parseInt(config[0])] = edit;
@@ -243,6 +243,27 @@ export default function ListForm() {
         break;
       }
     }
+  };
+
+  const handleAddRow = (e) => {
+    const db = data;
+    const newData = {
+      formid: addIDconfig.current.value,
+      name: "...",
+      config: ["..."],
+    };
+    // console.log(db.forEach((report,index) => report[index].formid))
+    const found = db.find((obj)=>{
+      return obj.formid === addIDconfig.current.value
+    })
+    if(found){
+      alert("Form đã tồn tại");
+    } else {
+      db.push(newData);
+      setData([...db]);
+    }
+
+    console.log(data);
   };
 
   return (
@@ -274,8 +295,11 @@ export default function ListForm() {
         <form className="DAT_ListForm-Head-Add">
           <button>Lưu</button>
           <div className="DAT_ListForm-Head-Add-Form">
-            <input type="search" placeholder="Thêm" />
-            <div className="DAT_ListForm-Head-Add-Form-Icon">
+            <input type="search" placeholder="Thêm" ref={addIDconfig} />
+            <div
+              className="DAT_ListForm-Head-Add-Form-Icon"
+              onClick={(e) => handleAddRow(e)}
+            >
               <IoAddCircleOutline />
             </div>
           </div>
@@ -311,7 +335,7 @@ export default function ListForm() {
               defaultValue={edit || ""}
               onChange={(e) => handleEdit(e)}
             ></input>
-            <button onClick={(e) => handleSaveEdit(e)}>Lưu</button>
+            <button type="button" onClick={(e) => handleSaveEdit(e)}>Lưu</button>
           </form>
         </div>
       )}

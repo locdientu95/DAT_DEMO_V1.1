@@ -81,7 +81,7 @@ export default function Header(props) {
     let arr = id.split("_");
     errornoti.ErrCode = arr[0];
     let index = errorlogs.findIndex((newData) => newData.id === arr[1]);
-    errorlogs[index].read = true;
+    // errorlogs[index].read = true;
     // console.log(e.currentTarget);
     envDispatch({ type: "SET_ERRORLOGS", payload: errorlogs });
     envDispatch({ type: "SET_ERRORNOTI", payload: errornoti });
