@@ -125,7 +125,6 @@ export default function Device() {
     axios
       .get(process.env.REACT_APP_API_URL + "/number", { credential: true })
       .then((res) => {
-        console.log(res.data.data);
         envDispatch({ type: "SET_NUMBER", payload: res.data.data[0] });
       });
   }, []);
@@ -134,9 +133,7 @@ export default function Device() {
     axios
       .get(process.env.REACT_APP_API_URL + "/tablepro", { credential: true })
       .then((res) => {
-        console.log(res.data.data);
         tableproid.value = res.data.data[0]._id;
-        console.log(tableproid.value);
         envDispatch({ type: "SET_TABLEPRO", payload: res.data.data[0] });
       });
 

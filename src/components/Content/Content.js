@@ -25,7 +25,6 @@ export default function Content() {
     newData.map((data, index) => {
       return (data["id"] = index + 1);
     });
-    console.log(newData);
     setData1(dashboardbarchart.datasets);
   }, [dashboardbarchart.datasets]);
 
@@ -84,9 +83,6 @@ export default function Content() {
     },
   ];
 
-  useEffect(() => {
-    console.log(dashboardbarchart.datasets);
-  }, [dashboardbarchart.datasets]);
 
   useEffect(() => {
     const timer = setInterval(() => {

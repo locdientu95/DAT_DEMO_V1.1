@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import "./Sidebar.scss";
 import { Link } from "react-router-dom";
 import { EnvContext } from "../Context/EnvContext";
+import { name } from "../../App";
 
 export default function Sidebar(props) {
   const [drop, setDrop] = useState("default");
@@ -571,7 +572,7 @@ export default function Sidebar(props) {
               Logged in as:
             </div>
             <div className="DAT_Sidebar_Content_Footer_Content_Text">
-              {props.name}
+              {name.value}
             </div>
           </div>
         </div>

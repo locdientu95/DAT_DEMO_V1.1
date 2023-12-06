@@ -22,6 +22,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useContext } from "react";
 import { EnvContext } from "./components/Context/EnvContext";
 import axios from "axios";
+import { signal } from "@preact/signals-react";
+
+export const name = signal("")
 
 export default function App() {
   const { login, envDispatch } = useContext(EnvContext);
@@ -39,6 +42,7 @@ export default function App() {
           { credential: true }
         )
         .then((res) => {
+          name.value = res.data.name
           envDispatch({
             type: "SET_LOGIN",
             payload: {
