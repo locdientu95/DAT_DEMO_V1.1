@@ -8,6 +8,7 @@ export default function Lamp(props) {
     } else {
       console.log(props.setting.data[props.setting.value]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

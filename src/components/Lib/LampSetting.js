@@ -10,11 +10,12 @@ import {
   InputFist,
   Span,
 } from "./FunctionElement";
+import axios from "axios";
 
 export default function LampSetting() {
   const { lamp, envDispatch } = useContext(EnvContext);
 
-  const align = ["center", "left", "right"];
+  const align = ["Center", "Left", "Right"];
 
   const base = [
     "Cơ số 10",
@@ -47,28 +48,45 @@ export default function LampSetting() {
   const text = useRef();
   const textcolor = useRef();
   const handleAdd = (e) => {
-    envDispatch({
-      type: "SET_LAMP",
-      payload: {
-        ...lamp,
-        data: {
-          ...lamp.data,
-          [value.current.value]: {
-            text: text.current.value,
-            color: textcolor.current.value,
-            bgcolor: bgcolor.current.value,
-          },
+    axios
+      .put(
+        process.env.REACT_APP_API_URL + "/lamp/update",
+        {
+          value: value.current.value,
+          text: text.current.value,
+          color: textcolor.current.value,
+          bgcolor: bgcolor.current.value,
         },
-      },
-    });
+        { credential: true }
+      )
+      .then((res) => {
+        console.log(res.data.data);
+        envDispatch({
+          type: "SET_LAMP",
+          payload: {
+            ...lamp,
+            data: {
+              ...lamp.data,
+              [value.current.value]: {
+                text: text.current.value,
+                color: textcolor.current.value,
+                bgcolor: bgcolor.current.value,
+              },
+            },
+          },
+        });
+      });
 
     value.current.value = "";
     text.current.value = "";
   };
 
   const handleDelete = (e) => {
-    delete lamp.data[e.target.parentNode.parentNode.firstChild.innerHTML];
-    console.log(lamp.data);
+    var index = e.target.parentNode.parentNode.rowIndex;
+    delete lamp.data[index];
+    // console.log(lamp.data);
+    // console.log(index);
+    // console.log(e.target.parentNode.parentNode.firstChild.innerHTML);
 
     envDispatch({
       type: "SET_LAMP",
@@ -95,10 +113,22 @@ export default function LampSetting() {
       lamp.fontsize = fontsize.current.value;
     }
 
-    envDispatch({
-      type: "SET_LAMP",
-      payload: lamp,
-    });
+    axios
+      .put(
+        process.env.REACT_APP_API_URL + "/lamp/custom",
+        {
+          width: lamp.width,
+          height: lamp.height,
+          fontsize: lamp.fontsize,
+        },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_LAMP",
+          payload: lamp,
+        });
+      });
 
     width.current.value = "";
     height.current.value = "";
@@ -117,31 +147,52 @@ export default function LampSetting() {
       lamp.borderradius = borderradius.current.value;
     }
 
-    envDispatch({
-      type: "SET_LAMP",
-      payload: lamp,
-    });
+    axios
+      .put(
+        process.env.REACT_APP_API_URL + "/lamp/border",
+        {
+          border: lamp.border,
+          borderradius: lamp.borderradius,
+          bordercolor: bordercolor.current.value,
+        },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_LAMP",
+          payload: lamp,
+        });
 
-    envDispatch({
-      type: "SET_LAMP",
-      payload: {
-        ...lamp,
-        bordercolor: bordercolor.current.value,
-      },
-    });
+        envDispatch({
+          type: "SET_LAMP",
+          payload: {
+            ...lamp,
+            bordercolor: bordercolor.current.value,
+          },
+        });
+      });
 
     border.current.value = "";
     borderradius.current.value = "";
   };
 
   const handlePosi = (e) => {
-    envDispatch({
-      type: "SET_LAMP",
-      payload: {
-        ...lamp,
-        posi: e.currentTarget.value,
-      },
-    });
+    var posi = e.currentTarget.value;
+    axios
+      .put(
+        process.env.REACT_APP_API_URL + "/lamp/posi",
+        { posi: posi },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_LAMP",
+          payload: {
+            ...lamp,
+            posi: posi,
+          },
+        });
+      });
   };
 
   const edit = useRef();
@@ -153,6 +204,7 @@ export default function LampSetting() {
         value: edit.current.value,
       },
     });
+
     edit.current.value = "";
   };
 
@@ -184,7 +236,14 @@ export default function LampSetting() {
                 <td style={{ backgroundColor: lamp.data[key].bgcolor }}></td>
                 <td>{lamp.data[key].text}</td>
                 <td style={{ backgroundColor: lamp.data[key].color }}></td>
-                <td>{Button(handleDelete, "Xóa")}</td>
+                <td>
+                  <div
+                    style={{ color: "red", cursor: "pointer" }}
+                    onClick={handleDelete}
+                  >
+                    Xoá
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>

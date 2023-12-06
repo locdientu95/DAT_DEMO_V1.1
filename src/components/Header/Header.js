@@ -18,15 +18,8 @@ export default function Header(props) {
     if (img.value != "") {
       preimg.value = img.value;
     }
-<<<<<<< HEAD
   }, [preimg.value]);
 
-=======
-    
-  },[preimg.value])
-  
-  
->>>>>>> a3c9ab3473bf5d6e1c67776f108f1473cf5d74f8
   // useEffect(() => {
   //   axios
   //     .post(

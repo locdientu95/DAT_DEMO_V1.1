@@ -131,6 +131,7 @@ export default function Device() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Get dữ liệu TablePro
   useEffect(() => {
     axios
       .get(process.env.REACT_APP_API_URL + "/tablepro", { credential: true })
@@ -144,17 +145,17 @@ export default function Device() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // // Get dữ liệu Lamp
-  // useEffect(() => {
-  //   axios
-  //     .get(process.env.REACT_APP_API_URL + "/lamp", { credential: true })
-  //     .then((res) => {
-  //       console.log(res.data.data);
-  //       envDispatch({ type: "SET_LAMP", payload: res.data.data[0] });
-  //     });
+  // Get dữ liệu Lamp
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/lamp", { credential: true })
+      .then((res) => {
+        console.log(res.data.data);
+        envDispatch({ type: "SET_LAMP", payload: res.data.data[0] });
+      });
 
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="Device_Content">

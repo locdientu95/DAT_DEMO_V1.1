@@ -73,43 +73,9 @@ export const INITSTATE = {
     borderradiusicon: "0",
   },
 
-  lamp: {
-    value: 0,
-    data: {
-      0: { text: "hello", color: "#ff0000", bgcolor: "#00FF04" },
-      1: { text: "world", color: "#0000ff", bgcolor: "#ff0000" },
-    },
-    width: "100",
-    height: "30",
-    fontsize: "30",
-    border: "2",
-    borderradius: "10",
-    bordercolor: "#000000",
-    posi: "center",
-  },
+  lamp: {},
 
-  tablepro: {
-    // width: "400px",
-    // height: "250px",
-    // data: [
-    //   {
-    //     id: 1,
-    //     val_1: 0,
-    //   },
-    // ],
-    // head: [
-    //   {
-    //     name: "STT",
-    //     code: "id",
-    //   },
-    //   {
-    //     name: "Giá Trị 1",
-    //     code: "val_1",
-    //   },
-    // ],
-    // row: 2,
-    // col: 2,
-  },
+  tablepro: {},
 
   number: {},
 
@@ -1004,11 +970,11 @@ const EnvReducer = (state, action) => {
         ...state,
         numberv: action.payload,
       };
-      case "SET_LISTFORM":
-        return {
-          ...state,
-          lisform: action.payload,
-        };
+    case "SET_LISTFORM":
+      return {
+        ...state,
+        lisform: action.payload,
+      };
     default:
       throw new Error("Unexpected action");
   }
