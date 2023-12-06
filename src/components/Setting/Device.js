@@ -128,6 +128,7 @@ export default function Device() {
         console.log(res.data.data);
         envDispatch({ type: "SET_NUMBER", payload: res.data.data[0] });
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
