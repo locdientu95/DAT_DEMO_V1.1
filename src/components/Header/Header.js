@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { EnvContext } from "../Context/EnvContext";
 import { signal, effect } from "@preact/signals-react";
 import { img, preimg } from "../Account/Info";
-export const test = signal("");
+import { name } from "../../App";
 
 export default function Header(props) {
   const { errorlogs, errornoti, envDispatch, login } = useContext(EnvContext);
@@ -18,8 +18,14 @@ export default function Header(props) {
     if (img.value != "") {
       preimg.value = img.value;
     }
+<<<<<<< HEAD
   }, [preimg.value]);
 
+=======
+  },[preimg.value])
+  
+  
+>>>>>>> fa3a660cbfca13b9699e6c3577da0868f78f64cd
   // useEffect(() => {
   //   axios
   //     .post(
@@ -611,7 +617,7 @@ export default function Header(props) {
                         }}
                       ></img>
                       <div className="DAT_Header_Account_Header_Profile-Details">
-                        <div>{props.name}</div>
+                        <div>{name.value}</div>
                         <div style={{ color: "grey", fontSize: "12px" }}>
                           {props.mail}
                         </div>

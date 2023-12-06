@@ -23,7 +23,8 @@ export default function Login() {
         },
         { credential: true }
       )
-      .then((res) => {});
+      .then((res) => {       
+      });
   };
 
   return (
