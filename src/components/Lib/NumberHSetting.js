@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from "react";
 import "./Setting.scss";
 import { EnvContext } from "../Context/EnvContext";
+import axios from "axios";
 
 export default function NumberHSetting() {
   const { numberh, envDispatch } = useContext(EnvContext);
@@ -19,14 +20,25 @@ export default function NumberHSetting() {
       newRow++;
     }
 
-    envDispatch({
-      type: "SET_NUMBERH",
-      payload: {
-        ...numberh,
-        row: newRow,
-        data: newData,
-      },
-    });
+    axios
+      .post(
+        process.env.REACT_APP_API_URL + "/numberh/add",
+        {
+          data: newData,
+          row: newRow,
+        },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_NUMBERH",
+          payload: {
+            ...numberh,
+            row: newRow,
+            data: newData,
+          },
+        });
+      });
 
     row.current.value = "";
   };
@@ -35,18 +47,25 @@ export default function NumberHSetting() {
   const to = useRef();
   const handleDelete = (e) => {
     var newData = numberh.data;
-    newData.splice(
-      from.current.value - 1,
-      to.current.value - from.current.value + 1
-    );
-
-    envDispatch({
-      type: "SET_NUMBERH",
-      payload: {
-        ...numberh,
-        data: newData,
-      },
+    newData = newData.filter((newData) => {
+      return newData.id < from.current.value || newData.id > to.current.value;
     });
+
+    axios
+      .put(
+        process.env.REACT_APP_API_URL + "/numberh/delete",
+        { data: newData },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_NUMBERH",
+          payload: {
+            ...numberh,
+            data: newData,
+          },
+        });
+      });
 
     from.current.value = "";
     to.current.value = "";
@@ -74,13 +93,21 @@ export default function NumberHSetting() {
       newData[index].unit = unit.current.value;
     }
 
-    envDispatch({
-      type: "SET_NUMBERH",
-      payload: {
-        ...numberh,
-        data: newData,
-      },
-    });
+    axios
+      .put(
+        process.env.REACT_APP_API_URL + "/numberh/update",
+        { data: newData },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_NUMBERH",
+          payload: {
+            ...numberh,
+            data: newData,
+          },
+        });
+      });
 
     name.current.value = "";
     value.current.value = "";
@@ -113,9 +140,7 @@ export default function NumberHSetting() {
       </div>
 
       <div className="DAT_Setting-NumberH-Row">
-        <span
-          className="DAT_Setting-NumberH-Row-Item1"
-        >
+        <span className="DAT_Setting-NumberH-Row-Item1">
           Chọn id cần thay đổi:
         </span>
         <select ref={selID}>

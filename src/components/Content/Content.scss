@@ -224,20 +224,30 @@
             }
 
             &-Header {
+                height: 50px;
                 display: flex;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 16px;
-
-                &-Text {
-                    flex: 5;
-                }
+                align-items: center;
+                justify-content: space-between;
+                padding: 0px 16px 0px 16px;
+                color: blue;
+                background-color: whitesmoke;
+                border-bottom: solid 1px rgb(156, 155, 155, 0.2);
+                font-weight: 500;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
 
                 &-Icon {
-                    flex: 5;
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50%;
                     display: flex;
-                    justify-content: flex-end;
+                    align-items: center;
+                    justify-content: center;
                     cursor: pointer;
+
+                    &:hover {
+                        background-color: rgb(156, 155, 155, 0.2);
+                    }
                 }
             }
 
@@ -274,46 +284,40 @@
             }
 
             &-Edit {
-                // display: none;
                 position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100vh;
                 background-color: rgb(0, 0, 0, 0.5);
-                overflow-y: scroll;
 
                 &-Group {
                     width: 500px;
                     margin: auto;
                     background-color: #f2f6fc;
                     margin-top: calc(100vh/6);
-                    margin-bottom: 100px;
                     border-radius: 10px;
 
                     &-Tit {
+                        height: 50px;
                         display: flex;
-                        justify-content: space-between;
                         align-items: center;
-                        padding-left: 16px;
-                        padding-right: 16px;
-                        height: 40px;
+                        justify-content: space-between;
+                        padding: 0px 16px 0px 16px;
                         color: blue;
                         background-color: whitesmoke;
-                        border-top-right-radius: 5px;
-                        border-top-left-radius: 5px;
                         border-bottom: solid 1px rgb(156, 155, 155, 0.2);
                         font-weight: 500;
+                        border-top-right-radius: 10px;
+                        border-top-left-radius: 10px;
 
                         &-Close {
                             height: 30px;
                             width: 30px;
-                            background-color: white;
                             border-radius: 50%;
                             display: flex;
                             align-items: center;
                             justify-content: center;
-
                             cursor: pointer;
 
                             &:hover {
@@ -323,7 +327,7 @@
                     }
 
                     &-Row1 {
-                        padding: 8px 8px 0px 8px;
+                        padding: 8px 16px 0px 16px;
 
                         & input {
                             outline: none;
@@ -350,7 +354,7 @@
                     }
 
                     &-Row2 {
-                        padding: 0px 8px 24px 8px;
+                        padding: 0px 16px 16px 16px;
 
                         & input {
                             outline: none;
@@ -379,7 +383,7 @@
                     &-Buttons {
                         display: flex;
                         gap: 8px;
-                        padding: 24px 8px 24px 8px;
+                        padding: 16px 16px 16px 16px;
 
                         & input {
                             outline: none;

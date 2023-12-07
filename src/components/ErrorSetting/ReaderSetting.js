@@ -156,26 +156,24 @@ export default function ReaderSetting() {
   };
 
   return (
-    <div className="DAT_ReaderSetting-Main-Content">
-      <div className="DAT_ReaderSetting-Main-Content-Tit">
-        Cài Đặt Thanh Ghi
-      </div>
-      <div className="DAT_ReaderSetting-Main-Content-Table">
+    <div className="DAT_ReaderSetting">
+      <div className="DAT_ReaderSetting-Tit">Cài Đặt Thanh Ghi</div>
+      <div className="DAT_ReaderSetting-Table">
         <DataTable columns={addcol} data={errsetting.adddata} />
         <button onClick={(e) => handleAdd(e)}>Thêm</button>
       </div>
       <div
-        className="DAT_ReaderSetting-Main-Content-Config"
+        className="DAT_ReaderSetting-Config"
         style={{ display: infopop ? "block" : "none" }}
       >
         <form
-          className="DAT_ReaderSetting-Main-Content-Config-Group"
+          className="DAT_ReaderSetting-Config-Group"
           onSubmit={(e) => handleSaveAddressRow(e)}
         >
-          <div className="DAT_ReaderSetting-Main-Content-Config-Group-Tit">
+          <div className="DAT_ReaderSetting-Config-Group-Tit">
             <div>Chỉnh Sửa</div>
             <div
-              className="DAT_ReaderSetting-Main-Content-Config-Group-Tit-Close"
+              className="DAT_ReaderSetting-Config-Group-Tit-Close"
               onClick={(e) => handleClose(e)}
             >
               <IoClose />

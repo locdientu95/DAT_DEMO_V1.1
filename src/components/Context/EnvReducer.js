@@ -115,23 +115,7 @@ export const INITSTATE = {
     chartnamefsize: "10px",
   },
 
-  numberh: {
-    row: 3,
-    data: [
-      {
-        id: 1,
-        label: "Gia tri 0",
-        value: "0",
-        unit: "unit",
-      },
-      {
-        id: 2,
-        label: "Gia tri 1",
-        value: "0",
-        unit: "unit",
-      },
-    ],
-  },
+  numberh: {},
 
   login: {
     username: "unknown",
@@ -785,32 +769,7 @@ export const INITSTATE = {
     },
   ],
 
-  numberv: {
-    row: 3,
-    col: 2,
-    header: [
-      {
-        name: "Tên",
-        code: "label",
-      },
-      {
-        name: "Nhiệt độ",
-        code: "label_1",
-      },
-    ],
-    data: [
-      {
-        id: 1,
-        label: "Giá trị",
-        label_1: 0,
-      },
-      {
-        id: 2,
-        label: "Đơn vị",
-        label_1: "unit",
-      },
-    ],
-  },
+  numberv: {},
 };
 
 const EnvReducer = (state, action) => {

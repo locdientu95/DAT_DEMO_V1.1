@@ -86,9 +86,7 @@ export default function Project(props) {
                     </div>
                     <input type="text" ref={projectid} required />
                   </div>
-                </div>
 
-                <div className="DAT_Project_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Project_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Project_Main_Content_Detail_Content_Form_Row_Item_Label">
                       Tên Dự Án
@@ -122,9 +120,7 @@ export default function Project(props) {
                     </div>
                     <input type="Text" ref={long} required />
                   </div>
-                </div>
 
-                <div className="DAT_Project_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Project_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Project_Main_Content_Detail_Content_Form_Row_Item_Label">
                       Vĩ Độ

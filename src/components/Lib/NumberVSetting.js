@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from "react";
 import "./Setting.scss";
 import { EnvContext } from "../Context/EnvContext";
+import axios from "axios";
 
 export default function NumberVSetting() {
   const { numberv, envDispatch } = useContext(EnvContext);
@@ -21,20 +22,32 @@ export default function NumberVSetting() {
     numberv.data.map((data, index) => {
       var x = data;
       for (var i = leng; i < sum; i++) {
-        x["label_" + i] = "...";
+        x["label_" + i] = "";
       }
       newData.push(x);
     });
 
-    envDispatch({
-      type: "SET_NUMBERV",
-      payload: {
-        ...numberv,
-        header: newHeader,
-        data: newData,
-        col: sum,
-      },
-    });
+    axios
+      .post(
+        process.env.REACT_APP_API_URL + "/numberv/add",
+        {
+          header: newHeader,
+          data: newData,
+          col: sum,
+        },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_NUMBERV",
+          payload: {
+            ...numberv,
+            header: newHeader,
+            data: newData,
+            col: sum,
+          },
+        });
+      });
 
     col.current.value = "";
   };
@@ -57,7 +70,7 @@ export default function NumberVSetting() {
         alert("Nhập sai, vui lòng nhập lại");
       } else if (from.current.value == "" || to.current.value == "") {
         alert("Nhập sai, vui lòng nhập lại");
-      } else if (condition >= 2 ) {
+      } else if (condition >= 2) {
         var newHeader = numberv.header;
         for (var i = from.current.value; i <= to.current.value; i++) {
           newHeader = newHeader.filter(
@@ -72,14 +85,25 @@ export default function NumberVSetting() {
           }
         });
 
-        envDispatch({
-          type: "SET_NUMBERV",
-          payload: {
-            ...numberv,
-            header: newHeader,
-            data: newData,
-          },
-        });
+        axios
+          .put(
+            process.env.REACT_APP_API_URL + "/numberv/delete",
+            {
+              header: newHeader,
+              data: newData,
+            },
+            { credential: true }
+          )
+          .then((res) => {
+            envDispatch({
+              type: "SET_NUMBERV",
+              payload: {
+                ...numberv,
+                header: newHeader,
+                data: newData,
+              },
+            });
+          });
       } else {
         alert("Số cột tối thiểu là 2");
       }
@@ -99,15 +123,21 @@ export default function NumberVSetting() {
       }
     });
 
-    console.log(newHead);
-
-    envDispatch({
-      type: "SET_NUMBERV",
-      payload: {
-        ...numberv,
-        header: newHead,
-      },
-    });
+    axios
+      .put(
+        process.env.REACT_APP_API_URL + "/numberv/update",
+        { header: newHead },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_NUMBERV",
+          payload: {
+            ...numberv,
+            header: newHead,
+          },
+        });
+      });
 
     tit.current.value = "";
   };

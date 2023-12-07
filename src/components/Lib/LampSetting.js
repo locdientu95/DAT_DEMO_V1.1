@@ -48,34 +48,35 @@ export default function LampSetting() {
   const text = useRef();
   const textcolor = useRef();
   const handleAdd = (e) => {
-    axios
-      .put(
-        process.env.REACT_APP_API_URL + "/lamp/update",
-        {
-          value: value.current.value,
-          text: text.current.value,
-          color: textcolor.current.value,
-          bgcolor: bgcolor.current.value,
-        },
-        { credential: true }
-      )
-      .then((res) => {
-        console.log(res.data.data);
-        envDispatch({
-          type: "SET_LAMP",
-          payload: {
-            ...lamp,
-            data: {
-              ...lamp.data,
-              [value.current.value]: {
-                text: text.current.value,
-                color: textcolor.current.value,
-                bgcolor: bgcolor.current.value,
-              },
-            },
+    // axios
+    //   .put(
+    //     process.env.REACT_APP_API_URL + "/lamp/update",
+    //     {
+    //       value: value.current.value,
+    //       text: text.current.value,
+    //       color: textcolor.current.value,
+    //       bgcolor: bgcolor.current.value,
+    //     },
+    //     { credential: true }
+    //   )
+    //   .then((res) => {
+    //     console.log(res.data.data);
+    //   });
+
+    envDispatch({
+      type: "SET_LAMP",
+      payload: {
+        ...lamp,
+        data: {
+          ...lamp.data,
+          [value.current.value]: {
+            text: text.current.value,
+            color: textcolor.current.value,
+            bgcolor: bgcolor.current.value,
           },
-        });
-      });
+        },
+      },
+    });
 
     value.current.value = "";
     text.current.value = "";

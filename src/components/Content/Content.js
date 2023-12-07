@@ -83,7 +83,6 @@ export default function Content() {
     },
   ];
 
-
   useEffect(() => {
     const timer = setInterval(() => {
       setDate(new Date());
@@ -494,9 +493,7 @@ export default function Content() {
         {/* Barchart Card */}
         <div className="DAT_Content-Container-Card">
           <div className="DAT_Content-Container-Card-Header">
-            <div className="DAT_Content-Container-Card-Header-Text">
-              Bar Chart
-            </div>
+            Bar Chart
             <div
               className="DAT_Content-Container-Card-Header-Icon"
               onClick={(e) => handlePop(e)}
@@ -536,7 +533,7 @@ export default function Content() {
           >
             <form className="DAT_Content-Container-Card-Edit-Group">
               <div className="DAT_Content-Container-Card-Edit-Group-Tit">
-                <div>Chỉnh Sửa</div>
+                Chỉnh Sửa
                 <div
                   className="DAT_Content-Container-Card-Edit-Group-Tit-Close"
                   onClick={(e) => handleClose(e)}

@@ -147,10 +147,29 @@ export default function Device() {
     axios
       .get(process.env.REACT_APP_API_URL + "/lamp", { credential: true })
       .then((res) => {
-        console.log(res.data.data);
         envDispatch({ type: "SET_LAMP", payload: res.data.data[0] });
       });
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Get dữ liệu NumberH
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/numberh", { credential: true })
+      .then((res) => {
+        envDispatch({ type: "SET_NUMBERH", payload: res.data.data[0] });
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Get dữ liệu NumberV
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/numberv", { credential: true })
+      .then((res) => {
+        envDispatch({ type: "SET_NUMBERV", payload: res.data.data[0] });
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

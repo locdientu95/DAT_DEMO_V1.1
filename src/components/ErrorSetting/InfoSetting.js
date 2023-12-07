@@ -206,24 +206,24 @@ export default function InfoSetting() {
   };
 
   return (
-    <div className="DAT_InfoSetting-Main-Content">
-      <div className="DAT_InfoSetting-Main-Content-Tit">Cài Đặt Thông Tin</div>
-      <div className="DAT_InfoSetting-Main-Content-Table">
+    <div className="DAT_InfoSetting">
+      <div className="DAT_InfoSetting-Tit">Cài Đặt Thông Tin</div>
+      <div className="DAT_InfoSetting-Table">
         <DataTable columns={infoCol} data={errsetting.infodata} />
         <button onClick={(e) => handleAddInfo(e)}>Thêm</button>
       </div>
       <div
-        className="DAT_InfoSetting-Main-Content-Config"
+        className="DAT_InfoSetting-Config"
         style={{ display: pop ? "block" : "none" }}
       >
         <form
-          className="DAT_InfoSetting-Main-Content-Config-Group"
+          className="DAT_InfoSetting-Config-Group"
           onSubmit={(e) => handleSaveRow(e)}
         >
-          <div className="DAT_InfoSetting-Main-Content-Config-Group-Tit">
-            <div>Chỉnh Sửa</div>
+          <div className="DAT_InfoSetting-Config-Group-Tit">
+            Chỉnh Sửa
             <div
-              className="DAT_InfoSetting-Main-Content-Config-Group-Tit-Close"
+              className="DAT_InfoSetting-Config-Group-Tit-Close"
               onClick={(e) => handleClose2(e)}
             >
               <IoClose />
