@@ -18,7 +18,6 @@ export default function ErrorSetting() {
   const handleNav = (e) => {
     var id = e.currentTarget.id;
 
-    console.log(id);
     setNav(id);
   };
 

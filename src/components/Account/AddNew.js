@@ -2,11 +2,10 @@ import React, { useContext } from "react";
 import "./Account.scss";
 import { useRef } from "react";
 import { EnvContext } from "../Context/EnvContext";
-import { useEffect } from "react";
 import axios from "axios";
 
 export default function AddNew() {
-  const { register, envDispatch } = useContext(EnvContext);
+  const { register } = useContext(EnvContext);
 
   const username = useRef();
   const email = useRef();
@@ -27,23 +26,6 @@ export default function AddNew() {
       if (newData.length) {
         alert("Tài khoản hoặc email đã tồn tại");
       } else {
-        // var pushData = register;
-        // pushData = [
-        //   ...pushData,
-        //   {
-        //     username: username.current.value,
-        //     email: email.current.value,
-        //     password: repassword.current.value,
-        //     name: name.current.value,
-        //     role: "user",
-        //   },
-        // ];
-
-        // envDispatch({
-        //   type: "SET_REGISTER",
-        //   payload: pushData,
-        // });
-
         axios
           .post(process.env.REACT_APP_API_URL + "/addUser", {
             username: username.current.value,
@@ -65,10 +47,6 @@ export default function AddNew() {
       alert("Mật khẩu không khớp");
     }
   };
-
-  useEffect(() => {
-    console.log(register);
-  }, [register]);
 
   return (
     <div className="DAT_AddNew">

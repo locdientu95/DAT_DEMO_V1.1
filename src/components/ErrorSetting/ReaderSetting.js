@@ -101,10 +101,10 @@ export default function ReaderSetting() {
       { id: leng, addressCode: "...", addressState: "...", value: "..." },
     ];
     leng++;
-    console.log(leng);
     newData.map((data, index) => {
       return (data.id = index + 1);
     });
+
     envDispatch({
       type: "SET_ERR",
       payload: {
@@ -119,12 +119,12 @@ export default function ReaderSetting() {
     e.preventDefault();
     const data = datainaddressrow.current.value;
     const t = addrow.split("_");
-    console.log(data);
-    console.log(t[0]);
     var newData = errsetting.adddata;
     const index = newData.findIndex((newData) => newData.id == t[1]);
     newData[index][t[0]] = data;
+
     setInfoPop(false);
+
     envDispatch({
       type: "SET_ERR",
       payload: {
@@ -139,9 +139,11 @@ export default function ReaderSetting() {
     newData = newData.filter((newData) => {
       return newData.id !== parseInt(e.currentTarget.id);
     });
+
     newData.map((data, index) => {
       return (data.id = index + 1);
     });
+
     envDispatch({
       type: "SET_ERR",
       payload: {

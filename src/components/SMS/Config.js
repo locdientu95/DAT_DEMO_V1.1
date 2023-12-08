@@ -44,17 +44,11 @@ export default function Config(props) {
     },
   ];
 
-  const handleSelect = (e) => {
-    console.log("Selected");
-  };
+  const handleSelect = (e) => {};
 
-  const handleDelete = () => {
-    console.log("Deleted");
-  };
+  const handleDelete = () => {};
 
-  const handleAdd = () => {
-    console.log("Add " + num.current.value + " successful");
-  };
+  const handleAdd = () => {};
 
   return (
     <div className="DAT_Config">

@@ -15,8 +15,6 @@ export default function Security() {
       newPass: newPass.current.value,
       confirmPass: confirmPass.current.value,
     };
-
-    console.log("data:", data);
   };
 
   return (
@@ -37,7 +35,6 @@ export default function Security() {
                 <div className="DAT_Security_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Security_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Security_Main_Content_Detail_Content_Form_Row_Item_Label">
-                      {" "}
                       Email
                     </div>
                     <input
@@ -52,7 +49,6 @@ export default function Security() {
                 <div className="DAT_Security_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Security_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Security_Main_Content_Detail_Content_Form_Row_Item_Label">
-                      {" "}
                       Mật Khẩu Hiện Tại
                     </div>
                     <input
@@ -67,7 +63,6 @@ export default function Security() {
                 <div className="DAT_Security_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Security_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Security_Main_Content_Detail_Content_Form_Row_Item_Label">
-                      {" "}
                       Mật Khẩu Mới
                     </div>
                     <input
@@ -82,7 +77,6 @@ export default function Security() {
                 <div className="DAT_Security_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Security_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Security_Main_Content_Detail_Content_Form_Row_Item_Label">
-                      {" "}
                       Xác Nhận Mật Khẩu Mới
                     </div>
                     <input

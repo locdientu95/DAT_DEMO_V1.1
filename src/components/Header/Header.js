@@ -70,7 +70,6 @@ export default function Header(props) {
     let newData = errorlogs;
     newData = newData.filter((data) => data.read === false);
     let temp = newData.length;
-    // console.log(temp);
     setReadnoti(temp);
   }, [errorlogs]);
 
@@ -79,17 +78,13 @@ export default function Header(props) {
     let arr = id.split("_");
     errornoti.ErrCode = arr[0];
     let index = errorlogs.findIndex((newData) => newData.id === arr[1]);
-    // errorlogs[index].read = true;
-    // console.log(e.currentTarget);
     envDispatch({ type: "SET_ERRORLOGS", payload: errorlogs });
     envDispatch({ type: "SET_ERRORNOTI", payload: errornoti });
   };
 
   const search = useRef("");
 
-  const handleSearch = () => {
-    console.log("search:", search.current.value);
-  };
+  const handleSearch = () => {};
 
   const handleSidebar = () => {
     var get = document.getElementById("Sidebar");

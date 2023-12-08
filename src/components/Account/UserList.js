@@ -14,7 +14,6 @@ export default function UserList() {
     newData.map((data, index) => {
       return (data["id"] = index + 1);
     });
-    console.log(newData);
     setdata(register);
   }, [register]);
 
@@ -60,8 +59,6 @@ export default function UserList() {
   const handleDelete = (e) => {
     var newData = data;
     newData = newData.filter((data) => data.username !== e.target.id);
-    console.log(newData.length);
-    console.log(newData);
     envDispatch({
       type: "SET_REGISTER",
       payload: newData,

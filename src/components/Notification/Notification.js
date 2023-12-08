@@ -31,7 +31,6 @@ export default function Notification() {
       return row.Date === dateformat;
     });
     setData(newData);
-    // console.log(fill.current)
   }, [fill]);
 
   const column = [
