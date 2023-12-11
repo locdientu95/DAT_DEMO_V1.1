@@ -124,55 +124,7 @@ export const INITSTATE = {
     status: false,
   },
 
-  register: [
-    {
-      username: "admin",
-      password: "123456",
-      email: "admin@gmail.com",
-      name: "Admin",
-      role: "admin",
-    },
-    {
-      username: "huuhuynh",
-      password: "huu123",
-      email: "huuhuynh@gmail.com",
-      name: "Huynh Huu",
-      role: "user",
-      status: false,
-    },
-    {
-      username: "phunguyen",
-      password: "phu123",
-      email: "phunguyen@gmail.com",
-      name: "Nguyen Thanh Phu",
-      role: "user",
-      status: false,
-    },
-    {
-      username: "taingo",
-      password: "tai123",
-      email: "taingo@gmail.com",
-      name: "Ngo Dinh Tan Tai",
-      role: "user",
-      status: true,
-    },
-    {
-      username: "anhkhoi",
-      password: "anhkhoi",
-      email: "anhkhoi@gmail.com",
-      name: "anhkhoi",
-      role: "user",
-      status: false,
-    },
-    {
-      username: "phuocloc",
-      password: "phuocloc",
-      email: "phuocloc@gmail.com",
-      name: "Loc Tran",
-      role: "user",
-      status: false,
-    },
-  ],
+  register: [],
 
   errorlogs: [
     {

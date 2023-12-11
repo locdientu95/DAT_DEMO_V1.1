@@ -22,11 +22,11 @@ export default function SliderBar(props) {
       }
     }
     setMarks(marks);
-    console.log(marks);
   };
 
   useEffect(() => {
     markConfig(parseInt(props.setting.scale));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.setting.scale, props.setting.min, props.setting.max]);
 
   useEffect(() => {
