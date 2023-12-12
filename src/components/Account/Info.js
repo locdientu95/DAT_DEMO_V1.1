@@ -1,12 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Account.scss";
 import axios from "axios";
-import { signal } from "@preact/signals-react";
+import { EnvContext } from "../Context/EnvContext";
+import {signal} from "@preact/signals-react"
+import { name } from "../../App";
+export const img = signal("")
+export const preimg = signal("")
 
-export const img = signal("");
-export const preimg = signal("");
 export default function Info() {
-  const userName = useRef("");
+  
+  
+  const userName = useRef();
   const handleUserName = () => {};
 
   const mail = useRef("");
