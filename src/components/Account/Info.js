@@ -3,13 +3,14 @@ import "./Account.scss";
 import axios from "axios";
 import { EnvContext } from "../Context/EnvContext";
 import {signal} from "@preact/signals-react"
-
+import { name } from "../../App";
 export const img = signal("")
 export const preimg = signal("")
+
 export default function Info() {
   
   
-  const userName = useRef("");
+  const userName = useRef();
   const handleUserName = () => {};
 
   const mail = useRef("");
@@ -172,9 +173,10 @@ export default function Info() {
                     </div>
                     <input
                       type="text"
-                      placeholder="Username"
+                      placeholder={name[0].username}
                       onChange={() => handleUserName()}
                       ref={userName}
+                      
                     />
                   </div>
 
@@ -185,7 +187,7 @@ export default function Info() {
                     </div>
                     <input
                       type="text"
-                      placeholder="Email@gmail.com"
+                      placeholder={name[0].email}
                       onChange={() => handleMail()}
                       ref={mail}
                     />

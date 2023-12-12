@@ -611,7 +611,7 @@ export default function Header(props) {
                         }}
                       ></img>
                       <div className="DAT_Header_Account_Header_Profile-Details">
-                        <div>{name.value}</div>
+                        <div>{name[0].name}</div>
                         <div style={{ color: "grey", fontSize: "12px" }}>
                           {props.mail}
                         </div>

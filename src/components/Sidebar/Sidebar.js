@@ -572,7 +572,7 @@ export default function Sidebar(props) {
               Logged in as:
             </div>
             <div className="DAT_Sidebar_Content_Footer_Content_Text">
-              {name.value}
+              {name[0].name}
             </div>
           </div>
         </div>

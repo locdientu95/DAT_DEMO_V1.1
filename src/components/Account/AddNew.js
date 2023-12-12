@@ -22,8 +22,9 @@ export default function AddNew() {
         newData.username === username.current.value ||
         newData.email === email.current.value
     );
-
-    if (password.current.value === repassword.current.value) {
+      if (password.current.value.length<8){
+        alert("Độ dài mật khẩu ít nhất phải là 8")
+      }else if (password.current.value === repassword.current.value) {
       if (newData.length) {
         alert("Tài khoản hoặc email đã tồn tại");
       } else {
