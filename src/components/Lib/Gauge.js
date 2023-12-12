@@ -6,15 +6,13 @@ export default function Gauge(props) {
   const [arr, setArr] = useState([]);
 
   useEffect(() => {
-    console.log(arr);
-
     if (arr.length > 0) {
       arr.shift();
       setArr(arr);
     } else {
       setArr([...arr, props.setting]);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

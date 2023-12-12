@@ -16,7 +16,6 @@ export default function Solar(props) {
     project = project.filter(
       (pjdata) => pjdata.code == sidebarid && pjdata.username == props.name
     );
-    //console.log(project);
     setProject([]);
     project.map((p) => {
       var d = pjdata;
@@ -27,12 +26,10 @@ export default function Solar(props) {
 
   // DEVICES
   useEffect(() => {
-    //console.log(dvm);
     var device = dvm;
     device = device.filter(
       (dvdata) => dvdata.code == sidebarid && dvdata.username == props.name
     );
-    console.log(device);
     setDevice([]);
     device.map((p) => {
       var d = dvdata;

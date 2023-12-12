@@ -24,7 +24,7 @@ import { EnvContext } from "./components/Context/EnvContext";
 import axios from "axios";
 import { signal } from "@preact/signals-react";
 
-export const name = signal([])
+export const name = signal("");
 
 export default function App() {
   const { login, envDispatch } = useContext(EnvContext);
@@ -42,8 +42,7 @@ export default function App() {
           { credential: true }
         )
         .then((res) => {
-          name[0] = res.data
-          console.log(name[0].name)
+          name.value = res.data.name;
           envDispatch({
             type: "SET_LOGIN",
             payload: {

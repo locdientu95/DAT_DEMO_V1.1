@@ -16,30 +16,30 @@ export default function UPS(props) {
     project = project.filter(
       (pjdata) => pjdata.code == sidebarid && pjdata.username == props.name
     );
-    //console.log(project);
     setProject([]);
     project.map((p) => {
       var d = pjdata;
       d = d.filter((d) => d.projectid == p.projectid);
       return setProject((pre) => [...pre, d[0]]);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // DEVICES
   useEffect(() => {
-    //console.log(dvm);
     var device = dvm;
     device = device.filter(
       (dvdata) => dvdata.code == sidebarid && dvdata.username == props.name
     );
-    console.log(device);
     setDevice([]);
     device.map((p) => {
       var d = dvdata;
       d = d.filter((d) => d.gateway == p.deviceid); /// tim 1 thang
       return setDevice((old) => [...old, d[0]]);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <div className="DAT_Content">
       <div className="DAT_Content-Header">

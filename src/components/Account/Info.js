@@ -1,16 +1,12 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Account.scss";
 import axios from "axios";
-import { EnvContext } from "../Context/EnvContext";
-import {signal} from "@preact/signals-react"
-import { name } from "../../App";
-export const img = signal("")
-export const preimg = signal("")
+import { signal } from "@preact/signals-react";
 
+export const img = signal("");
+export const preimg = signal("");
 export default function Info() {
-  
-  
-  const userName = useRef();
+  const userName = useRef("");
   const handleUserName = () => {};
 
   const mail = useRef("");
@@ -25,30 +21,6 @@ export default function Info() {
   const birth = useRef("");
   const handleBirth = () => {};
 
-  // const handleSave = () => {
-  //   var data = {
-  //     username: userName.current.value,
-  //     mail: mail.current.value,
-  //     address: address.current.value,
-  //     phone: phone.current.value,
-  //     birth: birth.current.value,
-  //   };
-
-  //   if (data.username === "") {
-  //     console.log("thiếu thông tin");
-  //   } else if (data.mail === "") {
-  //     console.log("thiếu thông tin");
-  //   } else if (data.address === "") {
-  //     console.log("thiếu thông tin");
-  //   } else if (data.phone === "") {
-  //     console.log("thiếu thông tin");
-  //   } else if (data.birth === "") {
-  //     console.log("thiếu thông tin");
-  //   } else {
-  //     console.log("data:", data);
-  //   }
-  // };
-
   const [image, setImage] = useState();
   const [size, setSize] = useState();
   const [allImage, setAllImage] = useState();
@@ -59,16 +31,14 @@ export default function Info() {
     if (e.target.files[0].size < 800000 && e.target.files[0].size > 0) {
       reader.readAsDataURL(e.target.files[0]);
       reader.onload = () => {
-        setAllImage(reader.result)
+        setAllImage(reader.result);
         setImage(reader.result);
         setSize(e.target.files[0].size);
       };
     } else {
       alert("File nặng quá");
       setSize(e.target.files[0].size);
-      reader.onerror = (error) => {
-        console.log("Error", error);
-      };
+      reader.onerror = (error) => {};
     }
   };
 
@@ -81,11 +51,10 @@ export default function Info() {
         {
           headers: { "Content-Type": "multipart/form-data" },
         }
-      );     
-      img.value = image
-      preimg.value =""
-      alert("Uploaded"); 
-
+      );
+      img.value = image;
+      preimg.value = "";
+      alert("Uploaded");
     } else {
       alert("File nặng, không up được");
     }
@@ -103,14 +72,11 @@ export default function Info() {
         }
       )
       .then((res) => {
-        //console.log(res.data.data.avatar);
         setAllImage(res.data.data.avatar);
-        
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  
   return (
     <div className="DAT_Info">
       <div className="DAT_Info_Main">
@@ -124,21 +90,11 @@ export default function Info() {
               Ảnh Đại Diện
             </div>
             <div className="DAT_Info_Main_Content_Picture_Content">
-              {/* <img
-                alt=""
-                src="./DAT_Pictures/user1.png"
-                style={{ height: "160px", borderRadius: "50%" }}
-              /> */}
-              {/* {allImage.map((data) => {
-                return ( */}
               <img
-                // key={data.image}
                 src={allImage}
                 alt=""
                 style={{ height: "160px", width: "160px", borderRadius: "50%" }}
               />
-              {/* );
-              })} */}
               <div className="DAT_Info_Main_Content_Picture_Content_Text">
                 JPG hoặc PNG, tối đa 1MB
               </div>

@@ -20,16 +20,13 @@ export default function ProjectManager(props) {
     projectfilter.display = true;
     envDispatch({ type: "SET_PROJECTFILTER", payload: projectfilter });
     setRecord(newData);
-    console.log(e.target.value);
   };
 
   useEffect(() => {
-    // console.log("hello")
     var newData = props.list;
     newData.map((data, index) => {
       data["id"] = index + 1;
     });
-    // console.log(newData)
     //projectfilter.displayarray=newData
     envDispatch({
       type: "SET_PROJECTFILTER",
@@ -42,7 +39,6 @@ export default function ProjectManager(props) {
     projectfilter.detail = e.currentTarget.id;
     projectfilter.display = true;
     envDispatch({ type: "SET_PROJECTFILTER", payload: projectfilter });
-    console.log(projectfilter.detail);
   };
 
   const paginationComponentOptions = {

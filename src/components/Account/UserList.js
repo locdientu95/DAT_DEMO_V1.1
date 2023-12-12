@@ -4,17 +4,26 @@ import { EnvContext } from "../Context/EnvContext";
 import DataTable from "react-data-table-component";
 import { useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
+import axios from "axios";
 
 export default function UserList() {
   const { register, envDispatch } = useContext(EnvContext);
   const [data, setdata] = useState([]);
 
   useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/", { credential: true })
+      .then((res) => {
+        envDispatch({ type: "SET_REGISTER", payload: res.data.data });
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     var newData = register;
     newData.map((data, index) => {
       return (data["id"] = index + 1);
     });
-    console.log(newData);
     setdata(register);
   }, [register]);
 
@@ -59,9 +68,17 @@ export default function UserList() {
 
   const handleDelete = (e) => {
     var newData = data;
-    newData = newData.filter((data) => data.username !== e.target.id);
-    console.log(newData.length);
+    newData = newData.filter((data) => data.username !== e.currentTarget.id);
     console.log(newData);
+
+    // axios
+    //   .put(
+    //     process.env.REACT_APP_API_URL + "/delete",
+    //     { username: e.currentTarget.id },
+    //     { credential: true }
+    //   )
+    //   .then((res) => {
+    //   });
     envDispatch({
       type: "SET_REGISTER",
       payload: newData,

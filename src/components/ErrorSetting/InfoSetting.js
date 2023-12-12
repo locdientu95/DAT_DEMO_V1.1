@@ -20,10 +20,12 @@ export default function InfoSetting() {
 
   const handleSaveRow = (e) => {
     e.preventDefault();
+
     const data = datainrow.current.value;
     const t = idrow.split("_");
     var newData = errsetting.infodata;
     const index = newData.findIndex((newData) => newData.id == t[1]);
+
     if (t[0] == "ErrCode") {
       for (let i = 0; i < errsetting.infodata.length; i++) {
         if (errsetting.infodata[i].ErrCode != data) {
@@ -37,8 +39,9 @@ export default function InfoSetting() {
     } else {
       newData[index][t[0]] = data;
     }
-    console.log(data);
+
     setPop(false);
+
     envDispatch({
       type: "SET_ERR",
       payload: {
@@ -173,7 +176,7 @@ export default function InfoSetting() {
     newData.map((data, index) => {
       data.id = index + 1;
     });
-    console.log(leng);
+
     envDispatch({
       type: "SET_ERR",
       payload: {
@@ -192,6 +195,7 @@ export default function InfoSetting() {
     newData.map((data, index) => {
       data.id = index + 1;
     });
+
     envDispatch({
       type: "SET_ERR",
       payload: {

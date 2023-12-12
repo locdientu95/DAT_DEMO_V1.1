@@ -113,7 +113,6 @@ export default function Content() {
       parseInt(date.getMonth() + 1) +
       "/" +
       date.getFullYear();
-    console.log(from);
 
     var date1 = new Date(toDate.current.value);
     var to =
@@ -122,14 +121,11 @@ export default function Content() {
       parseInt(date1.getMonth() + 1) +
       "/" +
       date1.getFullYear();
-    console.log(to);
 
     var newLabels = dashboardbarchart.labels;
     const index1 = newLabels.findIndex((newLabels) => newLabels === from);
-    console.log(index1);
 
     const index2 = newLabels.findIndex((newLabels) => newLabels === to);
-    console.log(index2);
 
     var newData = dashboardbarchart.datasets;
     var lastData = [];
@@ -150,8 +146,6 @@ export default function Content() {
       },
     });
 
-    console.log(lastData);
-
     setPop(false);
   };
 
@@ -163,8 +157,6 @@ export default function Content() {
     newData = newData.filter(
       (newData) => newData.label === dataset.current.value
     );
-
-    console.log(newData.length);
 
     if (dataset.current.value === "") {
       alert("Tên không hợp lệ");
@@ -183,8 +175,6 @@ export default function Content() {
             ],
           },
         ];
-
-        console.log(pushData);
 
         envDispatch({
           type: "SET_DASHBOARDCHART",
@@ -208,7 +198,7 @@ export default function Content() {
 
     var newData = dashboardbarchart.datasets;
     newData = newData.filter((newData) => newData.label !== e.target.id);
-    console.log(newData);
+
     envDispatch({
       type: "SET_DASHBOARDCHART",
       payload: {
@@ -228,10 +218,7 @@ export default function Content() {
     e.preventDefault();
 
     var newData = dashboardbarchart.labels;
-
     newData = newData.filter((newData) => newData === lables.current.value);
-
-    console.log(newData.length);
 
     if (lables.current.value === "") {
       alert("Tên không hợp lệ");
@@ -241,8 +228,6 @@ export default function Content() {
       } else {
         var pushData = dashboardbarchart.labels;
         pushData = [...pushData, lables.current.value];
-
-        console.log(pushData);
 
         envDispatch({
           type: "SET_DASHBOARDCHART",
@@ -266,7 +251,7 @@ export default function Content() {
 
     var newData = dashboardbarchart.labels;
     newData = newData.filter((NewData) => NewData !== lables.current.value);
-    console.log(newData);
+
     envDispatch({
       type: "SET_DASHBOARDCHART",
       payload: {

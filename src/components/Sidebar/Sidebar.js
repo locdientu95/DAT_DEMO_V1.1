@@ -27,15 +27,12 @@ export default function Sidebar(props) {
     }
   };
 
-  useEffect(() => {
-    // console.log(sidebarid)
-  }, [sidebarid]);
+  useEffect(() => {}, [sidebarid]);
 
   const handlePushID = (e) => {
     // e.preventDefault();
     var temp = e.target.id;
     envDispatch({ type: "SET_SIDEBARID", payload: temp });
-    // console.log(sidebarid);
   };
 
   return (

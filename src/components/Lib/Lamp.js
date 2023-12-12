@@ -6,7 +6,6 @@ export default function Lamp(props) {
     if (props.setting.data[0] === undefined) {
       console.log("err");
     } else {
-      console.log(props.setting.data[props.setting.value]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

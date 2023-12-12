@@ -58,4 +58,6 @@ Phu upload 1/12/2023 update avatar with Hữu
 Phu upload 5/12/2023 viết api cho trang Gauge, Slider
 Phu upload 6/12/2023 viết api cho trang Number, Lamp
 Phu upload 7/12/2023 viết api cho trang NumberH, NumberV
+Phu upload 8/12/2023 chỉnh sửa giao diện
 
+Phu upload 11/12/2023 viết api cho trang Account

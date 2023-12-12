@@ -31,7 +31,6 @@ export default function Devices(props) {
           payload: dvmPush,
         });
         alert("Thêm thành công");
-        console.log(dvm);
       }
     } else {
       alert("Thiết bị không tồn tại trong hệ thống");

@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
 
 export default function ListForm() {
-const {envDispatch} = useContext(EnvContext)
+  const { envDispatch } = useContext(EnvContext);
 
   const {
     listform,
@@ -22,19 +22,13 @@ const {envDispatch} = useContext(EnvContext)
   const addIDconfig = useRef();
 
   useEffect(() => {
-    // console.log(data);
-    // var temp = data;
     envDispatch({
       type: "SET_LISTFORM",
       payload: {
         listform: data,
       },
-    })
-  },[data])
-
-  useEffect(() => {
-    console.log(listform[0].config.length);
-  }, [listform]);
+    });
+  }, [data]);
 
   useEffect(() => {
     var newData = data;
@@ -188,7 +182,6 @@ const {envDispatch} = useContext(EnvContext)
   const handleDeleteConfig = (e) => {
     // Xóa config
     const arr = e.currentTarget.id.split("_");
-    console.log(arr);
     var newData = data;
     const i = newData.findIndex((data) => data.name === arr[1]);
     if (data[i].config.length === 1) {
@@ -211,7 +204,6 @@ const {envDispatch} = useContext(EnvContext)
 
   const handleSaveEdit = (e) => {
     setDisplay(false);
-    // console.log(config); //(3) ['0', 'a', 'name1']
 
     switch (flag) {
       case "config": {
@@ -252,18 +244,15 @@ const {envDispatch} = useContext(EnvContext)
       name: "...",
       config: ["..."],
     };
-    // console.log(db.forEach((report,index) => report[index].formid))
-    const found = db.find((obj)=>{
-      return obj.formid === addIDconfig.current.value
-    })
-    if(found){
+    const found = db.find((obj) => {
+      return obj.formid === addIDconfig.current.value;
+    });
+    if (found) {
       alert("Form đã tồn tại");
     } else {
       db.push(newData);
       setData([...db]);
     }
-
-    console.log(data);
   };
 
   return (
@@ -335,7 +324,9 @@ const {envDispatch} = useContext(EnvContext)
               defaultValue={edit || ""}
               onChange={(e) => handleEdit(e)}
             ></input>
-            <button type="button" onClick={(e) => handleSaveEdit(e)}>Lưu</button>
+            <button type="button" onClick={(e) => handleSaveEdit(e)}>
+              Lưu
+            </button>
           </form>
         </div>
       )}

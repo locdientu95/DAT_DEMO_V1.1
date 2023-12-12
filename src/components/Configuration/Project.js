@@ -19,9 +19,7 @@ export default function Project(props) {
     e.preventDefault();
 
     var data = pjdata;
-
     data = data.filter((data) => data.projectid === projectid.current.value);
-    console.log(data.length);
 
     if (data.length) {
       alert("Mã dự án đã tồn tại");
@@ -56,10 +54,6 @@ export default function Project(props) {
       });
 
       alert("Thêm thành công");
-
-      console.log(pjdata);
-
-      console.log(pjm);
     }
   };
 
