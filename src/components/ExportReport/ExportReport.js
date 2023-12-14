@@ -3,6 +3,7 @@ import "./ExportReport.scss";
 import ListForm from "./ListForm.js";
 import UploadFile from "./UploadFile.js";
 import History from "./History.js";
+import Report from "./Report.js";
 
 export default function ExportReport() {
   const color = {
@@ -75,6 +76,14 @@ export default function ExportReport() {
           >
             Thống Kê
           </div>
+          <div
+            className="DAT_ExportReport-Main-Nav-Item"
+            id="report"
+            style={{ color: nav === "report" ? color.cur : color.pre }}
+            onClick={(e) => handleNav(e)}
+          >
+            Báo Cáo
+          </div>
         </div>
 
         <div className="DAT_ExportReport-Main-Content">
@@ -96,6 +105,12 @@ export default function ExportReport() {
                 return (
                   <>
                     <History></History>
+                  </>
+                );
+              case "report":
+                return (
+                  <>
+                    <Report></Report>
                   </>
                 );
               default:
