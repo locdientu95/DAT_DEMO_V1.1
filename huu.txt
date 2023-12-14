@@ -43,3 +43,4 @@ Huu 1/12 Chinh sua function update hinh anh cua user
 Huu 4/12 Hoan thien chuc nang update hinh anh cua user
 Huu 5/12 Viet API cho TablePro
 Huu 6/12 Tiep tuc viet API cho tablepro
+Huu 7/12

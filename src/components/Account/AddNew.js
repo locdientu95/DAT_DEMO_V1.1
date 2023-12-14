@@ -14,19 +14,9 @@ export default function AddNew() {
   const name = useRef();
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    var newData = register;
-    newData = newData.filter(
-      (newData) =>
-        newData.username === username.current.value ||
-        newData.email === email.current.value
-    );
       if (password.current.value.length<8){
         alert("Độ dài mật khẩu ít nhất phải là 8")
       }else if (password.current.value === repassword.current.value) {
-      if (newData.length) {
-        alert("Tài khoản hoặc email đã tồn tại");
-      } else {
         axios
           .post(process.env.REACT_APP_API_URL + "/addUser", {
             username: username.current.value,
@@ -34,16 +24,15 @@ export default function AddNew() {
             password: repassword.current.value,
             name: name.current.value,
           })
-          .then((res) => {});
-
-        alert("Thêm thành công");
-
+          .then((res) => {
+            console.log(res.data)
+            alert(res.data.message);
+          });
         username.current.value = "";
         email.current.value = "";
         password.current.value = "";
         repassword.current.value = "";
         name.current.value = "";
-      }
     } else {
       alert("Mật khẩu không khớp");
     }

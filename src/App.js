@@ -42,16 +42,21 @@ export default function App() {
           { credential: true }
         )
         .then((res) => {
-          name[0] = res.data;
-          envDispatch({
-            type: "SET_LOGIN",
-            payload: {
-              username: res.data.username,
-              mail: res.data.email,
-              avatar: res.data.avatar,
-              status: true,
-            },
-          });
+          if(res.data.status == false){
+            alert("Sai mật khâu")
+          }else{
+            name[0] = res.data;
+            envDispatch({
+              type: "SET_LOGIN",
+              payload: {
+                username: res.data.username,
+                mail: res.data.email,
+                avatar: res.data.avatar,
+                status: true,
+              },
+            });
+            
+          }
         });
     } else {
       envDispatch({
@@ -64,6 +69,7 @@ export default function App() {
         },
       });
     }
+    console.log("hello")
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
