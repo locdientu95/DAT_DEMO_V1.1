@@ -43,7 +43,7 @@ export default function App() {
         )
         .then((res) => {
           if(res.data.status == false){
-            alert("Sai mật khâu")
+            // alert("Sai mật khâu")
           }else{
             name[0] = res.data;
             envDispatch({
