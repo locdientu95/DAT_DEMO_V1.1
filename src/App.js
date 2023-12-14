@@ -42,9 +42,9 @@ export default function App() {
           { credential: true }
         )
         .then((res) => {
-          if(res.data.status == false){
-            // alert("Sai mật khâu")
-          }else{
+          if (res.data.status == false) {
+            alert("Sai mật khâu");
+          } else {
             name[0] = res.data;
             envDispatch({
               type: "SET_LOGIN",
@@ -55,7 +55,6 @@ export default function App() {
                 status: true,
               },
             });
-            
           }
         });
     } else {
@@ -69,7 +68,7 @@ export default function App() {
         },
       });
     }
-    console.log("hello")
+    // console.log("hello")
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
