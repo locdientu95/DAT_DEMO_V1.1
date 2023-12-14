@@ -9,6 +9,7 @@ import axios from "axios";
 export default function UserList() {
   const { register, envDispatch } = useContext(EnvContext);
   const [data, setdata] = useState([]);
+  const [userName, setuserName] = useState([]);
 
   useEffect(() => {
     axios
@@ -50,39 +51,44 @@ export default function UserList() {
       selector: (row) => row.name,
       center: true,
     },
-    {
-      name: "",
-      selector: (row) => (
-        <div
-          id={row.username}
-          onClick={(e) => handleDelete(e)}
-          style={{ cursor: "pointer", color: "red" }}
-        >
-          <IoTrashOutline />
-        </div>
-      ),
-      width: "70px",
-      center: true,
-    },
+    // {
+    //   name: "",
+    //   selector: (row) => (
+    //     <div
+    //       // id={row.username}
+    //       onClick={(e) => handleDelete(e)}
+    //       style={{ cursor: "pointer", color: "red" }}
+    //     >
+    //       <IoTrashOutline />
+    //     </div>
+    //   ),
+    //   width: "70px",
+    //   center: true,
+    // },
   ];
 
   const handleDelete = (e) => {
-    var newData = data;
-    newData = newData.filter((data) => data.username !== e.currentTarget.id);
-    console.log(newData);
-
+    // var newData = data;
+    // newData = newData.filter((data) => data.username !== e.currentTarget.id);
+    // console.log(e.currentTarget);
     // axios
-    //   .put(
+    //   .delete(
     //     process.env.REACT_APP_API_URL + "/delete",
     //     { username: e.currentTarget.id },
     //     { credential: true }
     //   )
     //   .then((res) => {
+    //     envDispatch({
+    //       type: "SET_REGISTER",
+    //       payload: newData,
+    //     });
     //   });
-    envDispatch({
-      type: "SET_REGISTER",
-      payload: newData,
-    });
+  };
+
+  const handleChange = (e) => {
+    // console.log(e.selectedRows[0].username);
+    setuserName(e.selectedRows);
+    console.log(userName);
   };
 
   return (
@@ -100,10 +106,19 @@ export default function UserList() {
               <div className="DAT_UserList_Main_Content_Detail_Content_Form">
                 <div className="DAT_UserList_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_UserList_Main_Content_Detail_Content_Form_Row_Item">
-                    <DataTable columns={user} data={data} />
+                    <DataTable
+                      columns={user}
+                      data={data}
+                      selectableRows
+                      selectableRowsSingle
+                      // selectableRowSelected={(e) => handleChange()}
+                      onSelectedRowsChange={(e) => handleChange(e)}
+                    />
                   </div>
                 </div>
               </div>
+
+              <button onClick={(e) => handleDelete(e)}>xoa</button>
             </div>
           </div>
         </div>
