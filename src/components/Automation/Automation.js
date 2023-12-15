@@ -35,17 +35,14 @@ export default function Automation(props) {
 
   useEffect(() => {
     setDisplay(projectfilter.display);
-    console.log(display);
   }, [projectfilter.display]);
 
   // DEVICES
   useEffect(() => {
-    //console.log(dvm);
     var device = dvm;
     device = device.filter(
       (dvdata) => dvdata.code == sidebarid && dvdata.username == props.name
     );
-    console.log(device);
     setDevice([]);
     device.map((p) => {
       var d = dvdata;
@@ -63,7 +60,6 @@ export default function Automation(props) {
     var newData = projectfilter.displayarray; //data
     const index = newData.findIndex((newData) => newData.id == temp[1]);
     newData[index][temp[0]] = data;
-    console.log(newData);
     setProject(newData);
     envDispatch({
       type: "SET_PROJECTFILTER",

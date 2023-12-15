@@ -34,35 +34,9 @@ export const INITSTATE = {
     },
   ],
 
-  gauge: {
-    // label: "text",
-    // labelsize: "20px",
-    // labelcolor: "black",
-    // unit: "hz",
-    // valuesize: "20px",
-    // valuecolor: "black",
-    // min: 0,
-    // max: 100,
-    // width: "500px",
-    // height: "300px",
-    // segment: 10,
-    // needlecolor: "#ff0000",
-    // startcolor: "#60d277",
-    // endcolor: "#dc0909",
-    // cal: "30",
-  },
+  gauge: {},
 
-  slider: {
-    // min: 0,
-    // max: 100,
-    // width: "500",
-    // height: "20",
-    // scale: 5,
-    // ori: "horizontal",
-    // thumb: { bgcolor: "#1976d2", border: "0" },
-    // track: { bgcolor: "#1976d2", border: "0" },
-    // rail: { bgcolor: "#1976d2" },
-  },
+  slider: {},
 
   button: {
     // btntype: "Inching",
@@ -113,57 +87,11 @@ export const INITSTATE = {
     borderradiusicon: "0",
   },
 
-  lamp: {
-    value: 0,
-    data: {
-      0: { text: "hello", color: "#ff0000", bgcolor: "#00FF04" },
-      1: { text: "world", color: "#0000ff", bgcolor: "#ff0000" },
-    },
-    width: "100",
-    height: "30",
-    fontsize: "30",
-    border: "2",
-    borderradius: "10",
-    bordercolor: "#000000",
-    posi: "center",
-  },
+  lamp: {},
 
-  tablepro: {
-    width: "400px",
-    height: "250px",
-    data: [
-      {
-        id: 1,
-        val_1: 0,
-      },
-    ],
-    head: [
-      {
-        name: "STT",
-        code: "id",
-      },
-      {
-        name: "Giá Trị 1",
-        code: "val_1",
-      },
-    ],
-    row: 2,
-    col: 2,
-  },
+  tablepro: {},
 
-  number: {
-    width: "100",
-    height: "30",
-    unit: "Hz",
-    border: "2",
-    bordercolor: "#000000",
-    borderradius: "10",
-    bgcolor: "#ffffff",
-    textcolor: "#000000",
-    fontsize: "20",
-    type: "false",
-    posi: "center",
-  },
+  number: {},
 
   barchart: {
     dataset: [
@@ -201,75 +129,16 @@ export const INITSTATE = {
     chartnamefsize: "10px",
   },
 
-  numberh: {
-    row: 3,
-    data: [
-      {
-        id: 1,
-        label: "Gia tri 0",
-        value: "0",
-        unit: "unit",
-      },
-      {
-        id: 2,
-        label: "Gia tri 1",
-        value: "0",
-        unit: "unit",
-      },
-    ],
+  numberh: {},
+
+  login: {
+    username: "unknown",
+    mail: "unknown@gmail.com",
+    avatar: "",
+    status: false,
   },
 
-  login: { username: "unknown", mail: "unknown@gmail.com", avatar: "" ,status: false },
-
-  register: [
-    {
-      username: "admin",
-      password: "123456",
-      email: "admin@gmail.com",
-      name: "Admin",
-      role: "admin",
-    },
-    {
-      username: "huuhuynh",
-      password: "huu123",
-      email: "huuhuynh@gmail.com",
-      name: "Huynh Huu",
-      role: "user",
-      status: false,
-    },
-    {
-      username: "phunguyen",
-      password: "phu123",
-      email: "phunguyen@gmail.com",
-      name: "Nguyen Thanh Phu",
-      role: "user",
-      status: false,
-    },
-    {
-      username: "taingo",
-      password: "tai123",
-      email: "taingo@gmail.com",
-      name: "Ngo Dinh Tan Tai",
-      role: "user",
-      status: true,
-    },
-    {
-      username: "anhkhoi",
-      password: "anhkhoi",
-      email: "anhkhoi@gmail.com",
-      name: "anhkhoi",
-      role: "user",
-      status: false,
-    },
-    {
-      username: "phuocloc",
-      password: "phuocloc",
-      email: "phuocloc@gmail.com",
-      name: "Loc Tran",
-      role: "user",
-      status: false,
-    },
-  ],
+  register: [],
 
   errorlogs: [
     {
@@ -866,32 +735,7 @@ export const INITSTATE = {
     },
   ],
 
-  numberv: {
-    row: 3,
-    col: 2,
-    header: [
-      {
-        name: "Tên",
-        code: "label",
-      },
-      {
-        name: "Nhiệt độ",
-        code: "label_1",
-      },
-    ],
-    data: [
-      {
-        id: 1,
-        label: "Giá trị",
-        label_1: 0,
-      },
-      {
-        id: 2,
-        label: "Đơn vị",
-        label_1: "unit",
-      },
-    ],
-  },
+  numberv: {},
 };
 
 const EnvReducer = (state, action) => {

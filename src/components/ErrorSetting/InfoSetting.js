@@ -20,10 +20,12 @@ export default function InfoSetting() {
 
   const handleSaveRow = (e) => {
     e.preventDefault();
+
     const data = datainrow.current.value;
     const t = idrow.split("_");
     var newData = errsetting.infodata;
     const index = newData.findIndex((newData) => newData.id == t[1]);
+
     if (t[0] == "ErrCode") {
       for (let i = 0; i < errsetting.infodata.length; i++) {
         if (errsetting.infodata[i].ErrCode != data) {
@@ -37,8 +39,9 @@ export default function InfoSetting() {
     } else {
       newData[index][t[0]] = data;
     }
-    console.log(data);
+
     setPop(false);
+
     envDispatch({
       type: "SET_ERR",
       payload: {
@@ -173,7 +176,7 @@ export default function InfoSetting() {
     newData.map((data, index) => {
       data.id = index + 1;
     });
-    console.log(leng);
+
     envDispatch({
       type: "SET_ERR",
       payload: {
@@ -192,6 +195,7 @@ export default function InfoSetting() {
     newData.map((data, index) => {
       data.id = index + 1;
     });
+
     envDispatch({
       type: "SET_ERR",
       payload: {
@@ -206,24 +210,24 @@ export default function InfoSetting() {
   };
 
   return (
-    <div className="DAT_InfoSetting-Main-Content">
-      <div className="DAT_InfoSetting-Main-Content-Tit">Cài Đặt Thông Tin</div>
-      <div className="DAT_InfoSetting-Main-Content-Table">
+    <div className="DAT_InfoSetting">
+      <div className="DAT_InfoSetting-Tit">Cài Đặt Thông Tin</div>
+      <div className="DAT_InfoSetting-Table">
         <DataTable columns={infoCol} data={errsetting.infodata} />
         <button onClick={(e) => handleAddInfo(e)}>Thêm</button>
       </div>
       <div
-        className="DAT_InfoSetting-Main-Content-Config"
+        className="DAT_InfoSetting-Config"
         style={{ display: pop ? "block" : "none" }}
       >
         <form
-          className="DAT_InfoSetting-Main-Content-Config-Group"
+          className="DAT_InfoSetting-Config-Group"
           onSubmit={(e) => handleSaveRow(e)}
         >
-          <div className="DAT_InfoSetting-Main-Content-Config-Group-Tit">
-            <div>Chỉnh Sửa</div>
+          <div className="DAT_InfoSetting-Config-Group-Tit">
+            Chỉnh Sửa
             <div
-              className="DAT_InfoSetting-Main-Content-Config-Group-Tit-Close"
+              className="DAT_InfoSetting-Config-Group-Tit-Close"
               onClick={(e) => handleClose2(e)}
             >
               <IoClose />

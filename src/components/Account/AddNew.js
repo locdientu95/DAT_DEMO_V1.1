@@ -2,11 +2,10 @@ import React, { useContext } from "react";
 import "./Account.scss";
 import { useRef } from "react";
 import { EnvContext } from "../Context/EnvContext";
-import { useEffect } from "react";
 import axios from "axios";
 
 export default function AddNew() {
-  const { register, envDispatch } = useContext(EnvContext);
+  const { register } = useContext(EnvContext);
 
   const username = useRef();
   const email = useRef();
@@ -15,35 +14,9 @@ export default function AddNew() {
   const name = useRef();
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    var newData = register;
-    newData = newData.filter(
-      (newData) =>
-        newData.username === username.current.value ||
-        newData.email === email.current.value
-    );
-
-    if (password.current.value === repassword.current.value) {
-      if (newData.length) {
-        alert("Tài khoản hoặc email đã tồn tại");
-      } else {
-        // var pushData = register;
-        // pushData = [
-        //   ...pushData,
-        //   {
-        //     username: username.current.value,
-        //     email: email.current.value,
-        //     password: repassword.current.value,
-        //     name: name.current.value,
-        //     role: "user",
-        //   },
-        // ];
-
-        // envDispatch({
-        //   type: "SET_REGISTER",
-        //   payload: pushData,
-        // });
-
+      if (password.current.value.length<8){
+        alert("Độ dài mật khẩu ít nhất phải là 8")
+      }else if (password.current.value === repassword.current.value) {
         axios
           .post(process.env.REACT_APP_API_URL + "/addUser", {
             username: username.current.value,
@@ -51,24 +24,19 @@ export default function AddNew() {
             password: repassword.current.value,
             name: name.current.value,
           })
-          .then((res) => {});
-
-        alert("Thêm thành công");
-
+          .then((res) => {
+            console.log(res.data)
+            alert(res.data.message);
+          });
         username.current.value = "";
         email.current.value = "";
         password.current.value = "";
         repassword.current.value = "";
         name.current.value = "";
-      }
     } else {
       alert("Mật khẩu không khớp");
     }
   };
-
-  useEffect(() => {
-    console.log(register);
-  }, [register]);
 
   return (
     <div className="DAT_AddNew">

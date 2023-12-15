@@ -6,12 +6,11 @@ import Config from "./Config.js";
 import Project from "./Project.js";
 import { useState } from "react";
 export default function SMS() {
-
   const tit = {
     mess: "Mess",
     config: "Cấu Hình",
     status: "Thống Kê",
-    project: "Dự án"
+    project: "Dự án",
   };
 
   const color = {
@@ -19,38 +18,38 @@ export default function SMS() {
     pre: "black",
   };
 
-  const [ nav, setNav ] = useState("mess");
+  const [nav, setNav] = useState("mess");
   const handleNav = (e) => {
     var id = e.currentTarget.id;
     setNav(id);
-  }
+  };
 
   return (
     <div className="DAT_SMS">
       <div className="DAT_SMS-Header">
-          <div className="DAT_SMS-Header-Dashboard">
-            <div className="DAT_SMS-Header-Dashboard-Heading">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="28"
-                height="28"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-filter"
-                style={{ paddingRight: "10px" }}
-              >
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              SMS - {tit[nav]}
-            </div>
-            <div className="DAT_SMS-Header-Dashboard-SubHead">
-              Example dashboard overview and content summary
-            </div>
+        <div className="DAT_SMS-Header-Dashboard">
+          <div className="DAT_SMS-Header-Dashboard-Heading">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="feather feather-filter"
+              style={{ paddingRight: "10px" }}
+            >
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            SMS
+          </div>
+          <div className="DAT_SMS-Header-Dashboard-SubHead">
+            Example dashboard overview and content summary
+          </div>
         </div>
       </div>
 
@@ -114,12 +113,12 @@ export default function SMS() {
                     <Status></Status>
                   </>
                 );
-                // case "project":
-                // return (
-                //   <>
-                //     <Project></Project>
-                //   </>
-                // );
+              // case "project":
+              // return (
+              //   <>
+              //     <Project></Project>
+              //   </>
+              // );
               default:
                 <></>;
             }

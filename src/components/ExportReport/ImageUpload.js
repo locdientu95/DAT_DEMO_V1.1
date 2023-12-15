@@ -5,23 +5,17 @@ function ImageUpload(props) {
   const [size, setSize] = useState();
   const [allImage, setAllImage] = useState([]);
   const convertToBase64 = (e) => {
-    console.log(e.target.files[0].size);
     var reader = new FileReader();
     if (e.target.files[0].size < 80000 && e.target.files[0].size > 0) {
-      console.log(e.target.files[0].size);
       reader.readAsDataURL(e.target.files[0]);
       reader.onload = () => {
-        console.log(reader.result);
         setImage(reader.result);
         setSize(e.target.files[0].size);
       };
     } else {
-      console.log(e.target.files[0].size);
       alert("File nặng quá bồ");
       setSize(e.target.files[0].size);
-      reader.onerror = (error) => {
-        console.log("Error", error);
-      };
+      reader.onerror = (error) => {};
     }
   };
 

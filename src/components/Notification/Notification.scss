@@ -4,6 +4,7 @@
     background-color: #f2f6fc;
     flex: 1;
     overflow-y: scroll;
+
     &-Header {
         background-color: #0061f2;
         width: 100%;
@@ -34,52 +35,35 @@
                     margin-top: 4px;
                 }
             }
-
-            &_Right {
-                display: flex;
-                align-items: center;
-                background-color: white;
-                padding-right: 12px;
-                border-radius: 7px;
-
-                &_Icon {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 40px;
-                    height: 40px;
-                }
-            }
         }
     }
+
     &-Container {
         margin-bottom: 100px;
         margin-top: -100px;
 
         &-ProjectHistory {
-            position: relative;
-            gap: 10px;
             width: 95%;
             margin: auto;
             background-color: white;
-            margin-bottom: 20px;
-            border-radius: 7px;
+            margin-bottom: 24px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+
             &-Head {
-                background-color: rgb(219, 219, 219);
-                border-bottom: solid 1px rgb(186, 186, 186);
                 height: 50px;
                 display: flex;
                 align-items: center;
-                padding-left: 10px;
-                z-index: 2;
+                padding-left: 16px;
+                color: blue;
+                background-color: whitesmoke;
+                border-bottom: solid 1px rgb(156, 155, 155, 0.2);
+                font-weight: 500;
             }
 
             &-Body {
-                padding: 20px;
-                z-index: 2;
-                margin: 20px;
+                padding: 16px;
 
                 & table,
                 td,
@@ -172,31 +156,27 @@
         }
 
         &-SettingNoti {
-            position: relative;
-            gap: 10px;
             width: 95%;
             margin: auto;
             background-color: white;
-            margin-bottom: 20px;
-            border-radius: 7px;
+            margin-bottom: 24px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            // height: 500px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 
             &-Head {
-                background-color: rgb(219, 219, 219);
-                border-bottom: solid 1px rgb(186, 186, 186);
                 height: 50px;
                 display: flex;
                 align-items: center;
-                padding-left: 10px;
-                z-index: 2;
+                padding-left: 16px;
+                color: blue;
+                background-color: whitesmoke;
+                border-bottom: solid 1px rgb(156, 155, 155, 0.2);
+                font-weight: 500;
             }
 
             &-Body {
-                padding: 20px;
-                z-index: 2;
-                margin: 20px;
+                padding: 16px;
 
                 &-IconStorage {
                     box-shadow:
@@ -209,6 +189,7 @@
                     margin-top: -15px;
                     overflow: hidden;
                     overflow-y: scroll;
+
                     &-Item {
                         display: flex;
                         align-items: center;
@@ -219,8 +200,6 @@
                         &:hover {
                             background-color: rgb(128, 128, 128, 0.3);
                         }
-
-                        
 
                         &-Icon {
                             width: 40px;
@@ -249,7 +228,7 @@
 
                     & input {
                         width: 120px;
-                        background-color:  rgb(0, 97, 242, 0.3);
+                        background-color: rgb(0, 97, 242, 0.3);
                         border-style: none;
                         border-radius: 7px;
                     }
@@ -269,14 +248,14 @@
                         // height: 30px;
                         // width: 60px;
                         padding: 10px 20px;
-                        background-color:  #0061F2;
+                        background-color: #0061F2;
                         color: white;
                         border: none;
                         justify-content: flex-end;
                         border-radius: 5px;
                         cursor: pointer;
 
-                        &:hover{
+                        &:hover {
                             background-color: #0054d2;
                         }
                     }

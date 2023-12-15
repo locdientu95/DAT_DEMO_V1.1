@@ -324,3 +324,150 @@
         padding-bottom: 16px;
     }
 }
+
+.DAT_Report {
+    display: flex;
+
+    &-Left {
+        flex: 3;
+        margin-bottom: 16px;
+        text-align: center;
+
+        &-Title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        & select {
+            padding: 8px;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+    }
+
+    &-Right {
+        flex: 7;
+        margin-bottom: 16px;
+        text-align: center;
+        border-left: solid 1px rgb(199, 199, 199);
+
+        &-Title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        &-Content {
+            width: 500px;
+            margin: auto;
+            border: grey solid 1px;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+
+            &-Select {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 10px;
+                width: 70%;
+                margin-bottom: 10px;
+
+                & select {
+                    padding: 8px;
+                    font-size: 14px;
+                    border-radius: 10px;
+                    width: 150px;
+                }
+            }
+
+            &-Date {
+                display: flex;
+                gap: 8px;
+                justify-content: flex-start;
+                align-items: center;
+                margin-bottom: 40px;
+
+                & input {
+                    outline: none;
+                    border: solid 1px grey;
+                    border-radius: 10px;
+                    padding: 8px;
+                    width: 150px;
+                    box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                }
+            }
+
+            &-Date1 {
+                display: flex;
+                gap: 8px;
+                justify-content: flex-start;
+                align-items: center;
+                margin-bottom: 10px;
+
+                & input {
+                    outline: none;
+                    border: solid 1px grey;
+                    border-radius: 10px;
+                    padding: 8px;
+                    width: 150px;
+                    box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                }
+            }
+
+            &-Date2 {
+                display: flex;
+                gap: 8px;
+                justify-content: flex-start;
+                align-items: center;
+                margin-bottom: 40px;
+
+                & input {
+                    outline: none;
+                    border: solid 1px grey;
+                    border-radius: 10px;
+                    padding: 8px;
+                    width: 150px;
+                    box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                }
+
+                & span {
+                    width: 120px;
+                    text-align: left;
+                }
+            }
+
+            &-Button {
+                display: flex;
+                align-items: center;
+                position: absolute;
+                gap: 10px;
+                bottom: 10px;
+                right: 20px;
+
+                &-Icon {
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    background-color: rgb(238, 238, 238, 0.5);
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: rgb(214, 214, 214, 0.5);
+                    }
+                }
+            }
+        }
+    }
+}

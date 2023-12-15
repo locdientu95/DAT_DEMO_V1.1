@@ -31,7 +31,6 @@ export default function Notification() {
       return row.Date === dateformat;
     });
     setData(newData);
-    // console.log(fill.current)
   }, [fill]);
 
   const column = [
@@ -115,16 +114,15 @@ export default function Notification() {
       <div className="DAT_Notification-Container">
         <div className="DAT_Notification-Container-ProjectHistory">
           <div className="DAT_Notification-Container-ProjectHistory-Head">
-            <label style={{ color: "#0061F2", fontWeight: "600" }}>
-              Projects Changes History
-            </label>
+            Projects Changes History
           </div>
+
           <div className="DAT_Notification-Container-ProjectHistory-Body">
             <input
               type="date"
               value={fill.current}
               onChange={(e) => handleInput(e)}
-            ></input>
+            />
             <DataTable
               columns={column}
               data={data}
@@ -133,12 +131,12 @@ export default function Notification() {
             />
           </div>
         </div>
+
         <div className="DAT_Notification-Container-SettingNoti">
           <div className="DAT_Notification-Container-SettingNoti-Head">
-            <label style={{ color: "#0061F2", fontWeight: "600" }}>
-              Notification Setting
-            </label>
+            Notification Setting
           </div>
+
           <div className="DAT_Notification-Container-SettingNoti-Body">
             <div className="DAT_Notification-Container-SettingNoti-Body-Row">
               <label style={{ fontWeight: "600" }}>Warning Icon:</label>

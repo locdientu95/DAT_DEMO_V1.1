@@ -22,6 +22,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useContext } from "react";
 import { EnvContext } from "./components/Context/EnvContext";
 import axios from "axios";
+import { signal } from "@preact/signals-react";
+
+export const name = signal([]);
 
 export default function App() {
   const { login, envDispatch } = useContext(EnvContext);
@@ -39,15 +42,20 @@ export default function App() {
           { credential: true }
         )
         .then((res) => {
-          envDispatch({
-            type: "SET_LOGIN",
-            payload: {
-              username: res.data.username,
-              mail: res.data.email,
-              avatar: res.data.avatar,
-              status: true,
-            },
-          });
+          if (res.data.status == false) {
+            alert("Sai mật khâu");
+          } else {
+            name[0] = res.data;
+            envDispatch({
+              type: "SET_LOGIN",
+              payload: {
+                username: res.data.username,
+                mail: res.data.email,
+                avatar: res.data.avatar,
+                status: true,
+              },
+            });
+          }
         });
     } else {
       envDispatch({
@@ -60,6 +68,7 @@ export default function App() {
         },
       });
     }
+    // console.log("hello")
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -19,9 +19,7 @@ export default function Project(props) {
     e.preventDefault();
 
     var data = pjdata;
-
     data = data.filter((data) => data.projectid === projectid.current.value);
-    console.log(data.length);
 
     if (data.length) {
       alert("Mã dự án đã tồn tại");
@@ -56,10 +54,6 @@ export default function Project(props) {
       });
 
       alert("Thêm thành công");
-
-      console.log(pjdata);
-
-      console.log(pjm);
     }
   };
 
@@ -86,9 +80,7 @@ export default function Project(props) {
                     </div>
                     <input type="text" ref={projectid} required />
                   </div>
-                </div>
 
-                <div className="DAT_Project_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Project_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Project_Main_Content_Detail_Content_Form_Row_Item_Label">
                       Tên Dự Án
@@ -122,9 +114,7 @@ export default function Project(props) {
                     </div>
                     <input type="Text" ref={long} required />
                   </div>
-                </div>
 
-                <div className="DAT_Project_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Project_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Project_Main_Content_Detail_Content_Form_Row_Item_Label">
                       Vĩ Độ

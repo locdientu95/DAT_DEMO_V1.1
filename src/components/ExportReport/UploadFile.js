@@ -134,11 +134,15 @@ export default function UploadFile() {
             return (
               <>
                 <div style={{ display: "flex", gap: "16px" }}>
-                  <div className="DAT_UploadFile-Info" id="step2">
+                  <div
+                    className="DAT_UploadFile-Info"
+                    id="step2"
+                    style={{ flex: "8" }}
+                  >
                     <div
                       style={{
                         display: "flex",
-                        justifyContent: "center",
+                        // justifyContent: "center",
                         alignItems: "center",
                         fontSize: "18px",
                       }}
@@ -153,7 +157,11 @@ export default function UploadFile() {
                     </div>
                   </div>
 
-                  <div className="DAT_UploadFile-Select" id="step2">
+                  <div
+                    className="DAT_UploadFile-Select"
+                    id="step2"
+                    style={{ flex: "2" }}
+                  >
                     <div className="DAT_UploadFile-Select-Form">
                       <div>Chọn form</div>
                       <select>

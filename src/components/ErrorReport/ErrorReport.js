@@ -3,108 +3,13 @@ import "./ErrorReport.scss";
 import DataTable from "react-data-table-component";
 import { CSVLink } from "react-csv";
 import { EnvContext } from "../Context/EnvContext";
-//import { TimeAxisBreakDescriptionModule, dateGetDate, dateGetMonth, dateNow } from "igniteui-react-core";
-import { dataBound } from "@syncfusion/ej2-react-spreadsheet";
-// import axios from "axios";
 import { IoTrashOutline } from "react-icons/io5";
+import { FaFileExcel } from "react-icons/fa";
 
 export default function ErrorReport() {
   const { errorlogs, errornoti, envDispatch } = useContext(EnvContext);
   const [data, setRecord] = useState(errorlogs);
-  const [err, setErr] = useState("");
   const fill = useRef(errornoti.ErrCode);
-  const test = useRef([{ "100-1": "E923", "1-1": "0" }]); // do not change here
-  const test_stt = useRef("0"); // do not change here
-
-  const key = useRef(""); // do not change here
-  const value = useRef(""); // do not change here
-
-  // do not change here
-  const handletest = () => {
-    //console.log(key.current.value, value.current.value)
-    var newData = test.current;
-
-    if (key.current.value === "1-1") {
-      newData[0][key.current.value] = value.current.value;
-      if (test.current[0]["1-1"] === "0") {
-        test_stt.current = "0";
-      }
-      if (test.current[0]["1-1"] !== "0") {
-        test_stt.current = "1";
-      }
-    } else {
-      if (test.current[0]["100-1"] !== value.current.value) {
-        if (test.current[0]["1-1"] !== "0") {
-          newData[0][key.current.value] = value.current.value;
-          test_stt.current = "1";
-        }
-      }
-    }
-    test.current.value = newData;
-  };
-
-  // do not change here
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (test_stt.current === "1") {
-        if (test.current[0]["1-1"] !== "0") {
-          test_stt.current = "2";
-          console.log("sos", test.current[0]);
-          //your turn--------------- thõa sức sáng tạo
-          const date = new Date();
-          const today =
-            date.getDate() +
-            "/" +
-            (date.getMonth() + 1) +
-            "/" +
-            date.getFullYear() +
-            " " +
-            date.getHours() +
-            ":" +
-            date.getMinutes() +
-            ":" +
-            date.getSeconds();
-          var newDevID = test.current[0]["100-1"];
-          var newType = "Error";
-          var newDate = today;
-          var newData = errorlogs;
-          errorlogs.unshift({
-            id: newData.length + 1,
-            ErrCode: newDevID,
-            ErrType: newType,
-            Datetime: newDate,
-          });
-          console.log(newData);
-          newData.map((data, index) => {
-            return (data.id = index + 1);
-          });
-          envDispatch({
-            type: "SET_ERRORLOGS",
-            payload: newData,
-          });
-
-          setRecord(errorlogs);
-          //-------------------------
-        }
-      }
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const fetchData = async () => {
-    let final;
-    const add = "100-1";
-    const val = "-1";
-    var newData = errorlogs;
-    final.map((data, index) => {
-      if (final[index][index + 1 + val] == 1) {
-        console.log(final[index], "Hello mng");
-      }
-      //console.log(final[index][add])
-    });
-    console.log(final);
-  };
-
 
   useEffect(() => {
     var newData = errorlogs;
@@ -123,6 +28,7 @@ export default function ErrorReport() {
       );
     });
     setRecord(newData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [errornoti.ErrCode]);
 
   const paginationComponentOptions = {
@@ -281,15 +187,12 @@ export default function ErrorReport() {
                   onChange={(e) => handleInput(e)}
                 />
 
-                <div className="DAT_Content-Container-Group-Table-Content-Func-form">
-                  <input ref={key}></input>
-                  <input ref={value}></input>
-                  <button onClick={handletest}>Lưu</button>
+                <div className="DAT_Content-Container-Group-Table-Content-Func-Icon">
+                  {/* <div>Xuất Báo Cáo</div> */}
+                  <CSVLink data={data}>
+                    <FaFileExcel size={24} />
+                  </CSVLink>
                 </div>
-
-                <CSVLink data={data}>
-                  <button>Xuất Báo Cáo</button>
-                </CSVLink>
               </div>
 
               <div className="DAT_Content-Container-Group-Table-Content-tb">

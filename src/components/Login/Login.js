@@ -30,7 +30,7 @@ export default function Login() {
     <div className="DAT_Login">
       <div className="DAT_Login-Container">
         <div className="DAT_Login-Container-Title">
-          <span>Login</span>
+          <span>Đăng Nhập</span>
         </div>
 
         <form
@@ -39,18 +39,23 @@ export default function Login() {
         >
           <div className="DAT_Login-Container-Main-Username">
             <div className="DAT_Login-Container-Main-Username-Tit">
-              Username
+              Tên Đăng Nhập
             </div>
-            <input type="text" placeholder="Username" ref={userName} required />
+            <input
+              type="text"
+              placeholder="Tên Đăng Nhập"
+              ref={userName}
+              required
+            />
           </div>
 
           <div className="DAT_Login-Container-Main-Password">
             <div className="DAT_Login-Container-Main-Password-Tit">
-              Password
+              Mật Khẩu
             </div>
             <input
               type="password"
-              placeholder="Password"
+              placeholder="Mật Khẩu"
               ref={password}
               required
             />
@@ -58,21 +63,21 @@ export default function Login() {
 
           <div className="DAT_Login-Container-Main-Checkbox">
             <input type="checkbox" />
-            <div>Remember Password</div>
+            <div>Ghi Nhớ Mật Khẩu</div>
           </div>
 
           <div className="DAT_Login-Container-Main-Button">
             <div className="DAT_Login-Container-Main-Button-Text">
-              Forgot password?
+              Quên Mật Khẩu?
             </div>
             <button className="DAT_Login-Container-Main-Button-Login">
-              Login
+              Đăng Nhập
             </button>
           </div>
         </form>
 
         <div className="DAT_Login-Container-Footer">
-          <span>Need an account? Sign up!</span>
+          <span>Chưa có tài khoản? Đăng ký!</span>
         </div>
       </div>
     </div>

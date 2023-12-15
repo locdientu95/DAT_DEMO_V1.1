@@ -4,23 +4,22 @@ import { Link } from "react-router-dom";
 import { EnvContext } from "../Context/EnvContext";
 import { signal, effect } from "@preact/signals-react";
 import { img, preimg } from "../Account/Info";
-export const test = signal("")
+import { name } from "../../App";
 
 export default function Header(props) {
   const { errorlogs, errornoti, envDispatch, login } = useContext(EnvContext);
-  
+
   const [arrow, setArrow] = useState(false); //hook
   const [readnoti, setReadnoti] = useState();
-  const [ava, setAva] = useState(login.avatar)
+  const [ava, setAva] = useState(login.avatar);
 
-  useEffect(()=>{
-    preimg.value = login.avatar
-    if (img.value != ""){
-      preimg.value = img.value
+  useEffect(() => {
+    preimg.value = login.avatar;
+    if (img.value != "") {
+      preimg.value = img.value;
     }
-  },[preimg.value])
-  
-  
+  }, [preimg.value]);
+
   // useEffect(() => {
   //   axios
   //     .post(
@@ -71,7 +70,6 @@ export default function Header(props) {
     let newData = errorlogs;
     newData = newData.filter((data) => data.read === false);
     let temp = newData.length;
-    // console.log(temp);
     setReadnoti(temp);
   }, [errorlogs]);
 
@@ -80,17 +78,13 @@ export default function Header(props) {
     let arr = id.split("_");
     errornoti.ErrCode = arr[0];
     let index = errorlogs.findIndex((newData) => newData.id === arr[1]);
-    // errorlogs[index].read = true;
-    // console.log(e.currentTarget);
     envDispatch({ type: "SET_ERRORLOGS", payload: errorlogs });
     envDispatch({ type: "SET_ERRORNOTI", payload: errornoti });
   };
 
   const search = useRef("");
 
-  const handleSearch = () => {
-    console.log("search:", search.current.value);
-  };
+  const handleSearch = () => {};
 
   const handleSidebar = () => {
     var get = document.getElementById("Sidebar");
@@ -147,9 +141,11 @@ export default function Header(props) {
         </div>
 
         {/* Left */}
-        <div className="DAT_Header-Left">
-          <img alt="" src="/DAT_Pictures/logo_DAT.png" />
-        </div>
+        <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+          <div className="DAT_Header-Left">
+            <img alt="" src="/DAT_Pictures/logo_DAT.png" />
+          </div>
+        </Link>
 
         {/* Search */}
         <form className="DAT_Header-Center">
@@ -610,7 +606,7 @@ export default function Header(props) {
                         }}
                       ></img>
                       <div className="DAT_Header_Account_Header_Profile-Details">
-                        <div>{props.name}</div>
+                        <div>{name[0].name}</div>
                         <div style={{ color: "grey", fontSize: "12px" }}>
                           {props.mail}
                         </div>

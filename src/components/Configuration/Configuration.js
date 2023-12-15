@@ -17,8 +17,6 @@ export default function Configuration(props) {
   const [nav, setNav] = useState("project");
   const handleNav = (e) => {
     var id = e.currentTarget.id;
-
-    console.log(id);
     setNav(id);
   };
 

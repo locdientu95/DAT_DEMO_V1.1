@@ -25,7 +25,6 @@ export default function Content() {
     newData.map((data, index) => {
       return (data["id"] = index + 1);
     });
-    console.log(newData);
     setData1(dashboardbarchart.datasets);
   }, [dashboardbarchart.datasets]);
 
@@ -85,10 +84,6 @@ export default function Content() {
   ];
 
   useEffect(() => {
-    console.log(dashboardbarchart.datasets);
-  }, [dashboardbarchart.datasets]);
-
-  useEffect(() => {
     const timer = setInterval(() => {
       setDate(new Date());
     }, 1000);
@@ -118,7 +113,6 @@ export default function Content() {
       parseInt(date.getMonth() + 1) +
       "/" +
       date.getFullYear();
-    console.log(from);
 
     var date1 = new Date(toDate.current.value);
     var to =
@@ -127,14 +121,11 @@ export default function Content() {
       parseInt(date1.getMonth() + 1) +
       "/" +
       date1.getFullYear();
-    console.log(to);
 
     var newLabels = dashboardbarchart.labels;
     const index1 = newLabels.findIndex((newLabels) => newLabels === from);
-    console.log(index1);
 
     const index2 = newLabels.findIndex((newLabels) => newLabels === to);
-    console.log(index2);
 
     var newData = dashboardbarchart.datasets;
     var lastData = [];
@@ -155,8 +146,6 @@ export default function Content() {
       },
     });
 
-    console.log(lastData);
-
     setPop(false);
   };
 
@@ -168,8 +157,6 @@ export default function Content() {
     newData = newData.filter(
       (newData) => newData.label === dataset.current.value
     );
-
-    console.log(newData.length);
 
     if (dataset.current.value === "") {
       alert("Tên không hợp lệ");
@@ -188,8 +175,6 @@ export default function Content() {
             ],
           },
         ];
-
-        console.log(pushData);
 
         envDispatch({
           type: "SET_DASHBOARDCHART",
@@ -213,7 +198,7 @@ export default function Content() {
 
     var newData = dashboardbarchart.datasets;
     newData = newData.filter((newData) => newData.label !== e.target.id);
-    console.log(newData);
+
     envDispatch({
       type: "SET_DASHBOARDCHART",
       payload: {
@@ -233,10 +218,7 @@ export default function Content() {
     e.preventDefault();
 
     var newData = dashboardbarchart.labels;
-
     newData = newData.filter((newData) => newData === lables.current.value);
-
-    console.log(newData.length);
 
     if (lables.current.value === "") {
       alert("Tên không hợp lệ");
@@ -246,8 +228,6 @@ export default function Content() {
       } else {
         var pushData = dashboardbarchart.labels;
         pushData = [...pushData, lables.current.value];
-
-        console.log(pushData);
 
         envDispatch({
           type: "SET_DASHBOARDCHART",
@@ -271,7 +251,7 @@ export default function Content() {
 
     var newData = dashboardbarchart.labels;
     newData = newData.filter((NewData) => NewData !== lables.current.value);
-    console.log(newData);
+
     envDispatch({
       type: "SET_DASHBOARDCHART",
       payload: {
@@ -498,9 +478,7 @@ export default function Content() {
         {/* Barchart Card */}
         <div className="DAT_Content-Container-Card">
           <div className="DAT_Content-Container-Card-Header">
-            <div className="DAT_Content-Container-Card-Header-Text">
-              Bar Chart
-            </div>
+            Bar Chart
             <div
               className="DAT_Content-Container-Card-Header-Icon"
               onClick={(e) => handlePop(e)}
@@ -540,7 +518,7 @@ export default function Content() {
           >
             <form className="DAT_Content-Container-Card-Edit-Group">
               <div className="DAT_Content-Container-Card-Edit-Group-Tit">
-                <div>Chỉnh Sửa</div>
+                Chỉnh Sửa
                 <div
                   className="DAT_Content-Container-Card-Edit-Group-Tit-Close"
                   onClick={(e) => handleClose(e)}

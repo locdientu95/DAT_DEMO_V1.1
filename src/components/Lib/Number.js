@@ -30,7 +30,7 @@ export default function Number(props) {
       <input
         className="DAT_Number-Input"
         type="text"
-        placeholder="12345"
+        placeholder="..."
         readOnly={props.setting.type === "Read" ? true : false}
         style={{
           backgroundColor: props.setting.bgcolor,

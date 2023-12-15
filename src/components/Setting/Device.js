@@ -31,6 +31,9 @@ import View16bit from "../Lib/View16bit";
 import View16bitSetting from "../Lib/View16bitSetting";
 import axios from "axios";
 import { IoClose, IoEllipsisVertical } from "react-icons/io5";
+import { signal } from "@preact/signals-react";
+
+export const tableproid = signal("");
 
 export default function Device() {
   const {
@@ -56,6 +59,7 @@ export default function Device() {
     var temp = e.currentTarget.value;
     envDispatch({ type: "SET_TYPE", payload: temp });
   };
+
   const [pop, setPop] = useState(false);
   const handlePop = (e) => {
     setPop(true);
@@ -133,25 +137,78 @@ export default function Device() {
     });
   }, []);
 
+  // Get dữ liệu Gauge
   useEffect(() => {
     axios
       .get(process.env.REACT_APP_API_URL + "/gauge", { credential: true })
       .then((res) => {
-        console.log(res.data.data);
         envDispatch({ type: "SET_GAUGE", payload: res.data.data[0] });
       });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Get dữ liệu Slider
   useEffect(() => {
     axios
       .get(process.env.REACT_APP_API_URL + "/slider", { credential: true })
       .then((res) => {
-        console.log(res.data.data);
         envDispatch({ type: "SET_SLIDER", payload: res.data.data[0] });
       });
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Get dữ liệu Number
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/number", { credential: true })
+      .then((res) => {
+        envDispatch({ type: "SET_NUMBER", payload: res.data.data[0] });
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Get dữ liệu TablePro
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/tablepro", { credential: true })
+      .then((res) => {
+        tableproid.value = res.data.data[0]._id;
+        envDispatch({ type: "SET_TABLEPRO", payload: res.data.data[0] });
+      });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Get dữ liệu Lamp
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/lamp", { credential: true })
+      .then((res) => {
+        envDispatch({ type: "SET_LAMP", payload: res.data.data[0] });
+      });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Get dữ liệu NumberH
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/numberh", { credential: true })
+      .then((res) => {
+        envDispatch({ type: "SET_NUMBERH", payload: res.data.data[0] });
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Get dữ liệu NumberV
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/numberv", { credential: true })
+      .then((res) => {
+        envDispatch({ type: "SET_NUMBERV", payload: res.data.data[0] });
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -206,7 +263,10 @@ export default function Device() {
         <div className="Device_Content-Container-Group">
           <div className="Device_Content-Container-Group-Head">
             Giao diện
-            <div style={{ cursor: "pointer" }} onClick={(e) => handlePop(e)}>
+            <div
+              className="Device_Content-Container-Group-Head-Edit"
+              onClick={(e) => handlePop(e)}
+            >
               <IoEllipsisVertical />
             </div>
           </div>
