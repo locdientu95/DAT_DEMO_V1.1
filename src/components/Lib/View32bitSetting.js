@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useContext } from "react";
 import { useRef } from "react";
 import { EnvContext } from "../Context/EnvContext";
+import axios from "axios";
 
 export default function View32bitSetting() {
   const { view32bit, envDispatch } = useContext(EnvContext);
@@ -101,6 +102,25 @@ export default function View32bitSetting() {
     view32bit.borderColor = bordercolor;
     envDispatch({ type: "SET_VIEW32BIT", payload: view32bit });
   };
+
+  const handlePushData = (e) => {
+    axios.put(process.env.REACT_APP_API_URL + "/view32bit/pushAllData", {
+      fontSize: view32bit.fontSize,
+      color: view32bit.color,
+      justifyContent: view32bit.justifyContent,
+      width: view32bit.width,
+      height: view32bit.height,
+      borderRadius: view32bit.borderRadius,
+      backgroundColor: view32bit.backgroundColor,
+      borderColor: view32bit.borderColor,
+      display: view32bit.display,
+      val1: view32bit.val1,
+      val2: view32bit.val2
+    },
+    { credential : true}
+    )
+  }
+
   return (
     <div>
       <div style={{ display: "flex", marginBottom: "10px" }}>
@@ -182,6 +202,7 @@ export default function View32bitSetting() {
       <div style={{ display: "flex", marginBottom: "10px" }}>
         <input placeholder={"Word2: "} ref={word2}></input>
         <button onClick={(e) => saveWord2(e)}>Chọn</button>
+        <button onClick={(e) => handlePushData(e)}>Xac nhận</button>
       </div>
     </div>
   );

@@ -41,6 +41,7 @@ export const EnvContextProvider = ({ children }) => {
         iconnoti: state.iconnoti,
         numberv: state.numberv,
         listform: state.listform,
+        view16bit: state.view16bit,
         envDispatch,
       }}
     >

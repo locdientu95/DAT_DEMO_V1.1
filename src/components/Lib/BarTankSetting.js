@@ -2,9 +2,20 @@ import React, { useContext, useRef, useState } from "react";
 import { EnvContext } from "../Context/EnvContext";
 import "./Setting.scss";
 import { Box, Button, Input, InputFist } from "./FunctionElement";
+import axios from "axios";
+import { effect } from "@preact/signals-react";
+import { useEffect } from "react";
 
 export default function BarTankSetting() {
   const { bardata, envDispatch } = useContext(EnvContext);
+
+  // useEffect(() => {
+  //   axios.get(process.env.REACT_APP_API_URL + "/bar").then((res) => {
+  //     envDispatch({ type: "SET_BARDATA", payload: res.data.data[0] });
+  //     // console.log(res.data.data[0]);
+  //   })
+  // })
+
   // BAR VARIABLES
   const mini = useRef(0);
   const maxi = useRef(100);
@@ -37,15 +48,49 @@ export default function BarTankSetting() {
     "Cơ số 2_15",
   ];
 
+  // useEffect(() => {
+  //     axios.get(process.env.REACT_APP_API_URL + "/bar").then((res) => {
+  //       envDispatch({ type: "SET_BARDATA", payload: res.data.data[0] });
+  //       console.log(bardata);
+  //     })
+  //     // console.log(bardata)
+  //   })
+
   //BAR FUNCTION
   const handlePushData = (e) => {
     bardata.realdata = value.current.value;
     envDispatch({ type: "SET_BARDATA", payload: bardata });
+
+    axios.put(
+      process.env.REACT_APP_API_URL + "/bar/update",
+      {
+        min: mini.current.value,
+        max: maxi.current.value,
+        scale: step,
+        realdata: value.current.value,
+        type: type,
+        w: wi.current.value + "px",
+        h: he.current.value + "px",
+        bgcolor: bgbar,
+        realdatacolor: vlbar,
+      },
+      { credential: true }
+    ).then((res) => {
+      envDispatch({ type: "SET_BARDATA", payload: bardata });
+      console.log(res.data.data[0])
+    })
   };
 
   const handleSaveChange1 = (e) => {
     if (mini.current.value !== "") {
       bardata.min = mini.current.value;
+      axios.put(
+        process.env.REACT_APP_API_URL + "/bar/min", {
+          min: mini.current.value
+        }, { credential: true }
+      ).then((res) => {
+        envDispatch({ type: "SET_BARDATA", payload: bardata });
+      })
     }
 
     envDispatch({ type: "SET_BARDATA", payload: bardata });
@@ -55,6 +100,7 @@ export default function BarTankSetting() {
   const handleSaveChange2 = (e) => {
     if (maxi.current.value !== "") {
       bardata.max = maxi.current.value;
+      
     }
     envDispatch({ type: "SET_BARDATA", payload: bardata });
     maxi.current.value = "";
@@ -67,6 +113,16 @@ export default function BarTankSetting() {
     if (he.current.value !== "") {
       bardata.h = he.current.value + "px";
     }
+
+    axios.put(
+      process.env.REACT_APP_API_URL + "/bar/line1", {
+        wi: wi.current.value + "px",
+        he: he.current.value + "px",
+      }, { credential: true }
+    ).then((res) => {
+      envDispatch({ type: "SET_BARDATA", payload: bardata });
+    })
+
     envDispatch({ type: "SET_BARDATA", payload: bardata });
 
     wi.current.value = "";
