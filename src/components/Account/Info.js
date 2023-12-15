@@ -2,14 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Account.scss";
 import axios from "axios";
 import { EnvContext } from "../Context/EnvContext";
-import {signal} from "@preact/signals-react"
+import { signal } from "@preact/signals-react";
 import { name } from "../../App";
-export const img = signal("")
-export const preimg = signal("")
+export const img = signal("");
+export const preimg = signal("");
 
 export default function Info() {
-  
-  
   const userName = useRef();
   const handleUserName = () => {};
 
@@ -104,6 +102,7 @@ export default function Info() {
               </div>
               <button
                 className="DAT_Info_Main_Content_Picture_Content_Button"
+                style={{ marginBottom: "16px" }}
                 onClick={() => document.querySelector(".inputfile").click()}
               >
                 Chọn ảnh đại diện mới
@@ -115,6 +114,12 @@ export default function Info() {
                 onChange={convertToBase64}
                 hidden
               />
+              <button
+                className="DAT_Info_Main_Content_Picture_Content_Button"
+                onClick={() => handleUpload()}
+              >
+                Upload
+              </button>
             </div>
           </div>
 
@@ -123,12 +128,12 @@ export default function Info() {
             <div className="DAT_Info_Main_Content_Detail_Title">
               Thông Tin Tài Khoản
             </div>
+
             <div className="DAT_Info_Main_Content_Detail_Content">
               <div className="DAT_Info_Main_Content_Detail_Content_Form">
                 <div className="DAT_Info_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Info_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Info_Main_Content_Detail_Content_Form_Row_Item_Label">
-                      {" "}
                       Username
                     </div>
                     <input
@@ -136,13 +141,11 @@ export default function Info() {
                       placeholder={name[0].username}
                       onChange={() => handleUserName()}
                       ref={userName}
-                      
                     />
                   </div>
 
                   <div className="DAT_Info_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Info_Main_Content_Detail_Content_Form_Row_Item_Label">
-                      {" "}
                       Email
                     </div>
                     <input
@@ -157,7 +160,6 @@ export default function Info() {
                 <div className="DAT_Info_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Info_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Info_Main_Content_Detail_Content_Form_Row_Item_Label">
-                      {" "}
                       Địa chỉ
                     </div>
                     <input
@@ -172,7 +174,6 @@ export default function Info() {
                 <div className="DAT_Info_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Info_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Info_Main_Content_Detail_Content_Form_Row_Item_Label">
-                      {" "}
                       Số điện thoại
                     </div>
                     <input
@@ -185,7 +186,6 @@ export default function Info() {
 
                   <div className="DAT_Info_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Info_Main_Content_Detail_Content_Form_Row_Item_Label">
-                      {" "}
                       Ngày sinh
                     </div>
                     <input
@@ -197,10 +197,7 @@ export default function Info() {
                   </div>
                 </div>
 
-                <button
-                  className="DAT_Info_Main_Content_Detail_Content_Form_Button"
-                  onClick={() => handleUpload()}
-                >
+                <button className="DAT_Info_Main_Content_Detail_Content_Form_Button">
                   Lưu thay đổi
                 </button>
               </div>

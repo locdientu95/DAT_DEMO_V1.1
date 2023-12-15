@@ -87,7 +87,7 @@ export default function UserList() {
 
   const handleChange = (e) => {
     // console.log(e.selectedRows[0].username);
-    setuserName(e.selectedRows[0].username);
+    // setuserName(e.selectedRows[0].username);
     console.log(userName);
   };
 
