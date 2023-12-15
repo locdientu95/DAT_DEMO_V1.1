@@ -27,6 +27,8 @@ import View32bit from "../Lib/View32bit";
 import View32bitSetting from "../Lib/View32bitSetting";
 import NumberV from "../Lib/NumberV";
 import NumberVSetting from "../Lib/NumberVSetting";
+import View16bit from "../Lib/View16bit";
+import View16bitSetting from "../Lib/View16bitSetting";
 import axios from "axios";
 import { IoClose, IoEllipsisVertical } from "react-icons/io5";
 
@@ -47,7 +49,9 @@ export default function Device() {
     linechart,
     view32bit,
     numberv,
+    view16bit,
   } = useContext(EnvContext);
+
   const handleChangeLib = (e) => {
     var temp = e.currentTarget.value;
     envDispatch({ type: "SET_TYPE", payload: temp });
@@ -75,6 +79,7 @@ export default function Device() {
     LineChartLib: <LineChartLib setting={linechart}></LineChartLib>,
     View32bit: <View32bit setting={view32bit} />,
     NumberV: <NumberV setting={numberv} />,
+    View16bit: <View16bit setting={view16bit} />,
   };
 
   const setting = {
@@ -91,11 +96,42 @@ export default function Device() {
     LineChartLib: <LineChartSetting />,
     View32bit: <View32bitSetting />,
     NumberV: <NumberVSetting />,
+    View16bit: <View16bitSetting />,
   };
 
-  // useEffect(() => {
-  //     console.log(linechart)
-  // }, [linechart])
+  useEffect(() => {
+    axios
+    .get(process.env.REACT_APP_API_URL + "/view16bit", { credential: true })
+    .then((res) => {
+      console.log(res.data.data);
+      envDispatch({ type: "SET_VIEW16BIT", payload: res.data.data[0] });
+    })
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/view32bit", { credential: true })
+      .then((res) => {
+        console.log(res.data.data);
+        envDispatch({ type: "SET_VIEW32BIT", payload: res.data.data[0] });
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/switch", { credential: true })
+      .then((res) => {
+        console.log(res.data.data);
+        envDispatch({ type: "SET_TOGGLE", payload: res.data.data[0] });
+      });
+  }, []);
+
+  useEffect(() => {
+    axios.get(process.env.REACT_APP_API_URL + "/bar").then((res) => {
+      // console.log(res.data.data[0]);
+      envDispatch({ type: "SET_BARDATA", payload: res.data.data[0] });
+    });
+  }, []);
 
   useEffect(() => {
     axios
@@ -163,6 +199,7 @@ export default function Device() {
             <option value={"LineChartLib"}>LineChart</option>
             <option value={"View32bit"}>View32bit</option>
             <option value={"NumberV"}>NumberV</option>
+            <option value={"View16bit"}>View16bit</option>
           </select>
         </div>
 

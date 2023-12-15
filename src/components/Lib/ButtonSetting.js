@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { EnvContext } from "../Context/EnvContext";
 import "./Setting.scss";
 import {
@@ -9,6 +9,7 @@ import {
   InputFist,
   Span,
 } from "./FunctionElement";
+import axios from "axios";
 
 export default function ButtonSetting() {
   // BUTTON VARIABLES
@@ -48,6 +49,10 @@ export default function ButtonSetting() {
     "Cơ số 2_15",
   ];
 
+  useEffect(() => {
+    console.log(textisoff.current.value);
+  },[])
+
   //BUTTON FUNCTION
   const handleSaveChangeOn = (e) => {
     if (textison.current.value !== "") {
@@ -57,6 +62,24 @@ export default function ButtonSetting() {
     if (fsizeon.current.value !== "") {
       button.sizeon = fsizeon.current.value + "px";
     }
+
+    axios
+      .put(
+        process.env.REACT_APP_API_URL + "/button/line2",
+        {
+          backgroundon: bgison,
+          texton: textison.current.value,
+          fontsizeon: fsizeon.current.value,
+          textcoloron: textColorOn,
+        },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_BTN",
+          payload: button,
+        });
+      });
 
     envDispatch({
       type: "SET_BTN",
@@ -77,30 +100,51 @@ export default function ButtonSetting() {
   };
 
   const handleSaveChangeOff = (e) => {
-    if (textisoff.current.value !== "") {
-      button.textoff = textisoff.current.value;
-    }
+    // if (textisoff.current.value !== "") {
+    //   button.textoff = textisoff.current.value;
+    //   envDispatch({
+    //     type: "SET_BTN",
+    //     payload: button,
+    //   });
+    // }
 
-    if (fsizeoff.current.value !== "") {
-      button.sizeoff = fsizeoff.current.value + "px";
-    }
+    // if (fsizeoff.current.value !== "") {
+    //   button.sizeoff = fsizeoff.current.value + "px";
+    //   envDispatch({
+    //     type: "SET_BTN",
+    //     payload: button,
+    //   });
+    // }
 
-    envDispatch({
-      type: "SET_BTN",
-      payload: button,
-    });
-
-    envDispatch({
-      type: "SET_BTN",
-      payload: {
-        ...button,
-        bgoff: bgisoff,
-        txtcoloroff: textColorOff,
-      },
-    });
+    // envDispatch({
+    //   type: "SET_BTN",
+    //   payload: {
+    //     ...button,
+    //     bgoff: bgisoff,
+    //     txtcoloroff: textColorOff,
+    //   },
+    // });
 
     textisoff.current.value = "";
     fsizeoff.current.value = "";
+
+    axios
+      .put(
+        process.env.REACT_APP_API_URL + "/button/line3",
+        {
+          backgroundoff: bgisoff,
+          textoff: textisoff.current.value,
+          fontsizeoff: fsizeoff.current.value,
+          textcoloroff: textColorOff,
+        },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_BTN",
+          payload: button,
+        });
+      });
   };
 
   const handleSaveChangeSize = (e) => {
@@ -117,6 +161,23 @@ export default function ButtonSetting() {
       button.radius = btnradius.current.value + "px";
     }
 
+    axios
+      .put(
+        process.env.REACT_APP_API_URL + "/button/line1",
+        {
+          width: wid.current.value,
+          height: hei.current.value,
+          borderradius: btnradius.current.value,
+        },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_BTN",
+          payload: button,
+        });
+      });
+
     envDispatch({
       type: "SET_BTN",
       payload: button,
@@ -130,6 +191,18 @@ export default function ButtonSetting() {
   const handleChangebutton = (e) => {
     var value = e.currentTarget.value;
     button.btntype = value;
+    axios
+      .put(
+        process.env.REACT_APP_API_URL + "/button/line4",
+        { type: value },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_BTN",
+          payload: button,
+        });
+      });
     envDispatch({ type: "SET_BTN", payload: button });
   };
 
