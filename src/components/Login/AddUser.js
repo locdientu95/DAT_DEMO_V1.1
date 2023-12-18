@@ -1,11 +1,39 @@
 import React, { useRef } from "react";
 import "./Login.scss";
 import { Link } from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
 
 export default function AddUser() {
-  const userName = useRef();
+  const username = useRef();
+  const email = useRef();
   const password = useRef();
+  const repassword = useRef();
+  const name = useRef();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (password.current.value.length < 8) {
+      alert("Độ dài mật khẩu ít nhất phải là 8");
+    } else if (password.current.value === repassword.current.value) {
+      axios
+        .post(process.env.REACT_APP_API_URL + "/addUser", {
+          username: username.current.value,
+          email: email.current.value,
+          password: repassword.current.value,
+          name: name.current.value,
+        })
+        .then((res) => {
+          console.log(res.data);
+          alert(res.data.message);
+        });
+      username.current.value = "";
+      email.current.value = "";
+      password.current.value = "";
+      repassword.current.value = "";
+      name.current.value = "";
+    } else {
+      alert("Mật khẩu không khớp");
+    }
+  };
 
   return (
     <div className="DAT_AddUser">
@@ -16,19 +44,14 @@ export default function AddUser() {
 
         <form
           className="DAT_AddUser-Container-Main"
-          //   onSubmit={(e) => handleLogin(e)}
+          onSubmit={(e) => handleSubmit(e)}
         >
           <div className="DAT_AddUser-Container-Main-Username1">
             <div className="DAT_AddUser-Container-Main-Username1-1">
               <div className="DAT_AddUser-Container-Main-Username1-1-Tit">
                 Email
               </div>
-              <input
-                type="text"
-                placeholder="Email"
-                //   ref={userName}
-                required
-              />
+              <input type="text" placeholder="Email" ref={email} required />
             </div>
 
             <div className="DAT_AddUser-Container-Main-Username1-1">
@@ -38,7 +61,7 @@ export default function AddUser() {
               <input
                 type="text"
                 placeholder="Tên Đăng Nhập"
-                //   ref={userName}
+                ref={username}
                 required
               />
             </div>
@@ -63,14 +86,14 @@ export default function AddUser() {
             <input
               type="password"
               placeholder="Xác Nhận Mật Khẩu"
-              //   ref={password}
+              ref={repassword}
               required
             />
           </div>
 
           <div className="DAT_AddUser-Container-Main-Username">
             <div className="DAT_AddUser-Container-Main-Username-Tit">Tên</div>
-            <input type="text" placeholder="Tên" ref={userName} required />
+            <input type="text" placeholder="Tên" ref={name} required />
           </div>
 
           <div className="DAT_AddUser-Container-Main-Button">

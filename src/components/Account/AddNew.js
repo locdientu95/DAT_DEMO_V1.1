@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./Account.scss";
 import { useRef } from "react";
-import { EnvContext } from "../Context/EnvContext";
+// import { EnvContext } from "../Context/EnvContext";
 import axios from "axios";
 
 export default function AddNew() {
-  const { register } = useContext(EnvContext);
+  // const { register } = useContext(EnvContext);
 
   const username = useRef();
   const email = useRef();
@@ -14,25 +14,25 @@ export default function AddNew() {
   const name = useRef();
   const handleSubmit = (e) => {
     e.preventDefault();
-      if (password.current.value.length<8){
-        alert("Độ dài mật khẩu ít nhất phải là 8")
-      }else if (password.current.value === repassword.current.value) {
-        axios
-          .post(process.env.REACT_APP_API_URL + "/addUser", {
-            username: username.current.value,
-            email: email.current.value,
-            password: repassword.current.value,
-            name: name.current.value,
-          })
-          .then((res) => {
-            console.log(res.data)
-            alert(res.data.message);
-          });
-        username.current.value = "";
-        email.current.value = "";
-        password.current.value = "";
-        repassword.current.value = "";
-        name.current.value = "";
+    if (password.current.value.length < 8) {
+      alert("Độ dài mật khẩu ít nhất phải là 8");
+    } else if (password.current.value === repassword.current.value) {
+      axios
+        .post(process.env.REACT_APP_API_URL + "/addUser", {
+          username: username.current.value,
+          email: email.current.value,
+          password: repassword.current.value,
+          name: name.current.value,
+        })
+        .then((res) => {
+          console.log(res.data);
+          alert(res.data.message);
+        });
+      username.current.value = "";
+      email.current.value = "";
+      password.current.value = "";
+      repassword.current.value = "";
+      name.current.value = "";
     } else {
       alert("Mật khẩu không khớp");
     }

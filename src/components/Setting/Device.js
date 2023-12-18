@@ -104,6 +104,20 @@ export default function Device() {
   };
 
   useEffect(() => {
+    // Get dữ liệu Button
+    axios
+      .get(process.env.REACT_APP_API_URL + "/button", { credential: true })
+      .then((res) => {
+        envDispatch({ type: "SET_BTN", payload: res.data.data[0] });
+      });
+
+    // Get dữ liệu BarTank
+    axios
+      .get(process.env.REACT_APP_API_URL + "/bar", { credential: true })
+      .then((res) => {
+        envDispatch({ type: "SET_BARDATA", payload: res.data.data[0] });
+      });
+
     // Get dữ liệu View16bit
     axios
       .get(process.env.REACT_APP_API_URL + "/view16bit", { credential: true })

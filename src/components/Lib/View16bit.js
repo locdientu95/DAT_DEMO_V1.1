@@ -19,9 +19,12 @@ export default function View16bit(props) {
       if (intValue > 32767) {
         intValue -= 65536;
       }
-      props.setting.display === "Signed" ? setResult(wordValue) : setResult(intValue)
+      props.setting.display === "Signed"
+        ? setResult(wordValue)
+        : setResult(intValue);
     }
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="DAT_View32bit">
