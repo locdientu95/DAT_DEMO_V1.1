@@ -104,73 +104,56 @@ export default function Device() {
   };
 
   useEffect(() => {
+    // Get dữ liệu View16bit
     axios
-    .get(process.env.REACT_APP_API_URL + "/view16bit", { credential: true })
-    .then((res) => {
-      console.log(res.data.data);
-      envDispatch({ type: "SET_VIEW16BIT", payload: res.data.data[0] });
-    })
-  }, []);
+      .get(process.env.REACT_APP_API_URL + "/view16bit", { credential: true })
+      .then((res) => {
+        envDispatch({ type: "SET_VIEW16BIT", payload: res.data.data[0] });
+      });
 
-  useEffect(() => {
+    // Get dữ liệu View32bit
     axios
       .get(process.env.REACT_APP_API_URL + "/view32bit", { credential: true })
       .then((res) => {
-        console.log(res.data.data);
         envDispatch({ type: "SET_VIEW32BIT", payload: res.data.data[0] });
       });
-  }, []);
 
-  useEffect(() => {
+    // Get dữ liệu Switch
     axios
       .get(process.env.REACT_APP_API_URL + "/switch", { credential: true })
       .then((res) => {
-        console.log(res.data.data);
         envDispatch({ type: "SET_TOGGLE", payload: res.data.data[0] });
       });
-  }, []);
 
-  useEffect(() => {
-    axios.get(process.env.REACT_APP_API_URL + "/bar").then((res) => {
-      // console.log(res.data.data[0]);
-      envDispatch({ type: "SET_BARDATA", payload: res.data.data[0] });
-    });
-  }, []);
+    // Get dữ liệu Bar
+    axios
+      .get(process.env.REACT_APP_API_URL + "/bar", { credential: true })
+      .then((res) => {
+        envDispatch({ type: "SET_BARDATA", payload: res.data.data[0] });
+      });
 
-  // Get dữ liệu Gauge
-  useEffect(() => {
+    // Get dữ liệu Gauge
     axios
       .get(process.env.REACT_APP_API_URL + "/gauge", { credential: true })
       .then((res) => {
         envDispatch({ type: "SET_GAUGE", payload: res.data.data[0] });
       });
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // Get dữ liệu Slider
-  useEffect(() => {
+    // Get dữ liệu Slider
     axios
       .get(process.env.REACT_APP_API_URL + "/slider", { credential: true })
       .then((res) => {
         envDispatch({ type: "SET_SLIDER", payload: res.data.data[0] });
       });
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // Get dữ liệu Number
-  useEffect(() => {
+    // Get dữ liệu Number
     axios
       .get(process.env.REACT_APP_API_URL + "/number", { credential: true })
       .then((res) => {
         envDispatch({ type: "SET_NUMBER", payload: res.data.data[0] });
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
-  // Get dữ liệu TablePro
-  useEffect(() => {
+    // Get dữ liệu TablePro
     axios
       .get(process.env.REACT_APP_API_URL + "/tablepro", { credential: true })
       .then((res) => {
@@ -178,37 +161,27 @@ export default function Device() {
         envDispatch({ type: "SET_TABLEPRO", payload: res.data.data[0] });
       });
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // Get dữ liệu Lamp
-  useEffect(() => {
+    // Get dữ liệu Lamp
     axios
       .get(process.env.REACT_APP_API_URL + "/lamp", { credential: true })
       .then((res) => {
         envDispatch({ type: "SET_LAMP", payload: res.data.data[0] });
       });
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // Get dữ liệu NumberH
-  useEffect(() => {
+    // Get dữ liệu NumberH
     axios
       .get(process.env.REACT_APP_API_URL + "/numberh", { credential: true })
       .then((res) => {
         envDispatch({ type: "SET_NUMBERH", payload: res.data.data[0] });
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
-  // Get dữ liệu NumberV
-  useEffect(() => {
+    // Get dữ liệu NumberV
     axios
       .get(process.env.REACT_APP_API_URL + "/numberv", { credential: true })
       .then((res) => {
         envDispatch({ type: "SET_NUMBERV", payload: res.data.data[0] });
       });
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -245,18 +218,18 @@ export default function Device() {
           <select onChange={(e) => handleChangeLib(e)}>
             <option value={"Button"}>Button</option>
             <option value={"Bar"}>Bar</option>
+            <option value={"SwitchToggle"}>SwitchToggle</option>
+            <option value={"View32bit"}>View32bit</option>
+            <option value={"View16bit"}>View16bit</option>
+            <option value={"TablePro"}>TablePro</option>
             <option value={"Gauge"}>Gauge</option>
             <option value={"SliderBar"}>Slider</option>
-            <option value={"SwitchToggle"}>SwitchToggle</option>
-            <option value={"TablePro"}>TablePro</option>
-            <option value={"Number"}>Number</option>
             <option value={"Lamp"}>Lamp</option>
-            <option value={"BarChart"}>BarChart</option>
+            <option value={"Number"}>Number</option>
             <option value={"NumberH"}>NumberH</option>
-            <option value={"LineChartLib"}>LineChart</option>
-            <option value={"View32bit"}>View32bit</option>
             <option value={"NumberV"}>NumberV</option>
-            <option value={"View16bit"}>View16bit</option>
+            {/* <option value={"BarChart"}>BarChart</option> */}
+            {/* <option value={"LineChartLib"}>LineChart</option> */}
           </select>
         </div>
 
