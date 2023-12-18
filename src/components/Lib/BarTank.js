@@ -3,9 +3,23 @@ import "./Setting.scss";
 import { IgrLinearGaugeModule } from "igniteui-react-gauges";
 import { IgrLinearGauge } from "igniteui-react-gauges";
 import { IgrLinearGraphRange } from "igniteui-react-gauges";
+import { useContext } from "react";
+import { EnvContext } from "../Context/EnvContext";
+import axios from "axios";
+import { useEffect } from "react";
 IgrLinearGaugeModule.register();
 
 export default function BarTank(props) {
+
+  const { bardata, envDispatch } = useContext(EnvContext);
+
+  useEffect(() => {
+      axios.get(process.env.REACT_APP_API_URL + "/bar").then((res) => {
+        envDispatch({ type: "SET_BARDATA", payload: res.data.data[0] });
+        // console.log(res.data.data[0]);
+      })
+    })
+
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <IgrLinearGauge
@@ -46,38 +60,5 @@ export default function BarTank(props) {
         />
       </IgrLinearGauge>
     </div>
-
-    //Style theo CSS (Không có vạch kẻ cụ thể)
-    // <div className="DAT_Bar">
-    //   <div
-    //     className="DAT_Bar-Tank"
-    //     style={{
-    //       width: String(props.setting.w),
-    //       height: String(props.setting.h),
-    //       backgroundColor: String(props.setting.bgcolor),
-    //     }}
-    //   >
-    //     <div className="DAT_Bar-Tank-Max">{props.setting.max}</div>
-    //     <div
-    //       className="DAT_Bar-Tank-Value"
-    //       style={{
-    //         height:
-    //           parseFloat(props.setting.realdata) >= 100
-    //             ? "100%"
-    //             : (((100 - 0) /
-    //                   (parseFloat(props.setting.max) -
-    //                     parseFloat(props.setting.min))) *
-    //                 (parseFloat(props.setting.realdata) -
-    //                   parseFloat(props.setting.min))
-    //               ).toFixed(2) + "%",
-    //         backgroundColor: String(props.setting.realdatacolor),
-    //       }}
-    //     >
-    //       <p>{props.setting.realdata}</p>
-    //     </div>
-    //     <div className="DAT_Bar-Tank-Min">{props.setting.min}</div>
-    //   </div>
-    //   <div className="DAT_Bar-Ruler"></div>
-    // </div>
   );
 }

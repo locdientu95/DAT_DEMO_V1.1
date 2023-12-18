@@ -1,6 +1,20 @@
 export const INITSTATE = {
   status: false,
 
+  view16bit:{
+    fontSize: "20px",
+    color: "#ffffff",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100px",
+    height: "40px",
+    borderRadius: "10px",
+    backgroundColor: "#ff0000",
+    borderColor: "#000000",
+    display: "Signed",
+    val: 0,
+  },
+
   listform: [
     {
       formid: "ID1",
@@ -25,36 +39,36 @@ export const INITSTATE = {
   slider: {},
 
   button: {
-    btntype: "Inching",
-    coloron: "#000000",
-    coloroff: "#000000",
-    bgon: "#008000",
-    bgoff: "#ff0000",
-    texton: "Bật",
-    textoff: "Tắt",
-    cal: "0",
-    w: "161px",
-    h: "83px",
-    sizeon: "16px",
-    sizeoff: "16px",
-    txtcoloron: "#000000",
-    txtcoloroff: "#000000",
-    type: "button",
-    radius: "10px",
+    // btntype: "Inching",
+    // coloron: "#000000",
+    // coloroff: "#000000",
+    // bgon: "#008000",
+    // bgoff: "#ff0000",
+    // texton: "Bật",
+    // textoff: "Tắt",
+    // cal: "0",
+    // w: "161px",
+    // h: "83px",
+    // sizeon: "16px",
+    // sizeoff: "16px",
+    // txtcoloron: "#000000",
+    // txtcoloroff: "#000000",
+    // type: "button",
+    // radius: "10px",
   },
 
   bardata: {
-    id: 1,
-    min: "0",
-    max: "100",
-    color: "blue",
-    scale: 5,
-    realdata: 30,
-    type: "vertical",
-    w: "100px",
-    h: "400px",
-    bgcolor: "#808080",
-    realdatacolor: "#0000ff",
+    // id: 1,
+    // min: "0",
+    // max: "100",
+    // color: "blue",
+    // scale: 5,
+    // realdata: 30,
+    // type: "vertical",
+    // w: "100px",
+    // h: "400px",
+    // bgcolor: "#808080",
+    // realdatacolor: "#0000ff",
   },
 
   switchtoggle: {
@@ -744,7 +758,7 @@ const EnvReducer = (state, action) => {
     case "SET_BARDATA":
       return {
         ...state,
-        bar: action.payload,
+        bardata: action.payload,
       };
     case "SET_SLIDER":
       return {
@@ -881,11 +895,16 @@ const EnvReducer = (state, action) => {
         ...state,
         numberv: action.payload,
       };
-    case "SET_LISTFORM":
-      return {
-        ...state,
-        lisform: action.payload,
-      };
+      case "SET_LISTFORM":
+        return {
+          ...state,
+          lisform: action.payload,
+        };
+      case "SET_VIEW16BIT" :
+        return {
+          ...state,
+          view16bit: action.payload,
+        }
     default:
       throw new Error("Unexpected action");
   }

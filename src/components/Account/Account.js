@@ -3,7 +3,6 @@ import "./Account.scss";
 import Info from "./Info";
 import Security from "./Security";
 import Language from "./Language";
-import AddNew from "./AddNew";
 import UserList from "./UserList";
 
 export default function Account() {
@@ -11,7 +10,6 @@ export default function Account() {
     info: "Thông Tin",
     security: "Bảo Mật",
     language: "Ngôn Ngữ",
-    addNew: "Thêm Người Dùng",
     userList: "Danh Sách Người Dùng",
   };
 
@@ -94,17 +92,6 @@ export default function Account() {
 
           <div
             className="DAT_Account_Main_Nav_Item"
-            id="addNew"
-            style={{ color: nav === "addNew" ? color.cur : color.pre }}
-            onClick={(e) => {
-              handleNav(e);
-            }}
-          >
-            Thêm Người Dùng
-          </div>
-
-          <div
-            className="DAT_Account_Main_Nav_Item"
             id="userList"
             style={{ color: nav === "userList" ? color.cur : color.pre }}
             onClick={(e) => {
@@ -135,12 +122,6 @@ export default function Account() {
                 return (
                   <>
                     <Language></Language>
-                  </>
-                );
-              case "addNew":
-                return (
-                  <>
-                    <AddNew></AddNew>
                   </>
                 );
               case "userList":

@@ -3,6 +3,7 @@ import { EnvContext } from "../Context/EnvContext";
 import "./Setting.scss";
 import { useRef } from "react";
 import { Box, Button, Input, InputFist } from "./FunctionElement";
+import axios from "axios";
 
 export default function SwitchToggleSetting() {
   const { switchtoggle, envDispatch } = useContext(EnvContext);
@@ -99,6 +100,29 @@ export default function SwitchToggleSetting() {
     radius.current.value = "";
   };
 
+  const handlePushData = () => {
+    axios.put(process.env.REACT_APP_API_URL + "/switch/pushAllData", {
+      texton: switchtoggle.texton,
+      textoff: switchtoggle.textoff,
+      bgon: switchtoggle.bgon,
+      bgoff: switchtoggle.bgoff,
+      txtcoloron: switchtoggle.txtcoloron,
+      txtcoloroff: switchtoggle.txtcoloroff,
+      textsize: switchtoggle.textsize,
+      w: switchtoggle.w,
+      h: switchtoggle.h,
+      border: switchtoggle.border,
+      borderradius: switchtoggle.borderradius,
+      bordercolor: switchtoggle.bordercolor,
+      borderradiusicon: switchtoggle.borderradiusicon,
+    },
+    { credential : true}
+    )
+    .then((res) => {
+    
+    })
+  };
+
   return (
     <div>
       <div className="DAT_Setting-Switch">
@@ -188,7 +212,12 @@ export default function SwitchToggleSetting() {
 
         <div className="DAT_Setting-Switch-Last" id="8">
           <input placeholder="0" />
-          <button className="DAT_Setting-Bar-Row-Confirm">Xác nhận</button>
+          <button
+            className="DAT_Setting-Bar-Row-Confirm"
+            onClick={handlePushData()}
+          >
+            Xác nhận
+          </button>
         </div>
       </div>
     </div>

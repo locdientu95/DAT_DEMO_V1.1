@@ -1,10 +1,24 @@
 import React, { useState } from "react";
 import "./Setting.scss";
+import { effect } from "@preact/signals-react";
+import axios from "axios";
+import { useEffect } from "react";
+import { useContext } from "react";
+import { EnvContext } from "../Context/EnvContext";
 
 export default function Button(props) {
   const [state, setState] = useState(false);
   const [press, setPress] = useState(false);
+  const {button, envDispatch} = useContext(EnvContext)
 
+  useEffect(() => {
+    axios.get(process.env.REACT_APP_API_URL + "/button").then((res) => {
+      envDispatch({
+        type: "SET_BTN",
+        payload: res.data.data[0],
+      })
+    })
+  })
   const handleMouseUp = () => {
     setPress(false);
   };
