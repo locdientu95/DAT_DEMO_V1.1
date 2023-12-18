@@ -43,8 +43,9 @@ export default function App() {
           { credential: true }
         )
         .then((res) => {
+          // eslint-disable-next-line
           if (res.data.status == false) {
-            alert("Sai mật khâu");
+            alert(res.data.mes);
           } else {
             name[0] = res.data;
             envDispatch({
