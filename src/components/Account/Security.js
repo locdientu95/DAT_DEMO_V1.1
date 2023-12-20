@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
 import "./Account.scss";
+import axios from "axios";
 
 export default function Security() {
-  const email = useRef();
+  const username = useRef();
   const currentPass = useRef();
   const newPass = useRef();
   const confirmPass = useRef();
@@ -10,11 +11,33 @@ export default function Security() {
   const handleSave = (e) => {
     e.preventDefault();
 
-    var data = {
-      currentPass: currentPass.current.value,
-      newPass: newPass.current.value,
-      confirmPass: confirmPass.current.value,
-    };
+    if (newPass.current.value !== confirmPass.current.value) {
+      alert("Mật khẩu mới không trùng khớp");
+    } else {
+      axios
+        .put(
+          process.env.REACT_APP_API_URL + "/changePassword",
+          {
+            username: username.current.value,
+            password: confirmPass.current.value,
+            checkpassword: currentPass.current.value,
+          },
+          { credentials: true }
+        )
+        .then((res) => {
+          if (res.data.status === false) {
+            alert(res.data.mes);
+          } else {
+            alert("Đổi mật khẩu thành công");
+            window.location.reload();
+          }
+        });
+    }
+
+    username.current.value = "";
+    currentPass.current.value = "";
+    newPass.current.value = "";
+    confirmPass.current.value = "";
   };
 
   return (
@@ -35,12 +58,12 @@ export default function Security() {
                 <div className="DAT_Security_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Security_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Security_Main_Content_Detail_Content_Form_Row_Item_Label">
-                      Email
+                      Username
                     </div>
                     <input
-                      type="email"
-                      placeholder="Email"
-                      ref={email}
+                      type="text"
+                      placeholder="Nhập Username"
+                      ref={username}
                       required
                     />
                   </div>
@@ -49,11 +72,11 @@ export default function Security() {
                 <div className="DAT_Security_Main_Content_Detail_Content_Form_Row">
                   <div className="DAT_Security_Main_Content_Detail_Content_Form_Row_Item">
                     <div className="DAT_Security_Main_Content_Detail_Content_Form_Row_Item_Label">
-                      Mật Khẩu Hiện Tại
+                      Mật Khẩu Cũ
                     </div>
                     <input
                       type="password"
-                      placeholder="Mật Khẩu Hiện Tại"
+                      placeholder="Mật Khẩu Cũ"
                       ref={currentPass}
                       required
                     />
@@ -87,6 +110,7 @@ export default function Security() {
                     />
                   </div>
                 </div>
+
                 <button className="DAT_Security_Main_Content_Detail_Content_Form_Button">
                   Lưu thay đổi
                 </button>

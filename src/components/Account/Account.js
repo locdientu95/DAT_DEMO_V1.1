@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import "./Account.scss";
 import Info from "./Info";
 import Security from "./Security";
-import Language from "./Language";
 import UserList from "./UserList";
 
 export default function Account() {
   const tit = {
     info: "Thông Tin",
     security: "Bảo Mật",
-    language: "Ngôn Ngữ",
     userList: "Danh Sách Người Dùng",
   };
 
@@ -81,17 +79,6 @@ export default function Account() {
 
           <div
             className="DAT_Account_Main_Nav_Item"
-            id="language"
-            style={{ color: nav === "language" ? color.cur : color.pre }}
-            onClick={(e) => {
-              handleNav(e);
-            }}
-          >
-            Ngôn Ngữ
-          </div>
-
-          <div
-            className="DAT_Account_Main_Nav_Item"
             id="userList"
             style={{ color: nav === "userList" ? color.cur : color.pre }}
             onClick={(e) => {
@@ -118,12 +105,12 @@ export default function Account() {
                     <Security></Security>
                   </>
                 );
-              case "language":
-                return (
-                  <>
-                    <Language></Language>
-                  </>
-                );
+              // case "language":
+              //   return (
+              //     <>
+              //       <Language></Language>
+              //     </>
+              //   );
               case "userList":
                 return (
                   <>
