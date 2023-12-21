@@ -142,15 +142,11 @@ export const INITSTATE = {
 
   register: [],
 
-  errorlogs: [
-    
-  ],
+  errorlogs: [],
 
   type: "Button",
 
-  errsetting: {
-    
-  },
+  errsetting: {},
 
   sidebarid: "AUTO",
 

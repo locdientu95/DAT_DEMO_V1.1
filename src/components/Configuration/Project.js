@@ -1,11 +1,12 @@
 import React from "react";
 import "./Configuration.scss";
 import { useRef } from "react";
-import { useContext } from "react";
-import { EnvContext } from "../Context/EnvContext";
+// import { useContext } from "react";
+// import { EnvContext } from "../Context/EnvContext";
+import axios from "axios";
 
 export default function Project(props) {
-  const { pjdata, pjm, envDispatch } = useContext(EnvContext);
+  // const { pjdata, pjm, envDispatch } = useContext(EnvContext);
 
   const projectid = useRef();
   const name = useRef();
@@ -18,43 +19,63 @@ export default function Project(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    var data = pjdata;
-    data = data.filter((data) => data.projectid === projectid.current.value);
+    // var data = pjdata;
+    // data = data.filter((data) => data.projectid === projectid.current.value);
 
-    if (data.length) {
-      alert("Mã dự án đã tồn tại");
-    } else {
-      var dataPush = pjdata;
-      dataPush.push({
-        projectid: projectid.current.value,
-        name: name.current.value,
-        company: company.current.value,
-        info: info.current.value,
-        statement: 0,
-        custom: "",
-        long: long.current.value,
-        lat: lat.current.value,
+    // if (data.length) {
+    //   alert("Mã dự án đã tồn tại");
+    // } else {
+    axios
+      .post(
+        process.env.REACT_APP_API_URL + "/projectdata/add",
+        {
+          projectid: projectid.current.value,
+          name: name.current.value,
+          company: company.current.value,
+          info: info.current.value,
+          statement: 0,
+          custom: "",
+          long: long.current.value,
+          lat: lat.current.value,
+          bu: buid.current.value,
+          user: props.username,
+        },
+        { credential: true }
+      )
+      .then((res) => {
+        alert("Thêm thành công");
       });
 
-      envDispatch({
-        type: "SET_PJDATA",
-        payload: dataPush,
-      });
+    // var dataPush = pjdata;
+    // dataPush.push({
+    //   projectid: projectid.current.value,
+    //   name: name.current.value,
+    //   company: company.current.value,
+    //   info: info.current.value,
+    //   statement: 0,
+    //   custom: "",
+    //   long: long.current.value,
+    //   lat: lat.current.value,
+    // });
 
-      var pjmPush = pjm;
-      pjmPush.push({
-        projectid: projectid.current.value,
-        username: props.username,
-        code: buid.current.value,
-      });
+    // envDispatch({
+    //   type: "SET_PJDATA",
+    //   payload: dataPush,
+    // });
 
-      envDispatch({
-        type: "SET_PJM",
-        payload: pjmPush,
-      });
+    // var pjmPush = pjm;
+    // pjmPush.push({
+    //   projectid: projectid.current.value,
+    //   username: props.username,
+    //   code: buid.current.value,
+    // });
 
-      alert("Thêm thành công");
-    }
+    // envDispatch({
+    //   type: "SET_PJM",
+    //   payload: pjmPush,
+    // });
+
+    // }
   };
 
   return (

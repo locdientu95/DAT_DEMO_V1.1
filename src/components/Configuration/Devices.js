@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "./Configuration.scss";
 import { useRef } from "react";
 import { EnvContext } from "../Context/EnvContext";
+import axios from "axios";
 
 export default function Devices(props) {
   const { dvdata, dvm, envDispatch } = useContext(EnvContext);
@@ -11,30 +12,48 @@ export default function Devices(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    var data = dvdata;
-    data = data.filter((data) => data.gateway === gateway.current.value);
+    // var data = dvdata;
+    // data = data.filter((data) => data.gateway === gateway.current.value);
 
-    if (data.length) {
-      var data2 = dvm;
-      data2 = data2.filter((data2) => data2.deviceid === gateway.current.value);
-      if (data2.length) {
-        alert("Thiết bị đã được sử dụng");
-      } else {
-        var dvmPush = dvm;
-        dvmPush.push({
-          deviceid: gateway.current.value,
-          username: props.username,
-          code: buid.current.value,
-        });
-        envDispatch({
-          type: "SET_DVM",
-          payload: dvmPush,
-        });
+    // if (data.length) {
+    //   var data2 = dvm;
+    //   data2 = data2.filter((data2) => data2.deviceid === gateway.current.value);
+    //   if (data2.length) {
+    //     alert("Thiết bị đã được sử dụng");
+    //   } else {
+    //     var dvmPush = dvm;
+    //     dvmPush.push({
+    //       deviceid: gateway.current.value,
+    //       username: props.username,
+    //       code: buid.current.value,
+    //     });
+    //     envDispatch({
+    //       type: "SET_DVM",
+    //       payload: dvmPush,
+    //     });
+    //     alert("Thêm thành công");
+    //   }
+    // } else {
+    //   alert("Thiết bị không tồn tại trong hệ thống");
+    // }
+
+    axios
+      .post(
+        process.env.REACT_APP_API_URL + "/devicedata/add",
+        {
+          name: "...",
+          description: "...",
+          custom: "",
+          statement: 0,
+          gateway: gateway.current.value,
+          bu: buid.current.value,
+          user: props.username,
+        },
+        { credential: true }
+      )
+      .then((res) => {
         alert("Thêm thành công");
-      }
-    } else {
-      alert("Thiết bị không tồn tại trong hệ thống");
-    }
+      });
   };
 
   return (
