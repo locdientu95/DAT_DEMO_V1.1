@@ -37,6 +37,7 @@ export default function Solar(props) {
       return setDevice((old) => [...old, d[0]]);
     });
   }, []);
+
   return (
     <div className="DAT_Content">
       <div className="DAT_Content-Header">

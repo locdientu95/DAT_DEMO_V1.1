@@ -11,24 +11,24 @@ export default function NumberVSetting() {
     const leng = numberv.col;
     const sum = parseInt(leng) + parseInt(col.current.value);
     const newHeader = numberv.header;
-    for (var i = leng; i < sum; i++) {
+    for (var i = leng + 1; i <= sum; i++) {
       newHeader.push({
         name: "...",
-        code: "label_" + i,
+        code: "label_" + (i - 1),
       });
     }
 
     const newData = [];
     numberv.data.map((data, index) => {
       var x = data;
-      for (var i = leng; i < sum; i++) {
-        x["label_" + i] = "";
+      for (var i = leng; i <= sum; i++) {
+        x["label_" + i] = "...";
       }
       newData.push(x);
     });
 
     axios
-      .post(
+      .put(
         process.env.REACT_APP_API_URL + "/numberv/add",
         {
           header: newHeader,
@@ -125,7 +125,7 @@ export default function NumberVSetting() {
 
     axios
       .put(
-        process.env.REACT_APP_API_URL + "/numberv/update",
+        process.env.REACT_APP_API_URL + "/numberv/updateTit",
         { header: newHead },
         { credential: true }
       )
@@ -151,19 +151,27 @@ export default function NumberVSetting() {
       (newData) => newData.label === selVal.current.value
     );
 
-    console.log(index);
+    // console.log(index);
 
     newData[index][selHead.current.value] = value.current.value;
 
-    console.log(newData);
+    // console.log(newData);
 
-    envDispatch({
-      type: "SET_NUMBERV",
-      payload: {
-        ...numberv,
-        data: newData,
-      },
-    });
+    axios
+      .put(
+        process.env.REACT_APP_API_URL + "/numberv/updateData",
+        { data: newData },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_NUMBERV",
+          payload: {
+            ...numberv,
+            data: newData,
+          },
+        });
+      });
 
     value.current.value = "";
   };

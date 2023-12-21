@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { EnvContext } from "../Context/EnvContext";
 import "./Setting.scss";
 import {
@@ -49,9 +49,9 @@ export default function ButtonSetting() {
     "Cơ số 2_15",
   ];
 
-  useEffect(() => {
-    console.log(textisoff.current.value);
-  },[])
+  // useEffect(() => {
+  //   console.log(textisoff.current.value);
+  // },[])
 
   //BUTTON FUNCTION
   const handleSaveChangeOn = (e) => {

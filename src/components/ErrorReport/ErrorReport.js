@@ -131,7 +131,9 @@ export default function ErrorReport() {
 
   const handleDelete = (e) => {
     var newData = errorlogs;
-    newData = newData.filter((data) => data.id !== parseInt(e.target.id));
+    newData = newData.filter(
+      (data) => data.id !== parseInt(e.currentTarget.id)
+    );
     envDispatch({
       type: "SET_ERRORLOGS",
       payload: newData,

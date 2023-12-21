@@ -1,7 +1,7 @@
 export const INITSTATE = {
   status: false,
 
-  view16bit:{
+  view16bit: {
     fontSize: "20px",
     color: "#ffffff",
     alignItems: "center",
@@ -135,6 +135,8 @@ export const INITSTATE = {
     username: "unknown",
     mail: "unknown@gmail.com",
     avatar: "",
+    role: "",
+    name: "",
     status: false,
   },
 
@@ -895,16 +897,16 @@ const EnvReducer = (state, action) => {
         ...state,
         numberv: action.payload,
       };
-      case "SET_LISTFORM":
-        return {
-          ...state,
-          lisform: action.payload,
-        };
-      case "SET_VIEW16BIT" :
-        return {
-          ...state,
-          view16bit: action.payload,
-        }
+    case "SET_LISTFORM":
+      return {
+        ...state,
+        lisform: action.payload,
+      };
+    case "SET_VIEW16BIT":
+      return {
+        ...state,
+        view16bit: action.payload,
+      };
     default:
       throw new Error("Unexpected action");
   }

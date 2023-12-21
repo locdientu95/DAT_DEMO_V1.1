@@ -2,7 +2,7 @@ import React, { useState, useRef, useContext, useEffect } from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import { EnvContext } from "../Context/EnvContext";
-import { signal, effect } from "@preact/signals-react";
+// import { signal, effect } from "@preact/signals-react";
 import { img, preimg } from "../Account/Info";
 import { name } from "../../App";
 
@@ -11,7 +11,7 @@ export default function Header(props) {
 
   const [arrow, setArrow] = useState(false); //hook
   const [readnoti, setReadnoti] = useState();
-  const [ava, setAva] = useState(login.avatar);
+  // const [ava, setAva] = useState(login.avatar);
 
   useEffect(() => {
     preimg.value = login.avatar;
@@ -294,11 +294,18 @@ export default function Header(props) {
               handleDropDown(e);
             }}
           >
-            <button className="DAT_Header-Right-Item4-Account">
+            <button
+              className="DAT_Header-Right-Item4-Account"
+              style={{ padding: "0px" }}
+            >
               <img
                 alt=""
                 src={preimg.value}
-                style={{ height: "36px", width: "50px", borderRadius: "50%" }}
+                style={{
+                  height: "44px",
+                  width: "44px",
+                  borderRadius: "50%",
+                }}
               />
             </button>
           </div>

@@ -4,6 +4,7 @@ import { EnvContext } from "../Context/EnvContext";
 import DataTable from "react-data-table-component";
 import { useState } from "react";
 import axios from "axios";
+import { IoTrashOutline } from "react-icons/io5";
 
 export default function UserList() {
   const { register, envDispatch } = useContext(EnvContext);
@@ -50,31 +51,46 @@ export default function UserList() {
       selector: (row) => row.name,
       center: true,
     },
+    {
+      name: "",
+      selector: (row) => (
+        <div
+          id={row.username}
+          onClick={(e) => handleDelete(e)}
+          style={{ cursor: "pointer", color: "red" }}
+        >
+          <IoTrashOutline />
+        </div>
+      ),
+      width: "70px",
+      center: true,
+    },
   ];
 
-  // const handleDelete = (e) => {
-  //   // var newData = data;
-  //   // newData = newData.filter((data) => data.username !== e.currentTarget.id);
-  //   // console.log(e.currentTarget);
-  //   // axios
-  //   //   .delete(
-  //   //     process.env.REACT_APP_API_URL + "/delete",
-  //   //     { username: e.currentTarget.id },
-  //   //     { credential: true }
-  //   //   )
-  //   //   .then((res) => {
-  //   //     envDispatch({
-  //   //       type: "SET_REGISTER",
-  //   //       payload: newData,
-  //   //     });
-  //   //   });
-  // };
+  const paginationComponentOptions = {
+    rowsPerPageText: "Số hàng",
+    rangeSeparatorText: "đến",
+    selectAllRowsItem: true,
+    selectAllRowsItemText: "Tất cả",
+  };
 
-  // const handleChange = (e) => {
-  //   console.log(e.selectedRows[0]);
-  //   // setuserName(e.selectedRows[0].username);
-  //   // console.log(userName);
-  // };
+  const handleDelete = (e) => {
+    var newData = data;
+    newData = newData.filter((data) => data.username !== e.currentTarget.id);
+
+    axios
+      .post(
+        process.env.REACT_APP_API_URL + "/delete",
+        { username: e.currentTarget.id },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_REGISTER",
+          payload: newData,
+        });
+      });
+  };
 
   return (
     <div className="DAT_UserList">
@@ -94,16 +110,12 @@ export default function UserList() {
                     <DataTable
                       columns={user}
                       data={data}
-                      // selectableRows
-                      // selectableRowsSingle
-                      // selectableRowSelected={(e) => handleChange()}
-                      // onSelectedRowsChange={(e) => handleChange(e)}
+                      pagination
+                      paginationComponentOptions={paginationComponentOptions}
                     />
                   </div>
                 </div>
               </div>
-
-              {/* <button onClick={(e) => handleDelete(e)}>xoa</button> */}
             </div>
           </div>
         </div>

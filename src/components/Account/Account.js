@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Account.scss";
 import Info from "./Info";
 import Security from "./Security";
 import UserList from "./UserList";
+import { EnvContext } from "../Context/EnvContext";
 
 export default function Account() {
+  const { login } = useContext(EnvContext);
+
   const tit = {
     info: "Thông Tin",
     security: "Bảo Mật",
@@ -80,7 +83,10 @@ export default function Account() {
           <div
             className="DAT_Account_Main_Nav_Item"
             id="userList"
-            style={{ color: nav === "userList" ? color.cur : color.pre }}
+            style={{
+              color: nav === "userList" ? color.cur : color.pre,
+              display: login.role === "admin" ? "block" : "none",
+            }}
             onClick={(e) => {
               handleNav(e);
             }}

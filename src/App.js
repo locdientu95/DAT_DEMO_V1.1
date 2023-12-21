@@ -54,6 +54,8 @@ export default function App() {
                 username: res.data.username,
                 mail: res.data.email,
                 avatar: res.data.avatar,
+                role: res.data.role,
+                name: res.data.name,
                 status: true,
               },
             });

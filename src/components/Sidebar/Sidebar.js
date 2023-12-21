@@ -7,7 +7,7 @@ import { name } from "../../App";
 export default function Sidebar(props) {
   const [drop, setDrop] = useState("default");
   const [state, setState] = useState(false);
-  const { sidebarid, envDispatch } = useContext(EnvContext);
+  const { sidebarid, envDispatch, login } = useContext(EnvContext);
 
   const handleDropdown = (e) => {
     var id = e.currentTarget.id;
@@ -468,34 +468,48 @@ export default function Sidebar(props) {
               <div className="DAT_Sidebar_Content_Menu_Dropdown_List">
                 <Link
                   to="/DeviceSetting"
-                  style={{ textDecoration: "none", color: "black" }}
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    display: login.role === "admin" ? "block" : "none",
+                  }}
                 >
                   <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
                     Thiết bị
                   </div>
                 </Link>
+
+                <Link
+                  to="/Configuration"
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                  }}
+                >
+                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
+                    Cấu hình
+                  </div>
+                </Link>
+
+                <Link
+                  to="/ErrorSetting"
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    display: login.role === "admin" ? "block" : "none",
+                  }}
+                >
+                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
+                    Cài đặt lỗi
+                  </div>
+                </Link>
+
                 <Link
                   to="/Account"
                   style={{ textDecoration: "none", color: "black" }}
                 >
                   <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
                     Tài khoản
-                  </div>
-                </Link>
-                <Link
-                  to="/Configuration"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
-                    Cấu hình
-                  </div>
-                </Link>
-                <Link
-                  to="/ErrorSetting"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
-                    Cài đặt lỗi
                   </div>
                 </Link>
               </div>
