@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import "./Login.scss";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import axios from "axios";
 
 export default function AddUser() {
@@ -22,8 +22,8 @@ export default function AddUser() {
           name: name.current.value,
         })
         .then((res) => {
-          console.log(res.data);
           alert(res.data.message);
+          
         });
       username.current.value = "";
       email.current.value = "";

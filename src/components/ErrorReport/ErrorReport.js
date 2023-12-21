@@ -5,17 +5,27 @@ import { CSVLink } from "react-csv";
 import { EnvContext } from "../Context/EnvContext";
 import { IoTrashOutline } from "react-icons/io5";
 import { FaFileExcel } from "react-icons/fa";
+import axios from "axios";
 
 export default function ErrorReport() {
   const { errorlogs, errornoti, envDispatch } = useContext(EnvContext);
   const [data, setRecord] = useState(errorlogs);
   const fill = useRef(errornoti.ErrCode);
+  const [obID, setObID] = useState();
 
   useEffect(() => {
-    var newData = errorlogs;
-    newData.map((data, index) => {
-      return (data["id"] = index + 1);
-    });
+    axios
+      .get(process.env.REACT_APP_API_URL + "/errorlog", { credential: true })
+      .then((res) => {
+        envDispatch({ type: "SET_ERRORLOGS", payload: res.data.data });
+      });
+  }, []);
+
+  useEffect(() => {
+    // var newData = errorlogs;
+    // newData.map((data, index) => {
+    //   return (data["id"] = index + 1);
+    // });
     setRecord(errorlogs);
   }, [errorlogs]);
 
@@ -134,10 +144,20 @@ export default function ErrorReport() {
     newData = newData.filter(
       (data) => data.id !== parseInt(e.currentTarget.id)
     );
-    envDispatch({
-      type: "SET_ERRORLOGS",
-      payload: newData,
-    });
+    axios
+      .post(
+        process.env.REACT_APP_API_URL + "/errorlog/deleteData",
+        {
+          id: e.currentTarget.id,
+        },
+        { credential: true }
+      )
+      .then((res) => {
+        envDispatch({
+          type: "SET_ERRORLOGS",
+          payload: newData,
+        });
+      });
   };
 
   return (

@@ -6,6 +6,8 @@ import { useState } from "react";
 import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
 import { IoClose, IoTrashOutline } from "react-icons/io5";
+import { errsettingid } from "./ErrorSetting";
+import axios from "axios";
 
 export default function ReaderSetting() {
   const datainaddressrow = useRef("");
@@ -105,14 +107,23 @@ export default function ReaderSetting() {
       return (data.id = index + 1);
     });
 
-    envDispatch({
-      type: "SET_ERR",
-      payload: {
-        ...errsetting,
-        adddata: newData,
-        addDataRow: leng,
-      },
-    });
+    axios.post(process.env.REACT_APP_API_URL + "/errsetting/addAddress",
+    {_id: errsettingid.value,
+      adddata: newData,
+      addDataRow: leng
+    },
+    { credential: true })
+      .then((res) => {
+        envDispatch({
+          type: "SET_ERR",
+          payload: {
+            ...errsetting,
+            adddata: newData,
+            addDataRow: leng,
+          },
+        });
+      });
+
   };
 
   const handleSaveAddressRow = (e) => {
@@ -125,13 +136,20 @@ export default function ReaderSetting() {
 
     setInfoPop(false);
 
-    envDispatch({
-      type: "SET_ERR",
-      payload: {
-        ...errsetting,
-        adddata: newData,
-      },
-    });
+    axios.post(process.env.REACT_APP_API_URL + "/errsetting/saveAddress",
+    {_id: errsettingid.value,
+      adddata: newData
+    },
+    { credential: true })
+      .then((res) => {
+        envDispatch({
+          type: "SET_ERR",
+          payload: {
+            ...errsetting,
+            adddata: newData,
+          },
+        });
+      });
   };
 
   const handleDeleAddressRow = (e) => {
@@ -143,14 +161,21 @@ export default function ReaderSetting() {
     newData.map((data, index) => {
       return (data.id = index + 1);
     });
+    axios.post(process.env.REACT_APP_API_URL + "/errsetting/deleteAddress",
+    {_id: errsettingid.value,
+      adddata: newData
+    },
+    { credential: true })
+      .then((res) => {
+        envDispatch({
+          type: "SET_ERR",
+          payload: {
+            ...errsetting,
+            adddata: newData,
+          },
+        });
+      });
 
-    envDispatch({
-      type: "SET_ERR",
-      payload: {
-        ...errsetting,
-        adddata: newData,
-      },
-    });
   };
 
   const handleClose = (e) => {
