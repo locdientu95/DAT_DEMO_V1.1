@@ -79,7 +79,9 @@ export default function Login() {
 
         <Link to="/AddUser" style={{ textDecoration: "none", color: "black" }}>
           <div className="DAT_Login-Container-Footer">
-            <span>Chưa có tài khoản? Đăng ký!</span>
+            <span>
+              Chưa có tài khoản? <span style={{ color: "blue" }}>Đăng ký!</span>
+            </span>
           </div>
         </Link>
       </div>

@@ -496,7 +496,6 @@ export default function Sidebar(props) {
                   style={{
                     textDecoration: "none",
                     color: "black",
-                    display: login.role === "admin" ? "block" : "none",
                   }}
                 >
                   <div className="DAT_Sidebar_Content_Menu_Dropdown_List_Item">
