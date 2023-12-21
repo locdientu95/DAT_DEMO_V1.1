@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import "./Login.scss";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const userName = useRef();
@@ -76,9 +77,11 @@ export default function Login() {
           </div>
         </form>
 
-        <div className="DAT_Login-Container-Footer">
-          <span>Chưa có tài khoản? Đăng ký!</span>
-        </div>
+        <Link to="/AddUser" style={{ textDecoration: "none", color: "black" }}>
+          <div className="DAT_Login-Container-Footer">
+            <span>Chưa có tài khoản? Đăng ký!</span>
+          </div>
+        </Link>
       </div>
     </div>
   );

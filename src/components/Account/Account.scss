@@ -75,7 +75,7 @@
 
             &_Picture {
                 margin-right: 24px;
-                border-radius: 5px;
+                border-radius: 15px;
                 flex: 4;
                 box-shadow: 0px 0px 16px 4px rgb(136, 136, 136, 0.2);
                 // height: 344px;
@@ -128,7 +128,7 @@
 
             &_Detail {
                 position: relative;
-                border-radius: 5px;
+                border-radius: 15px;
                 flex: 6;
                 box-shadow: 0px 0px 16px 4px rgb(136, 136, 136, 0.2);
 
@@ -149,8 +149,8 @@
                 &_Content {
                     position: relative;
                     background-color: white;
-                    border-bottom-left-radius: 5px;
-                    border-bottom-right-radius: 5px;
+                    border-bottom-left-radius: 15px;
+                    border-bottom-right-radius: 15px;
                     padding: 24px;
 
                     &_Form {
@@ -286,7 +286,7 @@
 
             &_Detail {
                 position: relative;
-                border-radius: 5px;
+                border-radius: 15px;
                 flex: 6;
                 box-shadow: 0px 0px 16px 4px rgb(136, 136, 136, 0.2);
 
@@ -297,8 +297,8 @@
                     padding-left: 24px;
                     color: blue;
                     background-color: whitesmoke;
-                    border-top-right-radius: 5px;
-                    border-top-left-radius: 5px;
+                    border-top-right-radius: 15px;
+                    border-top-left-radius: 15px;
                     border-bottom: solid 1px rgb(156, 155, 155, 0.2);
                     font-weight: 500;
                 }
@@ -306,8 +306,8 @@
                 &_Content {
                     position: relative;
                     background-color: white;
-                    border-bottom-left-radius: 5px;
-                    border-bottom-right-radius: 5px;
+                    border-bottom-left-radius: 15px;
+                    border-bottom-right-radius: 15px;
                     padding: 24px;
 
                     &_Form {
@@ -446,7 +446,7 @@
 
             &_Detail {
                 position: relative;
-                border-radius: 5px;
+                border-radius: 15px;
                 flex: 6;
                 box-shadow: 0px 0px 16px 4px rgb(136, 136, 136, 0.2);
 
@@ -457,8 +457,8 @@
                     padding-left: 24px;
                     color: blue;
                     background-color: whitesmoke;
-                    border-top-right-radius: 5px;
-                    border-top-left-radius: 5px;
+                    border-top-right-radius: 15px;
+                    border-top-left-radius: 15px;
                     border-bottom: solid 1px rgb(156, 155, 155, 0.2);
                     font-weight: 500;
                 }
@@ -466,8 +466,8 @@
                 &_Content {
                     position: relative;
                     background-color: white;
-                    border-bottom-left-radius: 5px;
-                    border-bottom-right-radius: 5px;
+                    border-bottom-left-radius: 15px;
+                    border-bottom-right-radius: 15px;
                     padding: 24px;
 
                     &_Form {

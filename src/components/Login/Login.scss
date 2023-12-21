@@ -107,3 +107,124 @@
         }
     }
 }
+
+.DAT_AddUser {
+    background-color: blue;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    &-Container {
+        background-color: white;
+        // height: 800px;
+        // width: 500px;
+        margin-top: 60px;
+        margin-bottom: 80px;
+        box-shadow: 0px 0px 16px 4px rgb(136, 136, 136, 0.2);
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+
+        &-Title {
+            background-color: whitesmoke;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            padding-left: 24px;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            border-bottom: solid 1px rgb(156, 155, 155, 0.2);
+            font-weight: 500;
+            font-size: 24px;
+        }
+
+        &-Main {
+            padding: 24px;
+            border-bottom: solid 1px rgb(156, 155, 155, 0.2);
+
+            &-Username1 {
+                margin-bottom: 24px;
+                display: flex;
+                gap: 24px;
+
+                &-1 {
+                    &-Tit {
+                        margin-bottom: 8px;
+                    }
+
+                    & input {
+                        height: 44px;
+                        width: 100%;
+                        border-radius: 5px;
+                        border: solid 1px rgb(156, 155, 155, 0.3);
+                        padding: 14px 18px;
+                        box-sizing: border-box;
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                    }
+                }
+            }
+
+            &-Username {
+                margin-bottom: 24px;
+
+                &-Tit {
+                    margin-bottom: 8px;
+                }
+
+                & input {
+                    height: 44px;
+                    width: 100%;
+                    border-radius: 5px;
+                    border: solid 1px rgb(156, 155, 155, 0.3);
+                    padding: 14px 18px;
+                    box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                }
+            }
+
+            &-Password {
+                margin-bottom: 24px;
+
+                &-Tit {
+                    margin-bottom: 8px;
+                }
+
+                & input {
+                    height: 44px;
+                    width: 100%;
+                    border-radius: 5px;
+                    border: solid 1px rgb(156, 155, 155, 0.3);
+                    padding: 14px 18px;
+                    box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                }
+            }
+
+            &-Button {
+                display: flex;
+                justify-content: center;
+
+                & button {
+                    height: 34px;
+                    border: none;
+                    color: white;
+                    background-color: blue;
+                    font-weight: 400;
+                    border-radius: 5px;
+                }
+            }
+        }
+
+        &-Footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: whitesmoke;
+            height: 60px;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+    }
+}

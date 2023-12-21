@@ -3,13 +3,12 @@ import "./Account.scss";
 import { EnvContext } from "../Context/EnvContext";
 import DataTable from "react-data-table-component";
 import { useState } from "react";
-import { IoTrashOutline } from "react-icons/io5";
 import axios from "axios";
 
 export default function UserList() {
   const { register, envDispatch } = useContext(EnvContext);
   const [data, setdata] = useState([]);
-  const [userName, setuserName] = useState([]);
+  // const [userName, setuserName] = useState([]);
 
   useEffect(() => {
     axios
@@ -51,45 +50,31 @@ export default function UserList() {
       selector: (row) => row.name,
       center: true,
     },
-    // {
-    //   name: "",
-    //   selector: (row) => (
-    //     <div
-    //       // id={row.username}
-    //       onClick={(e) => handleDelete(e)}
-    //       style={{ cursor: "pointer", color: "red" }}
-    //     >
-    //       <IoTrashOutline />
-    //     </div>
-    //   ),
-    //   width: "70px",
-    //   center: true,
-    // },
   ];
 
-  const handleDelete = (e) => {
-    // var newData = data;
-    // newData = newData.filter((data) => data.username !== e.currentTarget.id);
-    // console.log(e.currentTarget);
-    // axios
-    //   .delete(
-    //     process.env.REACT_APP_API_URL + "/delete",
-    //     { username: e.currentTarget.id },
-    //     { credential: true }
-    //   )
-    //   .then((res) => {
-    //     envDispatch({
-    //       type: "SET_REGISTER",
-    //       payload: newData,
-    //     });
-    //   });
-  };
+  // const handleDelete = (e) => {
+  //   // var newData = data;
+  //   // newData = newData.filter((data) => data.username !== e.currentTarget.id);
+  //   // console.log(e.currentTarget);
+  //   // axios
+  //   //   .delete(
+  //   //     process.env.REACT_APP_API_URL + "/delete",
+  //   //     { username: e.currentTarget.id },
+  //   //     { credential: true }
+  //   //   )
+  //   //   .then((res) => {
+  //   //     envDispatch({
+  //   //       type: "SET_REGISTER",
+  //   //       payload: newData,
+  //   //     });
+  //   //   });
+  // };
 
-  const handleChange = (e) => {
-    // console.log(e.selectedRows[0].username);
-    setuserName(e.selectedRows[0].username);
-    console.log(userName);
-  };
+  // const handleChange = (e) => {
+  //   console.log(e.selectedRows[0]);
+  //   // setuserName(e.selectedRows[0].username);
+  //   // console.log(userName);
+  // };
 
   return (
     <div className="DAT_UserList">
@@ -109,16 +94,16 @@ export default function UserList() {
                     <DataTable
                       columns={user}
                       data={data}
-                      selectableRows
-                      selectableRowsSingle
+                      // selectableRows
+                      // selectableRowsSingle
                       // selectableRowSelected={(e) => handleChange()}
-                      onSelectedRowsChange={(e) => handleChange(e)}
+                      // onSelectedRowsChange={(e) => handleChange(e)}
                     />
                   </div>
                 </div>
               </div>
 
-              <button onClick={(e) => handleDelete(e)}>xoa</button>
+              {/* <button onClick={(e) => handleDelete(e)}>xoa</button> */}
             </div>
           </div>
         </div>

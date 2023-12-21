@@ -1,9 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./ErrorSetting.scss";
 import ReaderSetting from "./ReaderSetting";
 import InfoSetting from "./InfoSetting";
+import axios from "axios";
+import { EnvContext } from "../Context/EnvContext";
+import { signal } from "@preact/signals-react";
+
+
+export const errsettingid = signal("")
 
 export default function ErrorSetting() {
+  const { errsetting, envDispatch } = useContext(EnvContext);
+  useEffect(()=>{
+    axios
+        .get(process.env.REACT_APP_API_URL + "/errsetting", { credential: true })
+        .then((res) => {
+          errsettingid.value = res.data.data[0]._id
+          envDispatch({ type: "SET_ERR", payload: res.data.data[0] });
+        });
+   },[])
   const tit = {
     info: "Cài Đặt Thanh Ghi",
     security: "Cài Đặt Thông Tin",

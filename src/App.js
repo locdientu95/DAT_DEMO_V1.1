@@ -16,6 +16,7 @@ import Account from "./components/Account/Account";
 import Device from "./components/Setting/Device";
 import DATGroup from "./components/DATGroup/DATGroup";
 import Login from "./components/Login/Login";
+import AddUser from "./components/Login/AddUser";
 import Configuration from "./components/Configuration/Configuration";
 import ErrorSetting from "./components/ErrorSetting/ErrorSetting";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -42,8 +43,9 @@ export default function App() {
           { credential: true }
         )
         .then((res) => {
+          // eslint-disable-next-line
           if (res.data.status == false) {
-            alert("Sai mật khâu");
+            alert(res.data.mes);
           } else {
             name[0] = res.data;
             envDispatch({
@@ -107,6 +109,16 @@ export default function App() {
                 ) : (
                   <Login></Login>
                 )
+              }
+            />
+            <Route
+              path="/AddUser"
+              element={
+                // login.status ? (
+                //   <AddUser name={login.username}></AddUser>
+                // ) : (
+                <AddUser></AddUser>
+                // )
               }
             />
             <Route

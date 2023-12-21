@@ -3,22 +3,21 @@ import "./Setting.scss";
 import { IgrLinearGaugeModule } from "igniteui-react-gauges";
 import { IgrLinearGauge } from "igniteui-react-gauges";
 import { IgrLinearGraphRange } from "igniteui-react-gauges";
-import { useContext } from "react";
-import { EnvContext } from "../Context/EnvContext";
-import axios from "axios";
-import { useEffect } from "react";
+// import { useContext } from "react";
+// import { EnvContext } from "../Context/EnvContext";
+// import axios from "axios";
+// import { useEffect } from "react";
 IgrLinearGaugeModule.register();
 
 export default function BarTank(props) {
+  // const { bardata, envDispatch } = useContext(EnvContext);
 
-  const { bardata, envDispatch } = useContext(EnvContext);
-
-  useEffect(() => {
-      axios.get(process.env.REACT_APP_API_URL + "/bar").then((res) => {
-        envDispatch({ type: "SET_BARDATA", payload: res.data.data[0] });
-        // console.log(res.data.data[0]);
-      })
-    })
+  // useEffect(() => {
+  //   axios.get(process.env.REACT_APP_API_URL + "/bar").then((res) => {
+  //     envDispatch({ type: "SET_BARDATA", payload: res.data.data[0] });
+  //   });
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>

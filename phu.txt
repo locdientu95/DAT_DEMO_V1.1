@@ -63,3 +63,6 @@ Phu upload 8/12/2023 chỉnh sửa giao diện
 Phu upload 11/12/2023 viết api cho trang Account
 Phu upload 12/12/2023 viết api cho trang Account
 Phu upload 14/12/2023 làm giao diện trang Báo cáo
+Phu upload 15/12/2023 làm giao diện trang Báo cáo
+
+Phu upload 18/12/2023 làm trang Thêm người dùng và đổi mật khẩu
