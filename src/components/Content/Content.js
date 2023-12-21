@@ -328,7 +328,7 @@ export default function Content() {
               >
                 <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
               </svg>
-              Dashboard
+              Trang Chủ
             </div>
             <div className="DAT_Content-Header-Main-Dashboard-SubHead">
               Example dashboard overview and content summary

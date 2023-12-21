@@ -94,30 +94,16 @@ export default function UserList() {
 
   return (
     <div className="DAT_UserList">
-      <div className="DAT_UserList_Main">
-        {/* Content */}
-        <div className="DAT_UserList_Main_Content">
-          {/* Profile Detail */}
-          <div className="DAT_UserList_Main_Content_Detail">
-            <div className="DAT_UserList_Main_Content_Detail_Title">
-              Danh Sách Người Dùng
-            </div>
+      <div className="DAT_UserList_Detail">
+        <div className="DAT_UserList_Detail_Title">Danh Sách Người Dùng</div>
 
-            <div className="DAT_UserList_Main_Content_Detail_Content">
-              <div className="DAT_UserList_Main_Content_Detail_Content_Form">
-                <div className="DAT_UserList_Main_Content_Detail_Content_Form_Row">
-                  <div className="DAT_UserList_Main_Content_Detail_Content_Form_Row_Item">
-                    <DataTable
-                      columns={user}
-                      data={data}
-                      pagination
-                      paginationComponentOptions={paginationComponentOptions}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="DAT_UserList_Detail_Content">
+          <DataTable
+            columns={user}
+            data={data}
+            pagination
+            paginationComponentOptions={paginationComponentOptions}
+          />
         </div>
       </div>
     </div>

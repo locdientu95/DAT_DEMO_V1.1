@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import "./Login.scss";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default function AddUser() {
@@ -11,9 +11,10 @@ export default function AddUser() {
   const name = useRef();
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password.current.value.length < 8) {
-      alert("Độ dài mật khẩu ít nhất phải là 8");
-    } else if (password.current.value === repassword.current.value) {
+    // if (password.current.value.length < 8) {
+    //   alert("Độ dài mật khẩu ít nhất phải là 8");
+    // } else
+    if (password.current.value === repassword.current.value) {
       axios
         .post(process.env.REACT_APP_API_URL + "/addUser", {
           username: username.current.value,
@@ -23,7 +24,6 @@ export default function AddUser() {
         })
         .then((res) => {
           alert(res.data.message);
-          
         });
       username.current.value = "";
       email.current.value = "";

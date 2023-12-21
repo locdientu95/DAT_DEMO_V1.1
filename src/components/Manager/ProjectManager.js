@@ -45,17 +45,24 @@ export default function ProjectManager(props) {
   useEffect(() => {
     var data = JSON.parse(localStorage.getItem("data"));
     console.log(data.user);
-    console.log(sidebarid)
-    axios.post(process.env.REACT_APP_API_URL + "/projectdata", {
-      bu: sidebarid, user: data.user
-    }, {
-      credential: true
-    }).then((res) => {
-      console.log(res.data.data);
-      setData(res.data.data);
-      setIsLoading(false);
-    })
-  },[])
+    console.log(sidebarid);
+    axios
+      .post(
+        process.env.REACT_APP_API_URL + "/projectdata",
+        {
+          bu: sidebarid,
+          user: data.user,
+        },
+        {
+          credential: true,
+        }
+      )
+      .then((res) => {
+        console.log(res.data.data);
+        setData(res.data.data);
+        setIsLoading(false);
+      });
+  }, []);
 
   const paginationComponentOptions = {
     rowsPerPageText: "Số hàng",
