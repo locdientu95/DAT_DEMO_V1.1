@@ -325,6 +325,8 @@ export const INITSTATE = {
       custom: "",
       long: "",
       lat: "",
+      bu: "AUTO",
+      user: "taingo",
     },
     {
       projectid: "P02",

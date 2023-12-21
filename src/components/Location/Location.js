@@ -1,4 +1,5 @@
 import React from "react";
+import { withGoogleMap, withScriptjs, GoogleMap } from "react-google-maps";
 
 export default function Location() {
   return (
@@ -27,6 +28,20 @@ export default function Location() {
             <div className="DAT_Content-Header-Main-Dashboard-SubHead">
               Example dashboard overview and content summary
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="DAT_Notification-Container">
+        <div className="DAT_Notification-Container-ProjectHistory">
+          <div className="DAT_Notification-Container-ProjectHistory-Head">
+            Location
+          </div>
+          <div className="DAT_Notification-Container-ProjectHistory-Body">
+            {/* <GoogleMap
+              defaultZoom={8}
+              defaultCenter={{ lat: -34.397, lng: 150.644 }}
+            ></GoogleMap> */}
           </div>
         </div>
       </div>

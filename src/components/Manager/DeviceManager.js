@@ -1,22 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
 import DataTable from "react-data-table-component";
 import { useEffect } from "react";
 import { useState } from "react";
-// import data from "../Context/Devices.json";
-// import { EnvContext } from "../Context/EnvContext";
-// import { useContext } from "react";
-// import { useRef } from "react";
+import { EnvContext } from "../Context/EnvContext";
+import axios from "axios";
 
 export default function DeviceManager(props) {
+  const { sidebarid } = useContext(EnvContext);
   const [record, setRecord] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    var newData = props.list;
+    var data = JSON.parse(localStorage.getItem("data"));
+    console.log(data.user);
+    console.log(sidebarid);
+    axios
+      .post(
+        process.env.REACT_APP_API_URL + "/devicedata",
+        {
+          bu: sidebarid,
+          user: data.user,
+        },
+        {
+          credential: true,
+        }
+      )
+      .then((res) => {
+        console.log(res.data.data);
+        setData(res.data.data);
+      });
+  }, []);
+
+  useEffect(() => {
+    var newData = data;
     newData.map((data, index) => {
       data["id"] = index + 1;
     });
 
-    setRecord(newData);
+    setData(newData);
   }, [props.list]);
 
   const paginationComponentOptions = {
@@ -80,7 +101,7 @@ export default function DeviceManager(props) {
   return (
     <DataTable
       columns={column}
-      data={record}
+      data={data}
       pagination
       paginationComponentOptions={paginationComponentOptions}
     />
