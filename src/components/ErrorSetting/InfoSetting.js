@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ErrorSetting.scss";
 import DataTable from "react-data-table-component";
 import { useRef } from "react";
@@ -6,12 +6,18 @@ import { useState } from "react";
 import { useContext } from "react";
 import { EnvContext } from "../Context/EnvContext";
 import { IoClose, IoTrashOutline } from "react-icons/io5";
+import axios from "axios";
+import { errsettingid } from "./ErrorSetting";
+
+
 
 export default function InfoSetting() {
   const datainrow = useRef("");
   const [pop, setPop] = useState(false);
   const [idrow, setIdrow] = useState("");
   const { errsetting, envDispatch } = useContext(EnvContext);
+
+ 
 
   const handleChange2 = (e) => {
     setIdrow(e.currentTarget.id);
@@ -41,14 +47,20 @@ export default function InfoSetting() {
     }
 
     setPop(false);
-
-    envDispatch({
-      type: "SET_ERR",
-      payload: {
-        ...errsetting,
-        infodata: newData,
-      },
-    });
+    axios.post(process.env.REACT_APP_API_URL + "/errsetting/saveInfo",
+    {_id: errsettingid.value,
+    infodata: newData
+    },
+    { credential: true })
+      .then((res) => {
+        envDispatch({
+          type: "SET_ERR",
+          payload: {
+            ...errsetting,
+            infodata: newData,
+          },
+        });
+      });
   };
 
   const infoCol = [
@@ -177,14 +189,23 @@ export default function InfoSetting() {
       data.id = index + 1;
     });
 
-    envDispatch({
-      type: "SET_ERR",
-      payload: {
-        ...errsetting,
-        infodata: newData,
-        infoDataRow: leng,
-      },
-    });
+    axios.post(process.env.REACT_APP_API_URL + "/errsetting/addInfo",
+    {_id: errsettingid.value,
+    infodata: newData,
+    infoDataRow: leng
+    },
+    { credential: true })
+      .then((res) => {
+        envDispatch({
+          type: "SET_ERR",
+          payload: {
+            ...errsetting,
+            infodata: newData,
+            infoDataRow: leng,
+          },
+        });
+      });
+
   };
 
   const handleDeleInfoRow = (e) => {
@@ -195,14 +216,20 @@ export default function InfoSetting() {
     newData.map((data, index) => {
       data.id = index + 1;
     });
-
-    envDispatch({
-      type: "SET_ERR",
-      payload: {
-        ...errsetting,
-        infodata: newData,
-      },
-    });
+    axios.post(process.env.REACT_APP_API_URL + "/errsetting/deleteInfo",
+    {_id: errsettingid.value,
+    infodata: newData
+    },
+    { credential: true })
+      .then((res) => {
+        envDispatch({
+          type: "SET_ERR",
+          payload: {
+            ...errsetting,
+            infodata: newData,
+          },
+        });
+      });
   };
 
   const handleClose2 = (e) => {
