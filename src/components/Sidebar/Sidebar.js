@@ -579,7 +579,7 @@ export default function Sidebar(props) {
         <div className="DAT_Sidebar_Content_Footer">
           <div className="DAT_Sidebar_Content_Footer_Content">
             <div className="DAT_Sidebar_Content_Footer_Content_Title">
-              Logged in as:
+              Xin chào:
             </div>
             <div className="DAT_Sidebar_Content_Footer_Content_Text">
               {name[0].name}

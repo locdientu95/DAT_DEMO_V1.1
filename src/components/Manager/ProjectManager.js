@@ -75,10 +75,9 @@ export default function ProjectManager(props) {
     {
       name: "Project ID",
       selector: (row) => row.projectid,
-      // sortable: true,
-      width: "60px",
+      sortable: true,
+      width: "120px",
     },
-
     {
       name: "Tên dự án",
       selector: (row) => (
@@ -95,7 +94,6 @@ export default function ProjectManager(props) {
       sortable: true,
       // width: "100px"
     },
-
     {
       name: "Tên công ty",
       selector: (row) => (
@@ -112,7 +110,6 @@ export default function ProjectManager(props) {
       sortable: true,
       // width: "100px"
     },
-
     {
       name: "Thông tin",
       selector: (row) => (
@@ -129,7 +126,6 @@ export default function ProjectManager(props) {
       sortable: true,
       // width: "100px"
     },
-
     {
       name: "Trạng thái",
       selector: (row) => (
@@ -144,7 +140,8 @@ export default function ProjectManager(props) {
         </>
       ),
       sortable: true,
-      width: "100px",
+      // center: true,
+      width: "120px",
     },
     {
       name: "Tùy chỉnh",

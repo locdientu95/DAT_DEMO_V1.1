@@ -31,14 +31,14 @@ export default function DeviceManager(props) {
       });
   }, []);
 
-  useEffect(() => {
-    var newData = data;
-    newData.map((data, index) => {
-      data["id"] = index + 1;
-    });
+  // useEffect(() => {
+  //   var newData = data;
+  //   newData.map((data, index) => {
+  //     data["id"] = index + 1;
+  //   });
 
-    setData(newData);
-  }, [props.list]);
+  //   setData(newData);
+  // }, [props.list]);
 
   const paginationComponentOptions = {
     rowsPerPageText: "Số hàng",
@@ -48,27 +48,33 @@ export default function DeviceManager(props) {
   };
 
   const column = [
+    // {
+    //   name: "STT",
+    //   selector: (row) => row.id,
+    //   // sortable: true,
+    //   width: "60px",
+    // },
     {
-      name: "STT",
-      selector: (row) => row.id,
-      // sortable: true,
-      width: "60px",
+      name: "Gateway",
+      selector: (row) => row.gateway,
+      sortable: true,
+      // width: "100px",
     },
-
     {
       name: "Tên dự án",
       selector: (row) => row.name,
       sortable: true,
       // width: "100px"
     },
-
     {
       name: "Mô tả",
+      selector: (row) => row.description,
+      sortable: true,
     },
 
     {
       name: "Thông tin",
-      selector: (row) => row.info,
+      selector: (row) => row.custom,
       sortable: true,
       // width: "100px"
     },
@@ -76,13 +82,6 @@ export default function DeviceManager(props) {
     {
       name: "Kết nối",
       selector: (row) => row.statement,
-      sortable: true,
-      width: "100px",
-    },
-
-    {
-      name: "Gateway",
-      selector: (row) => row.gateway,
       sortable: true,
       width: "100px",
     },

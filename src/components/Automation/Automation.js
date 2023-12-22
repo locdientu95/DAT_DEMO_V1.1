@@ -108,9 +108,11 @@ export default function Automation(props) {
           <div className="Automation_Content-Container-Group-Head">
             Danh sách dự án
           </div>
+
           <div className="Automation_Content-Container-Group-Body">
             <ProjectManager list={project}></ProjectManager>
           </div>
+
           {/* UPDATE DATA */}
           {projectfilter.display ? (
             <div
